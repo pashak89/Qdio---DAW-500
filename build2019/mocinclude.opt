@@ -1,26 +1,28 @@
 -IC:/Qt/5.15.2/msvc2019_64/mkspecs/win32-msvc
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/libqnanopainter
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/visr/include/visr
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/boost/include/boost-1_85
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/juce
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/juce/modules
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/win32/include
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/win32/include/ipp
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/win64/include
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/vst/include
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/vst2/include
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/EngineLib
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/EngineLib/Engine
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/glm
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/glew
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/QDLib
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/quickflux
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/FreeImage
--IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/juce/include
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/libqnanopainter
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/visr/include/visr
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/boost/include/boost-1_85
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/juce
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/juce/modules
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/win32/include
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/win32/include/ipp
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/win64/include
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/vst/include
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/vst2/include
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/EngineLib
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/EngineLib/Engine
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/glm
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/glew
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/QDLib
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/quickflux
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/FreeImage
+-IC:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/juce/include
 -IC:/Qt/5.15.2/msvc2019_64/include
 -IC:/Qt/5.15.2/msvc2019_64/include/QtQuickControls2
+-IC:/Qt/5.15.2/msvc2019_64/include/QtWebEngine
+-IC:/Qt/5.15.2/msvc2019_64/include/QtWebEngineCore
 -IC:/Qt/5.15.2/msvc2019_64/include/QtQuick
 -IC:/Qt/5.15.2/msvc2019_64/include/QtMultimedia
 -IC:/Qt/5.15.2/msvc2019_64/include/QtOpenGL
@@ -30,6 +32,7 @@
 -IC:/Qt/5.15.2/msvc2019_64/include/QtGui
 -IC:/Qt/5.15.2/msvc2019_64/include/QtANGLE
 -IC:/Qt/5.15.2/msvc2019_64/include/QtQmlModels
+-IC:/Qt/5.15.2/msvc2019_64/include/QtWebChannel
 -IC:/Qt/5.15.2/msvc2019_64/include/QtQml
 -IC:/Qt/5.15.2/msvc2019_64/include/QtNetwork
 -IC:/Qt/5.15.2/msvc2019_64/include/QtSql

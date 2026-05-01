@@ -1,0 +1,37 @@
+{
+    "color": {
+        "propertyContainerType": "DGE::Core::Serializers::DVariant",
+        "typeName": "Color",
+        "value": "#ff999900"
+    },
+    "isUsingRandomColoring": {
+        "propertyContainerType": "DGE::Core::Serializers::DVariant",
+        "typeName": "bool",
+        "value": false
+    },
+    "isUsingTemplatePath": {
+        "propertyContainerType": "DGE::Core::Serializers::DVariant",
+        "typeName": "bool",
+        "value": true
+    },
+    "shaderResourcePath": {
+        "propertyContainerType": "DGE::Core::Serializers::DVariant",
+        "typeName": "DPath",
+        "value": "<Assets_Dir>Shaders/GL/default-solid.shader"
+    },
+    "shaderVariables": {
+        "propertyContainerType": "DGE::Core::Serializers::DMapStringVariant",
+        "typeName": "DGE::Core::Serializers::DMapStringVariant",
+        "value": {
+            "isRandomColoring": {
+                "typeName": "bool",
+                "value": true
+            }
+        }
+    },
+    "textureResourcePath": {
+        "propertyContainerType": "DGE::Core::Serializers::DVariant",
+        "typeName": "DPath",
+        "value": ""
+    }
+}

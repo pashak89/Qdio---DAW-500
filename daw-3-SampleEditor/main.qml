@@ -786,17 +786,15 @@ Item {
             visible: view3D.check
             width: 800
             height: 450
+            title: "DAW-500 3D Scene"
 
             onClosing: {
                 close.accepted = false // Prevent destruction
                 view3D.check = false
             }
-            CustomScene3D {
-                id: scene3d
+
+            ThreeSceneView {
                 anchors.fill: parent
-                themeObject: mainWindow.themeObject
-                definitionsObject: mainWindow.definitionsObject
-                hasAnimationSection: true
             }
         }
 

@@ -1,0 +1,1 @@
+{"isUsingTemplatePath":{"isUsingTemplatePath":"true"},"sources":{"Compute":"","Fragment":"<Assets_Dir>Shaders/GL/default-textured.fsh","Geometry":"","TessellationControl":"","TessellationEvaluation":"","Vertex":"<Assets_Dir>Shaders/GL/default-textured.vsh"}}

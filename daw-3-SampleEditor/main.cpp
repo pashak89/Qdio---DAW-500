@@ -80,7 +80,17 @@ extern "C" FILE* __cdecl __iob_func(void)
 
 #include <Qt/QEngine.h>
 
+// COM headers (pulled in by QtWebEngine) redefine 'interface' as 'struct'.
+// dinput.h (via DGE/SDL3) expects 'interface' = '__interface' (MSVC built-in).
+// Restore it before pulling in DGE headers, then undo it afterwards.
+#ifdef interface
+#undef interface
+#endif
+#define interface __interface
 #include "EngineHelper.h"
+#ifdef interface
+#undef interface
+#endif
 #include "ThreeBridge.h"
 
 #if DGE_Platform == DGE_Windows_Platform
@@ -173,6 +183,7 @@ int main(int argc, char* argv[])
         // timelineManager->setCanAddTrack(true);
 
         auto objectCreator = new ObjectCreator(timelineManager, engine);
+        auto threeBridge = new ThreeBridge();
 
         auto connection = QObject::connect(engine.get(), SIGNAL(startedEngine()), objectCreator,
             SLOT(onStartedEngine()), ::Qt::DirectConnection);
@@ -184,7 +195,7 @@ int main(int argc, char* argv[])
         qmlRegisterType<CursorManager>("Utility", 1, 0, "CursorManager");
         QObject::connect(
             appManager.get(), &FluxAppManager::startInitialization, appManager.get(),
-            [appManager, objectCreator, engine]() {
+            [appManager, objectCreator, threeBridge, engine]() {
                 auto qmlEngine = appManager->qmlAppEngine();
                 auto rootContext = qmlEngine->rootContext();
                 if (qmlEngine && rootContext != nullptr) {
@@ -256,14 +267,24 @@ int main(int argc, char* argv[])
                     QObject::connect(_areaInfo, &AreaInfo::sigKeyFrameChanged, objectCreator,
                         &ObjectCreator::keyFrameChanged, Qt::DirectConnection);
 
-                    QObject::connect(_areaInfo, &AreaInfo::sigPlayBackUpdateTimeout, [objectCreator, _areaInfo]() {
+                    QObject::connect(_areaInfo, &AreaInfo::sigPlayBackUpdateTimeout, [objectCreator, threeBridge, _areaInfo]() {
                         if (AudioManager::getSong()->isPause() == false) {
-                            objectCreator->setCurrentTime(_areaInfo->playheadMarker());
+                            const qint64 t = _areaInfo->playheadMarker();
+                            objectCreator->setCurrentTime(t);
+                            threeBridge->setPlayhead(t);
                         }
                     });
 
                     QObject::connect(_areaInfo, &AreaInfo::sigObjectPosition, objectCreator,
                         &ObjectCreator::setObjectLocation, Qt::DirectConnection);
+
+                    // Forward entity position from DAW → Three.js
+                    QObject::connect(objectCreator, &ObjectCreator::sigObjectMoved,
+                        threeBridge, &ThreeBridge::setEntityPosition, Qt::QueuedConnection);
+
+                    // Reverse sync: Three.js user drag → DAW keyframe
+                    QObject::connect(threeBridge, &ThreeBridge::entityMovedFromScene,
+                        objectCreator, &ObjectCreator::setObjectLocation, Qt::QueuedConnection);
 
                     qmlEngine->rootContext()->setContextProperty("_homePath", _homePath);
                     qmlEngine->rootContext()->setContextProperty("cursorPositionClass", cursorPosition);
@@ -272,6 +293,7 @@ int main(int argc, char* argv[])
                     qmlEngine->rootContext()->setContextProperty("globalValues", properties);
                     qmlEngine->rootContext()->setContextProperty("vst3", vst3);
                     qmlEngine->rootContext()->setContextProperty("objectCreator", objectCreator);
+                    qmlEngine->rootContext()->setContextProperty("threeBridge", threeBridge);
                     qmlEngine->rootContext()->setContextProperty("_clipArea", _clipArea);
 
                     // qmlEngine->rootContext()->setContextProperty("closeClass", &closeClass);

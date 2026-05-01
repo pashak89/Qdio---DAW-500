@@ -1,0 +1,25 @@
+#pragma once
+
+#include <GFX/Camera.h>
+#include <GFX/Camera2D.h>
+#include <GFX/CubeMesh.h>
+#include <GFX/DeviceExploration.h>
+#include <GFX/DrawablesManager.h>
+#include <GFX/Font.h>
+#include <GFX/GCore/DX9/BaseMeshDX9.h>
+#include <GFX/GCore/DX9/CubeMeshDX9.h>
+#include <GFX/GCore/DX9/DeviceExplorationDX9.h>
+#include <GFX/GCore/DX9/FontDX9.h>
+#include <GFX/GCore/DX9/MaterialDX9.h>
+#include <GFX/GCore/DX9/MeshDX9.h>
+#include <GFX/GCore/DX9/RenderCacheDX9.h>
+#include <GFX/GCore/DX9/RendererDX9.h>
+#include <GFX/GCore/DX9/SphereMeshDX9.h>
+#include <GFX/GCore/Renderer.h>
+#include <GFX/GFXModule.h>
+#include <GFX/GFXModuleDef.h>
+#include <GFX/GraphicsManager.h>
+#include <GFX/Material.h>
+#include <GFX/Mesh.h>
+#include <GFX/RenderCache.h>
+#include <GFX/Resource/TextureResource.h>

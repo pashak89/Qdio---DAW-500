@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="qtquickcontrols2.conf">../qtquickcontrols2.conf</file>
+        <file alias="resources/svg/track_list/add_icon.svg">../resources/svg/track_list/add_icon.svg</file>
+        <file alias="resources/svg/track_list/Automation.svg">../resources/svg/track_list/Automation.svg</file>
+        <file alias="resources/svg/track_list/automation_icon.svg">../resources/svg/track_list/automation_icon.svg</file>
+        <file alias="resources/svg/track_list/BG_icon.svg">../resources/svg/track_list/BG_icon.svg</file>
+        <file alias="resources/svg/track_list/BG2_icon.svg">../resources/svg/track_list/BG2_icon.svg</file>
+        <file alias="resources/svg/track_list/folder_off_icon.svg">../resources/svg/track_list/folder_off_icon.svg</file>
+        <file alias="resources/svg/track_list/folder_on_icon.svg">../resources/svg/track_list/folder_on_icon.svg</file>
+        <file alias="resources/svg/track_list/justify_icon.svg">../resources/svg/track_list/justify_icon.svg</file>
+        <file alias="resources/svg/track_list/master_icon.svg">../resources/svg/track_list/master_icon.svg</file>
+        <file alias="resources/svg/track_list/minus.svg">../resources/svg/track_list/minus.svg</file>
+        <file alias="resources/svg/track_list/multichannel_off_icon.svg">../resources/svg/track_list/multichannel_off_icon.svg</file>
+        <file alias="resources/svg/track_list/multichannel_on_icon.svg">../resources/svg/track_list/multichannel_on_icon.svg</file>
+        <file alias="resources/svg/track_list/object_icon.svg">../resources/svg/track_list/object_icon.svg</file>
+        <file alias="resources/svg/track_list/rec_icon.svg">../resources/svg/track_list/rec_icon.svg</file>
+        <file alias="resources/svg/track_list/send_icon.svg">../resources/svg/track_list/send_icon.svg</file>
+        <file alias="resources/svg/track_list/Triangle.svg">../resources/svg/track_list/Triangle.svg</file>
+        <file alias="resources/svg/track_list/triangle_btn.svg">../resources/svg/track_list/triangle_btn.svg</file>
+        <file alias="resources/font/SourceSansPro-Regular.ttf">../resources/font/SourceSansPro-Regular.ttf</file>
+    </qresource>
+</RCC>
