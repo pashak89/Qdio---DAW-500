@@ -1,0 +1,528 @@
+#include "automationshapeitem.h"
+
+#include "automationitem.h"
+#include "core/cliparea.h"
+#include "core/global.h"
+#include <QQuickWindow>
+#include <QSGSimpleRectNode>
+#include <QtMath>
+
+AutomationShapeItem::AutomationShapeItem(QQuickItem* parent)
+    : QQuickItem(parent)
+{
+    setFlag(ItemHasContents, true);
+    setZ(12e6); // ensure on top (adjust as you like)
+}
+
+ClipArea* AutomationShapeItem::clipArea() const
+{
+    return _clipArea;
+}
+
+void AutomationShapeItem::setClipArea(ClipArea* clipArea)
+{
+    _clipArea = clipArea;
+}
+
+AreaInfo* AutomationShapeItem::areaInfo() const
+{
+    return _areaInfo;
+}
+
+void AutomationShapeItem::setAreaInfo(AreaInfo* areaInfo)
+{
+    _areaInfo = areaInfo;
+
+    connect(_areaInfo, &AreaInfo::sigLastWidthChanged, this, &AutomationShapeItem::update);
+    connect(_areaInfo, &AreaInfo::sigZoomLevelChanged, this, &AutomationShapeItem::update);
+
+    connect(_areaInfo, &AreaInfo::sigClipPropertiesChanged, this, &AutomationShapeItem::update);
+
+    connect(_areaInfo, &AreaInfo::sigUpdateUI, this, &AutomationShapeItem::update);
+    connect(_areaInfo, &AreaInfo::loopFocusActiveChanged, this, &AutomationShapeItem::update);
+
+    connect(_clipArea->tracksModel(), &TracksModel::sigClipChanged, this, &AutomationShapeItem::update);
+
+    connect(_areaInfo, &AreaInfo::sigPlaybackMarkerChanged, this, &AutomationShapeItem::update);
+}
+
+bool AutomationShapeItem::automationLaneEnabled()
+{
+
+    auto _tracksModel = _clipArea->tracksModel();
+    auto trackItem = _tracksModel->trackItem(m_trackIndex);
+    return trackItem->automationLaneEnabled();
+}
+
+QSharedPointer<AutomationLaneModel> AutomationShapeItem::automationLaneModel()
+{
+
+    auto _tracksModel = _clipArea->tracksModel();
+    auto trackItem = _tracksModel->trackItem(m_trackIndex);
+    return trackItem->automationLaneModel();
+}
+
+int AutomationShapeItem::trackIndex() const
+{
+    return m_trackIndex;
+}
+
+void AutomationShapeItem::setTrackIndex(int index)
+{
+    m_trackIndex = index;
+}
+
+static inline void writeRect6(QSGGeometry::Point2D* v, const QRectF& r)
+{
+    const float x1 = r.left(), y1 = r.top();
+    const float x2 = r.right(), y2 = r.bottom();
+    // tri1
+    v[0].set(x1, y1);
+    v[1].set(x2, y1);
+    v[2].set(x1, y2);
+    // tri2
+    v[3].set(x1, y2);
+    v[4].set(x2, y1);
+    v[5].set(x2, y2);
+}
+
+static void addQuad(QSGGeometry::Point2D* v, quint16* idx,
+    int quadIndex, const QPointF& a, const QPointF& b, float halfT)
+{
+    // Build a rectangle centered on segment a->b, thickness = 2*halfT
+    QVector2D dir(b - a);
+    dir.normalize();
+    QVector2D n(-dir.y(), dir.x()); // left-normal
+    QVector2D off = n * halfT;
+
+    int vbase = quadIndex * 4;
+    int ibase = quadIndex * 6;
+
+    v[vbase + 0].set(a.x() + off.x(), a.y() + off.y());
+    v[vbase + 1].set(b.x() + off.x(), b.y() + off.y());
+    v[vbase + 2].set(b.x() - off.x(), b.y() - off.y());
+    v[vbase + 3].set(a.x() - off.x(), a.y() - off.y());
+
+    // two triangles
+    idx[ibase + 0] = vbase + 0;
+    idx[ibase + 1] = vbase + 1;
+    idx[ibase + 2] = vbase + 2;
+    idx[ibase + 3] = vbase + 0;
+    idx[ibase + 4] = vbase + 2;
+    idx[ibase + 5] = vbase + 3;
+}
+
+QSGNode* AutomationShapeItem::updatePaintNode(QSGNode* oldNode, UpdatePaintNodeData*)
+{
+
+    QSGNode* rootNode = oldNode ? oldNode : new QSGNode;
+
+    if (_clipArea == nullptr) {
+        return rootNode;
+    }
+
+    auto _tracksModel = _clipArea->tracksModel();
+    auto trackItem = _tracksModel->trackItem(m_trackIndex);
+    auto volumeAutomation = trackItem->volumeAutomationItem();
+
+    if (!_automationNode) {
+        _automationNode = new AutomationNode(_areaInfo, _clipArea, trackItem, volumeAutomation);
+        rootNode->appendChildNode(_automationNode);
+    }
+
+    if (volumeAutomation->showEnvelopes() == false || trackItem->automationSubMenuTitle() != "Volume" || !trackItem->automationLaneEnabled() || trackItem->rowsExpandedCount() <= 2) {
+        _automationNode->setShow(false);
+    } else {
+        _automationNode->setShow(true);
+    }
+
+    _automationNode->updateGeometryIfNeeded(boundingRect());
+
+    return rootNode;
+}
+
+CircleNode::CircleNode()
+{
+    setFlag(QSGNode::OwnsGeometry, true);
+    setFlag(QSGNode::OwnsMaterial, true);
+
+    auto* g = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), 0, 0);
+    g->setDrawingMode(QSGGeometry::DrawTriangles);
+    setGeometry(g);
+
+    m_mat = new QSGFlatColorMaterial();
+    setMaterial(m_mat);
+}
+
+void CircleNode::setCenter(const QPointF& c)
+{
+    if (c == m_center)
+        return;
+    m_center = c;
+    m_dirty = true;
+}
+void CircleNode::setRadius(float r)
+{
+    if (qFuzzyCompare(r, m_radius))
+        return;
+    m_radius = r;
+    m_dirty = true;
+}
+void CircleNode::setColor(const QColor& c)
+{
+    if (c == m_color)
+        return;
+    m_color = c;
+    m_dirty = true;
+}
+
+void CircleNode::updateGeometryIfNeeded()
+{
+    if (!m_dirty)
+        return;
+    rebuild();
+    m_dirty = false;
+}
+
+void CircleNode::rebuild()
+{
+    if (m_radius <= 0.f) {
+        auto* g = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), 0, 0);
+        g->setDrawingMode(QSGGeometry::DrawTriangles);
+        setGeometry(g);
+        markDirty(QSGNode::DirtyGeometry);
+        return;
+    }
+
+    // Choose resolution: decent quality without overdraw
+    const int segments = qBound(16, int(m_radius * 0.75), 96); // heuristic
+    // center + segments+1 (closing vertex)
+    const int vCount = 1 + segments + 1;
+    const int triCount = segments; // triangle fan
+    auto* geom = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), vCount, triCount * 3);
+    geom->setDrawingMode(QSGGeometry::DrawTriangles);
+
+    auto* v = geom->vertexDataAsPoint2D();
+    quint16* idx = reinterpret_cast<quint16*>(geom->indexData());
+
+    // center
+    v[0].set(m_center.x(), m_center.y());
+
+    // ring
+    const float twoPi = 6.28318530718f;
+    for (int i = 0; i <= segments; ++i) {
+        float t = (float(i) / segments) * twoPi;
+        float x = m_center.x() + m_radius * std::cos(t);
+        float y = m_center.y() + m_radius * std::sin(t);
+        v[1 + i].set(x, y);
+    }
+
+    // indices for triangle fan: (0, i, i+1)
+    int k = 0;
+    for (int i = 1; i <= segments; ++i) {
+        idx[k++] = 0;
+        idx[k++] = i;
+        idx[k++] = i + 1;
+    }
+
+    setGeometry(geom);
+    m_mat->setColor("#eeeeee");
+    markDirty(QSGNode::DirtyGeometry | QSGNode::DirtyMaterial);
+}
+
+AutomationNode::AutomationNode(AreaInfo* areaInfo, ClipArea* clipArea, QSharedPointer<TrackItem> trackItem, QSharedPointer<AutomationItem> automationItem)
+{
+    _areaInfo = areaInfo;
+    _clipArea = clipArea;
+    _trackItem = trackItem;
+    _automationItem = automationItem;
+
+    setFlag(QSGNode::OwnsGeometry, true);
+    setFlag(QSGNode::OwnsMaterial, true);
+
+    auto* g = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), 0, 0);
+    g->setDrawingMode(QSGGeometry::DrawTriangles);
+    setGeometry(g);
+
+    m_mat = new QSGFlatColorMaterial();
+    setMaterial(m_mat);
+}
+
+void AutomationNode::updateGeometryIfNeeded(QRectF boundingRect)
+{
+
+    _boundingRect = boundingRect;
+    rebuild();
+}
+
+QPointF AutomationNode::getHoverCirclePosition()
+{
+
+    auto _currentRangeIndex = _automationItem->currentRangeIndex();
+    auto _liveMovingEnabled = _automationItem->liveMovingEnabled();
+    auto _automation = _automationItem->automation();
+    auto _currentMouseHoverX = _automationItem->currentMouseHoverX();
+    auto _currentMouseHoverY = _automationItem->currentMouseHoverY();
+
+    if (_areaInfo->altKeyPressed() == true || _automation->getSelectedRangeMoveEnabled() == true) {
+        return QPointF(-1, -1);
+    }
+
+    if (_automationItem->innerActive() == true && _automationItem->outerActive() == false
+        && _automationItem->mouseHover() == true && _automationItem->pointActive() == false
+        && _automationItem->mouseClick() == false && _currentRangeIndex >= 0 && _automationItem->mouseDoubleClick() == false) {
+
+        auto ranges = _automation->getRanges(_liveMovingEnabled);
+
+        if (_currentRangeIndex < 0 || _currentRangeIndex >= ranges.size())
+            return QPointF(-1, -1);
+
+        float curve_n = 1;
+        float curve_m = 1;
+
+        bool valid = _automation->getCurve(_currentRangeIndex, curve_n, curve_m, _liveMovingEnabled);
+
+        if (qIsInf(-ranges[0].p1().x())) {
+            ranges[0].setP1(QPointF(0, ranges[0].p1().y()));
+        }
+        if (qIsInf(ranges[ranges.size() - 1].p2().x())) {
+            ranges[ranges.size() - 1].setP2(QPointF(_areaInfo->lastWidth(), ranges[ranges.size() - 1].p2().y()));
+        }
+
+        if (curve_n == 1.0 && curve_m == 1.0) {
+
+            if (_automation->discreted()) {
+
+                if (qAbs(ranges[_currentRangeIndex].y1() - ranges[_currentRangeIndex].y2()) <= 0.001) {
+
+                    QPointF mapped = MathHelper1::mapPointToLine(ranges[_currentRangeIndex].p1(), ranges[_currentRangeIndex].p2(), QPointF(_currentMouseHoverX, _currentMouseHoverY));
+
+                    if (_automation->pointShape() == Automation::PointShape_Circle) {
+                        //  painter->circle(mapped.x(), mapped.y(), 4);
+                        return QPointF(mapped.x(), mapped.y());
+                    } else {
+                        // painter->drawDiamond(mapped.x(), mapped.y(), 8);
+                    }
+
+                } else {
+
+                    QPointF mapped = QPointF(_currentMouseHoverX, ranges[_currentRangeIndex].p1().y());
+
+                    if (_automation->pointShape() == Automation::PointShape_Circle) {
+
+                        return QPointF(mapped.x(), mapped.y());
+                    } else {
+                    }
+                }
+
+            } else {
+                //                painter->beginPath();
+                //                painter->setFillStyle("#eeeeee");
+                //                painter->setStrokeStyle("#eeeeee");
+                QPointF mapped = MathHelper1::mapPointToLine(ranges[_currentRangeIndex].p1(), ranges[_currentRangeIndex].p2(), QPointF(_currentMouseHoverX, _currentMouseHoverY));
+
+                if (_automation->pointShape() == Automation::PointShape_Circle) {
+                    // painter->circle(mapped.x(), mapped.y(), 4);
+                    return QPointF(mapped.x(), mapped.y());
+                } else {
+                    // painter->drawDiamond(mapped.x(), mapped.y(), 8);
+                }
+
+                // painter->fill();
+            }
+
+        } else {
+
+            //            painter->beginPath();
+            //            painter->setFillStyle("#eeeeee");
+            //            painter->setStrokeStyle("#eeeeee");
+
+            auto result = MathHelper1::superEllipseXtoY(ranges[_currentRangeIndex].p2(), ranges[_currentRangeIndex].p1(), curve_n, curve_m,
+                _currentMouseHoverX, _currentMouseHoverY);
+
+            if (_automation->pointShape() == Automation::PointShape_Circle) {
+                // painter->circle(result.x(), result.y(), 4);
+                return QPointF(result.x(), result.y());
+
+            } else {
+                // painter->drawDiamond(result.x(), result.y(), 8);
+            }
+
+            // painter->fill();
+        }
+    }
+    return QPointF(-1, -1);
+}
+
+void AutomationNode::rebuild()
+{
+
+    QRect tempRect = _boundingRect.toRect();
+    tempRect.setTop(_boundingRect.top() + _areaInfo->titleHeight());
+    tempRect.setHeight(_areaInfo->titleHeight() * (_trackItem->rowsExpandedCount() - 1));
+
+    _automationItem->setRect(tempRect);
+    _automationItem->automation()->update(tempRect);
+    _automationItem->setCurrentIndicator(_trackItem->currentIndicator());
+    _automationItem->setRect(_boundingRect.toRect());
+
+    if (!_dashedNode) {
+        _dashedNode = new QSGGeometryNode();
+        auto* geom = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), 0, 0);
+        geom->setDrawingMode(QSGGeometry::DrawTriangles);
+        _dashedNode->setGeometry(geom);
+        _dashedNode->setFlag(QSGNode::OwnsGeometry);
+
+        QSGFlatColorMaterial* mat = new QSGFlatColorMaterial();
+        mat->setColor("#eeeeee");
+        _dashedNode->setMaterial(mat);
+        _dashedNode->setFlag(QSGNode::OwnsMaterial);
+
+        appendChildNode(_dashedNode);
+    }
+    if (!_hoverCircleNode) {
+        _hoverCircleNode = new CircleNode();
+        appendChildNode(_hoverCircleNode);
+    }
+
+    auto center = getHoverCirclePosition();
+    _hoverCircleNode->setCenter(center);
+    if (center.x() >= 0) {
+        _hoverCircleNode->setRadius(4);
+    } else {
+        _hoverCircleNode->setRadius(0);
+    }
+
+    _hoverCircleNode->updateGeometryIfNeeded();
+
+    if (_show == false) {
+        _hoverCircleNode->setRadius(0);
+
+        QSGGeometry* geom = _dashedNode->geometry();
+        geom->allocate(0, 0);
+        geom->setDrawingMode(QSGGeometry::DrawTriangles);
+        _dashedNode->markDirty(QSGNode::DirtyGeometry | QSGNode::DirtyMaterial);
+
+        return;
+    }
+
+    if (_automationItem->automation()->getAsyncClear()) {
+        _automationItem->automation()->clear();
+    }
+
+    if (_automationItem->saveingLastTemplatesLines()) {
+        _automationItem->setSaveingLastTemplatesLines(false);
+        _automationItem->setSelectedLinesMoving(false);
+        _automationItem->setSelectedPointsMoving(false);
+        _automationItem->setLiveMovingEnabled(false);
+
+        _automationItem->automation()->saveTemplateLine();
+        _automationItem->automation()->createSelectedPoints(_areaInfo->selectionArea()->area().left(), _areaInfo->selectionArea()->area().right());
+    }
+
+    if (qAbs(_automationItem->lastStartMarker() - _areaInfo->selectionArea()->area().left()) > 0.0001
+        || qAbs(_automationItem->lastEndMarker() - _areaInfo->selectionArea()->area().right()) > 0.001) {
+
+        _automationItem->setLastEndMarker(_areaInfo->selectionArea()->area().right());
+        _automationItem->setLastStartMarker(_areaInfo->selectionArea()->area().left());
+
+        _automationItem->automation()->saveTemplateLine();
+        _automationItem->automation()->createSelectedPoints(_areaInfo->selectionArea()->area().left(), _areaInfo->selectionArea()->area().right());
+    }
+
+    if (_automationItem->automation()->getSelectedRangeMoveEnabled() == false) {
+        _automationItem->setCheckStrachingActive(true);
+
+        _automationItem->checkEvents();
+
+    } else {
+
+        if (_automationItem->checkStrachingActive() == true) {
+            _automationItem->setCheckStrachingActive(false);
+        }
+
+        _automationItem->setPointActive(false);
+        _automationItem->setInnerActive(false);
+        _automationItem->setOuterActive(false);
+        _automationItem->setCurrentRangeIndex(-1);
+    }
+
+    if (_automationItem->selectAllRangeEvent()) {
+        _automationItem->setSelectAllRangeEvent(false);
+        _automationItem->automation()->selectAll();
+    }
+
+    if (_automationItem->automation()->size() == 0) {
+
+        auto ranges = _automationItem->automation()->getRanges(_automationItem->liveMovingEnabled());
+
+        if (qIsInf(-ranges[0].p1().x())) {
+
+            ranges[0].setP1(QPointF(0, ranges[0].p1().y()));
+        }
+        if (qIsInf(ranges[ranges.size() - 1].p2().x())) {
+
+            ranges[ranges.size() - 1].setP2(QPointF(_areaInfo->lastWidth(), ranges[ranges.size() - 1].p2().y()));
+        }
+
+        QPointF m_p1 { ranges[0].p1().x(), ranges[0].p1().y() };
+        QPointF m_p2 { _boundingRect.width(), ranges[0].p1().y() };
+
+        qreal m_thickness { 1.0 };
+        qreal m_dash { 8.0 };
+        qreal m_gap { 6.0 };
+        if (_automationItem->innerActive() == true && _automationItem->outerActive() == false && _automationItem->currentRangeIndex() >= 0 && _automationItem->mousePressAndHold() == false) {
+            m_gap = 0;
+        }
+        QColor m_color { "white" };
+
+        const QPointF A = m_p1;
+        const QPointF B = m_p2;
+        const QVector2D AB(B - A);
+        const float L = AB.length();
+
+        const float pattern = m_dash + qMax(0.0, m_gap);
+        const int dashCount = qFloor(L / pattern) + ((int)fmod(L, pattern) > 0 ? 1 : 0);
+
+        QSGGeometry* geom = _dashedNode->geometry();
+
+        geom->allocate(dashCount * 4, dashCount * 6); // 2 verts per segment
+        geom->setDrawingMode(QSGGeometry::DrawTriangles);
+
+        geom->setDrawingMode(QSGGeometry::DrawTriangles);
+        auto* v = geom->vertexDataAsPoint2D();
+        auto* idx = reinterpret_cast<quint16*>(geom->indexData());
+
+        const QVector2D dir = AB.normalized();
+        float cursor = 0.f;
+        int qi = 0;
+        for (; qi < dashCount; ++qi) {
+            float dashStart = cursor;
+            float dashEnd = qMin(cursor + (float)m_dash, L);
+            if (dashStart >= L)
+                break;
+
+            QPointF p0 = A + (dir * dashStart).toPointF();
+            QPointF p1 = A + (dir * dashEnd).toPointF();
+
+            addQuad(v, idx, qi, p0, p1, float(m_thickness * 0.5));
+            cursor += pattern;
+        }
+
+        if (qi != dashCount) {
+            geom->allocate(qi * 4, qi * 6);
+        }
+
+        _dashedNode->markDirty(QSGNode::DirtyGeometry | QSGNode::DirtyMaterial);
+    }
+}
+
+bool AutomationNode::show() const
+{
+    return _show;
+}
+
+void AutomationNode::setShow(bool newShow)
+{
+    _show = newShow;
+}

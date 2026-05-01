@@ -1,0 +1,4 @@
+module Eq8Plugin
+
+# Expose only the main component
+PannelEq8Plugin 1.0 PanelEq8Plugin.qml
