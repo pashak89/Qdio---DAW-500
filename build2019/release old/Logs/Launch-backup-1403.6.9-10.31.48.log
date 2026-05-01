@@ -1,0 +1,349 @@
+[     4.50 ] I: Log: Log file open in follow path at 1403/6/9 10:29:36 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.50 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.50 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.51 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.51 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.51 ] I: Current Render API is: 4.60
+[     4.51 ] I: The subsystem "Renderer" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.51 ] I: The subsystem "Platform" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.51 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.51 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.58 ] D: Shader Compile successfully.
+[     4.58 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.58 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.58 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.58 ] D: Engine Enabled
+[     4.58 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.58 ] D: Node with id 1 is added to Qt layer
+[     4.58 ] D: Node with id 2460 is added to Qt layer
+[     4.58 ] D: Node with id 2462 is added to Qt layer
+[     4.58 ] D: Node with id 2464 is added to Qt layer
+[     4.58 ] D: Node with id 2466 is added to Qt layer
+[     4.58 ] D: Node with id 2468 is added to Qt layer
+[     4.58 ] D: Node with id 2470 is added to Qt layer
+[     4.58 ] D: Node with id 2472 is added to Qt layer
+[     4.58 ] D: Node with id 2474 is added to Qt layer
+[     4.58 ] D: Node with id 2476 is added to Qt layer
+[     4.58 ] D: Node with id 2478 is added to Qt layer
+[     4.58 ] D: Node with id 2480 is added to Qt layer
+[     4.59 ] D: Node with id 2482 is added to Qt layer
+[     4.59 ] D: Node with id 2484 is added to Qt layer
+[     4.59 ] D: Node with id 2486 is added to Qt layer
+[     4.59 ] D: Node with id 2487 is added to Qt layer
+[     4.59 ] D: Node with id 2489 is added to Qt layer
+[     4.59 ] D: Node with id 2491 is added to Qt layer
+[     4.59 ] D: Node with id 3 is added to Qt layer
+[     4.59 ] D: Node with id 2493 is added to Qt layer
+[     4.59 ] S: New view-port registered with id: 1
+[     4.59 ] S: New view-port registered with id: 2
+[     4.59 ] S: New view-port registered with id: 3
+[     4.59 ] S: New view-port registered with id: 4
+[     4.59 ] S: New view-port registered with id: 5
+[     4.59 ] S: New view-port registered with id: 6
+[     4.69 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     4.69 ] D: Using backend: "OpenGL 3"
+[     4.72 ] W: Floating point comparison needs context sanity check
+[     4.72 ] D: QT onScaleChanged=  144
+[     4.75 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.75 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.76 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.76 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.92 ] D: Engine Started.
+[    16.33 ] D: P1 -227
+[    16.33 ] D: P1 -280
+[    16.33 ] D: P1 -283
+[    16.33 ] D: P1 -287
+[    16.33 ] D: P1 -295
+[    16.33 ] D: P1 -299
+[    16.34 ] D: P1 -301
+[    16.36 ] D: P1 -305
+[    16.36 ] D: P1 -326
+[    16.36 ] D: P1 -327
+[    16.36 ] D: P1 -328
+[    16.36 ] D: P1 -330
+[    16.36 ] D: P14
+[    16.37 ] D: P1 -333
+[    16.37 ] D: P14
+[    16.37 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.37 ] D: P1 -334
+[    16.37 ] D: P14
+[    16.37 ] D: P1 -335
+[    16.37 ] D: P14
+[    16.37 ] D: P1 -336
+[    16.37 ] D: P14
+[    16.38 ] D: P1 -336
+[    16.38 ] D: P14
+[    16.38 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.38 ] D: P1 -338
+[    16.38 ] D: P14
+[    16.39 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.40 ] D: P1 -338
+[    16.40 ] D: P14
+[    16.40 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.42 ] D: P1 -338
+[    16.42 ] D: P14
+[    16.42 ] D: P1 -339
+[    16.42 ] D: P14
+[    16.42 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.43 ] D: P1 -340
+[    16.43 ] D: P14
+[    16.43 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.43 ] D: P1 -340
+[    16.43 ] D: P14
+[    16.43 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.44 ] D: P1 -341
+[    16.44 ] D: P14
+[    16.45 ] D: P1 -342
+[    16.45 ] D: P14
+[    16.45 ] D: P1 -345
+[    16.45 ] D: P14
+[    16.45 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.45 ] D: P1 -346
+[    16.45 ] D: P14
+[    16.45 ] D: P1 -348
+[    16.45 ] D: P14
+[    16.47 ] D: P1 -348
+[    16.47 ] D: P14
+[    16.47 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.47 ] D: P1 -357
+[    16.47 ] D: P14
+[    16.47 ] D: P1 -359
+[    16.47 ] D: P14
+[    16.47 ] D: P1 -360
+[    16.47 ] D: P14
+[    16.48 ] D: P1 -363
+[    16.48 ] D: P14
+[    16.48 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    16.48 ] D: P1 -373
+[    16.49 ] D: P1 -374
+[    16.49 ] D: P1 -376
+[    16.49 ] D: P1 -378
+[    16.50 ] D: P1 -385
+[    16.50 ] D: P1 -386
+[    16.50 ] D: P1 -387
+[    16.50 ] D: P1 -389
+[    16.52 ] D: P1 -394
+[    16.52 ] D: P1 -395
+[    16.53 ] D: P1 -396
+[    16.53 ] D: P1 -399
+[    16.54 ] D: P1 -400
+[    16.55 ] D: P1 -401
+[    16.75 ] D: sltPositionChanged 749700
+[    16.75 ] D: frame_offset 0 0 217
+[    16.75 ] D: frame_offset 0 1 217
+[    16.75 ] D: frame_offset 0 2 217
+[    16.76 ] D: frame_offset 0 3 217
+[    16.76 ] D: frame_offset 0 4 217
+[    16.76 ] D: findOverlayItems 1 0
+[    16.76 ] D: "{1c83cae6-e37f-42d3-b753-785315869d0f}" i.value()->sampleClip()->startTime()  17000 339833 339833 17000
+[    16.76 ] D: findOverlayItems
+[    16.77 ] D: sltPositionChanged 749700
+[    16.77 ] D: frame_offset 0 0 217
+[    16.78 ] D: frame_offset 0 1 217
+[    16.78 ] D: frame_offset 0 2 217
+[    16.78 ] D: frame_offset 0 3 217
+[    16.78 ] D: frame_offset 0 4 217
+[    17.01 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(403,52)
+[    17.42 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(410,72)
+[    17.76 ] D: _requestForLoading false false
+[    17.76 ] D: _requestForLoading2
+[    17.76 ] D: _numberOfSampleBuffer 1
+[    17.76 ] D: START TO load 0
+[    17.76 ] D: sltPositionChanged 1014300 true
+[    17.76 ] D: START TO load 1
+[    17.76 ] D: START TO load 2
+[    17.76 ] D: START TO load 3
+[    17.76 ] D: frame_offset 4 0 217
+[    17.77 ] D: frame_offset 4 1 217
+[    17.77 ] D: frame_offset 4 2 217
+[    17.77 ] D: frame_offset 4 3 217
+[    17.77 ] D: frame_offset 4 4 217
+[    17.77 ] D: sltFirstBufferFilled ("{1c83cae6-e37f-42d3-b753-785315869d0f}") "{1c83cae6-e37f-42d3-b753-785315869d0f}" true
+[    17.77 ] D: _requestForLoading true false
+[    22.03 ] D: Plugin does not support requested bus layout
+[    34.19 ] D: _editController->getParameterCount() 153
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 1 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 1 0 1
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 1
+[    34.19 ] D: info.stepCount 0xa986d257c0 0.5 2 1
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 2 1
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 2 1
+[    34.19 ] D: info.stepCount 0xa986d257c0 1 1 1
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 2
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 2
+[    34.19 ] D: info.stepCount 0xa986d257c0 0.5 2 2
+[    34.19 ] D: info.stepCount 0xa986d257c0 0.5 2 2
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 2 2
+[    34.19 ] D: info.stepCount 0xa986d257c0 1 1 2
+[    34.19 ] D: info.stepCount 0xa986d257c0 0.5 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0.5 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 1 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 1 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 1 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 1 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.19 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.20 ] D: info.stepCount 0xa986d257c0 0 0 0
+[    34.21 ] D: effectModel.controls Vst3Effect(0x245aee4d820)
+[    34.41 ] D: ADDING3 1 
+[    34.42 ] D: Vst3EffectControls(0x245b67f5520)
+[    34.69 ] W: qrc:/Vst3Effect.qml:6:1: QML Vst3Effect: Binding loop detected for property "implicitWidth"
+[    34.69 ] D: setTracksRect
+[    34.69 ] D: sltStartContentYChanged1
+[    34.69 ] D: sltStartContentYChanged2
+[    34.69 ] D: sltStartContentYChanged3
+[    34.69 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1707x111)
+[    34.69 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1707x111)
+[    34.69 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1707x111)
+[    34.69 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1707x111)
+[    34.69 ] D: setTracksRect
+[    34.69 ] D: setTracksRect
+[    34.69 ] D: sltStartContentYChanged4
+[    38.73 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(378,74)
+[    39.14 ] D: _requestForLoading false false
+[    39.14 ] D: _requestForLoading2
+[    39.14 ] D: _numberOfSampleBuffer 1
+[    39.14 ] D: START TO load 0
+[    39.14 ] D: sltPositionChanged 926100 true
+[    39.14 ] D: START TO load 1
+[    39.14 ] D: START TO load 2
+[    39.14 ] D: START TO load 3

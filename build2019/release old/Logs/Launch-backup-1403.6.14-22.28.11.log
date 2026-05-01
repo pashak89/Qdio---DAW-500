@@ -1,0 +1,265 @@
+[     4.86 ] I: Log: Log file open in follow path at 1403/6/12 09:24:48 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.86 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.86 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.86 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.86 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.86 ] I: Current Render API is: 4.60
+[     4.86 ] I: The subsystem "Renderer" is registered successfully.
+[     4.86 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.86 ] I: The subsystem "Platform" is registered successfully.
+[     4.86 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.86 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.86 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.86 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.86 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.86 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.86 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.95 ] D: Shader Compile successfully.
+[     4.95 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.95 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.95 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.95 ] D: Engine Enabled
+[     4.95 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.95 ] D: Node with id 1 is added to Qt layer
+[     4.95 ] D: Node with id 2460 is added to Qt layer
+[     4.95 ] D: Node with id 2462 is added to Qt layer
+[     4.95 ] D: Node with id 2464 is added to Qt layer
+[     4.95 ] D: Node with id 2466 is added to Qt layer
+[     4.95 ] D: Node with id 2468 is added to Qt layer
+[     4.95 ] D: Node with id 2470 is added to Qt layer
+[     4.95 ] D: Node with id 2472 is added to Qt layer
+[     4.95 ] D: Node with id 2474 is added to Qt layer
+[     4.95 ] D: Node with id 2476 is added to Qt layer
+[     4.95 ] D: Node with id 2478 is added to Qt layer
+[     4.95 ] D: Node with id 2480 is added to Qt layer
+[     4.95 ] D: Node with id 2482 is added to Qt layer
+[     4.95 ] D: Node with id 2484 is added to Qt layer
+[     4.95 ] D: Node with id 2486 is added to Qt layer
+[     4.95 ] D: Node with id 2487 is added to Qt layer
+[     4.95 ] D: Node with id 2489 is added to Qt layer
+[     4.95 ] D: Node with id 2491 is added to Qt layer
+[     4.95 ] D: Node with id 3 is added to Qt layer
+[     4.96 ] D: Node with id 2493 is added to Qt layer
+[     4.96 ] S: New view-port registered with id: 1
+[     4.96 ] S: New view-port registered with id: 2
+[     4.96 ] S: New view-port registered with id: 3
+[     4.96 ] S: New view-port registered with id: 4
+[     4.96 ] S: New view-port registered with id: 5
+[     4.96 ] S: New view-port registered with id: 6
+[     5.06 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     5.06 ] D: Using backend: "OpenGL 3"
+[     5.10 ] W: Floating point comparison needs context sanity check
+[     5.10 ] D: QT onScaleChanged=  144
+[     5.12 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.12 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.12 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.13 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.30 ] D: Engine Started.
+[     6.79 ] D: P1 -320
+[     6.79 ] D: P1 -322
+[     6.80 ] D: P1 -324
+[     6.80 ] D: P1 -325
+[     6.80 ] D: P1 -328
+[     6.81 ] D: P1 -329
+[     6.82 ] D: P1 -335
+[     6.82 ] D: P14
+[     6.83 ] D: P1 -339
+[     6.83 ] D: P14
+[     6.83 ] D: P1 -347
+[     6.83 ] D: P14
+[     6.83 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[     6.84 ] D: P1 -348
+[     6.84 ] D: P14
+[     6.84 ] D: P1 -349
+[     6.84 ] D: P14
+[     6.84 ] D: P1 -354
+[     6.84 ] D: P14
+[     6.85 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[     6.85 ] D: P1 -355
+[     6.85 ] D: P14
+[     6.85 ] D: P1 -356
+[     6.85 ] D: P14
+[     6.85 ] D: P1 -358
+[     6.85 ] D: P14
+[     6.86 ] D: P1 -358
+[     6.86 ] D: P14
+[     6.87 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[     6.87 ] D: P1 -364
+[     6.87 ] D: P14
+[     6.87 ] D: P1 -365
+[     6.87 ] D: P14
+[     6.87 ] D: P1 -365
+[     6.87 ] D: P14
+[     6.88 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[     6.88 ] D: P1 -367
+[     6.88 ] D: P14
+[     6.88 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[     6.90 ] D: P1 -369
+[     6.90 ] D: P1 -370
+[     6.90 ] D: P1 -370
+[     6.92 ] D: P1 -371
+[     6.92 ] D: P1 -371
+[     6.92 ] D: P1 -371
+[     6.93 ] D: P1 -372
+[     6.93 ] D: P1 -373
+[     6.93 ] D: P1 -373
+[     6.95 ] D: P1 -373
+[     6.95 ] D: P1 -376
+[     6.95 ] D: P1 -377
+[     6.96 ] D: P1 -377
+[     6.97 ] D: P1 -379
+[     6.97 ] D: P1 -380
+[     6.98 ] D: P1 -382
+[     6.98 ] D: P1 -383
+[     6.99 ] D: P1 -383
+[     6.99 ] D: P1 -384
+[     7.00 ] D: P1 -385
+[     7.00 ] D: P1 -386
+[     7.01 ] D: P1 -386
+[     7.01 ] D: P1 -388
+[     7.02 ] D: P1 -389
+[     7.03 ] D: P1 -390
+[     7.03 ] D: P1 -391
+[     7.03 ] D: P1 -393
+[     7.05 ] D: P1 -394
+[     7.05 ] D: P1 -397
+[     7.05 ] D: P1 -397
+[     7.06 ] D: P1 -399
+[     7.07 ] D: P1 -399
+[     7.08 ] D: P1 -400
+[     7.33 ] D: sltPositionChanged 485099
+[     7.33 ] D: frame_offset 0 0 217
+[     7.34 ] D: frame_offset 0 1 217
+[     7.34 ] D: frame_offset 0 2 217
+[     7.34 ] D: frame_offset 0 3 217
+[     7.34 ] D: frame_offset 0 4 217
+[     7.35 ] D: findOverlayItems 1 0
+[     7.35 ] D: "{2e398ae0-a536-4230-85b0-7bbd67330e57}" i.value()->sampleClip()->startTime()  11000 333833 333833 11000
+[     7.35 ] D: findOverlayItems
+[     7.37 ] D: sltPositionChanged 485099
+[     7.37 ] D: frame_offset 0 0 217
+[     7.37 ] D: frame_offset 0 1 217
+[     7.38 ] D: frame_offset 0 2 217
+[     7.38 ] D: frame_offset 0 3 217
+[     7.38 ] D: frame_offset 0 4 217
+[    10.22 ] D: _editController->getParameterCount() 143
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0.7 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0.5 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 1 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0.5 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0.5 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0.5 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0.5 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 1 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 1 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.22 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 0 0
+[    10.23 ] D: info.stepCount 0xe8f40f54b0 0 

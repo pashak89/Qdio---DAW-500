@@ -1,0 +1,538 @@
+[     5.70 ] I: Log: Log file open in follow path at 1403/6/17 20:59:28 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     5.70 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     5.70 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     5.70 ] D: API version is: 4.60 ,shader version is: 4.60
+[     5.70 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     5.70 ] I: Current Render API is: 4.60
+[     5.70 ] I: The subsystem "Renderer" is registered successfully.
+[     5.70 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     5.70 ] I: The subsystem "Platform" is registered successfully.
+[     5.70 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     5.70 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     5.70 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     5.71 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     5.71 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     5.71 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     5.71 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     5.81 ] D: Shader Compile successfully.
+[     5.82 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     5.82 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     5.82 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     5.82 ] D: Engine Enabled
+[     5.82 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     5.82 ] D: Node with id 1 is added to Qt layer
+[     5.82 ] D: Node with id 2460 is added to Qt layer
+[     5.82 ] D: Node with id 2462 is added to Qt layer
+[     5.82 ] D: Node with id 2464 is added to Qt layer
+[     5.82 ] D: Node with id 2466 is added to Qt layer
+[     5.82 ] D: Node with id 2468 is added to Qt layer
+[     5.82 ] D: Node with id 2470 is added to Qt layer
+[     5.82 ] D: Node with id 2472 is added to Qt layer
+[     5.82 ] D: Node with id 2474 is added to Qt layer
+[     5.82 ] D: Node with id 2476 is added to Qt layer
+[     5.82 ] D: Node with id 2478 is added to Qt layer
+[     5.82 ] D: Node with id 2480 is added to Qt layer
+[     5.82 ] D: Node with id 2482 is added to Qt layer
+[     5.82 ] D: Node with id 2484 is added to Qt layer
+[     5.82 ] D: Node with id 2486 is added to Qt layer
+[     5.82 ] D: Node with id 2487 is added to Qt layer
+[     5.82 ] D: Node with id 2489 is added to Qt layer
+[     5.82 ] D: Node with id 2491 is added to Qt layer
+[     5.82 ] D: Node with id 3 is added to Qt layer
+[     5.82 ] D: Node with id 2493 is added to Qt layer
+[     5.83 ] S: New view-port registered with id: 1
+[     5.83 ] S: New view-port registered with id: 2
+[     5.83 ] S: New view-port registered with id: 3
+[     5.83 ] S: New view-port registered with id: 4
+[     5.83 ] S: New view-port registered with id: 5
+[     5.83 ] S: New view-port registered with id: 6
+[     5.94 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     5.94 ] D: Using backend: "OpenGL 3"
+[     5.98 ] W: Floating point comparison needs context sanity check
+[     5.99 ] D: QT onScaleChanged=  144
+[     6.00 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     6.01 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     6.01 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     6.02 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     6.21 ] D: Engine Started.
+[    34.26 ] D: _editController->getParameterCount() 36
+[    34.26 ] D: defaultValue 0.5
+[    34.26 ] D: defaultValue 0.5
+[    34.26 ] D: defaultValue 0.01
+[    34.26 ] D: defaultValue 0
+[    34.26 ] D: defaultValue 0.5
+[    34.26 ] D: defaultValue 0.5
+[    34.26 ] D: defaultValue 0.5
+[    34.26 ] D: defaultValue 0
+[    34.26 ] D: defaultValue 0.5
+[    34.26 ] D: defaultValue 0.0204082
+[    34.26 ] D: defaultValue 0
+[    34.26 ] D: defaultValue 1
+[    34.26 ] D: defaultValue 0
+[    34.26 ] D: defaultValue 0.5
+[    34.26 ] D: defaultValue 0.0416667
+[    34.26 ] D: defaultValue 0
+[    34.26 ] D: defaultValue 0
+[    34.26 ] D: defaultValue 0.125
+[    34.26 ] D: defaultValue 0
+[    34.26 ] D: effectModel.controls VST3
+[    34.26 ] D: ADDED 0 0 0
+[    34.32 ] D: ADDED 1 0 0
+[    34.32 ] D: ADDED 2 0 0
+[    34.32 ] D: ADDED 3 0 0
+[    34.34 ] D: ADDED
+[    37.58 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    38.57 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(108,30)
+[    38.58 ] D: ACTIVE
+[    38.58 ] D: createSelectedPoints 0 -1
+[    38.65 ] D: _automationChanging true
+[    38.65 ] D: mouseMove2
+[    38.66 ] D: _automationChanging true
+[    38.66 ] D: mouseMove2
+[    38.66 ] D: _automationChanging true
+[    38.66 ] D: mouseMove2
+[    38.66 ] D: _automationChanging true
+[    38.66 ] D: mouseMove2
+[    38.67 ] D: _automationChanging true
+[    38.67 ] D: mouseMove2
+[    38.67 ] D: _automationChanging true
+[    38.67 ] D: mouseMove2
+[    38.68 ] D: _automationChanging true
+[    38.68 ] D: mouseMove2
+[    38.68 ] D: _automationChanging true
+[    38.68 ] D: mouseMove2
+[    38.68 ] D: _automationChanging true
+[    38.68 ] D: mouseMove2
+[    38.70 ] D: _automationChanging true
+[    38.70 ] D: _pointActive1 false true false
+[    38.70 ] D: ACTIVE
+[    38.70 ] D: _currentMouseY 114 56 108 30 QSizeF(6, 26)
+[    38.70 ] D: mouseMove2
+[    38.70 ] D: _automationChanging true
+[    38.70 ] D: ACTIVE
+[    38.71 ] D: _currentMouseY 120 85 108 30 QSizeF(6, 29)
+[    38.71 ] D: mouseMove2
+[    38.71 ] D: ACTIVE
+[    38.72 ] D: _automationChanging true
+[    38.72 ] D: _pointActive2 false 0
+[    38.72 ] D: createSelectedPoints 0 -1
+[    38.72 ] D: ACTIVE
+[    38.72 ] D: _currentMouseY 126 107 108 30 QSizeF(6, 36)
+[    38.72 ] D: mouseMove2
+[    38.72 ] D: _automationChanging true
+[    38.72 ] D: ACTIVE
+[    38.72 ] D: _currentMouseY 127 107 108 30 QSizeF(1, 2)
+[    38.72 ] D: mouseMove2
+[    38.72 ] D: _automationChanging true
+[    38.72 ] D: ACTIVE
+[    38.72 ] D: _currentMouseY 128 107 108 30 QSizeF(1, 6)
+[    38.72 ] D: mouseMove2
+[    38.73 ] D: _automationChanging true
+[    38.73 ] D: _pointActive2 false 0
+[    38.73 ] D: createSelectedPoints 0 -1
+[    38.73 ] D: ACTIVE
+[    38.73 ] D: _currentMouseY 129 107 108 30 QSizeF(1, 7)
+[    38.73 ] D: mouseMove2
+[    38.74 ] D: _automationChanging true
+[    38.74 ] D: ACTIVE
+[    38.74 ] D: _currentMouseY 129 107 108 30 QSizeF(0, 2)
+[    38.74 ] D: mouseMove2
+[    38.74 ] D: _automationChanging true
+[    38.74 ] D: ACTIVE
+[    38.74 ] D: _currentMouseY 130 107 108 30 QSizeF(1, 0)
+[    38.74 ] D: mouseMove2
+[    38.75 ] D: _automationChanging true
+[    38.75 ] D: _pointActive2 false 0
+[    38.75 ] D: createSelectedPoints 0 -1
+[    38.75 ] D: ACTIVE
+[    38.75 ] D: _currentMouseY 130 107 108 30 QSizeF(0, 1)
+[    38.75 ] D: mouseMove2
+[    38.76 ] D: _pointActive2 false 0
+[    38.76 ] D: createSelectedPoints 0 -1
+[    38.77 ] D: _automationChanging true
+[    38.77 ] D: ACTIVE
+[    38.77 ] D: _currentMouseY 130 107 108 30 QSizeF(0, 0)
+[    38.77 ] D: mouseMove2
+[    38.78 ] D: _pointActive2 false 0
+[    38.78 ] D: createSelectedPoints 0 -1
+[    38.83 ] D: createSelectedPoints 0 -1
+[    38.83 ] D: ACTIVE
+[    84.85 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(207,101)
+[    84.85 ] D: ACTIVE
+[    84.88 ] D: createSelectedPoints 0 -1
+[    84.96 ] D: _pointActive1 false true false
+[    84.96 ] D: ACTIVE
+[    84.99 ] D: _automationChanging true
+[    84.99 ] D: ACTIVE
+[    84.99 ] D: _currentMouseY 207 100 207 101 QSizeF(0, -1)
+[    85.00 ] D: mouseMove2
+[    85.00 ] D: _automationChanging true
+[    85.00 ] D: ACTIVE
+[    85.00 ] D: _currentMouseY 207 100 207 101 QSizeF(0, 0)
+[    85.00 ] D: mouseMove2
+[    85.00 ] D: _automationChanging true
+[    85.00 ] D: ACTIVE
+[    85.00 ] D: _currentMouseY 207 99 207 101 QSizeF(0, -1)
+[    85.00 ] D: mouseMove2
+[    85.00 ] D: sltDataChagedFromView
+[    85.03 ] D: _automationChanging true
+[    85.03 ] D: _pointActive2 false 0
+[    85.03 ] D: createSelectedPoints 0 -1
+[    85.03 ] D: ACTIVE
+[    85.03 ] D: _currentMouseY 207 97 207 101 QSizeF(0, -2)
+[    85.03 ] D: mouseMove2
+[    85.03 ] D: _automationChanging true
+[    85.03 ] D: ACTIVE
+[    85.03 ] D: _currentMouseY 207 90 207 101 QSizeF(0, -7)
+[    85.03 ] D: mouseMove2
+[    85.03 ] D: _automationChanging true
+[    85.04 ] D: ACTIVE
+[    85.04 ] D: _currentMouseY 207 90 207 101 QSizeF(0, 0)
+[    85.04 ] D: mouseMove2
+[    85.04 ] D: _automationChanging true
+[    85.04 ] D: _pointActive2 false 0
+[    85.04 ] D: createSelectedPoints 0 -1
+[    85.04 ] D: ACTIVE
+[    85.04 ] D: _currentMouseY 207 89 207 101 QSizeF(0, -1)
+[    85.05 ] D: mouseMove2
+[    85.05 ] D: _automationChanging true
+[    85.05 ] D: ACTIVE
+[    85.05 ] D: _currentMouseY 207 87 207 101 QSizeF(0, -2)
+[    85.05 ] D: mouseMove2
+[    85.05 ] D: _automationChanging true
+[    85.05 ] D: ACTIVE
+[    85.05 ] D: _currentMouseY 207 87 207 101 QSizeF(0, 0)
+[    85.05 ] D: mouseMove2
+[    85.06 ] D: _automationChanging true
+[    85.06 ] D: _pointActive2 false 0
+[    85.06 ] D: createSelectedPoints 0 -1
+[    85.06 ] D: ACTIVE
+[    85.06 ] D: _currentMouseY 207 85 207 101 QSizeF(0, -2)
+[    85.06 ] D: mouseMove2
+[    85.06 ] D: _automationChanging true
+[    85.06 ] D: ACTIVE
+[    85.07 ] D: _currentMouseY 207 84 207 101 QSizeF(0, -1)
+[    85.07 ] D: mouseMove2
+[    85.08 ] D: _automationChanging true
+[    85.08 ] D: _pointActive2 false 0
+[    85.08 ] D: createSelectedPoints 0 -1
+[    85.08 ] D: ACTIVE
+[    85.08 ] D: _currentMouseY 207 82 207 101 QSizeF(0, -2)
+[    85.08 ] D: mouseMove2
+[    85.08 ] D: _automationChanging true
+[    85.08 ] D: ACTIVE
+[    85.08 ] D: _currentMouseY 207 79 207 101 QSizeF(0, -3)
+[    85.08 ] D: mouseMove2
+[    85.08 ] D: _automationChanging true
+[    85.08 ] D: ACTIVE
+[    85.08 ] D: _currentMouseY 207 74 207 101 QSizeF(0, -5)
+[    85.09 ] D: mouseMove2
+[    85.09 ] D: _automationChanging true
+[    85.09 ] D: ACTIVE
+[    85.09 ] D: _currentMouseY 207 73 207 101 QSizeF(0, -1)
+[    85.09 ] D: mouseMove2
+[    85.09 ] D: _pointActive2 false 0
+[    85.09 ] D: createSelectedPoints 0 -1
+[    85.10 ] D: _automationChanging true
+[    85.10 ] D: ACTIVE
+[    85.10 ] D: _currentMouseY 207 71 207 101 QSizeF(0, -2)
+[    85.10 ] D: mouseMove2
+[    85.10 ] D: _automationChanging true
+[    85.10 ] D: ACTIVE
+[    85.10 ] D: _currentMouseY 207 70 207 101 QSizeF(0, -1)
+[    85.10 ] D: mouseMove2
+[    85.11 ] D: _pointActive2 false 0
+[    85.11 ] D: createSelectedPoints 0 -1
+[    85.11 ] D: _automationChanging true
+[    85.11 ] D: ACTIVE
+[    85.11 ] D: _currentMouseY 207 68 207 101 QSizeF(0, -2)
+[    85.11 ] D: mouseMove2
+[    85.12 ] D: _pointActive2 false 0
+[    85.12 ] D: createSelectedPoints 0 -1
+[    85.13 ] D: _automationChanging true
+[    85.13 ] D: ACTIVE
+[    85.13 ] D: _currentMouseY 207 67 207 101 QSizeF(0, -1)
+[    85.13 ] D: mouseMove2
+[    85.13 ] D: _automationChanging true
+[    85.13 ] D: ACTIVE
+[    85.13 ] D: _currentMouseY 207 65 207 101 QSizeF(0, -2)
+[    85.13 ] D: mouseMove2
+[    85.14 ] D: _pointActive2 false 0
+[    85.14 ] D: createSelectedPoints 0 -1
+[    85.14 ] D: _automationChanging true
+[    85.14 ] D: ACTIVE
+[    85.14 ] D: _currentMouseY 207 64 207 101 QSizeF(0, -1)
+[    85.14 ] D: mouseMove2
+[    85.15 ] D: _automationChanging true
+[    85.15 ] D: ACTIVE
+[    85.15 ] D: _currentMouseY 207 62 207 101 QSizeF(0, -2)
+[    85.15 ] D: mouseMove2
+[    85.16 ] D: _automationChanging true
+[    85.16 ] D: _pointActive2 false 0
+[    85.16 ] D: createSelectedPoints 0 -1
+[    85.16 ] D: ACTIVE
+[    85.16 ] D: _currentMouseY 207 62 207 101 QSizeF(0, 0)
+[    85.16 ] D: mouseMove2
+[    85.17 ] D: _automationChanging true
+[    85.17 ] D: ACTIVE
+[    85.17 ] D: _currentMouseY 207 61 207 101 QSizeF(0, -1)
+[    85.17 ] D: mouseMove2
+[    85.18 ] D: _pointActive2 false 0
+[    85.18 ] D: createSelectedPoints 0 -1
+[    85.18 ] D: _automationChanging true
+[    85.18 ] D: ACTIVE
+[    85.18 ] D: _currentMouseY 207 59 207 101 QSizeF(0, -2)
+[    85.18 ] D: mouseMove2
+[    85.18 ] D: _automationChanging true
+[    85.18 ] D: ACTIVE
+[    85.18 ] D: _currentMouseY 207 59 207 101 QSizeF(0, 0)
+[    85.18 ] D: mouseMove2
+[    85.19 ] D: _pointActive2 false 0
+[    85.19 ] D: createSelectedPoints 0 -1
+[    85.19 ] D: _automationChanging true
+[    85.19 ] D: ACTIVE
+[    85.19 ] D: _currentMouseY 207 58 207 101 QSizeF(0, -1)
+[    85.19 ] D: mouseMove2
+[    85.20 ] D: _automationChanging true
+[    85.20 ] D: ACTIVE
+[    85.20 ] D: _currentMouseY 207 58 207 101 QSizeF(0, 0)
+[    85.20 ] D: mouseMove2
+[    85.22 ] D: _automationChanging true
+[    85.22 ] D: _pointActive2 false 0
+[    85.22 ] D: createSelectedPoints 0 -1
+[    85.22 ] D: ACTIVE
+[    85.22 ] D: _currentMouseY 208 57 207 101 QSizeF(1, -1)
+[    85.22 ] D: mouseMove2
+[    85.22 ] D: _automationChanging true
+[    85.23 ] D: ACTIVE
+[    85.23 ] D: _currentMouseY 209 55 207 101 QSizeF(1, -2)
+[    85.23 ] D: mouseMove2
+[    85.23 ] D: _automationChanging true
+[    85.23 ] D: ACTIVE
+[    85.23 ] D: _currentMouseY 209 54 207 101 QSizeF(0, -1)
+[    85.23 ] D: mouseMove2
+[    85.24 ] D: _automationChanging true
+[    85.24 ] D: _pointActive2 false 0
+[    85.24 ] D: createSelectedPoints 0 -1
+[    85.24 ] D: ACTIVE
+[    85.24 ] D: _currentMouseY 209 54 207 101 QSizeF(0, 0)
+[    85.24 ] D: mouseMove2
+[    85.24 ] D: _automationChanging true
+[    85.24 ] D: ACTIVE
+[    85.24 ] D: _currentMouseY 209 53 207 101 QSizeF(0, -1)
+[    85.24 ] D: mouseMove2
+[    85.25 ] D: _pointActive2 false 0
+[    85.25 ] D: createSelectedPoints 0 -1
+[    85.25 ] D: _automationChanging true
+[    85.25 ] D: ACTIVE
+[    85.25 ] D: _currentMouseY 210 52 207 101 QSizeF(1, -1)
+[    85.25 ] D: mouseMove2
+[    85.26 ] D: _automationChanging true
+[    85.26 ] D: ACTIVE
+[    85.26 ] D: _currentMouseY 210 51 207 101 QSizeF(0, -1)
+[    85.26 ] D: mouseMove2
+[    85.27 ] D: _pointActive2 false 0
+[    85.27 ] D: createSelectedPoints 0 -1
+[    85.29 ] D: _automationChanging true
+[    85.29 ] D: ACTIVE
+[    85.29 ] D: _currentMouseY 210 48 207 101 QSizeF(0, -3)
+[    85.29 ] D: mouseMove2
+[    85.30 ] D: _pointActive2 false 0
+[    85.30 ] D: createSelectedPoints 0 -1
+[    85.30 ] D: _automationChanging true
+[    85.30 ] D: ACTIVE
+[    85.30 ] D: _currentMouseY 210 47 207 101 QSizeF(0, -1)
+[    85.30 ] D: mouseMove2
+[    85.32 ] D: _automationChanging true
+[    85.32 ] D: _pointActive2 false 0
+[    85.32 ] D: createSelectedPoints 0 -1
+[    85.32 ] D: ACTIVE
+[    85.32 ] D: _currentMouseY 210 45 207 101 QSizeF(0, -2)
+[    85.32 ] D: mouseMove2
+[    85.32 ] D: _automationChanging true
+[    85.32 ] D: ACTIVE
+[    85.32 ] D: _currentMouseY 210 42 207 101 QSizeF(0, -3)
+[    85.33 ] D: mouseMove2
+[    85.33 ] D: _automationChanging true
+[    85.33 ] D: ACTIVE
+[    85.33 ] D: _currentMouseY 210 41 207 101 QSizeF(0, -1)
+[    85.33 ] D: mouseMove2
+[    85.33 ] D: _pointActive2 false 0
+[    85.33 ] D: createSelectedPoints 0 -1
+[    85.33 ] D: _automationChanging true
+[    85.34 ] D: ACTIVE
+[    85.34 ] D: _currentMouseY 210 39 207 101 QSizeF(0, -2)
+[    85.34 ] D: mouseMove2
+[    85.34 ] D: _automationChanging true
+[    85.34 ] D: ACTIVE
+[    85.34 ] D: _currentMouseY 211 39 207 101 QSizeF(1, 0)
+[    85.34 ] D: mouseMove2
+[    85.35 ] D: _automationChanging true
+[    85.35 ] D: _pointActive2 false 0
+[    85.35 ] D: createSelectedPoints 0 -1
+[    85.35 ] D: ACTIVE
+[    85.35 ] D: _currentMouseY 212 38 207 101 QSizeF(1, -1)
+[    85.35 ] D: mouseMove2
+[    85.35 ] D: _automationChanging true
+[    85.35 ] D: ACTIVE
+[    85.35 ] D: _currentMouseY 213 36 207 101 QSizeF(1, -2)
+[    85.36 ] D: mouseMove2
+[    85.37 ] D: _automationChanging true
+[    85.37 ] D: _pointActive2 false 0
+[    85.37 ] D: createSelectedPoints 0 -1
+[    85.37 ] D: ACTIVE
+[    85.37 ] D: _currentMouseY 213 35 207 101 QSizeF(0, -1)
+[    85.37 ] D: mouseMove2
+[    85.37 ] D: _automationChanging true
+[    85.37 ] D: ACTIVE
+[    85.38 ] D: _currentMouseY 213 33 207 101 QSizeF(0, -2)
+[    85.38 ] D: mouseMove2
+[    85.39 ] D: _automationChanging true
+[    85.39 ] D: _pointActive2 false 0
+[    85.39 ] D: createSelectedPoints 0 -1
+[    85.39 ] D: ACTIVE
+[    85.39 ] D: _currentMouseY 213 32 207 101 QSizeF(0, -1)
+[    85.39 ] D: mouseMove2
+[    85.40 ] D: _pointActive2 false 0
+[    85.40 ] D: createSelectedPoints 0 -1
+[    85.52 ] D: _automationChanging true
+[    85.52 ] D: ACTIVE
+[    85.52 ] D: _currentMouseY 213 30 207 101 QSizeF(0, -2)
+[    85.52 ] D: mouseMove2
+[    85.54 ] D: _pointActive2 false 0
+[    85.54 ] D: createSelectedPoints 0 -1
+[    85.54 ] D: _automationChanging true
+[    85.54 ] D: ACTIVE
+[    85.54 ] D: _currentMouseY 213 29 207 101 QSizeF(0, -1)
+[    85.54 ] D: mouseMove2
+[    85.55 ] D: _pointActive2 false 0
+[    85.55 ] D: createSelectedPoints 0 -1
+[    85.55 ] D: _automationChanging true
+[    85.55 ] D: ACTIVE
+[    85.55 ] D: _currentMouseY 213 29 207 101 QSizeF(0, 0)
+[    85.56 ] D: mouseMove2
+[    85.57 ] D: _pointActive2 false 0
+[    85.57 ] D: createSelectedPoints 0 -1
+[    86.29 ] D: createSelectedPoints 0 -1
+[    86.29 ] D: ACTIVE
+[    99.73 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(109,63)
+[    99.73 ] D: ACTIVE
+[    99.81 ] D: _automationChanging false
+[    99.81 ] D: mouseMove2
+[    99.89 ] D: _automationChanging false
+[    99.89 ] D: mouseMove2
+[    99.90 ] D: _automationChanging false
+[    99.90 ] D: mouseMove2
+[    99.94 ] D: _automationChanging false
+[    99.94 ] D: mouseMove2
+[    99.96 ] D: _automationChanging false
+[    99.96 ] D: mouseMove2
+[    99.97 ] D: _automationChanging false
+[    99.97 ] D: mouseMove2
+[    99.97 ] D: _automationChanging false
+[    99.97 ] D: mouseMove2
+[    99.99 ] D: _automationChanging false
+[    99.99 ] D: mouseMove2
+[   100.22 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(125,59)
+[   100.22 ] D: ACTIVE
+[   100.25 ] D: _automationChanging false
+[   100.25 ] D: mouseMove2
+[   100.27 ] D: _automationChanging false
+[   100.27 ] D: mouseMove2
+[   100.72 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(137,61)
+[   100.72 ] D: ACTIVE
+[   101.16 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(107,76)
+[   101.16 ] D: ACTIVE
+[   101.17 ] D: createSelectedPoints 0 -1
+[   101.26 ] D: _automationChanging false
+[   101.26 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(106,76)
+[   101.26 ] D: mouseMove2
+[   101.67 ] D: _requestForLoading false false
+[   101.67 ] D: _requestForLoading2
+[   101.67 ] D: _numberOfSampleBuffer 0
+[   107.25 ] D: _requestForLoading false false
+[   107.25 ] D: _requestForLoading2
+[   107.25 ] D: _numberOfSampleBuffer 0
+[   109.65 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   109.65 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   109.65 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   109.65 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   666.64 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.64 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.66 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.66 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.67 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.67 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[   666.67 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[   666.67 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed

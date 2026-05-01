@@ -1,0 +1,312 @@
+[     4.51 ] I: Log: Log file open in follow path at 1403/5/28 22:17:35 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.51 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.51 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.51 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.51 ] I: Current Render API is: 4.60
+[     4.51 ] I: The subsystem "Renderer" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.51 ] I: The subsystem "Platform" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.51 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.51 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.58 ] D: Shader Compile successfully.
+[     4.58 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.58 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.58 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.58 ] D: Engine Enabled
+[     4.58 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.58 ] D: Node with id 1 is added to Qt layer
+[     4.58 ] D: Node with id 2460 is added to Qt layer
+[     4.58 ] D: Node with id 2462 is added to Qt layer
+[     4.59 ] D: Node with id 2464 is added to Qt layer
+[     4.59 ] D: Node with id 2466 is added to Qt layer
+[     4.59 ] D: Node with id 2468 is added to Qt layer
+[     4.59 ] D: Node with id 2470 is added to Qt layer
+[     4.59 ] D: Node with id 2472 is added to Qt layer
+[     4.59 ] D: Node with id 2474 is added to Qt layer
+[     4.59 ] D: Node with id 2476 is added to Qt layer
+[     4.59 ] D: Node with id 2478 is added to Qt layer
+[     4.59 ] D: Node with id 2480 is added to Qt layer
+[     4.59 ] D: Node with id 2482 is added to Qt layer
+[     4.59 ] D: Node with id 2484 is added to Qt layer
+[     4.59 ] D: Node with id 2486 is added to Qt layer
+[     4.59 ] D: Node with id 2487 is added to Qt layer
+[     4.59 ] D: Node with id 2489 is added to Qt layer
+[     4.59 ] D: Node with id 2491 is added to Qt layer
+[     4.59 ] D: Node with id 3 is added to Qt layer
+[     4.59 ] D: Node with id 2493 is added to Qt layer
+[     4.59 ] S: New view-port registered with id: 1
+[     4.59 ] S: New view-port registered with id: 2
+[     4.59 ] S: New view-port registered with id: 3
+[     4.59 ] S: New view-port registered with id: 4
+[     4.59 ] S: New view-port registered with id: 5
+[     4.59 ] S: New view-port registered with id: 6
+[     4.70 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     4.70 ] D: Using backend: "OpenGL 3"
+[     4.73 ] W: Floating point comparison needs context sanity check
+[     4.73 ] D: QT onScaleChanged=  144
+[     4.75 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.76 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.76 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.76 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.92 ] D: Engine Started.
+[    27.55 ] W: qrc:/TrackPanels/Audio/Automation/Automation.qml:0: ReferenceError: theme is not defined
+[    29.50 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(118,62)
+[    29.51 ] D: createSelectedPoints 0 -1
+[    29.99 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(233,69)
+[    30.01 ] D: createSelectedPoints 0 -1
+[    30.09 ] D: _automationChanging true
+[    30.09 ] D: mouseMove2
+[    30.11 ] D: _pointActive1 false true false
+[    30.11 ] D: _automationChanging true
+[    30.11 ] D: _currentMouseY 236 69 233 69 QSizeF(3, 0)
+[    30.11 ] D: mouseMove2
+[    30.11 ] D: _automationChanging true
+[    30.11 ] D: _currentMouseY 239 68 233 69 QSizeF(3, -1)
+[    30.11 ] D: mouseMove2
+[    30.12 ] D: _automationChanging true
+[    30.12 ] D: _pointActive2 false 0
+[    30.12 ] D: createSelectedPoints 0 -1
+[    30.13 ] D: _currentMouseY 243 67 233 69 QSizeF(4, -1)
+[    30.13 ] D: mouseMove2
+[    30.14 ] D: _automationChanging true
+[    30.14 ] D: _pointActive2 false 0
+[    30.14 ] D: createSelectedPoints 0 -1
+[    30.14 ] D: _currentMouseY 246 65 233 69 QSizeF(3, -2)
+[    30.15 ] D: mouseMove2
+[    30.16 ] D: _automationChanging true
+[    30.16 ] D: _pointActive2 false 0
+[    30.16 ] D: createSelectedPoints 0 -1
+[    30.16 ] D: _currentMouseY 252 60 233 69 QSizeF(6, -5)
+[    30.16 ] D: mouseMove2
+[    30.17 ] D: _automationChanging true
+[    30.17 ] D: _pointActive2 false 0
+[    30.17 ] D: createSelectedPoints 0 -1
+[    30.18 ] D: _currentMouseY 260 54 233 69 QSizeF(8, -6)
+[    30.18 ] D: mouseMove2
+[    30.18 ] D: _automationChanging true
+[    30.18 ] D: _currentMouseY 260 53 233 69 QSizeF(0, -1)
+[    30.18 ] D: mouseMove2
+[    30.19 ] D: _automationChanging true
+[    30.19 ] D: _pointActive2 false 0
+[    30.19 ] D: createSelectedPoints 0 -1
+[    30.19 ] D: _currentMouseY 261 53 233 69 QSizeF(1, 0)
+[    30.19 ] D: mouseMove2
+[    30.21 ] D: _automationChanging true
+[    30.21 ] D: _pointActive2 false 0
+[    30.21 ] D: createSelectedPoints 0 -1
+[    30.21 ] D: _currentMouseY 261 52 233 69 QSizeF(0, -1)
+[    30.21 ] D: mouseMove2
+[    30.21 ] D: _automationChanging true
+[    30.21 ] D: _currentMouseY 262 52 233 69 QSizeF(1, 0)
+[    30.21 ] D: mouseMove2
+[    30.22 ] D: _pointActive2 false 0
+[    30.22 ] D: _automationChanging true
+[    30.22 ] D: createSelectedPoints 0 -1
+[    30.23 ] D: _currentMouseY 262 51 233 69 QSizeF(0, -1)
+[    30.23 ] D: mouseMove2
+[    30.24 ] D: _automationChanging true
+[    30.24 ] D: _pointActive2 false 0
+[    30.24 ] D: createSelectedPoints 0 -1
+[    30.24 ] D: _currentMouseY 263 50 233 69 QSizeF(1, -1)
+[    30.24 ] D: mouseMove2
+[    30.26 ] D: _automationChanging true
+[    30.26 ] D: _pointActive2 false 0
+[    30.26 ] D: createSelectedPoints 0 -1
+[    30.26 ] D: _currentMouseY 266 48 233 69 QSizeF(3, -2)
+[    30.26 ] D: mouseMove2
+[    30.26 ] D: _automationChanging true
+[    30.26 ] D: _currentMouseY 266 47 233 69 QSizeF(0, -1)
+[    30.26 ] D: mouseMove2
+[    30.27 ] D: _automationChanging true
+[    30.27 ] D: _pointActive2 false 0
+[    30.27 ] D: createSelectedPoints 0 -1
+[    30.28 ] D: _currentMouseY 267 45 233 69 QSizeF(1, -2)
+[    30.28 ] D: mouseMove2
+[    30.28 ] D: _automationChanging true
+[    30.28 ] D: _currentMouseY 268 44 233 69 QSizeF(1, -1)
+[    30.28 ] D: mouseMove2
+[    30.29 ] D: _pointActive2 false 0
+[    30.29 ] D: _automationChanging true
+[    30.29 ] D: createSelectedPoints 0 -1
+[    30.29 ] D: _currentMouseY 268 44 233 69 QSizeF(0, 0)
+[    30.30 ] D: mouseMove2
+[    30.31 ] D: _pointActive2 false 0
+[    30.31 ] D: createSelectedPoints 0 -1
+[    30.31 ] D: _automationChanging true
+[    30.31 ] D: _currentMouseY 269 43 233 69 QSizeF(1, -1)
+[    30.31 ] D: mouseMove2
+[    30.32 ] D: _pointActive2 false 0
+[    30.32 ] D: createSelectedPoints 0 -1
+[    30.32 ] D: _automationChanging true
+[    30.33 ] D: _currentMouseY 269 42 233 69 QSizeF(0, -1)
+[    30.33 ] D: mouseMove2
+[    30.34 ] D: _automationChanging true
+[    30.34 ] D: _pointActive2 false 0
+[    30.34 ] D: createSelectedPoints 0 -1
+[    30.34 ] D: _currentMouseY 270 41 233 69 QSizeF(1, -1)
+[    30.34 ] D: mouseMove2
+[    30.35 ] D: _automationChanging true
+[    30.35 ] D: _currentMouseY 270 41 233 69 QSizeF(0, 0)
+[    30.35 ] D: mouseMove2
+[    30.36 ] D: _pointActive2 false 0
+[    30.36 ] D: createSelectedPoints 0 -1
+[    30.36 ] D: _automationChanging true
+[    30.36 ] D: _currentMouseY 270 40 233 69 QSizeF(0, -1)
+[    30.36 ] D: mouseMove2
+[    30.37 ] D: _automationChanging true
+[    30.37 ] D: _pointActive2 false 0
+[    30.37 ] D: createSelectedPoints 0 -1
+[    30.38 ] D: _currentMouseY 271 39 233 69 QSizeF(1, -1)
+[    30.38 ] D: mouseMove2
+[    30.38 ] D: _automationChanging true
+[    30.38 ] D: _currentMouseY 272 36 233 69 QSizeF(1, -3)
+[    30.38 ] D: mouseMove2
+[    30.39 ] D: _automationChanging true
+[    30.39 ] D: _pointActive2 false 0
+[    30.39 ] D: createSelectedPoints 0 -1
+[    30.39 ] D: _currentMouseY 273 36 233 69 QSizeF(1, 0)
+[    30.40 ] D: mouseMove2
+[    30.41 ] D: _pointActive2 false 0
+[    30.41 ] D: createSelectedPoints 0 -1
+[    30.41 ] D: _automationChanging true
+[    30.41 ] D: _currentMouseY 273 36 233 69 QSizeF(0, 0)
+[    30.41 ] D: mouseMove2
+[    30.42 ] D: _pointActive2 false 0
+[    30.42 ] D: createSelectedPoints 0 -1
+[    30.46 ] D: createSelectedPoints 0 -1
+[    30.78 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(322,36)
+[    30.79 ] D: _automationChanging true
+[    30.79 ] D: mouseMove2
+[    30.79 ] D: _automationChanging true
+[    30.79 ] D: mouseMove2
+[    30.79 ] D: createSelectedPoints 0 -1
+[    30.81 ] D: _automationChanging true
+[    30.81 ] D: mouseMove2
+[    30.81 ] D: _automationChanging true
+[    30.81 ] D: mouseMove2
+[    30.82 ] D: _automationChanging true
+[    30.82 ] D: mouseMove2
+[    30.82 ] D: _automationChanging true
+[    30.82 ] D: mouseMove2
+[    30.83 ] D: _automationChanging true
+[    30.83 ] D: mouseMove2
+[    30.83 ] D: _automationChanging true
+[    30.83 ] D: mouseMove2
+[    30.84 ] D: _automationChanging true
+[    30.84 ] D: mouseMove2
+[    30.84 ] D: _automationChanging true
+[    30.84 ] D: mouseMove2
+[    30.84 ] D: _automationChanging true
+[    30.84 ] D: mouseMove2
+[    30.84 ] D: _automationChanging true
+[    30.84 ] D: mouseMove2
+[    30.86 ] D: _automationChanging true
+[    30.86 ] D: mouseMove2
+[    30.86 ] D: _automationChanging true
+[    30.86 ] D: mouseMove2
+[    30.86 ] D: _automationChanging true
+[    30.86 ] D: mouseMove2
+[    30.87 ] D: _automationChanging true
+[    30.87 ] D: mouseMove2
+[    30.88 ] D: _automationChanging true
+[    30.88 ] D: mouseMove2
+[    30.89 ] D: _pointActive1 false true false
+[    30.89 ] D: _automationChanging true
+[    30.89 ] D: _currentMouseY 340 56 322 36 QSizeF(18, 20)
+[    30.89 ] D: mouseMove2
+[    30.91 ] D: _automationChanging true
+[    30.91 ] D: _pointActive2 false 0
+[    30.91 ] D: createSelectedPoints 0 -1
+[    30.91 ] D: _currentMouseY 359 76 322 36 QSizeF(19, 20)
+[    30.91 ] D: mouseMove2
+[    30.91 ] D: _automationChanging true
+[    30.91 ] D: _currentMouseY 361 79 322 36 QSizeF(2, 3)
+[    30.91 ] D: mouseMove2
+[    30.92 ] D: _pointActive2 false 0
+[    30.92 ] D: createSelectedPoints 0 -1
+[    30.92 ] D: _automationChanging true
+[    30.93 ] D: _currentMouseY 362 80 322 36 QSizeF(1, 1)
+[    30.93 ] D: mouseMove2
+[    30.94 ] D: _pointActive2 false 0
+[    30.94 ] D: createSelectedPoints 0 -1
+[    30.94 ] D: _automationChanging true
+[    30.94 ] D: _currentMouseY 363 82 322 36 QSizeF(1, 2)
+[    30.94 ] D: mouseMove2
+[    30.96 ] D: _pointActive2 false 0
+[    30.96 ] D: createSelectedPoints 0 -1
+[    30.96 ] D: _automationChanging true
+[    30.96 ] D: _currentMouseY 364 83 322 36 QSizeF(1, 1)
+[    30.96 ] D: mouseMove2
+[    30.97 ] D: _pointActive2 false 0
+[    30.97 ] D: createSelectedPoints 0 -1
+[    31.00 ] D: _automationChanging true
+[    31.00 ] D: _currentMouseY 365 85 322 36 QSizeF(1, 2)
+[    31.00 ] D: mouseMove2
+[    31.00 ] D: _automationChanging true
+[    31.00 ] D: _currentMouseY 365 85 322 36 QSizeF(0, 0)
+[    31.00 ] D: mouseMove2
+[    31.01 ] D: _pointActive2 false 0
+[    31.01 ] D: createSelectedPoints 0 -1
+[    31.03 ] D: _automationChanging true
+[    31.03 ] D: _currentMouseY 365 86 322 36 QSizeF(0, 1)
+[    31.03 ] D: mouseMove2
+[    31.04 ] D: _pointActive2 false 0
+[    31.04 ] D: _automationChanging true
+[    31.04 ] D: createSelectedPoints 0 -1
+[    31.04 ] D: _currentMouseY 365 86 322 36 QSizeF(0, 0)
+[    31.05 ] D: mouseMove2
+[    31.06 ] D: _pointActive2 false 0
+[    31.06 ] D: createSelectedPoints 0 -1
+[    31.06 ] D: _automationChanging true
+[    31.06 ] D: _currentMouseY 366 86 322 36 QSizeF(1, 0)
+[    31.06 ] D: mouseMove2
+[    31.07 ] D: _pointActive2 false 0
+[    31.07 ] D: createSelectedPoints 0 -1
+[    31.07 ] D: _automationChanging true
+[    31.07 ] D: _currentMouseY 366 86 322 36 QSizeF(0, 0)
+[    31.08 ] D: mouseMove2
+[    31.09 ] D: _pointActive2 false 0
+[    31.09 ] D: createSelectedPoints 0 -1
+[    31.22 ] D: createSelectedPoints 0 -1
+[    32.92 ] D: automationLaneControl "Pan"
+[    33.05 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:250:5: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:650: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:636: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:625: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:614: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:50: ReferenceError: refSize is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:66: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:81: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:65: ReferenceError: topWidth is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:64: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:108: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:104: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:117: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:136: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:135: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:211: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:210: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:209: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:223: ReferenceError: topRadius is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:245: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:244: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:269: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:268: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:293: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:292: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:373: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:372: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:371: ReferenceError: scaleSize2 is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:393: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:392: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:426: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:425: ReferenceError: theme is not defined
+[    33.06 ] W: qrc:/TrackPanels/Audio/Automation/AutomationChild.qml:459: ReferenceError: theme is not defined

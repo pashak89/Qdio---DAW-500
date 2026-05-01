@@ -1,0 +1,1693 @@
+[     6.18 ] I: Log: Log file open in follow path at 1403/5/30 07:26:15 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     6.18 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     6.18 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     6.18 ] D: API version is: 4.60 ,shader version is: 4.60
+[     6.18 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     6.18 ] I: Current Render API is: 4.60
+[     6.18 ] I: The subsystem "Renderer" is registered successfully.
+[     6.18 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     6.18 ] I: The subsystem "Platform" is registered successfully.
+[     6.18 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     6.18 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     6.18 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     6.18 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     6.18 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     6.18 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     6.18 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     6.28 ] D: Shader Compile successfully.
+[     6.28 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     6.28 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     6.28 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     6.28 ] D: Engine Enabled
+[     6.28 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     6.28 ] D: Node with id 1 is added to Qt layer
+[     6.28 ] D: Node with id 2460 is added to Qt layer
+[     6.28 ] D: Node with id 2462 is added to Qt layer
+[     6.28 ] D: Node with id 2464 is added to Qt layer
+[     6.28 ] D: Node with id 2466 is added to Qt layer
+[     6.28 ] D: Node with id 2468 is added to Qt layer
+[     6.29 ] D: Node with id 2470 is added to Qt layer
+[     6.29 ] D: Node with id 2472 is added to Qt layer
+[     6.29 ] D: Node with id 2474 is added to Qt layer
+[     6.29 ] D: Node with id 2476 is added to Qt layer
+[     6.29 ] D: Node with id 2478 is added to Qt layer
+[     6.29 ] D: Node with id 2480 is added to Qt layer
+[     6.29 ] D: Node with id 2482 is added to Qt layer
+[     6.29 ] D: Node with id 2484 is added to Qt layer
+[     6.29 ] D: Node with id 2486 is added to Qt layer
+[     6.29 ] D: Node with id 2487 is added to Qt layer
+[     6.29 ] D: Node with id 2489 is added to Qt layer
+[     6.29 ] D: Node with id 2491 is added to Qt layer
+[     6.29 ] D: Node with id 3 is added to Qt layer
+[     6.29 ] D: Node with id 2493 is added to Qt layer
+[     6.29 ] S: New view-port registered with id: 1
+[     6.29 ] S: New view-port registered with id: 2
+[     6.29 ] S: New view-port registered with id: 3
+[     6.29 ] S: New view-port registered with id: 4
+[     6.29 ] S: New view-port registered with id: 5
+[     6.29 ] S: New view-port registered with id: 6
+[     6.41 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     6.41 ] D: Using backend: "OpenGL 3"
+[     6.45 ] W: Floating point comparison needs context sanity check
+[     6.45 ] D: QT onScaleChanged=  144
+[     6.48 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     6.50 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     6.50 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     6.51 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     6.68 ] D: Engine Started.
+[    25.10 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(240,176)
+[    25.10 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(240,176)
+[    31.74 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    32.99 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(165,140)
+[    32.99 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(165,140)
+[    33.01 ] D: _automationChanging true
+[    33.01 ] D: mouseMove2
+[    33.03 ] D: _automationChanging true
+[    33.03 ] D: mouseMove2
+[    33.03 ] D: _automationChanging true
+[    33.03 ] D: mouseMove2
+[    33.03 ] D: createSelectedPoints 1 -1
+[    33.04 ] D: _automationChanging true
+[    33.04 ] D: mouseMove2
+[    33.04 ] D: _automationChanging true
+[    33.04 ] D: mouseMove2
+[    33.06 ] D: _automationChanging true
+[    33.06 ] D: mouseMove2
+[    33.06 ] D: _automationChanging true
+[    33.06 ] D: mouseMove2
+[    33.06 ] D: _automationChanging true
+[    33.06 ] D: mouseMove2
+[    33.09 ] D: _automationChanging true
+[    33.09 ] D: mouseMove2
+[    33.09 ] D: _automationChanging true
+[    33.09 ] D: mouseMove2
+[    33.10 ] D: _pointActive1 false true false
+[    33.10 ] D: _automationChanging true
+[    33.10 ] D: _currentMouseY 163 164 165 140 QSizeF(-2, 24)
+[    33.11 ] D: mouseMove2
+[    33.11 ] D: isAutomated 1
+[    33.11 ] D: isAutomated 0
+[    33.11 ] D: isAutomated 0
+[    33.11 ] D: _automationChanging true
+[    33.11 ] D: _currentMouseY 163 165 165 140 QSizeF(0, 1)
+[    33.11 ] D: mouseMove2
+[    33.12 ] D: _pointActive2 false 1
+[    33.12 ] D: createSelectedPoints 1 -1
+[    33.12 ] D: _automationChanging true
+[    33.12 ] D: _currentMouseY 163 167 165 140 QSizeF(0, 2)
+[    33.12 ] D: mouseMove2
+[    33.12 ] D: _automationChanging true
+[    33.13 ] D: _currentMouseY 163 170 165 140 QSizeF(0, 3)
+[    33.13 ] D: mouseMove2
+[    33.14 ] D: _automationChanging true
+[    33.14 ] D: _pointActive2 false 1
+[    33.14 ] D: createSelectedPoints 1 -1
+[    33.14 ] D: _currentMouseY 162 171 165 140 QSizeF(-1, 1)
+[    33.15 ] D: mouseMove2
+[    33.15 ] D: _automationChanging true
+[    33.15 ] D: _currentMouseY 161 174 165 140 QSizeF(-1, 3)
+[    33.15 ] D: mouseMove2
+[    33.18 ] D: _automationChanging true
+[    33.18 ] D: _pointActive2 false 1
+[    33.18 ] D: createSelectedPoints 1 -1
+[    33.18 ] D: _currentMouseY 161 175 165 140 QSizeF(0, 1)
+[    33.18 ] D: mouseMove2
+[    33.18 ] D: _automationChanging true
+[    33.18 ] D: _currentMouseY 160 175 165 140 QSizeF(-1, 0)
+[    33.18 ] D: mouseMove2
+[    33.21 ] D: _pointActive2 false 1
+[    33.21 ] D: createSelectedPoints 1 -1
+[    33.21 ] D: _automationChanging true
+[    33.21 ] D: _currentMouseY 160 178 165 140 QSizeF(0, 3)
+[    33.21 ] D: mouseMove2
+[    33.21 ] D: _automationChanging true
+[    33.21 ] D: _currentMouseY 160 182 165 140 QSizeF(0, 4)
+[    33.21 ] D: mouseMove2
+[    33.24 ] D: _pointActive2 false 1
+[    33.24 ] D: createSelectedPoints 1 -1
+[    33.24 ] D: _automationChanging true
+[    33.25 ] D: _currentMouseY 159 187 165 140 QSizeF(-1, 5)
+[    33.25 ] D: mouseMove2
+[    33.28 ] D: _pointActive2 false 1
+[    33.28 ] D: createSelectedPoints 1 -1
+[    33.28 ] D: _automationChanging true
+[    33.28 ] D: _currentMouseY 157 191 165 140 QSizeF(-2, 4)
+[    33.28 ] D: mouseMove2
+[    33.28 ] D: _automationChanging true
+[    33.28 ] D: _currentMouseY 155 196 165 140 QSizeF(-2, 5)
+[    33.28 ] D: mouseMove2
+[    33.29 ] D: _pointActive2 false 1
+[    33.29 ] D: _automationChanging true
+[    33.29 ] D: createSelectedPoints 1 -1
+[    33.29 ] D: _currentMouseY 155 197 165 140 QSizeF(0, 1)
+[    33.29 ] D: mouseMove2
+[    33.33 ] D: _pointActive2 false 1
+[    33.33 ] D: createSelectedPoints 1 -1
+[    33.33 ] D: _automationChanging true
+[    33.33 ] D: _currentMouseY 155 199 165 140 QSizeF(0, 2)
+[    33.33 ] D: mouseMove2
+[    33.33 ] D: _automationChanging true
+[    33.33 ] D: _currentMouseY 154 199 165 140 QSizeF(-1, 0)
+[    33.33 ] D: mouseMove2
+[    33.33 ] D: _automationChanging true
+[    33.34 ] D: _currentMouseY 154 200 165 140 QSizeF(0, 1)
+[    33.34 ] D: mouseMove2
+[    33.36 ] D: _automationChanging true
+[    33.36 ] D: _pointActive2 false 1
+[    33.36 ] D: createSelectedPoints 1 -1
+[    33.36 ] D: _currentMouseY 154 200 165 140 QSizeF(0, 0)
+[    33.36 ] D: mouseMove2
+[    33.37 ] D: _automationChanging true
+[    33.37 ] D: _currentMouseY 153 203 165 140 QSizeF(-1, 3)
+[    33.37 ] D: mouseMove2
+[    33.38 ] D: _automationChanging true
+[    33.38 ] D: _pointActive2 false 1
+[    33.38 ] D: createSelectedPoints 1 -1
+[    33.38 ] D: _currentMouseY 153 204 165 140 QSizeF(0, 1)
+[    33.38 ] D: mouseMove2
+[    33.38 ] D: _automationChanging true
+[    33.38 ] D: _currentMouseY 152 204 165 140 QSizeF(-1, 0)
+[    33.38 ] D: mouseMove2
+[    33.40 ] D: _automationChanging true
+[    33.40 ] D: _pointActive2 false 1
+[    33.40 ] D: createSelectedPoints 1 -1
+[    33.41 ] D: _currentMouseY 152 205 165 140 QSizeF(0, 1)
+[    33.41 ] D: mouseMove2
+[    33.42 ] D: _automationChanging true
+[    33.42 ] D: _pointActive2 false 1
+[    33.42 ] D: createSelectedPoints 1 -1
+[    33.42 ] D: _currentMouseY 152 205 165 140 QSizeF(0, 0)
+[    33.43 ] D: mouseMove2
+[    33.43 ] D: _automationChanging true
+[    33.43 ] D: _currentMouseY 152 206 165 140 QSizeF(0, 1)
+[    33.43 ] D: mouseMove2
+[    33.43 ] D: _pointActive2 false 1
+[    33.43 ] D: createSelectedPoints 1 -1
+[    33.47 ] D: _automationChanging true
+[    33.47 ] D: _currentMouseY 152 209 165 140 QSizeF(0, 3)
+[    33.47 ] D: mouseMove2
+[    33.48 ] D: _automationChanging true
+[    33.48 ] D: _currentMouseY 152 215 165 140 QSizeF(0, 6)
+[    33.48 ] D: mouseMove2
+[    33.48 ] D: _automationChanging true
+[    33.48 ] D: _currentMouseY 152 216 165 140 QSizeF(0, 1)
+[    33.48 ] D: mouseMove2
+[    33.51 ] D: _pointActive2 false 1
+[    33.51 ] D: createSelectedPoints 1 -1
+[    33.57 ] D: _automationChanging true
+[    33.57 ] D: _currentMouseY 152 218 165 140 QSizeF(0, 2)
+[    33.58 ] D: mouseMove2
+[    33.59 ] D: _pointActive2 false 1
+[    33.59 ] D: _automationChanging true
+[    33.59 ] D: createSelectedPoints 1 -1
+[    33.59 ] D: _currentMouseY 152 218 165 140 QSizeF(0, 0)
+[    33.59 ] D: mouseMove2
+[    33.61 ] D: _pointActive2 false 1
+[    33.61 ] D: createSelectedPoints 1 -1
+[    33.62 ] D: _automationChanging true
+[    33.62 ] D: _currentMouseY 152 218 165 140 QSizeF(0, 1)
+[    33.62 ] D: mouseMove2
+[    33.63 ] D: _automationChanging true
+[    33.63 ] D: _pointActive2 false 1
+[    33.63 ] D: createSelectedPoints 1 -1
+[    33.63 ] D: _currentMouseY 152 218 165 140 QSizeF(0, 0)
+[    33.63 ] D: mouseMove2
+[    33.66 ] D: _pointActive2 false 1
+[    33.66 ] D: createSelectedPoints 1 -1
+[    33.67 ] D: _automationChanging true
+[    33.67 ] D: _currentMouseY 152 218 165 140 QSizeF(0, 1)
+[    33.67 ] D: mouseMove2
+[    33.68 ] D: _pointActive2 false 1
+[    33.68 ] D: _automationChanging true
+[    33.68 ] D: createSelectedPoints 1 -1
+[    33.69 ] D: _currentMouseY 151 218 165 140 QSizeF(-1, 0)
+[    33.69 ] D: mouseMove2
+[    33.71 ] D: _pointActive2 false 1
+[    33.71 ] D: createSelectedPoints 1 -1
+[    33.71 ] D: _automationChanging true
+[    33.71 ] D: _currentMouseY 151 218 165 140 QSizeF(0, 2)
+[    33.71 ] D: mouseMove2
+[    33.72 ] D: _pointActive2 false 1
+[    33.72 ] D: _automationChanging true
+[    33.72 ] D: createSelectedPoints 1 -1
+[    33.72 ] D: _currentMouseY 151 218 165 140 QSizeF(0, 1)
+[    33.73 ] D: mouseMove2
+[    33.73 ] D: _automationChanging true
+[    33.73 ] D: _currentMouseY 151 218 165 140 QSizeF(0, 2)
+[    33.73 ] D: mouseMove2
+[    33.76 ] D: _pointActive2 false 1
+[    33.76 ] D: createSelectedPoints 1 -1
+[    33.76 ] D: _automationChanging true
+[    33.76 ] D: _currentMouseY 151 218 165 140 QSizeF(0, 1)
+[    33.76 ] D: mouseMove2
+[    33.79 ] D: _automationChanging true
+[    33.79 ] D: _pointActive2 false 1
+[    33.79 ] D: createSelectedPoints 1 -1
+[    33.79 ] D: _currentMouseY 151 218 165 140 QSizeF(0, 0)
+[    33.80 ] D: mouseMove2
+[    33.80 ] D: _automationChanging true
+[    33.80 ] D: _currentMouseY 151 218 165 140 QSizeF(0, 1)
+[    33.80 ] D: mouseMove2
+[    33.82 ] D: _pointActive2 false 1
+[    33.82 ] D: createSelectedPoints 1 -1
+[    33.82 ] D: _automationChanging true
+[    33.83 ] D: _currentMouseY 151 218 165 140 QSizeF(0, 0)
+[    33.83 ] D: mouseMove2
+[    33.84 ] D: _pointActive2 false 1
+[    33.84 ] D: createSelectedPoints 1 -1
+[    33.85 ] D: _automationChanging true
+[    33.85 ] D: _currentMouseY 151 218 165 140 QSizeF(0, 1)
+[    33.85 ] D: mouseMove2
+[    33.86 ] D: _pointActive2 false 1
+[    33.86 ] D: _automationChanging true
+[    33.86 ] D: createSelectedPoints 1 -1
+[    33.86 ] D: _currentMouseY 151 218 165 140 QSizeF(0, 0)
+[    33.86 ] D: mouseMove2
+[    33.89 ] D: _pointActive2 false 1
+[    33.89 ] D: createSelectedPoints 1 -1
+[    34.12 ] D: createSelectedPoints 1 -1
+[    34.12 ] D: isAutomated 1
+[    34.12 ] D: isAutomated 0
+[    34.12 ] D: isAutomated 0
+[    35.26 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(206,218)
+[    35.26 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(206,218)
+[    35.28 ] D: createSelectedPoints 1 -1
+[    35.39 ] D: _pointActive1 false true false
+[    35.39 ] D: isAutomated 1
+[    35.39 ] D: isAutomated 0
+[    35.39 ] D: isAutomated 0
+[    35.45 ] D: _automationChanging true
+[    35.45 ] D: _currentMouseY 206 217 206 218 QSizeF(0, -1)
+[    35.45 ] D: mouseMove2
+[    35.45 ] D: _automationChanging true
+[    35.45 ] D: _currentMouseY 205 216 206 218 QSizeF(-1, -1)
+[    35.45 ] D: mouseMove2
+[    35.47 ] D: _pointActive2 false 1
+[    35.47 ] D: createSelectedPoints 1 -1
+[    35.47 ] D: _automationChanging true
+[    35.47 ] D: _currentMouseY 204 214 206 218 QSizeF(-1, -2)
+[    35.48 ] D: mouseMove2
+[    35.48 ] D: _automationChanging true
+[    35.48 ] D: _currentMouseY 204 213 206 218 QSizeF(0, -1)
+[    35.49 ] D: mouseMove2
+[    35.49 ] D: _pointActive2 false 1
+[    35.49 ] D: createSelectedPoints 1 -1
+[    35.49 ] D: _automationChanging true
+[    35.49 ] D: _currentMouseY 204 211 206 218 QSizeF(0, -2)
+[    35.50 ] D: mouseMove2
+[    35.50 ] D: _automationChanging true
+[    35.50 ] D: _currentMouseY 204 208 206 218 QSizeF(0, -3)
+[    35.50 ] D: mouseMove2
+[    35.53 ] D: _automationChanging true
+[    35.53 ] D: _pointActive2 false 1
+[    35.53 ] D: createSelectedPoints 1 -1
+[    35.54 ] D: _currentMouseY 204 207 206 218 QSizeF(0, -1)
+[    35.54 ] D: mouseMove2
+[    35.56 ] D: _automationChanging true
+[    35.56 ] D: _pointActive2 false 1
+[    35.56 ] D: createSelectedPoints 1 -1
+[    35.56 ] D: _currentMouseY 204 199 206 218 QSizeF(0, -8)
+[    35.56 ] D: mouseMove2
+[    35.56 ] D: _automationChanging true
+[    35.56 ] D: _currentMouseY 203 197 206 218 QSizeF(-1, -2)
+[    35.57 ] D: mouseMove2
+[    35.59 ] D: _automationChanging true
+[    35.59 ] D: _pointActive2 false 1
+[    35.59 ] D: createSelectedPoints 1 -1
+[    35.59 ] D: _currentMouseY 203 196 206 218 QSizeF(0, -1)
+[    35.59 ] D: mouseMove2
+[    35.61 ] D: _automationChanging true
+[    35.61 ] D: _pointActive2 false 1
+[    35.61 ] D: createSelectedPoints 1 -1
+[    35.61 ] D: _currentMouseY 203 189 206 218 QSizeF(0, -7)
+[    35.61 ] D: mouseMove2
+[    35.61 ] D: _automationChanging true
+[    35.61 ] D: _currentMouseY 203 188 206 218 QSizeF(0, -1)
+[    35.61 ] D: mouseMove2
+[    35.61 ] D: _automationChanging true
+[    35.61 ] D: _currentMouseY 203 185 206 218 QSizeF(0, -3)
+[    35.62 ] D: mouseMove2
+[    35.62 ] D: _automationChanging true
+[    35.62 ] D: _currentMouseY 203 184 206 218 QSizeF(0, -1)
+[    35.62 ] D: mouseMove2
+[    35.64 ] D: _automationChanging true
+[    35.64 ] D: _pointActive2 false 1
+[    35.65 ] D: createSelectedPoints 1 -1
+[    35.65 ] D: _currentMouseY 202 183 206 218 QSizeF(-1, -1)
+[    35.65 ] D: mouseMove2
+[    35.65 ] D: _automationChanging true
+[    35.65 ] D: _currentMouseY 201 180 206 218 QSizeF(-1, -3)
+[    35.65 ] D: mouseMove2
+[    35.67 ] D: _pointActive2 false 1
+[    35.67 ] D: _automationChanging true
+[    35.67 ] D: createSelectedPoints 1 -1
+[    35.67 ] D: _currentMouseY 201 178 206 218 QSizeF(0, -2)
+[    35.68 ] D: mouseMove2
+[    35.71 ] D: _automationChanging true
+[    35.71 ] D: _pointActive2 false 1
+[    35.71 ] D: createSelectedPoints 1 -1
+[    35.71 ] D: _currentMouseY 201 177 206 218 QSizeF(0, -1)
+[    35.71 ] D: mouseMove2
+[    35.71 ] D: _automationChanging true
+[    35.71 ] D: _currentMouseY 201 173 206 218 QSizeF(0, -4)
+[    35.71 ] D: mouseMove2
+[    35.72 ] D: _automationChanging true
+[    35.72 ] D: _pointActive2 false 1
+[    35.72 ] D: createSelectedPoints 1 -1
+[    35.72 ] D: _currentMouseY 201 172 206 218 QSizeF(0, -1)
+[    35.73 ] D: mouseMove2
+[    35.76 ] D: _automationChanging true
+[    35.76 ] D: _pointActive2 false 1
+[    35.76 ] D: createSelectedPoints 1 -1
+[    35.76 ] D: _currentMouseY 201 170 206 218 QSizeF(0, -2)
+[    35.76 ] D: mouseMove2
+[    35.76 ] D: _automationChanging true
+[    35.76 ] D: _currentMouseY 201 169 206 218 QSizeF(0, -1)
+[    35.76 ] D: mouseMove2
+[    35.77 ] D: _pointActive2 false 1
+[    35.78 ] D: createSelectedPoints 1 -1
+[    35.81 ] D: _automationChanging true
+[    35.81 ] D: _currentMouseY 201 167 206 218 QSizeF(0, -2)
+[    35.81 ] D: mouseMove2
+[    35.81 ] D: _automationChanging true
+[    35.81 ] D: _currentMouseY 201 163 206 218 QSizeF(0, -4)
+[    35.81 ] D: mouseMove2
+[    35.81 ] D: _automationChanging true
+[    35.81 ] D: _currentMouseY 201 162 206 218 QSizeF(0, -1)
+[    35.81 ] D: mouseMove2
+[    35.84 ] D: _pointActive2 false 1
+[    35.84 ] D: createSelectedPoints 1 -1
+[    35.84 ] D: _automationChanging true
+[    35.84 ] D: _currentMouseY 200 158 206 218 QSizeF(-1, -4)
+[    35.85 ] D: mouseMove2
+[    35.88 ] D: _pointActive2 false 1
+[    35.88 ] D: createSelectedPoints 1 -1
+[    35.88 ] D: _automationChanging true
+[    35.88 ] D: _currentMouseY 200 156 206 218 QSizeF(0, -2)
+[    35.88 ] D: mouseMove2
+[    35.91 ] D: _automationChanging true
+[    35.91 ] D: _pointActive2 false 1
+[    35.91 ] D: createSelectedPoints 1 -1
+[    35.91 ] D: _currentMouseY 200 156 206 218 QSizeF(0, 0)
+[    35.91 ] D: mouseMove2
+[    35.93 ] D: _pointActive2 false 1
+[    35.93 ] D: createSelectedPoints 1 -1
+[    36.09 ] D: _automationChanging true
+[    36.09 ] D: _currentMouseY 200 157 206 218 QSizeF(0, 1)
+[    36.09 ] D: mouseMove2
+[    36.09 ] D: _automationChanging true
+[    36.09 ] D: _currentMouseY 200 157 206 218 QSizeF(0, 0)
+[    36.09 ] D: mouseMove2
+[    36.09 ] D: _automationChanging true
+[    36.09 ] D: _currentMouseY 200 158 206 218 QSizeF(0, 1)
+[    36.09 ] D: mouseMove2
+[    36.11 ] D: _pointActive2 false 1
+[    36.11 ] D: _automationChanging true
+[    36.11 ] D: createSelectedPoints 1 -1
+[    36.11 ] D: _currentMouseY 200 160 206 218 QSizeF(0, 2)
+[    36.11 ] D: mouseMove2
+[    36.11 ] D: _automationChanging true
+[    36.11 ] D: _currentMouseY 200 161 206 218 QSizeF(0, 1)
+[    36.11 ] D: mouseMove2
+[    36.14 ] D: _pointActive2 false 1
+[    36.14 ] D: createSelectedPoints 1 -1
+[    36.15 ] D: _automationChanging true
+[    36.15 ] D: _currentMouseY 200 163 206 218 QSizeF(0, 2)
+[    36.15 ] D: mouseMove2
+[    36.15 ] D: _automationChanging true
+[    36.15 ] D: _currentMouseY 200 164 206 218 QSizeF(0, 1)
+[    36.15 ] D: mouseMove2
+[    36.16 ] D: _pointActive2 false 1
+[    36.16 ] D: createSelectedPoints 1 -1
+[    36.17 ] D: _automationChanging true
+[    36.17 ] D: _currentMouseY 200 164 206 218 QSizeF(0, 0)
+[    36.17 ] D: mouseMove2
+[    36.17 ] D: _automationChanging true
+[    36.17 ] D: _currentMouseY 200 165 206 218 QSizeF(0, 1)
+[    36.17 ] D: mouseMove2
+[    36.19 ] D: _pointActive2 false 1
+[    36.19 ] D: createSelectedPoints 1 -1
+[    36.20 ] D: _automationChanging true
+[    36.20 ] D: _currentMouseY 200 165 206 218 QSizeF(0, 0)
+[    36.20 ] D: mouseMove2
+[    36.20 ] D: _automationChanging true
+[    36.20 ] D: _currentMouseY 200 166 206 218 QSizeF(0, 1)
+[    36.20 ] D: mouseMove2
+[    36.23 ] D: _pointActive2 false 1
+[    36.23 ] D: createSelectedPoints 1 -1
+[    36.23 ] D: _automationChanging true
+[    36.23 ] D: _currentMouseY 200 166 206 218 QSizeF(0, 0)
+[    36.23 ] D: mouseMove2
+[    36.26 ] D: _pointActive2 false 1
+[    36.26 ] D: createSelectedPoints 1 -1
+[    36.26 ] D: _automationChanging true
+[    36.26 ] D: _currentMouseY 200 168 206 218 QSizeF(0, 2)
+[    36.26 ] D: mouseMove2
+[    36.27 ] D: _pointActive2 false 1
+[    36.27 ] D: createSelectedPoints 1 -1
+[    36.27 ] D: _automationChanging true
+[    36.28 ] D: _currentMouseY 200 168 206 218 QSizeF(0, 0)
+[    36.28 ] D: mouseMove2
+[    36.31 ] D: _automationChanging true
+[    36.31 ] D: _pointActive2 false 1
+[    36.31 ] D: createSelectedPoints 1 -1
+[    36.31 ] D: _currentMouseY 200 169 206 218 QSizeF(0, 1)
+[    36.31 ] D: mouseMove2
+[    36.31 ] D: _automationChanging true
+[    36.31 ] D: _currentMouseY 200 171 206 218 QSizeF(0, 2)
+[    36.32 ] D: mouseMove2
+[    36.33 ] D: _pointActive2 false 1
+[    36.33 ] D: createSelectedPoints 1 -1
+[    36.34 ] D: _automationChanging true
+[    36.34 ] D: _currentMouseY 200 171 206 218 QSizeF(0, 0)
+[    36.34 ] D: mouseMove2
+[    36.36 ] D: _pointActive2 false 1
+[    36.36 ] D: createSelectedPoints 1 -1
+[    36.36 ] D: _automationChanging true
+[    36.36 ] D: _currentMouseY 200 173 206 218 QSizeF(0, 2)
+[    36.36 ] D: mouseMove2
+[    36.38 ] D: _pointActive2 false 1
+[    36.38 ] D: createSelectedPoints 1 -1
+[    36.38 ] D: _automationChanging true
+[    36.38 ] D: _currentMouseY 200 174 206 218 QSizeF(0, 1)
+[    36.38 ] D: mouseMove2
+[    36.40 ] D: _pointActive2 false 1
+[    36.40 ] D: createSelectedPoints 1 -1
+[    36.42 ] D: _automationChanging true
+[    36.42 ] D: _currentMouseY 200 176 206 218 QSizeF(0, 2)
+[    36.43 ] D: mouseMove2
+[    36.45 ] D: _pointActive2 false 1
+[    36.45 ] D: createSelectedPoints 1 -1
+[    36.52 ] D: _automationChanging true
+[    36.52 ] D: _currentMouseY 200 179 206 218 QSizeF(0, 3)
+[    36.52 ] D: mouseMove2
+[    36.53 ] D: _automationChanging true
+[    36.53 ] D: mouseMove2
+[    36.53 ] D: _pointActive2 false 1
+[    36.53 ] D: createSelectedPoints 1 -1
+[    36.56 ] D: _automationChanging true
+[    36.56 ] D: _currentMouseY 200 180 206 218 QSizeF(0, 1)
+[    36.56 ] D: mouseMove2
+[    36.56 ] D: _automationChanging true
+[    36.56 ] D: _currentMouseY 200 182 206 218 QSizeF(0, 2)
+[    36.56 ] D: mouseMove2
+[    36.57 ] D: _pointActive2 false 1
+[    36.57 ] D: _automationChanging true
+[    36.57 ] D: createSelectedPoints 1 -1
+[    36.58 ] D: _currentMouseY 200 182 206 218 QSizeF(0, 0)
+[    36.58 ] D: mouseMove2
+[    36.58 ] D: _pointActive2 false 1
+[    36.58 ] D: createSelectedPoints 1 -1
+[    36.60 ] D: _automationChanging true
+[    36.60 ] D: _currentMouseY 200 183 206 218 QSizeF(0, 1)
+[    36.60 ] D: mouseMove2
+[    36.62 ] D: _pointActive2 false 1
+[    36.62 ] D: createSelectedPoints 1 -1
+[    36.63 ] D: _automationChanging true
+[    36.63 ] D: _currentMouseY 200 185 206 218 QSizeF(0, 2)
+[    36.63 ] D: mouseMove2
+[    36.64 ] D: _pointActive2 false 1
+[    36.64 ] D: _automationChanging true
+[    36.64 ] D: createSelectedPoints 1 -1
+[    36.64 ] D: _currentMouseY 200 186 206 218 QSizeF(0, 1)
+[    36.64 ] D: mouseMove2
+[    36.66 ] D: _pointActive2 false 1
+[    36.66 ] D: createSelectedPoints 1 -1
+[    36.67 ] D: _automationChanging true
+[    36.67 ] D: _currentMouseY 200 186 206 218 QSizeF(0, 0)
+[    36.67 ] D: mouseMove2
+[    36.69 ] D: _pointActive2 false 1
+[    36.69 ] D: createSelectedPoints 1 -1
+[    36.74 ] D: _automationChanging true
+[    36.74 ] D: _currentMouseY 200 187 206 218 QSizeF(0, 1)
+[    36.74 ] D: mouseMove2
+[    36.74 ] D: _automationChanging true
+[    36.74 ] D: _currentMouseY 199 187 206 218 QSizeF(-1, 0)
+[    36.74 ] D: mouseMove2
+[    36.76 ] D: _pointActive2 false 1
+[    36.76 ] D: createSelectedPoints 1 -1
+[    36.76 ] D: _automationChanging true
+[    36.76 ] D: _currentMouseY 199 187 206 218 QSizeF(0, 0)
+[    36.76 ] D: mouseMove2
+[    36.78 ] D: _pointActive2 false 1
+[    36.78 ] D: createSelectedPoints 1 -1
+[    39.01 ] D: _automationChanging true
+[    39.01 ] D: _currentMouseY 199 188 206 218 QSizeF(0, 1)
+[    39.01 ] D: mouseMove2
+[    39.01 ] D: _automationChanging true
+[    39.01 ] D: _currentMouseY 199 190 206 218 QSizeF(0, 2)
+[    39.01 ] D: mouseMove2
+[    39.02 ] D: _pointActive2 false 1
+[    39.02 ] D: createSelectedPoints 1 -1
+[    39.03 ] D: _automationChanging true
+[    39.03 ] D: _currentMouseY 199 191 206 218 QSizeF(0, 1)
+[    39.03 ] D: mouseMove2
+[    39.04 ] D: _pointActive2 false 1
+[    39.04 ] D: createSelectedPoints 1 -1
+[    39.06 ] D: _automationChanging true
+[    39.06 ] D: _currentMouseY 199 193 206 218 QSizeF(0, 2)
+[    39.06 ] D: mouseMove2
+[    39.09 ] D: _pointActive2 false 1
+[    39.09 ] D: createSelectedPoints 1 -1
+[    39.10 ] D: _automationChanging true
+[    39.10 ] D: _currentMouseY 198 195 206 218 QSizeF(-1, 2)
+[    39.10 ] D: mouseMove2
+[    39.13 ] D: _automationChanging true
+[    39.13 ] D: _pointActive2 false 1
+[    39.13 ] D: createSelectedPoints 1 -1
+[    39.13 ] D: _currentMouseY 198 195 206 218 QSizeF(0, 0)
+[    39.13 ] D: mouseMove2
+[    39.13 ] D: _automationChanging true
+[    39.13 ] D: _currentMouseY 198 196 206 218 QSizeF(0, 1)
+[    39.13 ] D: mouseMove2
+[    39.15 ] D: _pointActive2 false 1
+[    39.15 ] D: _automationChanging true
+[    39.15 ] D: createSelectedPoints 1 -1
+[    39.15 ] D: _currentMouseY 198 196 206 218 QSizeF(0, 0)
+[    39.15 ] D: mouseMove2
+[    39.15 ] D: _automationChanging true
+[    39.15 ] D: _currentMouseY 198 197 206 218 QSizeF(0, 1)
+[    39.15 ] D: mouseMove2
+[    39.17 ] D: _automationChanging true
+[    39.17 ] D: _pointActive2 false 1
+[    39.17 ] D: createSelectedPoints 1 -1
+[    39.17 ] D: _currentMouseY 198 197 206 218 QSizeF(0, 0)
+[    39.17 ] D: mouseMove2
+[    39.19 ] D: _pointActive2 false 1
+[    39.19 ] D: createSelectedPoints 1 -1
+[    39.19 ] D: _automationChanging true
+[    39.19 ] D: _currentMouseY 198 198 206 218 QSizeF(0, 1)
+[    39.20 ] D: mouseMove2
+[    39.20 ] D: _automationChanging true
+[    39.20 ] D: _currentMouseY 197 198 206 218 QSizeF(-1, 0)
+[    39.20 ] D: mouseMove2
+[    39.20 ] D: _pointActive2 false 1
+[    39.20 ] D: createSelectedPoints 1 -1
+[    39.21 ] D: _automationChanging true
+[    39.21 ] D: _currentMouseY 197 199 206 218 QSizeF(0, 1)
+[    39.21 ] D: mouseMove2
+[    39.24 ] D: _pointActive2 false 1
+[    39.24 ] D: createSelectedPoints 1 -1
+[    39.26 ] D: _automationChanging true
+[    39.26 ] D: _currentMouseY 197 201 206 218 QSizeF(0, 2)
+[    39.26 ] D: mouseMove2
+[    39.26 ] D: _automationChanging true
+[    39.26 ] D: _currentMouseY 197 201 206 218 QSizeF(0, 0)
+[    39.26 ] D: mouseMove2
+[    39.28 ] D: _pointActive2 false 1
+[    39.28 ] D: createSelectedPoints 1 -1
+[    39.28 ] D: _automationChanging true
+[    39.28 ] D: _currentMouseY 196 201 206 218 QSizeF(-1, 0)
+[    39.28 ] D: mouseMove2
+[    39.29 ] D: _pointActive2 false 1
+[    39.29 ] D: _automationChanging true
+[    39.29 ] D: createSelectedPoints 1 -1
+[    39.29 ] D: _currentMouseY 196 202 206 218 QSizeF(0, 1)
+[    39.29 ] D: mouseMove2
+[    39.33 ] D: _pointActive2 false 1
+[    39.33 ] D: createSelectedPoints 1 -1
+[    39.33 ] D: _automationChanging true
+[    39.33 ] D: _currentMouseY 196 204 206 218 QSizeF(0, 2)
+[    39.33 ] D: mouseMove2
+[    39.34 ] D: _pointActive2 false 1
+[    39.34 ] D: createSelectedPoints 1 -1
+[    39.34 ] D: _automationChanging true
+[    39.34 ] D: _currentMouseY 196 204 206 218 QSizeF(0, 0)
+[    39.34 ] D: mouseMove2
+[    39.38 ] D: _automationChanging true
+[    39.38 ] D: _pointActive2 false 1
+[    39.38 ] D: createSelectedPoints 1 -1
+[    39.38 ] D: _currentMouseY 196 205 206 218 QSizeF(0, 1)
+[    39.38 ] D: mouseMove2
+[    39.38 ] D: _automationChanging true
+[    39.38 ] D: _currentMouseY 196 207 206 218 QSizeF(0, 2)
+[    39.38 ] D: mouseMove2
+[    39.39 ] D: _pointActive2 false 1
+[    39.39 ] D: _automationChanging true
+[    39.39 ] D: createSelectedPoints 1 -1
+[    39.39 ] D: _currentMouseY 196 207 206 218 QSizeF(0, 0)
+[    39.39 ] D: mouseMove2
+[    39.43 ] D: _pointActive2 false 1
+[    39.43 ] D: createSelectedPoints 1 -1
+[    39.43 ] D: _automationChanging true
+[    39.43 ] D: _currentMouseY 196 208 206 218 QSizeF(0, 1)
+[    39.43 ] D: mouseMove2
+[    39.44 ] D: _automationChanging true
+[    39.44 ] D: _pointActive2 false 1
+[    39.44 ] D: createSelectedPoints 1 -1
+[    39.44 ] D: _currentMouseY 196 208 206 218 QSizeF(0, 0)
+[    39.44 ] D: mouseMove2
+[    39.48 ] D: _pointActive2 false 1
+[    39.48 ] D: createSelectedPoints 1 -1
+[    39.48 ] D: _automationChanging true
+[    39.48 ] D: _currentMouseY 196 209 206 218 QSizeF(0, 1)
+[    39.48 ] D: mouseMove2
+[    39.51 ] D: _pointActive2 false 1
+[    39.51 ] D: createSelectedPoints 1 -1
+[    39.51 ] D: _automationChanging true
+[    39.51 ] D: _currentMouseY 195 209 206 218 QSizeF(-1, 0)
+[    39.51 ] D: mouseMove2
+[    39.54 ] D: _automationChanging true
+[    39.54 ] D: _pointActive2 false 1
+[    39.54 ] D: createSelectedPoints 1 -1
+[    39.54 ] D: _currentMouseY 195 209 206 218 QSizeF(0, 0)
+[    39.55 ] D: mouseMove2
+[    39.56 ] D: _pointActive2 false 1
+[    39.56 ] D: createSelectedPoints 1 -1
+[    40.10 ] D: _automationChanging true
+[    40.10 ] D: _currentMouseY 195 210 206 218 QSizeF(0, 1)
+[    40.10 ] D: mouseMove2
+[    40.11 ] D: _automationChanging true
+[    40.11 ] D: _currentMouseY 195 210 206 218 QSizeF(0, 0)
+[    40.11 ] D: mouseMove2
+[    40.13 ] D: _pointActive2 false 1
+[    40.13 ] D: createSelectedPoints 1 -1
+[    40.14 ] D: _automationChanging true
+[    40.14 ] D: _currentMouseY 195 212 206 218 QSizeF(0, 2)
+[    40.14 ] D: mouseMove2
+[    40.14 ] D: _automationChanging true
+[    40.14 ] D: _currentMouseY 195 212 206 218 QSizeF(0, 0)
+[    40.14 ] D: mouseMove2
+[    40.16 ] D: _pointActive2 false 1
+[    40.16 ] D: createSelectedPoints 1 -1
+[    40.16 ] D: _automationChanging true
+[    40.16 ] D: _currentMouseY 195 213 206 218 QSizeF(0, 1)
+[    40.16 ] D: mouseMove2
+[    40.19 ] D: _pointActive2 false 1
+[    40.19 ] D: createSelectedPoints 1 -1
+[    40.20 ] D: _automationChanging true
+[    40.20 ] D: _currentMouseY 194 214 206 218 QSizeF(-1, 1)
+[    40.20 ] D: mouseMove2
+[    40.23 ] D: _pointActive2 false 1
+[    40.23 ] D: createSelectedPoints 1 -1
+[    40.23 ] D: _automationChanging true
+[    40.23 ] D: _currentMouseY 194 214 206 218 QSizeF(0, 0)
+[    40.23 ] D: mouseMove2
+[    40.25 ] D: _pointActive2 false 1
+[    40.25 ] D: createSelectedPoints 1 -1
+[    42.00 ] D: createSelectedPoints 1 -1
+[    42.00 ] D: isAutomated 1
+[    42.00 ] D: isAutomated 0
+[    42.01 ] D: isAutomated 0
+[    55.21 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(198,214)
+[    55.21 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(198,214)
+[    55.22 ] D: createSelectedPoints 1 -1
+[    55.34 ] D: _pointActive1 true false false
+[    55.34 ] D: _pointActive2 false 1
+[    55.34 ] D: createSelectedPoints 1 -1
+[    55.49 ] D: _automationChanging true
+[    55.49 ] D: _currentMouseY 198 213 198 214 QSizeF(0, -1)
+[    55.49 ] D: mouseMove2
+[    55.51 ] D: _pointActive2 false 1
+[    55.51 ] D: createSelectedPoints 1 -1
+[    55.51 ] D: _automationChanging true
+[    55.51 ] D: _currentMouseY 198 213 198 214 QSizeF(0, 0)
+[    55.51 ] D: mouseMove2
+[    55.51 ] D: _automationChanging true
+[    55.51 ] D: _currentMouseY 198 212 198 214 QSizeF(0, -1)
+[    55.51 ] D: mouseMove2
+[    55.53 ] D: _pointActive2 false 1
+[    55.53 ] D: createSelectedPoints 1 -1
+[    55.54 ] D: _automationChanging true
+[    55.54 ] D: _currentMouseY 198 210 198 214 QSizeF(0, -2)
+[    55.54 ] D: mouseMove2
+[    55.54 ] D: _automationChanging true
+[    55.54 ] D: _currentMouseY 198 210 198 214 QSizeF(0, 0)
+[    55.54 ] D: mouseMove2
+[    55.56 ] D: _pointActive2 false 1
+[    55.56 ] D: createSelectedPoints 1 -1
+[    55.56 ] D: _automationChanging true
+[    55.56 ] D: _currentMouseY 198 209 198 214 QSizeF(0, -1)
+[    55.56 ] D: mouseMove2
+[    55.58 ] D: _pointActive2 false 1
+[    55.58 ] D: createSelectedPoints 1 -1
+[    56.37 ] D: _automationChanging true
+[    56.37 ] D: _currentMouseY 198 207 198 214 QSizeF(0, -2)
+[    56.37 ] D: mouseMove2
+[    56.38 ] D: _automationChanging true
+[    56.38 ] D: _currentMouseY 198 207 198 214 QSizeF(0, 0)
+[    56.38 ] D: mouseMove2
+[    56.39 ] D: _pointActive2 false 1
+[    56.40 ] D: createSelectedPoints 1 -1
+[    56.41 ] D: _automationChanging true
+[    56.41 ] D: _currentMouseY 198 206 198 214 QSizeF(0, -1)
+[    56.41 ] D: mouseMove2
+[    56.44 ] D: _pointActive2 false 1
+[    56.44 ] D: createSelectedPoints 1 -1
+[    56.47 ] D: _automationChanging true
+[    56.47 ] D: _currentMouseY 198 204 198 214 QSizeF(0, -2)
+[    56.48 ] D: mouseMove2
+[    56.49 ] D: _pointActive2 false 1
+[    56.49 ] D: createSelectedPoints 1 -1
+[    56.49 ] D: _automationChanging true
+[    56.49 ] D: _currentMouseY 198 204 198 214 QSizeF(0, 0)
+[    56.49 ] D: mouseMove2
+[    56.53 ] D: _pointActive2 false 1
+[    56.53 ] D: createSelectedPoints 1 -1
+[    57.65 ] D: _automationChanging true
+[    57.65 ] D: _currentMouseY 199 204 198 214 QSizeF(1, 0)
+[    57.65 ] D: mouseMove2
+[    57.68 ] D: _pointActive2 false 1
+[    57.68 ] D: createSelectedPoints 1 -1
+[    57.68 ] D: _automationChanging true
+[    57.68 ] D: _currentMouseY 199 204 198 214 QSizeF(0, 0)
+[    57.68 ] D: mouseMove2
+[    57.69 ] D: _pointActive2 false 1
+[    57.69 ] D: createSelectedPoints 1 -1
+[    57.74 ] D: _automationChanging true
+[    57.74 ] D: _currentMouseY 200 204 198 214 QSizeF(1, 0)
+[    57.74 ] D: mouseMove2
+[    57.74 ] D: _pointActive2 false 1
+[    57.74 ] D: createSelectedPoints 1 -1
+[    57.74 ] D: _automationChanging true
+[    57.74 ] D: _currentMouseY 200 204 198 214 QSizeF(0, 0)
+[    57.75 ] D: mouseMove2
+[    57.76 ] D: _pointActive2 false 1
+[    57.76 ] D: createSelectedPoints 1 -1
+[    58.08 ] D: _pointActive2 false 1
+[    58.08 ] D: createSelectedPoints 1 -1
+[    58.28 ] D: _automationChanging true
+[    58.28 ] D: _currentMouseY 200 204.04 198 214 QSizeF(0, 1)
+[    58.28 ] D: mouseMove2
+[    58.32 ] D: _pointActive2 false 1
+[    58.32 ] D: createSelectedPoints 1 -1
+[    58.32 ] D: _automationChanging true
+[    58.32 ] D: _currentMouseY 200 204.04 198 214 QSizeF(1, 0)
+[    58.32 ] D: mouseMove2
+[    58.32 ] D: _automationChanging true
+[    58.32 ] D: _currentMouseY 200 204.08 198 214 QSizeF(1, 1)
+[    58.32 ] D: mouseMove2
+[    58.34 ] D: _pointActive2 false 1
+[    58.34 ] D: createSelectedPoints 1 -1
+[    58.35 ] D: _automationChanging true
+[    58.35 ] D: _currentMouseY 200 204.12 198 214 QSizeF(0, 1)
+[    58.35 ] D: mouseMove2
+[    58.35 ] D: _automationChanging true
+[    58.35 ] D: _currentMouseY 200 204.16 198 214 QSizeF(1, 1)
+[    58.35 ] D: mouseMove2
+[    58.37 ] D: _pointActive2 false 1
+[    58.37 ] D: _automationChanging true
+[    58.37 ] D: createSelectedPoints 1 -1
+[    58.37 ] D: _currentMouseY 200 204.16 198 214 QSizeF(0, 0)
+[    58.37 ] D: mouseMove2
+[    58.41 ] D: _pointActive2 false 1
+[    58.41 ] D: createSelectedPoints 1 -1
+[    58.45 ] D: _automationChanging true
+[    58.45 ] D: _currentMouseY 200 204.2 198 214 QSizeF(0, 1)
+[    58.45 ] D: mouseMove2
+[    58.47 ] D: _pointActive2 false 1
+[    58.47 ] D: createSelectedPoints 1 -1
+[    58.56 ] D: _automationChanging true
+[    58.56 ] D: _currentMouseY 200 204.28 198 214 QSizeF(0, 2)
+[    58.56 ] D: mouseMove2
+[    58.58 ] D: _pointActive2 false 1
+[    58.58 ] D: createSelectedPoints 1 -1
+[    58.58 ] D: _automationChanging true
+[    58.58 ] D: _currentMouseY 200 204.32 198 214 QSizeF(0, 1)
+[    58.58 ] D: mouseMove2
+[    58.59 ] D: _pointActive2 false 1
+[    58.59 ] D: createSelectedPoints 1 -1
+[    58.59 ] D: _automationChanging true
+[    58.59 ] D: _currentMouseY 200 204.32 198 214 QSizeF(0, 0)
+[    58.60 ] D: mouseMove2
+[    58.61 ] D: _pointActive2 false 1
+[    58.61 ] D: createSelectedPoints 1 -1
+[    58.64 ] D: _automationChanging true
+[    58.64 ] D: _currentMouseY 200 204.36 198 214 QSizeF(0, 1)
+[    58.65 ] D: mouseMove2
+[    58.68 ] D: _pointActive2 false 1
+[    58.68 ] D: createSelectedPoints 1 -1
+[    58.73 ] D: _automationChanging true
+[    58.73 ] D: _currentMouseY 200 204.44 198 214 QSizeF(0, 2)
+[    58.73 ] D: mouseMove2
+[    58.76 ] D: _pointActive2 false 1
+[    58.76 ] D: createSelectedPoints 1 -1
+[    58.76 ] D: _automationChanging true
+[    58.76 ] D: _currentMouseY 200 204.44 198 214 QSizeF(0, 0)
+[    58.76 ] D: mouseMove2
+[    58.76 ] D: _automationChanging true
+[    58.76 ] D: _currentMouseY 200 204.48 198 214 QSizeF(0, 1)
+[    58.76 ] D: mouseMove2
+[    58.79 ] D: _pointActive2 false 1
+[    58.79 ] D: createSelectedPoints 1 -1
+[    58.81 ] D: _automationChanging true
+[    58.81 ] D: _currentMouseY 200 204.56 198 214 QSizeF(0, 2)
+[    58.81 ] D: mouseMove2
+[    58.83 ] D: _pointActive2 false 1
+[    58.83 ] D: createSelectedPoints 1 -1
+[    58.85 ] D: _automationChanging true
+[    58.85 ] D: _currentMouseY 200 204.6 198 214 QSizeF(0, 1)
+[    58.85 ] D: mouseMove2
+[    58.86 ] D: _pointActive2 false 1
+[    58.86 ] D: createSelectedPoints 1 -1
+[    58.88 ] D: _automationChanging true
+[    58.88 ] D: _currentMouseY 200 204.68 198 214 QSizeF(0, 2)
+[    58.88 ] D: mouseMove2
+[    58.91 ] D: _pointActive2 false 1
+[    58.91 ] D: createSelectedPoints 1 -1
+[    58.91 ] D: _automationChanging true
+[    58.91 ] D: _currentMouseY 200 204.68 198 214 QSizeF(0, 0)
+[    58.91 ] D: mouseMove2
+[    58.92 ] D: _pointActive2 false 1
+[    58.92 ] D: createSelectedPoints 1 -1
+[    58.93 ] D: _automationChanging true
+[    58.93 ] D: _currentMouseY 200 204.72 198 214 QSizeF(0, 1)
+[    58.94 ] D: mouseMove2
+[    58.94 ] D: _pointActive2 false 1
+[    58.94 ] D: createSelectedPoints 1 -1
+[    58.94 ] D: _automationChanging true
+[    58.94 ] D: _currentMouseY 200 204.72 198 214 QSizeF(0, 0)
+[    58.95 ] D: mouseMove2
+[    58.96 ] D: _pointActive2 false 1
+[    58.96 ] D: _automationChanging true
+[    58.96 ] D: createSelectedPoints 1 -1
+[    58.96 ] D: _currentMouseY 200 204.76 198 214 QSizeF(0, 1)
+[    58.96 ] D: mouseMove2
+[    58.97 ] D: _pointActive2 false 1
+[    58.97 ] D: createSelectedPoints 1 -1
+[    58.98 ] D: _automationChanging true
+[    58.98 ] D: _currentMouseY 200 204.76 198 214 QSizeF(0, 0)
+[    58.99 ] D: mouseMove2
+[    58.99 ] D: _automationChanging true
+[    58.99 ] D: _pointActive2 false 1
+[    58.99 ] D: createSelectedPoints 1 -1
+[    59.00 ] D: _currentMouseY 200 204.8 198 214 QSizeF(0, 1)
+[    59.00 ] D: mouseMove2
+[    59.00 ] D: _automationChanging true
+[    59.00 ] D: _currentMouseY 200 204.88 198 214 QSizeF(0, 2)
+[    59.00 ] D: mouseMove2
+[    59.03 ] D: _automationChanging true
+[    59.03 ] D: _pointActive2 false 1
+[    59.03 ] D: createSelectedPoints 1 -1
+[    59.03 ] D: _currentMouseY 200 204.92 198 214 QSizeF(0, 1)
+[    59.03 ] D: mouseMove2
+[    59.03 ] D: _automationChanging true
+[    59.03 ] D: _currentMouseY 200 205 198 214 QSizeF(0, 2)
+[    59.03 ] D: mouseMove2
+[    59.06 ] D: _pointActive2 false 1
+[    59.06 ] D: createSelectedPoints 1 -1
+[    59.06 ] D: _automationChanging true
+[    59.06 ] D: _currentMouseY 200 205.04 198 214 QSizeF(0, 1)
+[    59.06 ] D: mouseMove2
+[    59.06 ] D: _automationChanging true
+[    59.06 ] D: _currentMouseY 200 205.12 198 214 QSizeF(0, 2)
+[    59.06 ] D: mouseMove2
+[    59.10 ] D: _pointActive2 false 1
+[    59.10 ] D: createSelectedPoints 1 -1
+[    59.10 ] D: _automationChanging true
+[    59.10 ] D: _currentMouseY 200 205.12 198 214 QSizeF(0, 0)
+[    59.10 ] D: mouseMove2
+[    59.13 ] D: _automationChanging true
+[    59.13 ] D: _pointActive2 false 1
+[    59.13 ] D: createSelectedPoints 1 -1
+[    59.13 ] D: _currentMouseY 200 205.16 198 214 QSizeF(0, 1)
+[    59.13 ] D: mouseMove2
+[    59.15 ] D: _pointActive2 false 1
+[    59.15 ] D: createSelectedPoints 1 -1
+[    59.15 ] D: _automationChanging true
+[    59.15 ] D: _currentMouseY 200 205.16 198 214 QSizeF(0, 0)
+[    59.15 ] D: mouseMove2
+[    59.16 ] D: _pointActive2 false 1
+[    59.16 ] D: createSelectedPoints 1 -1
+[    59.21 ] D: _automationChanging true
+[    59.21 ] D: _currentMouseY 200 205.2 198 214 QSizeF(0, 1)
+[    59.21 ] D: mouseMove2
+[    59.23 ] D: _pointActive2 false 1
+[    59.23 ] D: createSelectedPoints 1 -1
+[    59.23 ] D: _automationChanging true
+[    59.23 ] D: _currentMouseY 200 205.2 198 214 QSizeF(0, 0)
+[    59.23 ] D: mouseMove2
+[    59.24 ] D: _pointActive2 false 1
+[    59.24 ] D: createSelectedPoints 1 -1
+[    59.29 ] D: _automationChanging true
+[    59.29 ] D: _currentMouseY 200 205.24 198 214 QSizeF(0, 1)
+[    59.29 ] D: mouseMove2
+[    59.29 ] D: _automationChanging true
+[    59.29 ] D: _currentMouseY 200 205.24 198 214 QSizeF(0, 0)
+[    59.29 ] D: mouseMove2
+[    59.31 ] D: _pointActive2 false 1
+[    59.31 ] D: createSelectedPoints 1 -1
+[    59.31 ] D: _automationChanging true
+[    59.31 ] D: _currentMouseY 200 205.28 198 214 QSizeF(0, 1)
+[    59.31 ] D: mouseMove2
+[    59.33 ] D: _pointActive2 false 1
+[    59.33 ] D: createSelectedPoints 1 -1
+[    59.67 ] D: _automationChanging true
+[    59.68 ] D: _currentMouseY 200 205.32 198 214 QSizeF(1, 1)
+[    59.68 ] D: mouseMove2
+[    59.68 ] D: _pointActive2 false 1
+[    59.68 ] D: createSelectedPoints 1 -1
+[    59.69 ] D: _automationChanging true
+[    59.69 ] D: _currentMouseY 200 205.32 198 214 QSizeF(0, 0)
+[    59.69 ] D: mouseMove2
+[    59.71 ] D: _pointActive2 false 1
+[    59.71 ] D: createSelectedPoints 1 -1
+[    59.74 ] D: _automationChanging true
+[    59.74 ] D: _currentMouseY 200 205.36 198 214 QSizeF(0, 1)
+[    59.74 ] D: mouseMove2
+[    59.78 ] D: _pointActive2 false 1
+[    59.78 ] D: createSelectedPoints 1 -1
+[    59.78 ] D: _automationChanging true
+[    59.78 ] D: _currentMouseY 200 205.44 198 214 QSizeF(0, 2)
+[    59.78 ] D: mouseMove2
+[    59.79 ] D: _pointActive2 false 1
+[    59.79 ] D: createSelectedPoints 1 -1
+[    59.79 ] D: _automationChanging true
+[    59.79 ] D: _currentMouseY 200 205.44 198 214 QSizeF(0, 0)
+[    59.79 ] D: mouseMove2
+[    59.80 ] D: _pointActive2 false 1
+[    59.80 ] D: createSelectedPoints 1 -1
+[    59.81 ] D: _automationChanging true
+[    59.81 ] D: _currentMouseY 200 205.48 198 214 QSizeF(0, 1)
+[    59.81 ] D: mouseMove2
+[    59.81 ] D: _automationChanging true
+[    59.81 ] D: _currentMouseY 200 205.48 198 214 QSizeF(0, 0)
+[    59.81 ] D: mouseMove2
+[    59.83 ] D: _pointActive2 false 1
+[    59.83 ] D: createSelectedPoints 1 -1
+[    61.10 ] D: createSelectedPoints 1 -1
+[    61.11 ] D: isAutomated 1
+[    61.11 ] D: isAutomated 0
+[    61.11 ] D: isAutomated 0
+[   408.31 ] D: setTracksRect
+[   408.31 ] D: sltStartContentYChanged1
+[   408.31 ] D: sltStartContentYChanged2
+[   408.31 ] D: sltStartContentYChanged3
+[   408.31 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1431x111)
+[   408.31 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1431x111)
+[   408.31 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1431x111)
+[   408.31 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1431x111)
+[   408.31 ] D: setTracksRect
+[   408.31 ] D: setTracksRect
+[   408.31 ] D: sltStartContentYChanged4
+[   408.31 ] D: setTracksRect
+[   408.31 ] D: sltStartContentYChanged1
+[   408.31 ] D: sltStartContentYChanged2
+[   408.31 ] D: sltStartContentYChanged3
+[   408.31 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   408.31 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   408.31 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   408.31 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   408.31 ] D: setTracksRect
+[   408.31 ] D: setTracksRect
+[   408.31 ] D: sltStartContentYChanged4
+[   408.60 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   408.64 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   408.64 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   408.64 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   408.64 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   408.64 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   411.16 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   415.98 ] D: setTracksRect
+[   415.98 ] D: sltStartContentYChanged1
+[   415.98 ] D: sltStartContentYChanged2
+[   415.98 ] D: sltStartContentYChanged3
+[   415.98 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1405x111)
+[   415.98 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1405x111)
+[   415.98 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1405x111)
+[   415.98 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1405x111)
+[   415.98 ] D: setTracksRect
+[   415.98 ] D: setTracksRect
+[   415.98 ] D: sltStartContentYChanged4
+[   415.98 ] D: setTracksRect
+[   415.98 ] D: sltStartContentYChanged1
+[   415.98 ] D: sltStartContentYChanged2
+[   415.99 ] D: sltStartContentYChanged3
+[   415.99 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   415.99 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   415.99 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   415.99 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   415.99 ] D: setTracksRect
+[   415.99 ] D: setTracksRect
+[   415.99 ] D: sltStartContentYChanged4
+[   416.24 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   416.28 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   416.28 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   416.28 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   416.28 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   416.28 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   416.28 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   416.29 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   417.25 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   417.45 ] D: setTracksRect
+[   417.45 ] D: sltStartContentYChanged1
+[   417.45 ] D: sltStartContentYChanged2
+[   417.45 ] D: sltStartContentYChanged3
+[   417.45 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1388x111)
+[   417.45 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1388x111)
+[   417.45 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1388x111)
+[   417.45 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1388x111)
+[   417.45 ] D: setTracksRect
+[   417.45 ] D: setTracksRect
+[   417.45 ] D: sltStartContentYChanged4
+[   417.45 ] D: setTracksRect
+[   417.45 ] D: sltStartContentYChanged1
+[   417.45 ] D: sltStartContentYChanged2
+[   417.45 ] D: sltStartContentYChanged3
+[   417.45 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   417.45 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   417.45 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   417.45 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   417.45 ] D: setTracksRect
+[   417.45 ] D: setTracksRect
+[   417.45 ] D: sltStartContentYChanged4
+[   417.57 ] D: setTracksRect
+[   417.57 ] D: sltStartContentYChanged1
+[   417.57 ] D: sltStartContentYChanged2
+[   417.57 ] D: sltStartContentYChanged3
+[   417.57 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1367x111)
+[   417.57 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1367x111)
+[   417.57 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1367x111)
+[   417.57 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1367x111)
+[   417.57 ] D: setTracksRect
+[   417.57 ] D: setTracksRect
+[   417.57 ] D: sltStartContentYChanged4
+[   417.57 ] D: setTracksRect
+[   417.57 ] D: sltStartContentYChanged1
+[   417.57 ] D: sltStartContentYChanged2
+[   417.57 ] D: sltStartContentYChanged3
+[   417.57 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   417.57 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   417.57 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   417.57 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   417.57 ] D: setTracksRect
+[   417.57 ] D: setTracksRect
+[   417.57 ] D: sltStartContentYChanged4
+[   417.82 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   417.86 ] D: setTracksRect
+[   417.86 ] D: sltStartContentYChanged1
+[   417.86 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   417.86 ] D: sltStartContentYChanged2
+[   417.86 ] D: sltStartContentYChanged3
+[   417.86 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1282x111)
+[   417.86 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1282x111)
+[   417.86 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1282x111)
+[   417.86 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1282x111)
+[   417.86 ] D: setTracksRect
+[   417.86 ] D: setTracksRect
+[   417.86 ] D: sltStartContentYChanged4
+[   417.86 ] D: setTracksRect
+[   417.86 ] D: sltStartContentYChanged1
+[   417.86 ] D: sltStartContentYChanged2
+[   417.86 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   417.86 ] D: sltStartContentYChanged3
+[   417.86 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   417.86 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   417.86 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   417.86 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   417.86 ] D: setTracksRect
+[   417.86 ] D: setTracksRect
+[   417.86 ] D: sltStartContentYChanged4
+[   417.86 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   417.86 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   418.34 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   418.38 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   418.38 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   418.38 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   418.38 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   418.38 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   418.38 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   418.38 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   418.38 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   418.39 ] D: setTracksRect
+[   418.39 ] D: sltStartContentYChanged1
+[   418.39 ] D: sltStartContentYChanged2
+[   418.39 ] D: sltStartContentYChanged3
+[   418.39 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1257x111)
+[   418.39 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1257x111)
+[   418.39 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1257x111)
+[   418.39 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1257x111)
+[   418.39 ] D: setTracksRect
+[   418.39 ] D: setTracksRect
+[   418.39 ] D: sltStartContentYChanged4
+[   418.39 ] D: setTracksRect
+[   418.39 ] D: sltStartContentYChanged1
+[   418.39 ] D: sltStartContentYChanged2
+[   418.39 ] D: sltStartContentYChanged3
+[   418.39 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   418.39 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   418.39 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   418.39 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   418.39 ] D: setTracksRect
+[   418.39 ] D: setTracksRect
+[   418.39 ] D: sltStartContentYChanged4
+[   418.89 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   418.93 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   418.93 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   418.93 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   418.93 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   419.00 ] D: setTracksRect
+[   419.00 ] D: sltStartContentYChanged1
+[   419.00 ] D: sltStartContentYChanged2
+[   419.00 ] D: sltStartContentYChanged3
+[   419.00 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1396x111)
+[   419.00 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1396x111)
+[   419.00 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1396x111)
+[   419.00 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1396x111)
+[   419.00 ] D: setTracksRect
+[   419.00 ] D: setTracksRect
+[   419.00 ] D: sltStartContentYChanged4
+[   419.00 ] D: setTracksRect
+[   419.00 ] D: sltStartContentYChanged1
+[   419.00 ] D: sltStartContentYChanged2
+[   419.00 ] D: sltStartContentYChanged3
+[   419.00 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   419.00 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   419.00 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   419.00 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   419.00 ] D: setTracksRect
+[   419.00 ] D: setTracksRect
+[   419.00 ] D: sltStartContentYChanged4
+[   419.18 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   419.21 ] D: setTracksRect
+[   419.21 ] D: sltStartContentYChanged1
+[   419.21 ] D: sltStartContentYChanged2
+[   419.21 ] D: sltStartContentYChanged3
+[   419.21 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1468x111)
+[   419.21 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1468x111)
+[   419.21 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1468x111)
+[   419.21 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1468x111)
+[   419.21 ] D: setTracksRect
+[   419.22 ] D: setTracksRect
+[   419.22 ] D: sltStartContentYChanged4
+[   419.22 ] D: setTracksRect
+[   419.22 ] D: sltStartContentYChanged1
+[   419.22 ] D: sltStartContentYChanged2
+[   419.22 ] D: sltStartContentYChanged3
+[   419.22 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   419.22 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   419.22 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   419.22 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   419.22 ] D: setTracksRect
+[   419.22 ] D: setTracksRect
+[   419.22 ] D: sltStartContentYChanged4
+[   419.59 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   419.60 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   419.60 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   419.60 ] D: setTracksRect
+[   419.60 ] D: sltStartContentYChanged1
+[   419.60 ] D: sltStartContentYChanged2
+[   419.60 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   419.60 ] D: sltStartContentYChanged3
+[   419.60 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1476x111)
+[   419.60 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1476x111)
+[   419.60 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1476x111)
+[   419.60 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1476x111)
+[   419.60 ] D: setTracksRect
+[   419.60 ] D: setTracksRect
+[   419.60 ] D: sltStartContentYChanged4
+[   419.60 ] D: setTracksRect
+[   419.60 ] D: sltStartContentYChanged1
+[   419.60 ] D: sltStartContentYChanged2
+[   419.60 ] D: sltStartContentYChanged3
+[   419.60 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   419.60 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   419.60 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   419.60 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   419.60 ] D: setTracksRect
+[   419.60 ] D: setTracksRect
+[   419.60 ] D: sltStartContentYChanged4
+[   420.03 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.04 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.04 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.04 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.04 ] D: setTracksRect
+[   420.04 ] D: sltStartContentYChanged1
+[   420.04 ] D: sltStartContentYChanged2
+[   420.04 ] D: sltStartContentYChanged3
+[   420.04 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1405x111)
+[   420.04 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1405x111)
+[   420.04 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1405x111)
+[   420.04 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1405x111)
+[   420.04 ] D: setTracksRect
+[   420.04 ] D: setTracksRect
+[   420.04 ] D: sltStartContentYChanged4
+[   420.04 ] D: setTracksRect
+[   420.04 ] D: sltStartContentYChanged1
+[   420.04 ] D: sltStartContentYChanged2
+[   420.04 ] D: sltStartContentYChanged3
+[   420.04 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   420.04 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   420.04 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   420.04 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   420.04 ] D: setTracksRect
+[   420.04 ] D: setTracksRect
+[   420.04 ] D: sltStartContentYChanged4
+[   420.31 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   420.35 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.35 ] D: setTracksRect
+[   420.35 ] D: sltStartContentYChanged1
+[   420.35 ] D: sltStartContentYChanged2
+[   420.35 ] D: sltStartContentYChanged3
+[   420.35 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1472x111)
+[   420.35 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1472x111)
+[   420.35 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1472x111)
+[   420.35 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1472x111)
+[   420.35 ] D: setTracksRect
+[   420.35 ] D: setTracksRect
+[   420.35 ] D: sltStartContentYChanged4
+[   420.35 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.35 ] D: setTracksRect
+[   420.35 ] D: sltStartContentYChanged1
+[   420.35 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.35 ] D: sltStartContentYChanged2
+[   420.35 ] D: sltStartContentYChanged3
+[   420.36 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   420.36 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   420.36 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   420.36 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   420.36 ] D: setTracksRect
+[   420.36 ] D: setTracksRect
+[   420.36 ] D: sltStartContentYChanged4
+[   420.36 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.73 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   420.77 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.77 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.77 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.77 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   420.78 ] D: setTracksRect
+[   420.78 ] D: sltStartContentYChanged1
+[   420.78 ] D: sltStartContentYChanged2
+[   420.78 ] D: sltStartContentYChanged3
+[   420.78 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1396x111)
+[   420.78 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1396x111)
+[   420.78 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1396x111)
+[   420.78 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1396x111)
+[   420.78 ] D: setTracksRect
+[   420.78 ] D: setTracksRect
+[   420.78 ] D: sltStartContentYChanged4
+[   420.78 ] D: setTracksRect
+[   420.78 ] D: sltStartContentYChanged1
+[   420.78 ] D: sltStartContentYChanged2
+[   420.78 ] D: sltStartContentYChanged3
+[   420.78 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   420.78 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   420.78 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   420.78 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   420.78 ] D: setTracksRect
+[   420.78 ] D: setTracksRect
+[   420.78 ] D: sltStartContentYChanged4
+[   420.85 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   422.16 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   428.31 ] D: findTrackIndexByPoint 0 QRect(0,0 1392x111) false QPointF(27,155)
+[   428.31 ] D: findTrackIndexByPoint 1 QRect(0,111 1392x111) true QPointF(27,155)
+[   428.32 ] D: createSelectedPoints 1 -1
+[   428.73 ] D: findTrackIndexByPoint 0 QRect(0,0 1392x111) true QPointF(46,50)
+[   429.99 ] D: findTrackIndexByPoint 0 QRect(0,0 1392x111) false QPointF(30,278)
+[   429.99 ] D: findTrackIndexByPoint 1 QRect(0,111 1392x111) false QPointF(30,278)
+[   429.99 ] D: findTrackIndexByPoint 2 QRect(0,222 1392x111) true QPointF(30,278)
+[   433.34 ] D: findTrackIndexByPoint 0 QRect(0,0 1392x111) false QPointF(68,388)
+[   433.34 ] D: findTrackIndexByPoint 1 QRect(0,111 1392x111) false QPointF(68,388)
+[   433.34 ] D: findTrackIndexByPoint 2 QRect(0,222 1392x111) false QPointF(68,388)
+[   433.34 ] D: findTrackIndexByPoint 3 QRect(0,333 1392x111) true QPointF(68,388)
+[   435.76 ] D: setTracksRect
+[   435.76 ] D: sltStartContentYChanged1
+[   435.76 ] D: sltStartContentYChanged2
+[   435.76 ] D: sltStartContentYChanged3
+[   435.76 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1363x111)
+[   435.76 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1363x111)
+[   435.76 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1363x111)
+[   435.76 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1363x111)
+[   435.76 ] D: setTracksRect
+[   435.76 ] D: setTracksRect
+[   435.76 ] D: sltStartContentYChanged4
+[   435.76 ] D: setTracksRect
+[   435.76 ] D: sltStartContentYChanged1
+[   435.76 ] D: sltStartContentYChanged2
+[   435.76 ] D: sltStartContentYChanged3
+[   435.76 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   435.76 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   435.76 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   435.76 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   435.76 ] D: setTracksRect
+[   435.76 ] D: setTracksRect
+[   435.76 ] D: sltStartContentYChanged4
+[   436.00 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   436.03 ] D: setTracksRect
+[   436.03 ] D: sltStartContentYChanged1
+[   436.03 ] D: sltStartContentYChanged2
+[   436.03 ] D: sltStartContentYChanged3
+[   436.03 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1312x111)
+[   436.03 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1312x111)
+[   436.03 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1312x111)
+[   436.03 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1312x111)
+[   436.03 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.03 ] D: setTracksRect
+[   436.03 ] D: setTracksRect
+[   436.03 ] D: sltStartContentYChanged4
+[   436.03 ] D: setTracksRect
+[   436.03 ] D: sltStartContentYChanged1
+[   436.03 ] D: sltStartContentYChanged2
+[   436.03 ] D: sltStartContentYChanged3
+[   436.03 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   436.03 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.03 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   436.04 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   436.04 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   436.04 ] D: setTracksRect
+[   436.04 ] D: setTracksRect
+[   436.04 ] D: sltStartContentYChanged4
+[   436.04 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.04 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.43 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   436.47 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.47 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.47 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.47 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.47 ] D: setTracksRect
+[   436.47 ] D: sltStartContentYChanged1
+[   436.47 ] D: sltStartContentYChanged2
+[   436.47 ] D: sltStartContentYChanged3
+[   436.47 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1362x111)
+[   436.47 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1362x111)
+[   436.47 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1362x111)
+[   436.47 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1362x111)
+[   436.47 ] D: setTracksRect
+[   436.47 ] D: setTracksRect
+[   436.47 ] D: sltStartContentYChanged4
+[   436.47 ] D: setTracksRect
+[   436.47 ] D: sltStartContentYChanged1
+[   436.47 ] D: sltStartContentYChanged2
+[   436.47 ] D: sltStartContentYChanged3
+[   436.47 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   436.47 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   436.47 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   436.47 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   436.47 ] D: setTracksRect
+[   436.47 ] D: setTracksRect
+[   436.47 ] D: sltStartContentYChanged4
+[   436.82 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.82 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.83 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   436.83 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   437.49 ] D: setTracksRect
+[   437.49 ] D: sltStartContentYChanged1
+[   437.49 ] D: sltStartContentYChanged2
+[   437.49 ] D: sltStartContentYChanged3
+[   437.49 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1388x111)
+[   437.49 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1388x111)
+[   437.49 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1388x111)
+[   437.49 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1388x111)
+[   437.49 ] D: setTracksRect
+[   437.49 ] D: setTracksRect
+[   437.49 ] D: sltStartContentYChanged4
+[   437.49 ] D: setTracksRect
+[   437.49 ] D: sltStartContentYChanged1
+[   437.49 ] D: sltStartContentYChanged2
+[   437.49 ] D: sltStartContentYChanged3
+[   437.49 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   437.49 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   437.49 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   437.49 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   437.49 ] D: setTracksRect
+[   437.49 ] D: setTracksRect
+[   437.49 ] D: sltStartContentYChanged4
+[   437.58 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   437.60 ] D: setTracksRect
+[   437.60 ] D: sltStartContentYChanged1
+[   437.60 ] D: sltStartContentYChanged2
+[   437.60 ] D: sltStartContentYChanged3
+[   437.60 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1375x111)
+[   437.60 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1375x111)
+[   437.60 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1375x111)
+[   437.60 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1375x111)
+[   437.60 ] D: setTracksRect
+[   437.60 ] D: setTracksRect
+[   437.60 ] D: sltStartContentYChanged4
+[   437.60 ] D: setTracksRect
+[   437.60 ] D: sltStartContentYChanged1
+[   437.60 ] D: sltStartContentYChanged2
+[   437.60 ] D: sltStartContentYChanged3
+[   437.60 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   437.60 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   437.60 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   437.60 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   437.60 ] D: setTracksRect
+[   437.60 ] D: setTracksRect
+[   437.60 ] D: sltStartContentYChanged4
+[   437.90 ] D: setTracksRect
+[   437.90 ] D: sltStartContentYChanged1
+[   437.90 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   437.90 ] D: sltStartContentYChanged2
+[   437.90 ] D: sltStartContentYChanged3
+[   437.90 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1295x111)
+[   437.90 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1295x111)
+[   437.90 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1295x111)
+[   437.90 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1295x111)
+[   437.90 ] D: setTracksRect
+[   437.90 ] D: setTracksRect
+[   437.90 ] D: sltStartContentYChanged4
+[   437.90 ] D: setTracksRect
+[   437.90 ] D: sltStartContentYChanged1
+[   437.90 ] D: sltStartContentYChanged2
+[   437.90 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   437.90 ] D: sltStartContentYChanged3
+[   437.90 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   437.90 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   437.90 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   437.90 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   437.90 ] D: setTracksRect
+[   437.90 ] D: setTracksRect
+[   437.90 ] D: sltStartContentYChanged4
+[   437.90 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   437.91 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   438.32 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   438.35 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   438.35 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   438.35 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   438.35 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   438.36 ] D: setTracksRect
+[   438.36 ] D: sltStartContentYChanged1
+[   438.36 ] D: sltStartContentYChanged2
+[   438.36 ] D: sltStartContentYChanged3
+[   438.36 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1168x111)
+[   438.36 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1168x111)
+[   438.36 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1168x111)
+[   438.36 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1168x111)
+[   438.36 ] D: setTracksRect
+[   438.36 ] D: setTracksRect
+[   438.36 ] D: sltStartContentYChanged4
+[   438.36 ] D: setTracksRect
+[   438.36 ] D: sltStartContentYChanged1
+[   438.36 ] D: sltStartContentYChanged2
+[   438.36 ] D: sltStartContentYChanged3
+[   438.36 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   438.36 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   438.36 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   438.36 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   438.36 ] D: setTracksRect
+[   438.36 ] D: setTracksRect
+[   438.36 ] D: sltStartContentYChanged4
+[   438.82 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   438.82 ] D: setTracksRect
+[   438.82 ] D: sltStartContentYChanged1
+[   438.82 ] D: sltStartContentYChanged2
+[   438.82 ] D: sltStartContentYChanged3
+[   438.82 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1388x111)
+[   438.82 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1388x111)
+[   438.82 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1388x111)
+[   438.82 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1388x111)
+[   438.82 ] D: setTracksRect
+[   438.82 ] D: setTracksRect
+[   438.82 ] D: sltStartContentYChanged4
+[   438.82 ] D: setTracksRect
+[   438.82 ] D: sltStartContentYChanged1
+[   438.82 ] D: sltStartContentYChanged2
+[   438.83 ] D: sltStartContentYChanged3
+[   438.83 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   438.83 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   438.83 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   438.83 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   438.83 ] D: setTracksRect
+[   438.83 ] D: setTracksRect
+[   438.83 ] D: sltStartContentYChanged4
+[   438.95 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   438.98 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   438.98 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   438.98 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   438.98 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   438.99 ] D: setTracksRect
+[   438.99 ] D: sltStartContentYChanged1
+[   438.99 ] D: sltStartContentYChanged2
+[   438.99 ] D: sltStartContentYChanged3
+[   438.99 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1384x111)
+[   438.99 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1384x111)
+[   438.99 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1384x111)
+[   438.99 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1384x111)
+[   438.99 ] D: setTracksRect
+[   438.99 ] D: setTracksRect
+[   438.99 ] D: sltStartContentYChanged4
+[   438.99 ] D: setTracksRect
+[   438.99 ] D: sltStartContentYChanged1
+[   438.99 ] D: sltStartContentYChanged2
+[   438.99 ] D: sltStartContentYChanged3
+[   438.99 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   438.99 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   438.99 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   438.99 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   438.99 ] D: setTracksRect
+[   438.99 ] D: setTracksRect
+[   438.99 ] D: sltStartContentYChanged4
+[   439.07 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   439.07 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   439.41 ] D: setTracksRect
+[   439.41 ] D: sltStartContentYChanged1
+[   439.41 ] D: sltStartContentYChanged2
+[   439.41 ] D: sltStartContentYChanged3
+[   439.41 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1396x111)
+[   439.41 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1396x111)
+[   439.41 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1396x111)
+[   439.41 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1396x111)
+[   439.41 ] D: setTracksRect
+[   439.41 ] D: setTracksRect
+[   439.41 ] D: sltStartContentYChanged4
+[   439.42 ] D: setTracksRect
+[   439.42 ] D: sltStartContentYChanged1
+[   439.42 ] D: sltStartContentYChanged2
+[   439.42 ] D: sltStartContentYChanged3
+[   439.42 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   439.42 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   439.42 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   439.42 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   439.42 ] D: setTracksRect
+[   439.42 ] D: setTracksRect
+[   439.42 ] D: sltStartContentYChanged4
+[   439.48 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   439.50 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   439.58 ] D: setTracksRect
+[   439.58 ] D: sltStartContentYChanged1
+[   439.58 ] D: sltStartContentYChanged2
+[   439.58 ] D: sltStartContentYChanged3
+[   439.58 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1400x111)
+[   439.58 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1400x111)
+[   439.58 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1400x111)
+[   439.58 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1400x111)
+[   439.58 ] D: setTracksRect
+[   439.58 ] D: setTracksRect
+[   439.58 ] D: sltStartContentYChanged4
+[   439.58 ] D: setTracksRect
+[   439.58 ] D: sltStartContentYChanged1
+[   439.58 ] D: sltStartContentYChanged2
+[   439.58 ] D: sltStartContentYChanged3
+[   439.58 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   439.58 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   439.58 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   439.58 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   439.58 ] D: setTracksRect
+[   439.58 ] D: setTracksRect
+[   439.58 ] D: sltStartContentYChanged4
+[   439.75 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   439.78 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   440.42 ] D: setTracksRect
+[   440.42 ] D: sltStartContentYChanged1
+[   440.42 ] D: sltStartContentYChanged2
+[   440.42 ] D: sltStartContentYChanged3
+[   440.42 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1810x111)
+[   440.42 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1810x111)
+[   440.42 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1810x111)
+[   440.42 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1810x111)
+[   440.42 ] D: setTracksRect
+[   440.42 ] D: setTracksRect
+[   440.42 ] D: sltStartContentYChanged4
+[   440.42 ] D: setTracksRect
+[   440.42 ] D: sltStartContentYChanged1
+[   440.42 ] D: sltStartContentYChanged2
+[   440.42 ] D: sltStartContentYChanged3
+[   440.42 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   440.42 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   440.42 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   440.42 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   440.42 ] D: setTracksRect
+[   440.42 ] D: setTracksRect
+[   440.42 ] D: sltStartContentYChanged4
+[   440.77 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   440.81 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   440.81 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   440.81 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   440.81 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   440.81 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   442.98 ] D: setTracksRect
+[   442.98 ] D: sltStartContentYChanged1
+[   442.98 ] D: sltStartContentYChanged2
+[   442.98 ] D: sltStartContentYChanged3
+[   442.98 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1460x111)
+[   442.98 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1460x111)
+[   442.98 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1460x111)
+[   442.98 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1460x111)
+[   442.98 ] D: setTracksRect
+[   442.98 ] D: setTracksRect
+[   442.98 ] D: sltStartContentYChanged4
+[   442.98 ] D: setTracksRect
+[   442.98 ] D: sltStartContentYChanged1
+[   442.98 ] D: sltStartContentYChanged2
+[   442.98 ] D: sltStartContentYChanged3
+[   442.98 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   442.98 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   442.98 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   442.98 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   442.98 ] D: setTracksRect
+[   442.98 ] D: setTracksRect
+[   442.98 ] D: sltStartContentYChanged4
+[   443.19 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   443.22 ] D: setTracksRect
+[   443.22 ] D: sltStartContentYChanged1
+[   443.22 ] D: sltStartContentYChanged2
+[   443.22 ] D: sltStartContentYChanged3
+[   443.22 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1408x111)
+[   443.22 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1408x111)
+[   443.22 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1408x111)
+[   443.22 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1408x111)
+[   443.22 ] D: setTracksRect
+[   443.22 ] D: setTracksRect
+[   443.22 ] D: sltStartContentYChanged4
+[   443.22 ] D: setTracksRect
+[   443.22 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.22 ] D: sltStartContentYChanged1
+[   443.22 ] D: sltStartContentYChanged2
+[   443.22 ] D: sltStartContentYChanged3
+[   443.23 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   443.23 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   443.23 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   443.23 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   443.23 ] D: setTracksRect
+[   443.23 ] D: setTracksRect
+[   443.23 ] D: sltStartContentYChanged4
+[   443.23 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.23 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.23 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.40 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   443.43 ] D: setTracksRect
+[   443.43 ] D: sltStartContentYChanged1
+[   443.43 ] D: sltStartContentYChanged2
+[   443.43 ] D: sltStartContentYChanged3
+[   443.43 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1397x111)
+[   443.43 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1397x111)
+[   443.43 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1397x111)
+[   443.43 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1397x111)
+[   443.43 ] D: setTracksRect
+[   443.43 ] D: setTracksRect
+[   443.43 ] D: sltStartContentYChanged4
+[   443.43 ] D: setTracksRect
+[   443.43 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.43 ] D: sltStartContentYChanged1
+[   443.43 ] D: sltStartContentYChanged2
+[   443.43 ] D: sltStartContentYChanged3
+[   443.43 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1392x111)
+[   443.43 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1392x111)
+[   443.43 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1392x111)
+[   443.43 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1392x111)
+[   443.43 ] D: setTracksRect
+[   443.43 ] D: setTracksRect
+[   443.43 ] D: sltStartContentYChanged4
+[   443.43 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.43 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.43 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.64 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   443.67 ] W: qrc:/main.qml:440:33: QML Slider: Binding loop detected for property "value"
+[   443.67 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.67 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.67 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   443.68 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[   457.27 ] F: Src: C:\Qt\5.15.2\msvc2019_64\include\QtCore/qvector.h:412::  ASSERT: "isDetached()" in file C:\Qt\5.15.2\msvc2019_64\include\QtCore/qvector.h, line 412

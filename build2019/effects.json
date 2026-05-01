@@ -1,0 +1,722 @@
+[
+    {
+        "category": "Effect",
+        "index": 1179478322,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Micro (Mono)",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Micro (Mono).dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1179478371,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Micro",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Micro.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Synth",
+        "index": 1179004977,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter One",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter One.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Mastering",
+        "index": 1178808882,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-C 2 (Mono)",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-C 2 (Mono).dll",
+        "type": "VST"
+    },
+    {
+        "category": "Mastering",
+        "index": 1178808944,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-C 2",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-C 2.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Mastering",
+        "index": 1179669298,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-DS (Mono)",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-DS (Mono).dll",
+        "type": "VST"
+    },
+    {
+        "category": "Mastering",
+        "index": 1179669362,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-DS",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-DS.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Mastering",
+        "index": 1179666226,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-G (Mono)",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-G (Mono).dll",
+        "type": "VST"
+    },
+    {
+        "category": "Mastering",
+        "index": 1179666290,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-G",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-G.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Mastering",
+        "index": 1179398768,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-L 2",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-L 2.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Mastering",
+        "index": 1179667762,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-MB (Mono)",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-MB (Mono).dll",
+        "type": "VST"
+    },
+    {
+        "category": "Mastering",
+        "index": 1179667810,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-MB",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-MB.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Unknown",
+        "index": 1179726704,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-Q 3",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-Q 3.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Reverb",
+        "index": 1179669042,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-R (Mono)",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-R (Mono).dll",
+        "type": "VST"
+    },
+    {
+        "category": "Reverb",
+        "index": 1179669106,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Pro-R",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Pro-R.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1179857505,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Saturn 2",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Saturn 2.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1179871597,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Simplon",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Simplon.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Reverb",
+        "index": 1177769075,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Timeless 3",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Timeless 3.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Synth",
+        "index": 1179923305,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Twin 3",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Twin 3.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1180054380,
+        "manufacturer": "FabFilter",
+        "name": "FabFilter Volcano 3",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\FabFilter\\FabFilter Volcano 3.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1299531121,
+        "manufacturer": "IEM",
+        "name": "MultiEQ_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\MultiEQ_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1682727289,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaDelay_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\ValhallaDSP\\ValhallaDelay_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1181828456,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaFreqEcho_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\ValhallaDSP\\ValhallaFreqEcho_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1886151028,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaPlate_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\ValhallaDSP\\ValhallaPlate_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1383429485,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaRoom_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\ValhallaDSP\\ValhallaRoom_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1936223602,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaShimmer_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\ValhallaDSP\\ValhallaShimmer_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1399868772,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaSpaceModulator_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\ValhallaDSP\\ValhallaSpaceModulator_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1934451059,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaSupermassive_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\ValhallaDSP\\ValhallaSupermassive_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1969382770,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaUberMod_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\ValhallaDSP\\ValhallaUberMod_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Effect",
+        "index": 1986356531,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaVintageVerb_x64",
+        "path": "C:\\Program Files\\Steinberg\\VstPlugins\\ValhallaDSP\\ValhallaVintageVerb_x64.dll",
+        "type": "VST"
+    },
+    {
+        "category": "Fx|Filter",
+        "index": 897815581,
+        "manufacturer": "FabFilter",
+        "name": "Micro",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Micro.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Instrument|Synth",
+        "index": -331420336,
+        "manufacturer": "FabFilter",
+        "name": "One",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter One.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Dynamics",
+        "index": 1982867885,
+        "manufacturer": "FabFilter",
+        "name": "Pro-C 2",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Pro-C 2.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Dynamics",
+        "index": -878558968,
+        "manufacturer": "FabFilter",
+        "name": "Pro-DS",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Pro-DS.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Dynamics",
+        "index": 1517175714,
+        "manufacturer": "FabFilter",
+        "name": "Pro-G",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Pro-G.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Dynamics",
+        "index": 1161399189,
+        "manufacturer": "FabFilter",
+        "name": "Pro-L 2",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Pro-L 2.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Dynamics",
+        "index": 1228020507,
+        "manufacturer": "FabFilter",
+        "name": "Pro-MB",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Pro-MB.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|EQ",
+        "index": -1168147790,
+        "manufacturer": "FabFilter",
+        "name": "Pro-Q 3",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Pro-Q 3.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Reverb",
+        "index": 2025856934,
+        "manufacturer": "FabFilter",
+        "name": "Pro-R",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Pro-R.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Distortion",
+        "index": 1516757119,
+        "manufacturer": "FabFilter",
+        "name": "Saturn 2",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Saturn 2.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Filter",
+        "index": 220230304,
+        "manufacturer": "FabFilter",
+        "name": "Simplon",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Simplon.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Delay",
+        "index": -1772851469,
+        "manufacturer": "FabFilter",
+        "name": "Timeless 3",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Timeless 3.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Instrument|Synth|Fx",
+        "index": 2030959785,
+        "manufacturer": "FabFilter",
+        "name": "Twin 3",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Twin 3.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Filter",
+        "index": -1835994681,
+        "manufacturer": "FabFilter",
+        "name": "Volcano 3",
+        "path": "C:\\Program Files\\Common Files\\VST3\\FabFilter\\FabFilter Volcano 3.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Delay",
+        "index": -1113613771,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaDelay",
+        "path": "C:\\Program Files\\Common Files\\VST3\\ValhallaDSP\\ValhallaDelay.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Delay",
+        "index": 959850005,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaFreqEcho",
+        "path": "C:\\Program Files\\Common Files\\VST3\\ValhallaDSP\\ValhallaFreqEcho.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx",
+        "index": -577615435,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaPlate",
+        "path": "C:\\Program Files\\Common Files\\VST3\\ValhallaDSP\\ValhallaPlate.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Reverb",
+        "index": -243376235,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaRoom",
+        "path": "C:\\Program Files\\Common Files\\VST3\\ValhallaDSP\\ValhallaRoom.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Reverb",
+        "index": 110634197,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaShimmer",
+        "path": "C:\\Program Files\\Common Files\\VST3\\ValhallaDSP\\ValhallaShimmer.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Modulation",
+        "index": -1774908683,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaSpaceModulator",
+        "path": "C:\\Program Files\\Common Files\\VST3\\ValhallaDSP\\ValhallaSpaceModulator.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx",
+        "index": 2123359701,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaSupermassive",
+        "path": "C:\\Program Files\\Common Files\\VST3\\ValhallaDSP\\ValhallaSupermassive.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx",
+        "index": 1653673365,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaUberMod",
+        "path": "C:\\Program Files\\Common Files\\VST3\\ValhallaDSP\\ValhallaUberMod.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx",
+        "index": -1532689675,
+        "manufacturer": "Valhalla DSP, LLC",
+        "name": "ValhallaVintageVerb",
+        "path": "C:\\Program Files\\Common Files\\VST3\\ValhallaDSP\\ValhallaVintageVerb.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Dynamics",
+        "index": -1060137114,
+        "manufacturer": "Waves",
+        "name": "Curves Equator Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell1-VST3 15.2_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Dynamics",
+        "index": -1058661018,
+        "manufacturer": "Waves",
+        "name": "Curves Equator Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell1-VST3 15.2_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Channel Strip",
+        "index": 60042447,
+        "manufacturer": "Waves",
+        "name": "Scheps Omni Channel 2 Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Channel Strip",
+        "index": 61518543,
+        "manufacturer": "Waves",
+        "name": "Scheps Omni Channel 2 Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Dynamics",
+        "index": -76996633,
+        "manufacturer": "Waves",
+        "name": "H-Comp Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Dynamics",
+        "index": -75518996,
+        "manufacturer": "Waves",
+        "name": "H-Comp Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 271781361,
+        "manufacturer": "Waves",
+        "name": "GTR Amp 2Cab Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": -1724752547,
+        "manufacturer": "Waves",
+        "name": "GTR Stomp 2 Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": -1723276451,
+        "manufacturer": "Waves",
+        "name": "GTR Stomp 2 Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": -1722046371,
+        "manufacturer": "Waves",
+        "name": "GTR Stomp 2 Mono/Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": -1598792355,
+        "manufacturer": "Waves",
+        "name": "GTR Stomp 4 Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": -1597316259,
+        "manufacturer": "Waves",
+        "name": "GTR Stomp 4 Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": -1596086179,
+        "manufacturer": "Waves",
+        "name": "GTR Stomp 4 Mono/Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 1972244012,
+        "manufacturer": "Waves",
+        "name": "GTR Amp Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 1973720114,
+        "manufacturer": "Waves",
+        "name": "GTR Amp Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 1974950188,
+        "manufacturer": "Waves",
+        "name": "GTR Amp Mono/Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 1285808684,
+        "manufacturer": "Waves",
+        "name": "GTR Tool Rack Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 1287038764,
+        "manufacturer": "Waves",
+        "name": "GTR Tool Rack Mono/Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 38690141,
+        "manufacturer": "Waves",
+        "name": "GTR Stomp 6 Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 40166237,
+        "manufacturer": "Waves",
+        "name": "GTR Stomp 6 Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 41396317,
+        "manufacturer": "Waves",
+        "name": "GTR Stomp 6 Mono/Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 1663493389,
+        "manufacturer": "Waves",
+        "name": "GTR Solo Tool Rack Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": 1664723469,
+        "manufacturer": "Waves",
+        "name": "GTR Solo Tool Rack Mono/Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Distortion",
+        "index": -451286234,
+        "manufacturer": "Waves",
+        "name": "NLS Channel Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Distortion",
+        "index": -449810138,
+        "manufacturer": "Waves",
+        "name": "NLS Channel Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|EQ",
+        "index": 1124868539,
+        "manufacturer": "Waves",
+        "name": "TRACT Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|EQ",
+        "index": 1126739122,
+        "manufacturer": "Waves",
+        "name": "TRACT Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Instrument|Waves",
+        "index": -1042002999,
+        "manufacturer": "Waves",
+        "name": "CR8 Sampler Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|EQ",
+        "index": 1187781563,
+        "manufacturer": "Waves",
+        "name": "TRACT LinPhase Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|EQ",
+        "index": 1189257659,
+        "manufacturer": "Waves",
+        "name": "TRACT LinPhase Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Distortion",
+        "index": -1472467015,
+        "manufacturer": "Waves",
+        "name": "NLS Buss Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Distortion",
+        "index": -1470990919,
+        "manufacturer": "Waves",
+        "name": "NLS Buss Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|Guitar",
+        "index": -386384303,
+        "manufacturer": "Waves",
+        "name": "GTR Tuner Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Instrument|Waves",
+        "index": 908918565,
+        "manufacturer": "Waves",
+        "name": "StudioVerse Instruments Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|StudioVerse",
+        "index": 909639446,
+        "manufacturer": "Waves",
+        "name": "StudioVerse Audio Effects Mono",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|StudioVerse",
+        "index": 911115542,
+        "manufacturer": "Waves",
+        "name": "StudioVerse Audio Effects Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    },
+    {
+        "category": "Fx|StudioVerse",
+        "index": 912345622,
+        "manufacturer": "Waves",
+        "name": "StudioVerse Audio Effects Mono/Stereo",
+        "path": "C:\\Program Files\\Common Files\\VST3\\WaveShell2-VST3 15.0_x64.vst3",
+        "type": "VST3"
+    }
+]

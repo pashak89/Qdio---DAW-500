@@ -1,0 +1,165 @@
+[     4.47 ] I: Log: Log file open in follow path at 1403/6/12 08:49:40 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.47 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.47 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.47 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.47 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.47 ] I: Current Render API is: 4.60
+[     4.47 ] I: The subsystem "Renderer" is registered successfully.
+[     4.47 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.47 ] I: The subsystem "Platform" is registered successfully.
+[     4.47 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.47 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.47 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.47 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.47 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.47 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.47 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.54 ] D: Shader Compile successfully.
+[     4.54 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.54 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.54 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.54 ] D: Engine Enabled
+[     4.54 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.54 ] D: Node with id 1 is added to Qt layer
+[     4.54 ] D: Node with id 2460 is added to Qt layer
+[     4.54 ] D: Node with id 2462 is added to Qt layer
+[     4.54 ] D: Node with id 2464 is added to Qt layer
+[     4.55 ] D: Node with id 2466 is added to Qt layer
+[     4.55 ] D: Node with id 2468 is added to Qt layer
+[     4.55 ] D: Node with id 2470 is added to Qt layer
+[     4.55 ] D: Node with id 2472 is added to Qt layer
+[     4.55 ] D: Node with id 2474 is added to Qt layer
+[     4.55 ] D: Node with id 2476 is added to Qt layer
+[     4.55 ] D: Node with id 2478 is added to Qt layer
+[     4.55 ] D: Node with id 2480 is added to Qt layer
+[     4.55 ] D: Node with id 2482 is added to Qt layer
+[     4.55 ] D: Node with id 2484 is added to Qt layer
+[     4.55 ] D: Node with id 2486 is added to Qt layer
+[     4.55 ] D: Node with id 2487 is added to Qt layer
+[     4.55 ] D: Node with id 2489 is added to Qt layer
+[     4.55 ] D: Node with id 2491 is added to Qt layer
+[     4.55 ] D: Node with id 3 is added to Qt layer
+[     4.55 ] D: Node with id 2493 is added to Qt layer
+[     4.55 ] S: New view-port registered with id: 1
+[     4.55 ] S: New view-port registered with id: 2
+[     4.55 ] S: New view-port registered with id: 3
+[     4.55 ] S: New view-port registered with id: 4
+[     4.55 ] S: New view-port registered with id: 5
+[     4.55 ] S: New view-port registered with id: 6
+[     4.65 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     4.65 ] D: Using backend: "OpenGL 3"
+[     4.68 ] W: Floating point comparison needs context sanity check
+[     4.68 ] D: QT onScaleChanged=  144
+[     4.70 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.70 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.70 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.71 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.88 ] D: Engine Started.
+[     7.65 ] D: P1 -278
+[     7.65 ] D: P1 -314
+[     7.66 ] D: P1 -319
+[     7.66 ] D: P1 -323
+[     7.67 ] D: P1 -328
+[     7.67 ] D: P1 -351
+[     7.67 ] D: P14
+[     7.67 ] D: P1 -353
+[     7.67 ] D: P14
+[     7.68 ] D: P1 -357
+[     7.68 ] D: P14
+[     7.68 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[     7.69 ] D: P1 -358
+[     7.69 ] D: P14
+[     7.69 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[     7.69 ] D: P1 -366
+[     7.69 ] D: P14
+[     7.69 ] D: P1 -368
+[     7.69 ] D: P14
+[     7.69 ] D: P1 -369
+[     7.70 ] D: P1 -370
+[     7.70 ] D: P1 -377
+[     7.71 ] D: P1 -378
+[     7.72 ] D: P1 -379
+[     7.72 ] D: P1 -380
+[     7.72 ] D: P1 -381
+[     7.74 ] D: P1 -381
+[     7.74 ] D: P1 -381
+[     7.75 ] D: P1 -382
+[     7.76 ] D: P1 -383
+[     7.77 ] D: P1 -384
+[     7.78 ] D: P1 -385
+[     7.79 ] D: P1 -385
+[     7.79 ] D: P1 -385
+[     7.80 ] D: P1 -386
+[     8.02 ] D: sltPositionChanged 529199
+[     8.02 ] D: frame_offset 0 0 217
+[     8.02 ] D: frame_offset 0 1 217
+[     8.03 ] D: frame_offset 0 2 217
+[     8.03 ] D: findOverlayItems 1 0
+[     8.03 ] D: "{e06572c9-a8d3-43db-b8d0-ff0212dba98c}" i.value()->sampleClip()->startTime()  12000 334833 334833 12000
+[     8.03 ] D: findOverlayItems
+[     8.03 ] D: frame_offset 0 3 217
+[     8.03 ] D: sltPositionChanged 529199
+[     8.03 ] D: frame_offset 0 0 217
+[     8.03 ] D: frame_offset 0 1 217
+[     8.03 ] D: frame_offset 0 2 217
+[     8.04 ] D: frame_offset 0 3 217
+[     8.04 ] D: frame_offset 0 4 217
+[     8.29 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(317,50)
+[     8.31 ] D: _automationChanging false
+[     8.31 ] D: mouseMove2
+[     8.64 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(319,73)
+[    23.11 ] D: Plugin does not support requested bus layout
+[    23.11 ] D: ADDED
+[    28.03 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(166,64)
+[    32.52 ] D: Plugin does not support requested bus layout
+[    32.52 ] D: ADDED
+[    42.86 ] D: _editController->getParameterCount() 19
+[    42.86 ] D: info.stepCount 0x234eb851a0 0.5 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0.25 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0.285714 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0.5 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 1 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0.5 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 1 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 1 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0.273834 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0.5 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0.0416667 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0 0 0
+[    42.86 ] D: info.stepCount 0x234eb851a0 0 1 0
+[    42.88 ] D: effectModel.controls Vst3Effect(0x1968c89a840)
+[    42.92 ] D: ADDED
+[    51.46 ] D: _editController->getParameterCount() 14
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0.5 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 1 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0.919192 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0.5 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0.530201 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0.1 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0.3 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0 0 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0 1 0
+[    51.46 ] D: info.stepCount 0x234eb85fe0 0 7 0
+[    51.46 ] D: effectModel.controls Vst3Effect(0x1968c8a1520)
+[    51.50 ] D: ADDED
+[    63.08 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(300,97)
+[    63.12 ] D: _automationChanging false
+[    63.12 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(301,97)
+[    63.12 ] D: mouseMove2
+[    63.14 ] D: _automationChanging false
+[    63.14 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(302,97)
+[    63.14 ] D: mouseMove2
+[    63.65 ] D: _requestForLoading false false
+[    63.65 ] D: _requestForLoading2

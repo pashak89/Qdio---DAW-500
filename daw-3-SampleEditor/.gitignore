@@ -1,0 +1,17 @@
+3rdparty
+3rdparty/
+build2019
+build
+build/
+buil2019/
+juce/debug-2019
+juce/debug-2019/
+juce/debug-2019/*
+juce/release-2019
+juce/release-2019/
+juce/release-2019/*
+juce/juce.pro.user.cbdf036
+SampleEditor.pro.user.cbdf036
+SampleEditor.pro.user.556d9e3
+visr_3rd/3rdparty.7z
+SampleEditor.pro.user

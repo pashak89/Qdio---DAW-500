@@ -1,0 +1,229 @@
+[     4.38 ] I: Log: Log file open in follow path at 1403/6/25 22:19:54 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.38 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.38 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.38 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.38 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.38 ] I: Current Render API is: 4.60
+[     4.38 ] I: The subsystem "Renderer" is registered successfully.
+[     4.38 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.38 ] I: The subsystem "Platform" is registered successfully.
+[     4.38 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.38 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.38 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.38 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.38 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.38 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.38 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.45 ] D: Shader Compile successfully.
+[     4.46 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.46 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.46 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.46 ] D: Engine Enabled
+[     4.46 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.46 ] D: Node with id 1 is added to Qt layer
+[     4.46 ] D: Node with id 2460 is added to Qt layer
+[     4.46 ] D: Node with id 2462 is added to Qt layer
+[     4.46 ] D: Node with id 2464 is added to Qt layer
+[     4.46 ] D: Node with id 2466 is added to Qt layer
+[     4.46 ] D: Node with id 2468 is added to Qt layer
+[     4.46 ] D: Node with id 2470 is added to Qt layer
+[     4.46 ] D: Node with id 2472 is added to Qt layer
+[     4.46 ] D: Node with id 2474 is added to Qt layer
+[     4.46 ] D: Node with id 2476 is added to Qt layer
+[     4.46 ] D: Node with id 2478 is added to Qt layer
+[     4.46 ] D: Node with id 2480 is added to Qt layer
+[     4.46 ] D: Node with id 2482 is added to Qt layer
+[     4.46 ] D: Node with id 2484 is added to Qt layer
+[     4.46 ] D: Node with id 2486 is added to Qt layer
+[     4.46 ] D: Node with id 2487 is added to Qt layer
+[     4.46 ] D: Node with id 2489 is added to Qt layer
+[     4.47 ] D: Node with id 2491 is added to Qt layer
+[     4.47 ] D: Node with id 3 is added to Qt layer
+[     4.47 ] D: Node with id 2493 is added to Qt layer
+[     4.47 ] S: New view-port registered with id: 1
+[     4.47 ] S: New view-port registered with id: 2
+[     4.47 ] S: New view-port registered with id: 3
+[     4.47 ] S: New view-port registered with id: 4
+[     4.47 ] S: New view-port registered with id: 5
+[     4.47 ] S: New view-port registered with id: 6
+[     4.56 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     4.56 ] D: Using backend: "OpenGL 3"
+[     4.59 ] W: Floating point comparison needs context sanity check
+[     4.59 ] D: QT onScaleChanged=  144
+[     4.61 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.62 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.62 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.62 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.80 ] D: Engine Started.
+[     8.59 ] D: P1 -323
+[     8.59 ] D: P1 -329
+[     8.59 ] D: P1 -331
+[     8.59 ] D: P14
+[     8.60 ] D: P1 -331
+[     8.60 ] D: P14
+[     8.60 ] D: P1 -331
+[     8.60 ] D: P14
+[     8.60 ] D: P1 -332
+[     8.60 ] D: P14
+[     8.60 ] D: P1 -332
+[     8.60 ] D: P14
+[     8.60 ] D: P1 -332
+[     8.60 ] D: P14
+[     8.62 ] D: P1 -333
+[     8.62 ] D: P14
+[     8.62 ] D: P1 -335
+[     8.62 ] D: P14
+[     8.62 ] D: P1 -335
+[     8.62 ] D: P14
+[     8.62 ] D: P1 -336
+[     8.62 ] D: P14
+[     8.63 ] D: P1 -336
+[     8.63 ] D: P14
+[     8.64 ] D: P1 -336
+[     8.64 ] D: P14
+[     8.65 ] D: P1 -337
+[     8.65 ] D: P14
+[     8.65 ] D: P1 -339
+[     8.65 ] D: P14
+[     8.65 ] D: P1 -340
+[     8.65 ] D: P14
+[     8.66 ] D: P1 -340
+[     8.66 ] D: P14
+[     8.67 ] D: P1 -340
+[     8.67 ] D: P14
+[     8.67 ] D: P1 -342
+[     8.67 ] D: P14
+[     8.67 ] D: P1 -342
+[     8.67 ] D: P14
+[     8.68 ] D: P1 -342
+[     8.68 ] D: P14
+[     8.68 ] D: P1 -343
+[     8.68 ] D: P14
+[     8.70 ] D: P1 -344
+[     8.70 ] D: P14
+[     8.70 ] D: P1 -344
+[     8.70 ] D: P14
+[     8.70 ] D: P1 -344
+[     8.70 ] D: P14
+[     8.72 ] D: P1 -345
+[     8.72 ] D: P14
+[     8.72 ] D: P1 -346
+[     8.72 ] D: P14
+[     8.73 ] D: P1 -347
+[     8.73 ] D: P14
+[     8.73 ] D: P1 -347
+[     8.73 ] D: P14
+[     8.75 ] D: P1 -348
+[     8.75 ] D: P14
+[     8.75 ] D: P1 -349
+[     8.75 ] D: P14
+[     8.75 ] D: P1 -349
+[     8.75 ] D: P14
+[     8.75 ] D: P1 -350
+[     8.75 ] D: P14
+[     8.77 ] D: P1 -351
+[     8.77 ] D: P14
+[     8.77 ] D: P1 -352
+[     8.77 ] D: P14
+[     8.78 ] D: P1 -353
+[     8.79 ] D: P14
+[     8.79 ] D: P1 -355
+[     8.79 ] D: P14
+[     8.79 ] D: P1 -355
+[     8.79 ] D: P14
+[     8.80 ] D: P1 -355
+[     8.80 ] D: P14
+[     8.80 ] D: P1 -356
+[     8.80 ] D: P14
+[     8.80 ] D: P1 -357
+[     8.80 ] D: P14
+[     8.80 ] D: P1 -357
+[     8.80 ] D: P14
+[     8.81 ] D: P1 -358
+[     8.81 ] D: P14
+[     8.81 ] D: P1 -360
+[     8.81 ] D: P14
+[     8.82 ] D: P1 -361
+[     8.82 ] D: P14
+[     8.83 ] D: P1 -364
+[     8.83 ] D: P14
+[     8.83 ] D: P1 -364
+[     8.83 ] D: P14
+[     8.83 ] D: P1 -365
+[     8.83 ] D: P14
+[     8.83 ] D: P1 -366
+[     8.83 ] D: P14
+[     8.83 ] D: P1 -367
+[     8.83 ] D: P14
+[     8.84 ] D: P1 -367
+[     8.84 ] D: P14
+[     8.85 ] D: P1 -370
+[     8.85 ] D: P1 -371
+[     8.85 ] D: P1 -371
+[     8.86 ] D: P1 -372
+[     8.86 ] D: P1 -375
+[     8.86 ] D: P1 -376
+[     8.87 ] D: P1 -376
+[     8.87 ] D: P1 -377
+[     8.88 ] D: P1 -378
+[     8.88 ] D: P1 -380
+[     8.88 ] D: P1 -381
+[     8.88 ] D: P1 -381
+[     8.89 ] D: P1 -382
+[     8.90 ] D: P1 -385
+[     8.90 ] D: P1 -385
+[     8.90 ] D: P1 -386
+[     8.91 ] D: P1 -386
+[     8.91 ] D: P1 -388
+[     8.91 ] D: P1 -389
+[     8.91 ] D: P1 -389
+[     8.93 ] D: P1 -390
+[     8.93 ] D: P1 -392
+[     8.93 ] D: P1 -392
+[     8.94 ] D: P1 -392
+[     8.95 ] D: P1 -395
+[     8.95 ] D: P1 -395
+[     8.96 ] D: P1 -395
+[     8.96 ] D: P1 -396
+[     8.98 ] D: P1 -396
+[     8.98 ] D: P1 -397
+[     9.14 ] D: sltPositionChanged 308700
+[     9.14 ] D: frame_offset 0 0 217
+[     9.14 ] D: frame_offset 0 1 217
+[     9.14 ] D: frame_offset 0 2 217
+[     9.14 ] D: frame_offset 0 3 217
+[     9.15 ] D: frame_offset 0 4 217
+[     9.15 ] D: findOverlayItems 1 0
+[     9.15 ] D: "{1427d67b-ed9c-4c48-a416-1aa1dbbb1de8}" i.value()->sampleClip()->startTime()  7000 329833 329833 7000
+[     9.15 ] D: findOverlayItems
+[     9.15 ] D: sltPositionChanged 308700
+[     9.15 ] D: frame_offset 0 0 217
+[     9.15 ] D: frame_offset 0 1 217
+[     9.15 ] D: frame_offset 0 2 217
+[     9.15 ] D: frame_offset 0 3 217
+[     9.16 ] D: frame_offset 0 4 217
+[     9.99 ] D: _requestForLoading false false
+[     9.99 ] D: _requestForLoading2
+[     9.99 ] D: _numberOfSampleBuffer 1
+[     9.99 ] D: START TO load 0
+[     9.99 ] D: sltPositionChanged 573300 true
+[     9.99 ] D: START TO load 1
+[     9.99 ] D: START TO load 2
+[     9.99 ] D: START TO load 3
+[     9.99 ] D: frame_offset 4 0 217
+[    10.00 ] D: frame_offset 4 1 217
+[    10.00 ] D: frame_offset 4 2 217
+[    10.00 ] D: frame_offset 4 3 217
+[    10.00 ] D: frame_offset 4 4 217
+[    10.01 ] D: sltFirstBufferFilled ("{1427d67b-ed9c-4c48-a416-1aa1dbbb1de8}") "{1427d67b-ed9c-4c48-a416-1aa1dbbb1de8}" true
+[    10.01 ] D: _requestForLoading true false
+[    11.45 ] D: AsyncFileReader 4 9
+[    12.93 ] D: AsyncFileReader 0 10
+[    14.42 ] D: AsyncFileReader 1 11
+[    15.87 ] D: _editController->getParameterCount() 14
+[    15.91 ] D: AsyncFileReader 2 12
+[    15.95 ] D: trackIndex 0 0
+[    17.39 ] D: AsyncFileReader 3 13
+[    18.88 ] D: AsyncFileReader 4 14

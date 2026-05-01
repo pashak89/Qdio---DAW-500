@@ -1,0 +1,46 @@
+-IC:/Qt/5.15.2/msvc2019_64/mkspecs/win32-msvc
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/libqnanopainter
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/visr/include/visr
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/boost/include/boost-1_85
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/juce
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/juce/modules
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/win32/include
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/win32/include/ipp
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/win64/include
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/vst/include
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/vst2/include
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/EngineLib
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/EngineLib/Engine
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/glm
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/glew
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/QDLib
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/quickflux
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/3rdparty/DGE-QD-SDK/x64/include/FreeImage
+-IC:/Users/AmirPasha/Desktop/Rpos/DAW-400/daw-3-SampleEditor/juce/include
+-IC:/Qt/5.15.2/msvc2019_64/include
+-IC:/Qt/5.15.2/msvc2019_64/include/QtQuickControls2
+-IC:/Qt/5.15.2/msvc2019_64/include/QtQuick
+-IC:/Qt/5.15.2/msvc2019_64/include/QtMultimedia
+-IC:/Qt/5.15.2/msvc2019_64/include/QtOpenGL
+-IC:/Qt/5.15.2/msvc2019_64/include/QtSvg
+-IC:/Qt/5.15.2/msvc2019_64/include/QtWidgets
+-IC:/Qt/5.15.2/msvc2019_64/include/QtOpenGLExtensions
+-IC:/Qt/5.15.2/msvc2019_64/include/QtGui
+-IC:/Qt/5.15.2/msvc2019_64/include/QtANGLE
+-IC:/Qt/5.15.2/msvc2019_64/include/QtQmlModels
+-IC:/Qt/5.15.2/msvc2019_64/include/QtQml
+-IC:/Qt/5.15.2/msvc2019_64/include/QtNetwork
+-IC:/Qt/5.15.2/msvc2019_64/include/QtSql
+-IC:/Qt/5.15.2/msvc2019_64/include/QtConcurrent
+-IC:/Qt/5.15.2/msvc2019_64/include/QtPositioning
+-IC:/Qt/5.15.2/msvc2019_64/include/QtCore
+-I.
+-IC:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include
+-IC:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include
+-IC:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt
+-IC:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared
+-IC:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um
+-IC:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt
+-IC:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt

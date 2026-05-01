@@ -1,0 +1,293 @@
+[     6.27 ] I: Log: Log file open in follow path at 1403/4/10 23:23:57 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     6.28 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     6.28 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     6.28 ] D: API version is: 4.60 ,shader version is: 4.60
+[     6.28 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     6.28 ] I: Current Render API is: 4.60
+[     6.28 ] I: The subsystem "Renderer" is registered successfully.
+[     6.28 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     6.28 ] I: The subsystem "Platform" is registered successfully.
+[     6.28 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     6.28 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     6.28 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     6.28 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     6.28 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     6.28 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     6.28 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     6.36 ] D: Shader Compile successfully.
+[     6.36 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     6.36 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     6.36 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     6.36 ] D: Engine Enabled
+[     6.36 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     6.37 ] D: Node with id 1 is added to Qt layer
+[     6.37 ] D: Node with id 2460 is added to Qt layer
+[     6.37 ] D: Node with id 2462 is added to Qt layer
+[     6.37 ] D: Node with id 2464 is added to Qt layer
+[     6.37 ] D: Node with id 2466 is added to Qt layer
+[     6.37 ] D: Node with id 2468 is added to Qt layer
+[     6.37 ] D: Node with id 2470 is added to Qt layer
+[     6.37 ] D: Node with id 2472 is added to Qt layer
+[     6.37 ] D: Node with id 2474 is added to Qt layer
+[     6.37 ] D: Node with id 2476 is added to Qt layer
+[     6.37 ] D: Node with id 2478 is added to Qt layer
+[     6.37 ] D: Node with id 2480 is added to Qt layer
+[     6.37 ] D: Node with id 2482 is added to Qt layer
+[     6.37 ] D: Node with id 2484 is added to Qt layer
+[     6.37 ] D: Node with id 2486 is added to Qt layer
+[     6.37 ] D: Node with id 2487 is added to Qt layer
+[     6.37 ] D: Node with id 2489 is added to Qt layer
+[     6.37 ] D: Node with id 2491 is added to Qt layer
+[     6.37 ] D: Node with id 3 is added to Qt layer
+[     6.37 ] D: Node with id 2493 is added to Qt layer
+[     6.37 ] S: New view-port registered with id: 1
+[     6.37 ] S: New view-port registered with id: 2
+[     6.37 ] S: New view-port registered with id: 3
+[     6.37 ] S: New view-port registered with id: 4
+[     6.37 ] S: New view-port registered with id: 5
+[     6.37 ] S: New view-port registered with id: 6
+[     6.44 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     6.44 ] D: Using backend: "OpenGL 3"
+[     6.48 ] W: Floating point comparison needs context sanity check
+[     6.48 ] D: QT onScaleChanged=  144
+[     6.69 ] D: Engine Started.
+[     9.56 ] D: P1 -410
+[     9.56 ] D: P1 -392
+[     9.56 ] D: P14
+[     9.56 ] D: P1 -390
+[     9.56 ] D: P14
+[     9.56 ] D: P1 -389
+[     9.56 ] D: P14
+[     9.57 ] D: P1 -388
+[     9.57 ] D: P14
+[     9.57 ] D: P1 -386
+[     9.57 ] D: P14
+[     9.57 ] D: P1 -385
+[     9.57 ] D: P14
+[     9.58 ] D: P1 -384
+[     9.58 ] D: P14
+[     9.58 ] D: P1 -382
+[     9.58 ] D: P14
+[     9.79 ] D: P1 -382
+[     9.79 ] D: P14
+[     9.80 ] D: P1 -383
+[     9.80 ] D: P14
+[     9.81 ] D: P1 -384
+[     9.81 ] D: P14
+[     9.81 ] D: P1 -385
+[     9.81 ] D: P14
+[     9.83 ] D: P1 -386
+[     9.83 ] D: P14
+[     9.87 ] D: sltPositionChanged 1014299
+[     9.87 ] D: frame_offset 0 0 10
+[     9.87 ] D: findOverlayItems 1 0
+[     9.87 ] D: "{a055a373-9f59-45ac-b835-aad5f1877bcf}" i.value()->sampleClip()->startTime()  23000 38483.9 38483.9 23000
+[     9.87 ] D: findOverlayItems
+[     9.87 ] D: sltPositionChanged 1014299
+[     9.87 ] D: frame_offset 0 0 10
+[     9.87 ] D: frame_offset 0 1 10
+[     9.88 ] D: frame_offset 0 2 10
+[     9.88 ] D: frame_offset 0 3 10
+[     9.88 ] D: frame_offset 0 4 10
+[    11.47 ] D: _requestForLoading false false
+[    11.47 ] D: _requestForLoading2
+[    11.47 ] D: _numberOfSampleBuffer 1
+[    11.47 ] D: START TO load 0
+[    11.47 ] D: sltPositionChanged 1038800 true
+[    11.47 ] D: frame_offset 0 0 10
+[    11.47 ] D: frame_offset 0 1 10
+[    11.47 ] D: frame_offset 0 2 10
+[    11.47 ] D: frame_offset 0 3 10
+[    11.47 ] D: frame_offset 0 4 10
+[    11.48 ] D: sltFirstBufferFilled ("{a055a373-9f59-45ac-b835-aad5f1877bcf}") "{a055a373-9f59-45ac-b835-aad5f1877bcf}" true
+[    11.48 ] D: _requestForLoading true false
+[    12.41 ] D: AsyncFileReader 0 5
+[    13.91 ] D: AsyncFileReader 1 6
+[    15.39 ] D: AsyncFileReader 2 7
+[    16.87 ] D: AsyncFileReader 3 8
+[    18.37 ] D: AsyncFileReader 4 9
+[    18.39 ] D: setTracksRect
+[    18.39 ] D: sltStartContentYChanged1
+[    18.39 ] D: sltStartContentYChanged2
+[    18.39 ] D: sltStartContentYChanged3
+[    18.39 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1957x111)
+[    18.39 ] D: setTracksRect
+[    18.39 ] D: setTracksRect
+[    18.39 ] D: sltStartContentYChanged4
+[    18.48 ] D: Shader Compile successfully.
+[    18.48 ] D: Shader Compile successfully.
+[    18.48 ] D: Shader Compile successfully.
+[    18.48 ] D: Shader Compile successfully.
+[    18.48 ] D: Shader Compile successfully.
+[    18.48 ] D: Shader Compile successfully.
+[    18.48 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    18.49 ] D: Shader Compile successfully.
+[    19.32 ] D: setTracksRect
+[    19.32 ] D: sltStartContentYChanged1
+[    19.32 ] D: sltStartContentYChanged2
+[    19.32 ] D: sltStartContentYChanged3
+[    19.32 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1957x111)
+[    19.32 ] D: setTracksRect
+[    19.32 ] D: setTracksRect
+[    19.32 ] D: sltStartContentYChanged4
+[    19.85 ] D: AsyncFileReader 0 10
+[    21.33 ] D: AsyncFileReader 1 11
+[    22.83 ] D: AsyncFileReader 2 11
+[    23.13 ] D: setTracksRect
+[    23.13 ] D: sltStartContentYChanged1
+[    23.13 ] D: sltStartContentYChanged2
+[    23.13 ] D: sltStartContentYChanged3
+[    23.13 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 3582x111)
+[    23.13 ] D: setTracksRect
+[    23.13 ] D: setTracksRect
+[    23.13 ] D: sltStartContentYChanged4
+[    23.13 ] D: setTracksRect
+[    23.13 ] D: sltStartContentYChanged1
+[    23.13 ] D: sltStartContentYChanged2
+[    23.13 ] D: sltStartContentYChanged3
+[    23.13 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 3897x111)
+[    23.13 ] D: setTracksRect
+[    23.13 ] D: setTracksRect
+[    23.13 ] D: sltStartContentYChanged4
+[    23.13 ] D: setTracksRect
+[    23.13 ] D: sltStartContentYChanged1
+[    23.13 ] D: sltStartContentYChanged2
+[    23.13 ] D: sltStartContentYChanged3
+[    23.13 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 3897x111)
+[    23.13 ] D: setTracksRect
+[    23.13 ] D: setTracksRect
+[    23.13 ] D: sltStartContentYChanged4
+[    24.31 ] D: AsyncFileReader 3 11
+[    25.79 ] D: AsyncFileReader 4 11
+[    26.52 ] D: findTrackIndexByPoint 0 QRect(0,0 3897x111) true QPointF(435,49)
+[    26.61 ] D: mouseReleaseEvent
+[    28.18 ] D: _requestForLoading false false
+[    28.18 ] D: _requestForLoading2
+[    28.18 ] D: _numberOfSampleBuffer 1
+[    28.18 ] D: START TO load 0
+[    28.18 ] D: sltPositionChanged 1058400 true
+[    28.18 ] D: frame_offset 0 0 10
+[    28.18 ] D: frame_offset 0 1 10
+[    28.18 ] D: frame_offset 0 2 10
+[    28.18 ] D: frame_offset 0 3 10
+[    28.19 ] D: frame_offset 0 4 10
+[    28.19 ] D: sltFirstBufferFilled ("{a055a373-9f59-45ac-b835-aad5f1877bcf}") "{a055a373-9f59-45ac-b835-aad5f1877bcf}" true
+[    28.19 ] D: _requestForLoading true false
+[    28.68 ] D: AsyncFileReader 0 5
+[    30.18 ] D: AsyncFileReader 1 6
+[    31.66 ] D: AsyncFileReader 2 7
+[    33.14 ] D: AsyncFileReader 3 8
+[    34.64 ] D: AsyncFileReader 4 9
+[    36.12 ] D: AsyncFileReader 0 10
+[    37.60 ] D: AsyncFileReader 1 11
+[    39.09 ] D: AsyncFileReader 2 11
+[    40.57 ] D: AsyncFileReader 3 11
+[    44.55 ] D: setTracksRect
+[    44.55 ] D: sltStartContentYChanged1
+[    44.55 ] D: sltStartContentYChanged2
+[    44.55 ] D: sltStartContentYChanged3
+[    44.55 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1642x111)
+[    44.55 ] D: setTracksRect
+[    44.55 ] D: setTracksRect
+[    44.55 ] D: sltStartContentYChanged4
+[    44.56 ] D: setTracksRect
+[    44.56 ] D: sltStartContentYChanged1
+[    44.56 ] D: sltStartContentYChanged2
+[    44.56 ] D: sltStartContentYChanged3
+[    44.56 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1957x111)
+[    44.56 ] D: setTracksRect
+[    44.56 ] D: setTracksRect
+[    44.56 ] D: sltStartContentYChanged4
+[    44.56 ] D: setTracksRect
+[    44.56 ] D: sltStartContentYChanged1
+[    44.56 ] D: sltStartContentYChanged2
+[    44.56 ] D: sltStartContentYChanged3
+[    44.56 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1957x111)
+[    44.56 ] D: setTracksRect
+[    44.56 ] D: setTracksRect
+[    44.56 ] D: sltStartContentYChanged4
+[    51.94 ] D: findTrackIndexByPoint 0 QRect(0,0 1957x111) true QPointF(1185,13)
+[    51.98 ] D: mouseReleaseEvent
+[    52.65 ] D: findTrackIndexByPoint 0 QRect(0,0 1957x111) true QPointF(555,18)
+[    52.65 ] D: _startSelectedClipIndex123 "{a055a373-9f59-45ac-b835-aad5f1877bcf}"
+[    52.65 ] D: copySelectedArea1; QRectF(23000,0 15483.9x111) QRect(0,0 1957x111)
+[    52.65 ] D: copySelectedArea3
+[    52.65 ] D: Ok
+[    52.65 ] D: OK
+[    52.65 ] D: OK
+[    52.65 ] D: IOIO 0 0
+[    52.72 ] D: mouseReleaseEvent
+[    53.53 ] D: D1
+[    53.53 ] D: REMOVED1 0 -1 false 0 0 -1 1 23000 38483.9 0
+[    53.53 ] D: REMOVED1 0 -1 false 0 0 -1 1 23000 38483.9 0
+[    53.53 ] D: deleteSelectedArea QRectF(23000,0 15483.9x111) QRect(0,0 1957x111)
+[    53.53 ] D: findOverlayItems 1 0
+[    53.53 ] D: "{a055a373-9f59-45ac-b835-aad5f1877bcf}" i.value()->sampleClip()->startTime()  23000 38483.9 38483.9 23000
+[    53.53 ] D: findOverlayItems
+[    53.53 ] D: deleteSelectedArea1 23000 38483.9
+[    53.53 ] D: deleteSelectedArea3
+[    56.23 ] D: P1 -384
+[    56.23 ] D: P14
+[    56.23 ] D: P1 -411
+[    56.23 ] D: P1 -412
+[    56.24 ] D: P1 -414
+[    56.24 ] D: P1 -415
+[    56.24 ] D: P1 -416
+[    56.24 ] D: P1 -417
+[    56.25 ] D: P1 -417
+[    56.26 ] D: P1 -420
+[    56.26 ] D: P1 -421
+[    56.27 ] D: P1 -422
+[    56.27 ] D: P1 -423
+[    56.27 ] D: P1 -424
+[    56.29 ] D: P1 -425
+[    56.29 ] D: P1 -427
+[    56.29 ] D: P1 -428
+[    56.29 ] D: P1 -428
+[    56.30 ] D: P1 -431
+[    56.31 ] D: P1 -432
+[    56.31 ] D: P1 -433
+[    56.31 ] D: P1 -433
+[    56.32 ] D: P1 -434
+[    56.32 ] D: P1 -438
+[    56.32 ] D: P1 -439
+[    56.34 ] D: P1 -439
+[    56.34 ] D: P1 -444
+[    56.34 ] D: P1 -445
+[    56.34 ] D: P1 -446
+[    56.35 ] D: P1 -447
+[    56.35 ] D: P1 -449
+[    56.36 ] D: P1 -449
+[    56.36 ] D: P1 -450
+[    56.37 ] D: P1 -451
+[    56.37 ] D: P1 -452
+[    56.39 ] D: P1 -453
+[    56.40 ] D: P1 -454
+[    56.42 ] D: P1 -454
+[    56.42 ] D: P1 -455
+[    56.54 ] D: sltPositionChanged 749700
+[    56.54 ] D: frame_offset 0 0 10
+[    56.54 ] D: frame_offset 0 1 10
+[    56.54 ] D: findOverlayItems 1 0
+[    56.54 ] D: "{feab68b4-5db0-4c8d-85ea-42d48cab657b}" i.value()->sampleClip()->startTime()  17000 31998.8 31998.8 17000
+[    56.54 ] D: findOverlayItems
+[    56.54 ] D: sltPositionChanged 749700
+[    56.54 ] D: frame_offset 0 0 10
+[    56.54 ] D: frame_offset 0 1 10
+[    56.55 ] D: frame_offset 0 2 10
+[    56.55 ] D: frame_offset 0 3 10
+[    56.55 ] D: frame_offset 0 4 10
+[    56.87 ] D: findTrackIndexByPoint 0 QRect(0,0 1957x111) true QPointF(226,40)
+[    56.94 ] D: mouseReleaseEvent
+[    57.44 ] D: findTrack

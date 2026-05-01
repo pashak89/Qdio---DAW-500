@@ -1,0 +1,574 @@
+[     4.80 ] I: Log: Log file open in follow path at 1403/6/25 22:31:05 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.80 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.80 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.80 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.80 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.80 ] I: Current Render API is: 4.60
+[     4.80 ] I: The subsystem "Renderer" is registered successfully.
+[     4.80 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.80 ] I: The subsystem "Platform" is registered successfully.
+[     4.80 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.80 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.80 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.80 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.80 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.80 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.80 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.88 ] D: Shader Compile successfully.
+[     4.88 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.88 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.88 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.88 ] D: Engine Enabled
+[     4.88 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.88 ] D: Node with id 1 is added to Qt layer
+[     4.88 ] D: Node with id 2460 is added to Qt layer
+[     4.88 ] D: Node with id 2462 is added to Qt layer
+[     4.88 ] D: Node with id 2464 is added to Qt layer
+[     4.88 ] D: Node with id 2466 is added to Qt layer
+[     4.89 ] D: Node with id 2468 is added to Qt layer
+[     4.89 ] D: Node with id 2470 is added to Qt layer
+[     4.89 ] D: Node with id 2472 is added to Qt layer
+[     4.89 ] D: Node with id 2474 is added to Qt layer
+[     4.89 ] D: Node with id 2476 is added to Qt layer
+[     4.89 ] D: Node with id 2478 is added to Qt layer
+[     4.89 ] D: Node with id 2480 is added to Qt layer
+[     4.89 ] D: Node with id 2482 is added to Qt layer
+[     4.89 ] D: Node with id 2484 is added to Qt layer
+[     4.89 ] D: Node with id 2486 is added to Qt layer
+[     4.89 ] D: Node with id 2487 is added to Qt layer
+[     4.89 ] D: Node with id 2489 is added to Qt layer
+[     4.89 ] D: Node with id 2491 is added to Qt layer
+[     4.89 ] D: Node with id 3 is added to Qt layer
+[     4.89 ] D: Node with id 2493 is added to Qt layer
+[     4.89 ] S: New view-port registered with id: 1
+[     4.89 ] S: New view-port registered with id: 2
+[     4.89 ] S: New view-port registered with id: 3
+[     4.89 ] S: New view-port registered with id: 4
+[     4.89 ] S: New view-port registered with id: 5
+[     4.89 ] S: New view-port registered with id: 6
+[     4.99 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     4.99 ] D: Using backend: "OpenGL 3"
+[     5.03 ] W: Floating point comparison needs context sanity check
+[     5.03 ] D: QT onScaleChanged=  144
+[     5.05 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.06 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.06 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.07 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.24 ] D: Engine Started.
+[    17.99 ] D: _editController->getParameterCount() 21
+[    18.07 ] D: trackIndex 0 0
+[    20.33 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    20.98 ] D: _pointActive1 false true false
+[    21.68 ] D: _pointActive1 false true false
+[    22.28 ] D: _pointActive1 false true false
+[    23.33 ] D: ADDED 0 "mix" 3
+[    23.33 ] D: _tracksModel->getItem(i)->rect( QRect(0,0 1707x111)
+[    23.33 ] D: _tracksModel->getItem(i)->rect( QRect(0,195 1707x111)
+[    23.33 ] D: _tracksModel->getItem(i)->rect( QRect(0,306 1707x111)
+[    23.33 ] D: _tracksModel->getItem(i)->rect( QRect(0,417 1707x111)
+[    23.33 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    23.33 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    25.95 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    27.26 ] D: _pointActive1 false true false
+[    28.03 ] D: _pointActive1 false true false
+[    28.73 ] D: _pointActive1 false true false
+[    29.40 ] D: inSelectedLineRETURN2
+[    29.40 ] D: inSelectedLineRETURN2
+[    29.42 ] D: inSelectedLineRETURN2
+[    29.42 ] D: inSelectedLineRETURN2
+[    29.43 ] D: inSelectedLineRETURN2
+[    29.43 ] D: inSelectedLineRETURN2
+[    29.45 ] D: inSelectedLineRETURN2
+[    29.45 ] D: inSelectedLineRETURN2
+[    29.47 ] D: inSelectedLineRETURN2
+[    29.47 ] D: inSelectedLineRETURN2
+[    29.48 ] D: inSelectedLineRETURN2
+[    29.48 ] D: inSelectedLineRETURN2
+[    29.80 ] D: inSelectedLineRETURN2
+[    29.80 ] D: inSelectedLineRETURN2
+[    29.85 ] D: inSelectedLineRETURN2
+[    29.85 ] D: inSelectedLineRETURN2
+[    29.86 ] D: inSelectedLineRETURN2
+[    29.86 ] D: inSelectedLineRETURN2
+[    29.88 ] D: inSelectedLineRETURN2
+[    29.88 ] D: inSelectedLineRETURN2
+[    29.90 ] D: inSelectedLineRETURN2
+[    29.90 ] D: inSelectedLineRETURN2
+[    29.92 ] D: inSelectedLineRETURN2
+[    29.92 ] D: inSelectedLineRETURN2
+[    29.93 ] D: inSelectedLineRETURN2
+[    29.93 ] D: inSelectedLineRETURN2
+[    29.95 ] D: inSelectedLineRETURN2
+[    29.95 ] D: inSelectedLineRETURN2
+[    29.97 ] D: inSelectedLineRETURN2
+[    29.97 ] D: inSelectedLineRETURN2
+[    30.00 ] D: inSelectedLineRETURN2
+[    30.00 ] D: inSelectedLineRETURN2
+[    30.10 ] D: inSelectedLineRETURN2
+[    30.10 ] D: inSelectedLineRETURN2
+[    30.11 ] D: inSelectedLineRETURN2
+[    30.12 ] D: inSelectedLineRETURN2
+[    30.20 ] D: inSelectedLineRETURN2
+[    30.20 ] D: inSelectedLineRETURN2
+[    30.25 ] D: inSelectedLineRETURN2
+[    30.25 ] D: inSelectedLineRETURN2
+[    30.26 ] D: inSelectedLineRETURN2
+[    30.26 ] D: inSelectedLineRETURN2
+[    30.35 ] D: inSelectedLineRETURN2
+[    30.35 ] D: inSelectedLineRETURN2
+[    30.38 ] D: inSelectedLineRETURN2
+[    30.38 ] D: inSelectedLineRETURN2
+[    30.40 ] D: inSelectedLineRETURN2
+[    30.40 ] D: inSelectedLineRETURN2
+[    30.42 ] D: inSelectedLineRETURN2
+[    30.42 ] D: inSelectedLineRETURN2
+[    30.43 ] D: inSelectedLineRETURN2
+[    30.43 ] D: inSelectedLineRETURN2
+[    30.45 ] D: inSelectedLineRETURN2
+[    30.45 ] D: inSelectedLineRETURN2
+[    30.47 ] D: _pointActive1 false true false
+[    30.47 ] D: inSelectedLineRETURN2
+[    30.47 ] D: inSelectedLineRETURN2
+[    30.47 ] D: inSelectedLineRETURN2
+[    30.48 ] D: inSelectedLineRETURN2
+[    30.48 ] D: inSelectedLineRETURN2
+[    30.50 ] D: inSelectedLineRETURN2
+[    30.50 ] D: inSelectedLineRETURN2
+[    30.52 ] D: inSelectedLineRETURN2
+[    30.52 ] D: inSelectedLineRETURN2
+[    30.53 ] D: inSelectedLineRETURN2
+[    30.53 ] D: inSelectedLineRETURN2
+[    30.55 ] D: inSelectedLineRETURN2
+[    30.55 ] D: inSelectedLineRETURN2
+[    30.77 ] D: inSelectedLineRETURN2
+[    30.77 ] D: inSelectedLineRETURN2
+[    30.78 ] D: inSelectedLineRETURN2
+[    30.78 ] D: inSelectedLineRETURN2
+[    30.82 ] D: inSelectedLineRETURN2
+[    30.82 ] D: inSelectedLineRETURN2
+[    30.83 ] D: inSelectedLineRETURN2
+[    30.83 ] D: inSelectedLineRETURN2
+[    30.85 ] D: inSelectedLineRETURN2
+[    30.85 ] D: inSelectedLineRETURN2
+[    30.86 ] D: inSelectedLineRETURN2
+[    30.87 ] D: inSelectedLineRETURN2
+[    30.88 ] D: inSelectedLineRETURN2
+[    30.88 ] D: inSelectedLineRETURN2
+[    30.90 ] D: inSelectedLineRETURN2
+[    30.90 ] D: inSelectedLineRETURN2
+[    33.15 ] D: P1 -212
+[    33.15 ] D: P1 -241
+[    33.16 ] D: P1 -243
+[    33.16 ] D: P1 -247
+[    33.16 ] D: P1 -248
+[    33.16 ] D: P1 -249
+[    33.17 ] D: P1 -250
+[    33.18 ] D: P1 -257
+[    33.18 ] D: P1 -258
+[    33.19 ] D: P1 -261
+[    33.19 ] D: P1 -262
+[    33.19 ] D: P1 -263
+[    33.20 ] D: P1 -264
+[    33.21 ] D: P1 -268
+[    33.21 ] D: P1 -269
+[    33.22 ] D: P1 -271
+[    33.23 ] D: P1 -276
+[    33.24 ] D: P1 -279
+[    33.24 ] D: P1 -280
+[    33.25 ] D: P1 -281
+[    33.25 ] D: P1 -283
+[    33.25 ] D: P1 -284
+[    33.25 ] D: P1 -285
+[    33.25 ] D: P1 -286
+[    33.26 ] D: P1 -287
+[    33.26 ] D: P1 -289
+[    33.26 ] D: P1 -291
+[    33.26 ] D: P1 -292
+[    33.28 ] D: P1 -302
+[    33.28 ] D: P1 -305
+[    33.28 ] D: P1 -307
+[    33.29 ] D: P1 -310
+[    33.29 ] D: P1 -312
+[    33.29 ] D: P1 -313
+[    33.29 ] D: P1 -315
+[    33.30 ] D: P1 -316
+[    33.31 ] D: P1 -318
+[    33.31 ] D: P1 -319
+[    33.32 ] D: P1 -320
+[    33.37 ] D: P1 -320
+[    33.37 ] D: P1 -320
+[    33.37 ] D: P1 -320
+[    33.39 ] D: P1 -322
+[    33.39 ] D: P1 -322
+[    33.39 ] D: P1 -323
+[    33.39 ] D: P1 -323
+[    33.39 ] D: P1 -323
+[    33.40 ] D: P1 -325
+[    33.40 ] D: P1 -326
+[    33.41 ] D: P1 -326
+[    33.42 ] D: P1 -332
+[    33.42 ] D: P14
+[    33.42 ] D: P1 -336
+[    33.42 ] D: P14
+[    33.42 ] D: P1 -337
+[    33.42 ] D: P14
+[    33.43 ] D: P1 -337
+[    33.43 ] D: P14
+[    33.44 ] D: P1 -343
+[    33.44 ] D: P14
+[    33.44 ] D: P1 -346
+[    33.44 ] D: P14
+[    33.45 ] D: P1 -347
+[    33.45 ] D: P14
+[    33.95 ] D: P1 -391
+[    33.95 ] D: P1 -390
+[    33.95 ] D: P1 -390
+[    33.96 ] D: P1 -390
+[    33.96 ] D: P1 -390
+[    33.96 ] D: P1 -390
+[    33.96 ] D: P1 -390
+[    33.97 ] D: P1 -390
+[    33.97 ] D: P1 -390
+[    33.98 ] D: P1 -390
+[    33.98 ] D: P1 -390
+[    33.99 ] D: P1 -390
+[    33.99 ] D: P1 -390
+[    34.00 ] D: P1 -390
+[    34.01 ] D: P1 -390
+[    34.01 ] D: P1 -390
+[    34.02 ] D: P1 -390
+[    34.02 ] D: P1 -390
+[    34.02 ] D: P1 -390
+[    34.03 ] D: P1 -390
+[    34.04 ] D: P1 -390
+[    34.05 ] D: P1 -389
+[    34.06 ] D: P1 -389
+[    34.07 ] D: P1 -389
+[    34.25 ] D: P1 -389
+[    34.26 ] D: P1 -389
+[    34.27 ] D: P1 -389
+[    34.27 ] D: P1 -388
+[    34.27 ] D: P1 -388
+[    34.28 ] D: P1 -387
+[    34.29 ] D: P1 -387
+[    34.30 ] D: P1 -387
+[    34.30 ] D: P1 -386
+[    34.32 ] D: P1 -385
+[    34.32 ] D: P1 -385
+[    34.32 ] D: P1 -384
+[    34.33 ] D: P1 -384
+[    34.34 ] D: P1 -384
+[    34.34 ] D: P1 -384
+[    34.35 ] D: P1 -384
+[    34.35 ] D: P1 -383
+[    34.37 ] D: P1 -382
+[    34.38 ] D: P1 -382
+[    34.39 ] D: P1 -382
+[    34.39 ] D: P1 -382
+[    34.40 ] D: P1 -382
+[    35.09 ] D: P1 -382
+[    35.09 ] D: P1 -382
+[    35.10 ] D: P1 -382
+[    35.10 ] D: P1 -382
+[    35.12 ] D: P1 -382
+[    35.12 ] D: P1 -381
+[    35.12 ] D: P1 -381
+[    35.13 ] D: P1 -380
+[    35.15 ] D: P1 -380
+[    35.15 ] D: P1 -380
+[    35.16 ] D: P1 -380
+[    35.17 ] D: P1 -379
+[    35.17 ] D: P1 -379
+[    35.18 ] D: P1 -379
+[    35.20 ] D: P1 -379
+[    35.22 ] D: P1 -379
+[    35.23 ] D: P1 -378
+[    35.25 ] D: P1 -378
+[    35.25 ] D: P1 -378
+[    35.27 ] D: P1 -378
+[    35.27 ] D: P1 -378
+[    35.30 ] D: P1 -378
+[    35.32 ] D: P1 -377
+[    35.32 ] D: P1 -377
+[    35.33 ] D: P1 -377
+[    35.33 ] D: P1 -377
+[    35.35 ] D: P1 -377
+[    35.35 ] D: P1 -376
+[    35.36 ] D: P1 -376
+[    35.45 ] D: P1 -376
+[    35.49 ] D: P1 -376
+[    35.78 ] D: P1 -376
+[    35.78 ] D: P1 -376
+[    35.80 ] D: P1 -376
+[    35.81 ] D: P1 -376
+[    35.82 ] D: P1 -374
+[    35.82 ] D: P1 -374
+[    35.83 ] D: P1 -374
+[    35.84 ] D: P1 -374
+[    35.84 ] D: P1 -374
+[    35.90 ] D: P1 -374
+[    35.90 ] D: P1 -374
+[    35.93 ] D: P1 -374
+[    35.94 ] D: P1 -373
+[    35.96 ] D: P1 -373
+[    36.21 ] D: sltPositionChanged 0
+[    36.21 ] D: frame_offset 0 0 217
+[    36.21 ] D: frame_offset 0 1 217
+[    36.21 ] D: frame_offset 0 2 217
+[    36.21 ] D: frame_offset 0 3 217
+[    36.22 ] D: frame_offset 0 4 217
+[    36.22 ] D: findOverlayItems 1 0
+[    36.22 ] D: "{d60f3471-5d86-4ca2-9631-3f4daa9dc072}" i.value()->sampleClip()->startTime()  0 322833 322833 0
+[    36.22 ] D: findOverlayItems
+[    43.03 ] D: sltStartContentYChanged1
+[    43.03 ] D: sltStartContentYChanged2
+[    43.03 ] D: sltStartContentYChanged3
+[    43.03 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1391x111)
+[    43.03 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1391x111)
+[    43.03 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1391x111)
+[    43.03 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1391x111)
+[    43.03 ] D: sltStartContentYChanged4
+[    43.03 ] D: sltStartContentYChanged1
+[    43.03 ] D: sltStartContentYChanged2
+[    43.03 ] D: sltStartContentYChanged3
+[    43.03 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1706x111)
+[    43.03 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1706x111)
+[    43.03 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1706x111)
+[    43.03 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1706x111)
+[    43.03 ] D: sltStartContentYChanged4
+[    43.07 ] D: sltStartContentYChanged1
+[    43.07 ] D: sltStartContentYChanged2
+[    43.07 ] D: sltStartContentYChanged3
+[    43.07 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1373x111)
+[    43.07 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1373x111)
+[    43.07 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1373x111)
+[    43.07 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1373x111)
+[    43.07 ] D: sltStartContentYChanged4
+[    43.07 ] D: sltStartContentYChanged1
+[    43.07 ] D: sltStartContentYChanged2
+[    43.07 ] D: sltStartContentYChanged3
+[    43.07 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1688x111)
+[    43.07 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1688x111)
+[    43.07 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1688x111)
+[    43.07 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1688x111)
+[    43.07 ] D: sltStartContentYChanged4
+[    43.15 ] D: sltStartContentYChanged1
+[    43.15 ] D: sltStartContentYChanged2
+[    43.15 ] D: sltStartContentYChanged3
+[    43.15 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1301x111)
+[    43.15 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1301x111)
+[    43.15 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1301x111)
+[    43.15 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1301x111)
+[    43.15 ] D: sltStartContentYChanged4
+[    43.15 ] D: sltStartContentYChanged1
+[    43.15 ] D: sltStartContentYChanged2
+[    43.15 ] D: sltStartContentYChanged3
+[    43.15 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1616x111)
+[    43.15 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1616x111)
+[    43.15 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1616x111)
+[    43.15 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1616x111)
+[    43.15 ] D: sltStartContentYChanged4
+[    43.26 ] D: sltStartContentYChanged1
+[    43.26 ] D: sltStartContentYChanged2
+[    43.26 ] D: sltStartContentYChanged3
+[    43.26 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1227x111)
+[    43.26 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1227x111)
+[    43.26 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1227x111)
+[    43.26 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1227x111)
+[    43.26 ] D: sltStartContentYChanged4
+[    43.26 ] D: sltStartContentYChanged1
+[    43.26 ] D: sltStartContentYChanged2
+[    43.26 ] D: sltStartContentYChanged3
+[    43.26 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1542x111)
+[    43.26 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1542x111)
+[    43.26 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1542x111)
+[    43.26 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1542x111)
+[    43.26 ] D: sltStartContentYChanged4
+[    43.33 ] D: sltStartContentYChanged1
+[    43.33 ] D: sltStartContentYChanged2
+[    43.33 ] D: sltStartContentYChanged3
+[    43.33 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1205x111)
+[    43.33 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1205x111)
+[    43.33 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1205x111)
+[    43.33 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1205x111)
+[    43.33 ] D: sltStartContentYChanged4
+[    43.33 ] D: sltStartContentYChanged1
+[    43.33 ] D: sltStartContentYChanged2
+[    43.33 ] D: sltStartContentYChanged3
+[    43.33 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1520x111)
+[    43.33 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1520x111)
+[    43.33 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1520x111)
+[    43.33 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1520x111)
+[    43.33 ] D: sltStartContentYChanged4
+[    43.44 ] D: sltStartContentYChanged1
+[    43.44 ] D: sltStartContentYChanged2
+[    43.44 ] D: sltStartContentYChanged3
+[    43.44 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1140x111)
+[    43.44 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1140x111)
+[    43.44 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1140x111)
+[    43.44 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1140x111)
+[    43.44 ] D: sltStartContentYChanged4
+[    43.44 ] D: sltStartContentYChanged1
+[    43.44 ] D: sltStartContentYChanged2
+[    43.44 ] D: sltStartContentYChanged3
+[    43.44 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1455x111)
+[    43.44 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1455x111)
+[    43.44 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1455x111)
+[    43.44 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1455x111)
+[    43.44 ] D: sltStartContentYChanged4
+[    43.62 ] D: sltStartContentYChanged1
+[    43.62 ] D: sltStartContentYChanged2
+[    43.62 ] D: sltStartContentYChanged3
+[    43.62 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 940x111)
+[    43.62 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 940x111)
+[    43.62 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 940x111)
+[    43.62 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 940x111)
+[    43.62 ] D: sltStartContentYChanged4
+[    43.62 ] D: sltStartContentYChanged1
+[    43.62 ] D: sltStartContentYChanged2
+[    43.62 ] D: sltStartContentYChanged3
+[    43.62 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1255x111)
+[    43.62 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1255x111)
+[    43.62 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1255x111)
+[    43.62 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1255x111)
+[    43.62 ] D: sltStartContentYChanged4
+[    43.71 ] D: sltStartContentYChanged1
+[    43.71 ] D: sltStartContentYChanged2
+[    43.71 ] D: sltStartContentYChanged3
+[    43.71 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 889x111)
+[    43.71 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 889x111)
+[    43.71 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 889x111)
+[    43.71 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 889x111)
+[    43.71 ] D: sltStartContentYChanged4
+[    43.71 ] D: sltStartContentYChanged1
+[    43.71 ] D: sltStartContentYChanged2
+[    43.71 ] D: sltStartContentYChanged3
+[    43.71 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1204x111)
+[    43.71 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1204x111)
+[    43.71 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1204x111)
+[    43.71 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1204x111)
+[    43.71 ] D: sltStartContentYChanged4
+[    43.80 ] D: sltStartContentYChanged1
+[    43.80 ] D: sltStartContentYChanged2
+[    43.80 ] D: sltStartContentYChanged3
+[    43.80 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 801x111)
+[    43.80 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 801x111)
+[    43.80 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 801x111)
+[    43.80 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 801x111)
+[    43.80 ] D: sltStartContentYChanged4
+[    43.80 ] D: sltStartContentYChanged1
+[    43.80 ] D: sltStartContentYChanged2
+[    43.80 ] D: sltStartContentYChanged3
+[    43.80 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1116x111)
+[    43.80 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1116x111)
+[    43.80 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1116x111)
+[    43.80 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1116x111)
+[    43.80 ] D: sltStartContentYChanged4
+[    43.92 ] D: sltStartContentYChanged1
+[    43.92 ] D: sltStartContentYChanged2
+[    43.92 ] D: sltStartContentYChanged3
+[    43.92 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 786x111)
+[    43.92 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 786x111)
+[    43.92 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 786x111)
+[    43.92 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 786x111)
+[    43.92 ] D: sltStartContentYChanged4
+[    43.92 ] D: sltStartContentYChanged1
+[    43.92 ] D: sltStartContentYChanged2
+[    43.92 ] D: sltStartContentYChanged3
+[    43.92 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1101x111)
+[    43.92 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,195 1101x111)
+[    43.92 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,306 1101x111)
+[    43.92 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,417 1101x111)
+[    43.92 ] D: sltStartContentYChanged4
+[    51.96 ] D: _requestForLoading false false
+[    51.96 ] D: _requestForLoading2
+[    51.96 ] D: _numberOfSampleBuffer 1
+[    51.96 ] D: START TO load 0
+[    51.96 ] D: sltPositionChanged 1322999 true
+[    51.96 ] D: START TO load 1
+[    51.96 ] D: START TO load 2
+[    51.96 ] D: START TO load 3
+[    51.96 ] D: frame_offset 20 0 217
+[    51.96 ] D: frame_offset 20 1 217
+[    51.97 ] D: frame_offset 20 2 217
+[    51.97 ] D: frame_offset 20 3 217
+[    51.97 ] D: frame_offset 20 4 217
+[    51.98 ] D: sltFirstBufferFilled ("{d60f3471-5d86-4ca2-9631-3f4daa9dc072}") "{d60f3471-5d86-4ca2-9631-3f4daa9dc072}" true
+[    51.98 ] D: _requestForLoading true false
+[    53.63 ] D: _requestForLoading false false
+[    53.63 ] D: _requestForLoading2
+[    53.63 ] D: _numberOfSampleBuffer 1
+[    53.63 ] D: START TO load 0
+[    53.63 ] D: sltPositionChanged 132300 true
+[    53.63 ] D: START TO load 1
+[    53.63 ] D: START TO load 2
+[    53.63 ] D: START TO load 3
+[    53.63 ] D: frame_offset 2 0 217
+[    53.64 ] D: frame_offset 2 1 217
+[    53.64 ] D: frame_offset 2 2 217
+[    53.64 ] D: frame_offset 2 3 217
+[    53.64 ] D: frame_offset 2 4 217
+[    53.65 ] D: sltFirstBufferFilled ("{d60f3471-5d86-4ca2-9631-3f4daa9dc072}") "{d60f3471-5d86-4ca2-9631-3f4daa9dc072}" true
+[    53.65 ] D: _requestForLoading true false
+[    55.11 ] D: AsyncFileReader 2 7
+[    56.61 ] D: AsyncFileReader 3 8
+[    58.09 ] D: AsyncFileReader 4 9
+[    59.57 ] D: AsyncFileReader 0 10
+[    67.12 ] D: _requestForLoading false false
+[    67.12 ] D: _requestForLoading2
+[    67.12 ] D: _numberOfSampleBuffer 1
+[    67.12 ] D: START TO load 0
+[    67.12 ] D: sltPositionChanged 220500 true
+[    67.12 ] D: START TO load 1
+[    67.12 ] D: START TO load 2
+[    67.12 ] D: START TO load 3
+[    67.12 ] D: frame_offset 3 0 217
+[    67.12 ] D: frame_offset 3 1 217
+[    67.12 ] D: frame_offset 3 2 217
+[    67.13 ] D: frame_offset 3 3 217
+[    67.13 ] D: frame_offset 3 4 217
+[    67.14 ] D: sltFirstBufferFilled ("{d60f3471-5d86-4ca2-9631-3f4daa9dc072}") "{d60f3471-5d86-4ca2-9631-3f4daa9dc072}" true
+[    67.14 ] D: _requestForLoading true false
+[    68.09 ] D: AsyncFileReader 3 8
+[    69.57 ] D: AsyncFileReader 4 9
+[    71.05 ] D: AsyncFileReader 0 10
+[    72.54 ] D: AsyncFileReader 1 11
+[    79.57 ] D: _requestForLoading false false
+[    79.57 ] D: _requestForLoading2
+[    79.57 ] D: _numberOfSampleBuffer 1
+[    79.57 ] D: START TO load 0
+[    79.57 ] D: sltPositionChanged 220500 true
+[    79.57 ] D: START TO load 1
+[    79.57 ] D: START TO load 2
+[    79.57 ] D: START TO load 3
+[    79.57 ] D: frame_offset 3 0 217
+[    79.57 ] D: frame_offset 3 1 217
+[    79.57 ] D: frame_offset 3 2 217
+[    79.58 ] D: frame_offset 3 3 217
+[    79.58 ] D: frame_offset 3 4 217
+[    79.58 ] D: sltFirstBufferFilled ("{d60f3471-5d86-4ca2-9631-3f4daa9dc072}") "{d60f3471-5d86-4ca2-9631-3f4daa9dc072}" true
+[    79.58 ] D: _requestForLoading true false
+[    80.54 ] D: AsyncFileReader 3 8
+[    82.02 ] D: AsyncFileReader 4 9
+[    83.50 ] D: AsyncFileReader 0 10
+[    85.00 ] D: AsyncFileReader 1 11
+[    89.72 ] D: _requestForLoading false false
+[    89.72 ] D: _requestForLoading2
+[    89.72 ] D: _numberOfSampleBuffer 1
+[    89.72 ] D: START TO load 0
+[    89.72 ] D: sltPositionChanged 220500 true
+[    89.72 ] D: START TO load 1
+[    89.72 ] D: START TO load 2
+[    89.72 ] D: START TO load 3
+[    89.72 ] D: frame_offset 3 0 217
+[    89.72 ] D: frame_offset 3 1 217
+[    89.72 ] D: frame_offset 3 2 217
+[    89.73 ] D: frame_offset 3 3 217
+[    89.73 ] D: frame_offset 3 4 217
+[    89.73 ] D: sltFirstBufferFilled ("{d60f3471-5d86-4ca2-9631-3f4daa9dc072}") "{d60f3471-5d86-4ca2-9631-3f4daa9dc072}" true
+[    89.73 ] D: _requestForLoading true false
+[    90.69 ] D: AsyncFileReader 3 8
+[    92.17 ] D: AsyncFileReader 4 9
+[    93.65 ] D: AsyncFileReader 0 10

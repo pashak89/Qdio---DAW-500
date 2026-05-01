@@ -1,0 +1,753 @@
+[    11.33 ] I: Log: Log file open in follow path at 1403/6/27 07:07:59 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[    11.33 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[    11.33 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[    11.33 ] D: API version is: 4.60 ,shader version is: 4.60
+[    11.34 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[    11.34 ] I: Current Render API is: 4.60
+[    11.34 ] I: The subsystem "Renderer" is registered successfully.
+[    11.34 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[    11.34 ] I: The subsystem "Platform" is registered successfully.
+[    11.34 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[    11.34 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[    11.34 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[    11.34 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[    11.34 ] I: #version 460 core
+#define GLES_Ver 460
+
+[    11.34 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[    11.34 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[    11.62 ] D: Shader Compile successfully.
+[    11.63 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[    11.63 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[    11.63 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[    11.63 ] D: Engine Enabled
+[    11.63 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[    11.63 ] D: Node with id 1 is added to Qt layer
+[    11.63 ] D: Node with id 2460 is added to Qt layer
+[    11.63 ] D: Node with id 2462 is added to Qt layer
+[    11.64 ] D: Node with id 2464 is added to Qt layer
+[    11.64 ] D: Node with id 2466 is added to Qt layer
+[    11.64 ] D: Node with id 2468 is added to Qt layer
+[    11.64 ] D: Node with id 2470 is added to Qt layer
+[    11.64 ] D: Node with id 2472 is added to Qt layer
+[    11.64 ] D: Node with id 2474 is added to Qt layer
+[    11.64 ] D: Node with id 2476 is added to Qt layer
+[    11.64 ] D: Node with id 2478 is added to Qt layer
+[    11.64 ] D: Node with id 2480 is added to Qt layer
+[    11.65 ] D: Node with id 2482 is added to Qt layer
+[    11.65 ] D: Node with id 2484 is added to Qt layer
+[    11.65 ] D: Node with id 2486 is added to Qt layer
+[    11.65 ] D: Node with id 2487 is added to Qt layer
+[    11.65 ] D: Node with id 2489 is added to Qt layer
+[    11.65 ] D: Node with id 2491 is added to Qt layer
+[    11.65 ] D: Node with id 3 is added to Qt layer
+[    11.65 ] D: Node with id 2493 is added to Qt layer
+[    11.65 ] S: New view-port registered with id: 1
+[    11.65 ] S: New view-port registered with id: 2
+[    11.65 ] S: New view-port registered with id: 3
+[    11.65 ] S: New view-port registered with id: 4
+[    11.66 ] S: New view-port registered with id: 5
+[    11.66 ] S: New view-port registered with id: 6
+[    12.41 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[    12.41 ] D: Using backend: "OpenGL 3"
+[    12.59 ] W: Floating point comparison needs context sanity check
+[    12.59 ] D: QT onScaleChanged=  144
+[    12.76 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    12.79 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    12.83 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    12.83 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    13.08 ] D: Engine Started.
+[    23.43 ] D: sltStartContentYChanged1
+[    23.43 ] D: sltStartContentYChanged2
+[    23.43 ] D: sltStartContentYChanged3
+[    23.43 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1391x111)
+[    23.43 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1391x111)
+[    23.43 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1391x111)
+[    23.43 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1391x111)
+[    23.43 ] D: sltStartContentYChanged4
+[    23.43 ] D: sltStartContentYChanged1
+[    23.43 ] D: sltStartContentYChanged2
+[    23.44 ] D: sltStartContentYChanged3
+[    23.44 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1706x111)
+[    23.44 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1706x111)
+[    23.44 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1706x111)
+[    23.44 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1706x111)
+[    23.44 ] D: sltStartContentYChanged4
+[    23.47 ] D: sltStartContentYChanged1
+[    23.47 ] D: sltStartContentYChanged2
+[    23.47 ] D: sltStartContentYChanged3
+[    23.47 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1384x111)
+[    23.47 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1384x111)
+[    23.47 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1384x111)
+[    23.47 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1384x111)
+[    23.48 ] D: sltStartContentYChanged4
+[    23.48 ] D: sltStartContentYChanged1
+[    23.48 ] D: sltStartContentYChanged2
+[    23.48 ] D: sltStartContentYChanged3
+[    23.48 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1699x111)
+[    23.48 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1699x111)
+[    23.48 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1699x111)
+[    23.48 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1699x111)
+[    23.48 ] D: sltStartContentYChanged4
+[    23.54 ] D: sltStartContentYChanged1
+[    23.54 ] D: sltStartContentYChanged2
+[    23.54 ] D: sltStartContentYChanged3
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1370x111)
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1370x111)
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1370x111)
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1370x111)
+[    23.54 ] D: sltStartContentYChanged4
+[    23.54 ] D: sltStartContentYChanged1
+[    23.54 ] D: sltStartContentYChanged2
+[    23.54 ] D: sltStartContentYChanged3
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1685x111)
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1685x111)
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1685x111)
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1685x111)
+[    23.54 ] D: sltStartContentYChanged4
+[    23.54 ] D: sltStartContentYChanged1
+[    23.54 ] D: sltStartContentYChanged2
+[    23.54 ] D: sltStartContentYChanged3
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1685x111)
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1685x111)
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1685x111)
+[    23.54 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1685x111)
+[    23.54 ] D: sltStartContentYChanged4
+[    23.58 ] D: sltStartContentYChanged1
+[    23.59 ] D: sltStartContentYChanged2
+[    23.59 ] D: sltStartContentYChanged3
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1361x111)
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1361x111)
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1361x111)
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1361x111)
+[    23.59 ] D: sltStartContentYChanged4
+[    23.59 ] D: sltStartContentYChanged1
+[    23.59 ] D: sltStartContentYChanged2
+[    23.59 ] D: sltStartContentYChanged3
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1676x111)
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1676x111)
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1676x111)
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1676x111)
+[    23.59 ] D: sltStartContentYChanged4
+[    23.59 ] D: sltStartContentYChanged1
+[    23.59 ] D: sltStartContentYChanged2
+[    23.59 ] D: sltStartContentYChanged3
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1676x111)
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1676x111)
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1676x111)
+[    23.59 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1676x111)
+[    23.59 ] D: sltStartContentYChanged4
+[    23.64 ] D: sltStartContentYChanged1
+[    23.65 ] D: sltStartContentYChanged2
+[    23.65 ] D: sltStartContentYChanged3
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1329x111)
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1329x111)
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1329x111)
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1329x111)
+[    23.65 ] D: sltStartContentYChanged4
+[    23.65 ] D: sltStartContentYChanged1
+[    23.65 ] D: sltStartContentYChanged2
+[    23.65 ] D: sltStartContentYChanged3
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1644x111)
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1644x111)
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1644x111)
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1644x111)
+[    23.65 ] D: sltStartContentYChanged4
+[    23.65 ] D: sltStartContentYChanged1
+[    23.65 ] D: sltStartContentYChanged2
+[    23.65 ] D: sltStartContentYChanged3
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1644x111)
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1644x111)
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1644x111)
+[    23.65 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1644x111)
+[    23.65 ] D: sltStartContentYChanged4
+[    23.74 ] D: sltStartContentYChanged1
+[    23.74 ] D: sltStartContentYChanged2
+[    23.74 ] D: sltStartContentYChanged3
+[    23.74 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1300x111)
+[    23.74 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1300x111)
+[    23.74 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1300x111)
+[    23.74 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1300x111)
+[    23.74 ] D: sltStartContentYChanged4
+[    23.74 ] D: sltStartContentYChanged1
+[    23.74 ] D: sltStartContentYChanged2
+[    23.74 ] D: sltStartContentYChanged3
+[    23.74 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1615x111)
+[    23.75 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1615x111)
+[    23.75 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1615x111)
+[    23.75 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1615x111)
+[    23.75 ] D: sltStartContentYChanged4
+[    23.75 ] D: sltStartContentYChanged1
+[    23.75 ] D: sltStartContentYChanged2
+[    23.75 ] D: sltStartContentYChanged3
+[    23.75 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1615x111)
+[    23.75 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1615x111)
+[    23.75 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1615x111)
+[    23.75 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1615x111)
+[    23.75 ] D: sltStartContentYChanged4
+[    23.82 ] D: sltStartContentYChanged1
+[    23.82 ] D: sltStartContentYChanged2
+[    23.82 ] D: sltStartContentYChanged3
+[    23.82 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1289x111)
+[    23.82 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1289x111)
+[    23.82 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1289x111)
+[    23.82 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1289x111)
+[    23.82 ] D: sltStartContentYChanged4
+[    23.82 ] D: sltStartContentYChanged1
+[    23.82 ] D: sltStartContentYChanged2
+[    23.82 ] D: sltStartContentYChanged3
+[    23.82 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1604x111)
+[    23.82 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1604x111)
+[    23.82 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1604x111)
+[    23.82 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1604x111)
+[    23.82 ] D: sltStartContentYChanged4
+[    23.82 ] D: sltStartContentYChanged1
+[    23.82 ] D: sltStartContentYChanged2
+[    23.83 ] D: sltStartContentYChanged3
+[    23.83 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1604x111)
+[    23.83 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1604x111)
+[    23.83 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1604x111)
+[    23.83 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1604x111)
+[    23.83 ] D: sltStartContentYChanged4
+[    23.88 ] D: sltStartContentYChanged1
+[    23.88 ] D: sltStartContentYChanged2
+[    23.88 ] D: sltStartContentYChanged3
+[    23.88 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1294x111)
+[    23.88 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1294x111)
+[    23.88 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1294x111)
+[    23.88 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1294x111)
+[    23.88 ] D: sltStartContentYChanged4
+[    23.88 ] D: sltStartContentYChanged1
+[    23.88 ] D: sltStartContentYChanged2
+[    23.88 ] D: sltStartContentYChanged3
+[    23.88 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1609x111)
+[    23.88 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1609x111)
+[    23.88 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1609x111)
+[    23.88 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1609x111)
+[    23.88 ] D: sltStartContentYChanged4
+[    23.89 ] D: sltStartContentYChanged1
+[    23.89 ] D: sltStartContentYChanged2
+[    23.89 ] D: sltStartContentYChanged3
+[    23.89 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1609x111)
+[    23.89 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1609x111)
+[    23.89 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1609x111)
+[    23.89 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1609x111)
+[    23.89 ] D: sltStartContentYChanged4
+[    23.91 ] D: sltStartContentYChanged1
+[    23.91 ] D: sltStartContentYChanged2
+[    23.91 ] D: sltStartContentYChanged3
+[    23.91 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1314x111)
+[    23.91 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1314x111)
+[    23.91 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1314x111)
+[    23.91 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1314x111)
+[    23.91 ] D: sltStartContentYChanged4
+[    23.91 ] D: sltStartContentYChanged1
+[    23.91 ] D: sltStartContentYChanged2
+[    23.91 ] D: sltStartContentYChanged3
+[    23.91 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1629x111)
+[    23.92 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1629x111)
+[    23.92 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1629x111)
+[    23.92 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1629x111)
+[    23.92 ] D: sltStartContentYChanged4
+[    23.92 ] D: sltStartContentYChanged1
+[    23.92 ] D: sltStartContentYChanged2
+[    23.92 ] D: sltStartContentYChanged3
+[    23.92 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1629x111)
+[    23.92 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1629x111)
+[    23.92 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1629x111)
+[    23.92 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1629x111)
+[    23.92 ] D: sltStartContentYChanged4
+[    23.94 ] D: sltStartContentYChanged1
+[    23.94 ] D: sltStartContentYChanged2
+[    23.94 ] D: sltStartContentYChanged3
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1327x111)
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1327x111)
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1327x111)
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1327x111)
+[    23.94 ] D: sltStartContentYChanged4
+[    23.94 ] D: sltStartContentYChanged1
+[    23.94 ] D: sltStartContentYChanged2
+[    23.94 ] D: sltStartContentYChanged3
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1642x111)
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1642x111)
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1642x111)
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1642x111)
+[    23.94 ] D: sltStartContentYChanged4
+[    23.94 ] D: sltStartContentYChanged1
+[    23.94 ] D: sltStartContentYChanged2
+[    23.94 ] D: sltStartContentYChanged3
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1642x111)
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1642x111)
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1642x111)
+[    23.94 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1642x111)
+[    23.94 ] D: sltStartContentYChanged4
+[    23.97 ] D: sltStartContentYChanged1
+[    23.97 ] D: sltStartContentYChanged2
+[    23.97 ] D: sltStartContentYChanged3
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1331x111)
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1331x111)
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1331x111)
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1331x111)
+[    23.97 ] D: sltStartContentYChanged4
+[    23.97 ] D: sltStartContentYChanged1
+[    23.97 ] D: sltStartContentYChanged2
+[    23.97 ] D: sltStartContentYChanged3
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1646x111)
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1646x111)
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1646x111)
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1646x111)
+[    23.97 ] D: sltStartContentYChanged4
+[    23.97 ] D: sltStartContentYChanged1
+[    23.97 ] D: sltStartContentYChanged2
+[    23.97 ] D: sltStartContentYChanged3
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1646x111)
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1646x111)
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1646x111)
+[    23.97 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1646x111)
+[    23.97 ] D: sltStartContentYChanged4
+[    24.00 ] D: sltStartContentYChanged1
+[    24.00 ] D: sltStartContentYChanged2
+[    24.00 ] D: sltStartContentYChanged3
+[    24.00 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1336x111)
+[    24.00 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1336x111)
+[    24.00 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1336x111)
+[    24.00 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1336x111)
+[    24.00 ] D: sltStartContentYChanged4
+[    24.00 ] D: sltStartContentYChanged1
+[    24.00 ] D: sltStartContentYChanged2
+[    24.00 ] D: sltStartContentYChanged3
+[    24.00 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1651x111)
+[    24.00 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1651x111)
+[    24.00 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1651x111)
+[    24.00 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1651x111)
+[    24.00 ] D: sltStartContentYChanged4
+[    24.05 ] D: sltStartContentYChanged1
+[    24.05 ] D: sltStartContentYChanged2
+[    24.05 ] D: sltStartContentYChanged3
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1345x111)
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1345x111)
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1345x111)
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1345x111)
+[    24.05 ] D: sltStartContentYChanged4
+[    24.05 ] D: sltStartContentYChanged1
+[    24.05 ] D: sltStartContentYChanged2
+[    24.05 ] D: sltStartContentYChanged3
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1660x111)
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1660x111)
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1660x111)
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1660x111)
+[    24.05 ] D: sltStartContentYChanged4
+[    24.05 ] D: sltStartContentYChanged1
+[    24.05 ] D: sltStartContentYChanged2
+[    24.05 ] D: sltStartContentYChanged3
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1660x111)
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1660x111)
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1660x111)
+[    24.05 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1660x111)
+[    24.05 ] D: sltStartContentYChanged4
+[    24.13 ] D: sltStartContentYChanged1
+[    24.13 ] D: sltStartContentYChanged2
+[    24.13 ] D: sltStartContentYChanged3
+[    24.13 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1346x111)
+[    24.13 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1346x111)
+[    24.13 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1346x111)
+[    24.13 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1346x111)
+[    24.13 ] D: sltStartContentYChanged4
+[    24.13 ] D: sltStartContentYChanged1
+[    24.13 ] D: sltStartContentYChanged2
+[    24.13 ] D: sltStartContentYChanged3
+[    24.13 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1661x111)
+[    24.13 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1661x111)
+[    24.13 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1661x111)
+[    24.13 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1661x111)
+[    24.13 ] D: sltStartContentYChanged4
+[    24.17 ] D: sltStartContentYChanged1
+[    24.17 ] D: sltStartContentYChanged2
+[    24.17 ] D: sltStartContentYChanged3
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1349x111)
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1349x111)
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1349x111)
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1349x111)
+[    24.17 ] D: sltStartContentYChanged4
+[    24.17 ] D: sltStartContentYChanged1
+[    24.17 ] D: sltStartContentYChanged2
+[    24.17 ] D: sltStartContentYChanged3
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1664x111)
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1664x111)
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1664x111)
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1664x111)
+[    24.17 ] D: sltStartContentYChanged4
+[    24.17 ] D: sltStartContentYChanged1
+[    24.17 ] D: sltStartContentYChanged2
+[    24.17 ] D: sltStartContentYChanged3
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1664x111)
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1664x111)
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1664x111)
+[    24.17 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1664x111)
+[    24.17 ] D: sltStartContentYChanged4
+[    24.20 ] D: sltStartContentYChanged1
+[    24.20 ] D: sltStartContentYChanged2
+[    24.20 ] D: sltStartContentYChanged3
+[    24.20 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1350x111)
+[    24.20 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1350x111)
+[    24.20 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1350x111)
+[    24.20 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1350x111)
+[    24.20 ] D: sltStartContentYChanged4
+[    24.20 ] D: sltStartContentYChanged1
+[    24.20 ] D: sltStartContentYChanged2
+[    24.20 ] D: sltStartContentYChanged3
+[    24.20 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1665x111)
+[    24.20 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1665x111)
+[    24.20 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1665x111)
+[    24.20 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1665x111)
+[    24.20 ] D: sltStartContentYChanged4
+[    24.24 ] D: sltStartContentYChanged1
+[    24.24 ] D: sltStartContentYChanged2
+[    24.24 ] D: sltStartContentYChanged3
+[    24.24 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1353x111)
+[    24.24 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1353x111)
+[    24.24 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1353x111)
+[    24.24 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1353x111)
+[    24.24 ] D: sltStartContentYChanged4
+[    24.24 ] D: sltStartContentYChanged1
+[    24.24 ] D: sltStartContentYChanged2
+[    24.24 ] D: sltStartContentYChanged3
+[    24.24 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1668x111)
+[    24.24 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1668x111)
+[    24.24 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1668x111)
+[    24.24 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1668x111)
+[    24.24 ] D: sltStartContentYChanged4
+[    24.24 ] D: sltStartContentYChanged1
+[    24.25 ] D: sltStartContentYChanged2
+[    24.25 ] D: sltStartContentYChanged3
+[    24.25 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1668x111)
+[    24.25 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1668x111)
+[    24.25 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1668x111)
+[    24.25 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1668x111)
+[    24.25 ] D: sltStartContentYChanged4
+[    24.27 ] D: sltStartContentYChanged1
+[    24.27 ] D: sltStartContentYChanged2
+[    24.27 ] D: sltStartContentYChanged3
+[    24.27 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1355x111)
+[    24.27 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1355x111)
+[    24.27 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1355x111)
+[    24.27 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1355x111)
+[    24.27 ] D: sltStartContentYChanged4
+[    24.27 ] D: sltStartContentYChanged1
+[    24.27 ] D: sltStartContentYChanged2
+[    24.27 ] D: sltStartContentYChanged3
+[    24.27 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1670x111)
+[    24.27 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1670x111)
+[    24.27 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1670x111)
+[    24.27 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1670x111)
+[    24.27 ] D: sltStartContentYChanged4
+[    24.28 ] D: sltStartContentYChanged1
+[    24.28 ] D: sltStartContentYChanged2
+[    24.28 ] D: sltStartContentYChanged3
+[    24.28 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1670x111)
+[    24.28 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1670x111)
+[    24.28 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1670x111)
+[    24.28 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1670x111)
+[    24.28 ] D: sltStartContentYChanged4
+[    24.30 ] D: sltStartContentYChanged1
+[    24.30 ] D: sltStartContentYChanged2
+[    24.31 ] D: sltStartContentYChanged3
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1356x111)
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1356x111)
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1356x111)
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1356x111)
+[    24.31 ] D: sltStartContentYChanged4
+[    24.31 ] D: sltStartContentYChanged1
+[    24.31 ] D: sltStartContentYChanged2
+[    24.31 ] D: sltStartContentYChanged3
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1671x111)
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1671x111)
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1671x111)
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1671x111)
+[    24.31 ] D: sltStartContentYChanged4
+[    24.31 ] D: sltStartContentYChanged1
+[    24.31 ] D: sltStartContentYChanged2
+[    24.31 ] D: sltStartContentYChanged3
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1671x111)
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1671x111)
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1671x111)
+[    24.31 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1671x111)
+[    24.31 ] D: sltStartContentYChanged4
+[    24.34 ] D: sltStartContentYChanged1
+[    24.34 ] D: sltStartContentYChanged2
+[    24.34 ] D: sltStartContentYChanged3
+[    24.34 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1357x111)
+[    24.34 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1357x111)
+[    24.34 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1357x111)
+[    24.34 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1357x111)
+[    24.34 ] D: sltStartContentYChanged4
+[    24.34 ] D: sltStartContentYChanged1
+[    24.34 ] D: sltStartContentYChanged2
+[    24.34 ] D: sltStartContentYChanged3
+[    24.34 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1672x111)
+[    24.34 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1672x111)
+[    24.34 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1672x111)
+[    24.34 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1672x111)
+[    24.34 ] D: sltStartContentYChanged4
+[    24.38 ] D: sltStartContentYChanged1
+[    24.38 ] D: sltStartContentYChanged2
+[    24.38 ] D: sltStartContentYChanged3
+[    24.38 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1358x111)
+[    24.38 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1358x111)
+[    24.38 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1358x111)
+[    24.38 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1358x111)
+[    24.38 ] D: sltStartContentYChanged4
+[    24.38 ] D: sltStartContentYChanged1
+[    24.38 ] D: sltStartContentYChanged2
+[    24.38 ] D: sltStartContentYChanged3
+[    24.38 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1673x111)
+[    24.38 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1673x111)
+[    24.38 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1673x111)
+[    24.38 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1673x111)
+[    24.39 ] D: sltStartContentYChanged4
+[    24.39 ] D: sltStartContentYChanged1
+[    24.39 ] D: sltStartContentYChanged2
+[    24.39 ] D: sltStartContentYChanged3
+[    24.39 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1673x111)
+[    24.39 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1673x111)
+[    24.39 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1673x111)
+[    24.39 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1673x111)
+[    24.39 ] D: sltStartContentYChanged4
+[    24.46 ] D: sltStartContentYChanged1
+[    24.46 ] D: sltStartContentYChanged2
+[    24.46 ] D: sltStartContentYChanged3
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1359x111)
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1359x111)
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1359x111)
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1359x111)
+[    24.46 ] D: sltStartContentYChanged4
+[    24.46 ] D: sltStartContentYChanged1
+[    24.46 ] D: sltStartContentYChanged2
+[    24.46 ] D: sltStartContentYChanged3
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1674x111)
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1674x111)
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1674x111)
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1674x111)
+[    24.46 ] D: sltStartContentYChanged4
+[    24.46 ] D: sltStartContentYChanged1
+[    24.46 ] D: sltStartContentYChanged2
+[    24.46 ] D: sltStartContentYChanged3
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1674x111)
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1674x111)
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1674x111)
+[    24.46 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1674x111)
+[    24.46 ] D: sltStartContentYChanged4
+[    24.52 ] D: sltStartContentYChanged1
+[    24.52 ] D: sltStartContentYChanged2
+[    24.52 ] D: sltStartContentYChanged3
+[    24.52 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1674x111)
+[    24.52 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1674x111)
+[    24.52 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1674x111)
+[    24.52 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1674x111)
+[    24.52 ] D: sltStartContentYChanged4
+[    30.85 ] D: P1 -479
+[    30.85 ] D: P1 -444
+[    30.86 ] D: P1 -442
+[    30.86 ] D: P1 -440
+[    30.86 ] D: P1 -438
+[    30.86 ] D: P1 -435
+[    30.86 ] D: P1 -433
+[    30.88 ] D: P1 -432
+[    30.88 ] D: P1 -421
+[    30.88 ] D: P1 -420
+[    30.89 ] D: P1 -419
+[    30.90 ] D: P1 -418
+[    30.90 ] D: P14
+[    30.90 ] D: P1 -416
+[    30.90 ] D: P14
+[    30.90 ] D: P1 -416
+[    30.90 ] D: P14
+[    30.90 ] D: P1 -416
+[    30.90 ] D: P14
+[    30.91 ] D: P1 -416
+[    30.91 ] D: P14
+[    30.92 ] D: P1 -415
+[    30.92 ] D: P14
+[    30.92 ] D: P1 -415
+[    30.92 ] D: P14
+[    30.92 ] D: P1 -414
+[    30.92 ] D: P14
+[    30.93 ] D: P1 -414
+[    30.93 ] D: P14
+[    30.93 ] D: P1 -414
+[    30.93 ] D: P14
+[    30.93 ] D: P1 -414
+[    30.93 ] D: P14
+[    30.95 ] D: P1 -414
+[    30.95 ] D: P14
+[    30.95 ] D: P1 -414
+[    30.95 ] D: P14
+[    30.95 ] D: P1 -414
+[    30.95 ] D: P14
+[    30.96 ] D: P1 -414
+[    30.96 ] D: P14
+[    30.97 ] D: P1 -416
+[    30.97 ] D: P14
+[    30.97 ] D: P1 -416
+[    30.97 ] D: P14
+[    30.97 ] D: P1 -417
+[    30.97 ] D: P14
+[    30.97 ] D: P1 -417
+[    30.97 ] D: P14
+[    30.98 ] D: P1 -418
+[    30.98 ] D: P14
+[    30.98 ] D: P1 -420
+[    30.98 ] D: P1 -421
+[    30.99 ] D: P1 -421
+[    31.00 ] D: P1 -422
+[    31.00 ] D: P1 -423
+[    31.00 ] D: P1 -424
+[    31.00 ] D: P1 -424
+[    31.01 ] D: P1 -425
+[    31.01 ] D: P1 -425
+[    31.03 ] D: P1 -426
+[    31.30 ] D: P1 -426
+[    31.31 ] D: P1 -426
+[    31.31 ] D: P1 -425
+[    31.31 ] D: P1 -425
+[    31.31 ] D: P1 -424
+[    31.32 ] D: P1 -423
+[    31.32 ] D: P1 -422
+[    31.32 ] D: P1 -420
+[    31.33 ] D: P1 -419
+[    31.33 ] D: P1 -409
+[    31.33 ] D: P14
+[    31.33 ] D: P1 -406
+[    31.33 ] D: P14
+[    31.34 ] D: P1 -402
+[    31.34 ] D: P14
+[    31.35 ] D: P1 -380
+[    31.35 ] D: P14
+[    31.35 ] D: P1 -376
+[    31.35 ] D: P1 -373
+[    31.35 ] D: P1 -367
+[    31.36 ] D: P1 -363
+[    33.22 ] D: P1 -513
+[    33.22 ] D: P1 -503
+[    33.35 ] D: P1 -502
+[    33.35 ] D: P1 -496
+[    33.35 ] D: P1 -494
+[    33.35 ] D: P1 -492
+[    33.35 ] D: P1 -490
+[    33.36 ] D: P1 -482
+[    33.37 ] D: P1 -480
+[    33.37 ] D: P1 -477
+[    33.37 ] D: P1 -475
+[    33.38 ] D: P1 -474
+[    33.38 ] D: P1 -465
+[    33.38 ] D: P1 -464
+[    33.38 ] D: P1 -461
+[    33.38 ] D: P1 -461
+[    33.40 ] D: P1 -460
+[    33.40 ] D: P1 -455
+[    33.40 ] D: P1 -454
+[    33.40 ] D: P1 -454
+[    33.41 ] D: P1 -453
+[    33.42 ] D: P1 -449
+[    33.42 ] D: P1 -449
+[    33.42 ] D: P1 -448
+[    33.43 ] D: P1 -448
+[    33.43 ] D: P1 -445
+[    33.43 ] D: P1 -445
+[    33.43 ] D: P1 -445
+[    33.44 ] D: P1 -444
+[    33.45 ] D: P1 -444
+[    33.45 ] D: P1 -444
+[    33.45 ] D: P1 -444
+[    33.45 ] D: P1 -444
+[    33.46 ] D: P1 -444
+[    33.46 ] D: P1 -446
+[    33.47 ] D: P1 -446
+[    33.47 ] D: P1 -447
+[    33.48 ] D: P1 -447
+[    33.48 ] D: P1 -449
+[    33.48 ] D: P1 -449
+[    33.48 ] D: P1 -449
+[    33.49 ] D: P1 -449
+[    33.50 ] D: P1 -449
+[    33.50 ] D: P1 -453
+[    33.50 ] D: P1 -454
+[    33.50 ] D: P1 -454
+[    33.51 ] D: P1 -456
+[    33.51 ] D: P1 -458
+[    33.51 ] D: P1 -459
+[    33.51 ] D: P1 -460
+[    33.52 ] D: P1 -461
+[    33.53 ] D: P1 -463
+[    33.53 ] D: P1 -467
+[    33.53 ] D: P1 -469
+[    33.53 ] D: P1 -470
+[    33.55 ] D: P1 -470
+[    33.55 ] D: P1 -477
+[    33.55 ] D: P1 -478
+[    33.55 ] D: P1 -479
+[    33.56 ] D: P1 -479
+[    33.57 ] D: P1 -482
+[    33.57 ] D: P1 -482
+[    33.83 ] D: P1 -486
+[    33.83 ] D: P1 -488
+[    33.83 ] D: P1 -488
+[    33.83 ] D: P1 -488
+[    33.84 ] D: P1 -488
+[    33.84 ] D: P1 -488
+[    33.84 ] D: P1 -488
+[    33.84 ] D: P1 -489
+[    33.85 ] D: P1 -489
+[    33.85 ] D: P1 -489
+[    33.85 ] D: P1 -489
+[    33.85 ] D: P1 -489
+[    33.85 ] D: P1 -489
+[    33.86 ] D: P1 -489
+[    33.87 ] D: P1 -489
+[    33.87 ] D: P1 -489
+[    33.87 ] D: P1 -489
+[    33.87 ] D: P1 -489
+[    33.88 ] D: P1 -489
+[    33.88 ] D: P1 -489
+[    33.88 ] D: P1 -489
+[    33.88 ] D: P1 -488
+[    33.90 ] D: P1 -488
+[    33.90 ] D: P1 -486
+[    33.90 ] D: P1 -485
+[    33.90 ] D: P1 -485
+[    33.91 ] D: P1 -485
+[    33.92 ] D: P1 -484
+[    33.92 ] D: P1 -484
+[    33.93 ] D: P1 -484
+[    33.93 ] D: P1 -484
+[    33.95 ] D: P1 -484
+[    33.98 ] D: P1 -484
+[    34.26 ] D: sltPositionChanged 264600
+[    34.26 ] D: frame_offset 0 0 217
+[    34.26 ] D: findOverlayItems 1 0
+[    34.26 ] D: "{85563cca-a31d-4cc7-9497-96bbde7e4ff8}" i.value()->sampleClip()->startTime()  6000 328833 328833 6000
+[    34.26 ] D: findOverlayItems
+[    34.27 ] D: sltPositionChanged 264600
+[    34.27 ] D: frame_offset 0 1 217
+[    34.27 ] D: frame_offset 0 0 217
+[    34.27 ] D: frame_offset 0 1 217
+[    34.28 ] D: frame_offset 0 2 217
+[    34.28 ] D: frame_offset 0 3 217
+[    34.28 ] D: frame_offset 0 4 217
+[    40.30 ] D: _editController->getParameterCount() 14
+[    40.48 ] D: trackIndex 0 0
+[    49.39 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    50.50 ] D: _pointActive1 false true false
+[    51.57 ] D: _pointActive1 false true false
+[    53.55 ] D: ADDED 0 "wetDry" 3
+[    53.55 ] D: _tracksModel->getItem(i)->rect( QRect(0,0 1674x111)
+[    53.55 ] D: _tracksModel->getItem(i)->rect( QRect(0,195 1674x111)
+[    53.55 ] D: _tracksModel->getItem(i)->rect( QRect(0,306 1674x111)
+[    53.55 ] D: _tracksModel->getItem(i)->rect( QRect(0,417 1674x111)
+[    53.57 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    53.58 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    56.74 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    63.58 ] D: _pointActive1 false true false
+[   110.60 ] D: _pointActive1 true false false
+[   112.83 ] D: _pointActive1 true false false
+[   116.41 ] D: _pointActive1 false f

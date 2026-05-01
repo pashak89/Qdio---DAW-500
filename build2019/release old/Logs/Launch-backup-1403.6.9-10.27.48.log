@@ -1,0 +1,832 @@
+[     4.49 ] I: Log: Log file open in follow path at 1403/6/9 10:25:19 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.49 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.49 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.49 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.49 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.49 ] I: Current Render API is: 4.60
+[     4.49 ] I: The subsystem "Renderer" is registered successfully.
+[     4.49 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.49 ] I: The subsystem "Platform" is registered successfully.
+[     4.49 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.49 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.49 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.49 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.49 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.49 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.49 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.56 ] D: Shader Compile successfully.
+[     4.56 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.56 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.56 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.56 ] D: Engine Enabled
+[     4.56 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.57 ] D: Node with id 1 is added to Qt layer
+[     4.57 ] D: Node with id 2460 is added to Qt layer
+[     4.57 ] D: Node with id 2462 is added to Qt layer
+[     4.57 ] D: Node with id 2464 is added to Qt layer
+[     4.57 ] D: Node with id 2466 is added to Qt layer
+[     4.57 ] D: Node with id 2468 is added to Qt layer
+[     4.57 ] D: Node with id 2470 is added to Qt layer
+[     4.57 ] D: Node with id 2472 is added to Qt layer
+[     4.57 ] D: Node with id 2474 is added to Qt layer
+[     4.57 ] D: Node with id 2476 is added to Qt layer
+[     4.57 ] D: Node with id 2478 is added to Qt layer
+[     4.57 ] D: Node with id 2480 is added to Qt layer
+[     4.57 ] D: Node with id 2482 is added to Qt layer
+[     4.57 ] D: Node with id 2484 is added to Qt layer
+[     4.57 ] D: Node with id 2486 is added to Qt layer
+[     4.57 ] D: Node with id 2487 is added to Qt layer
+[     4.57 ] D: Node with id 2489 is added to Qt layer
+[     4.57 ] D: Node with id 2491 is added to Qt layer
+[     4.57 ] D: Node with id 3 is added to Qt layer
+[     4.57 ] D: Node with id 2493 is added to Qt layer
+[     4.57 ] S: New view-port registered with id: 1
+[     4.57 ] S: New view-port registered with id: 2
+[     4.57 ] S: New view-port registered with id: 3
+[     4.57 ] S: New view-port registered with id: 4
+[     4.57 ] S: New view-port registered with id: 5
+[     4.57 ] S: New view-port registered with id: 6
+[     4.68 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     4.68 ] D: Using backend: "OpenGL 3"
+[     4.71 ] W: Floating point comparison needs context sanity check
+[     4.71 ] D: QT onScaleChanged=  144
+[     4.73 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.73 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.74 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.74 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.90 ] D: Engine Started.
+[    15.93 ] D: _editController->getParameterCount() 143
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0.7 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 1 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 1 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 1 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.93 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    15.94 ] D: effectModel.controls Vst3Effect(0x1d1bad34720)
+[    16.16 ] D: ADDING3 1 
+[    16.17 ] D: Vst3EffectControls(0x1d1ba4c6ed0)
+[    16.40 ] W: qrc:/Vst3Effect.qml:6:1: QML Vst3Effect: Binding loop detected for property "implicitWidth"
+[    16.40 ] D: setTracksRect
+[    16.41 ] D: sltStartContentYChanged1
+[    16.41 ] D: sltStartContentYChanged2
+[    16.41 ] D: sltStartContentYChanged3
+[    16.41 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1707x111)
+[    16.41 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1707x111)
+[    16.41 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1707x111)
+[    16.41 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1707x111)
+[    16.41 ] D: setTracksRect
+[    16.41 ] D: setTracksRect
+[    16.41 ] D: sltStartContentYChanged4
+[    34.97 ] D: P1 -2591
+[    34.97 ] D: P1 -2650
+[    34.98 ] D: P1 -2659
+[    34.98 ] D: P1 -2670
+[    34.98 ] D: P14
+[    34.98 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    34.98 ] D: P1 -2679
+[    34.98 ] D: P14
+[    34.99 ] D: P1 -2710
+[    34.99 ] D: P1 -2727
+[    34.99 ] D: P1 -2736
+[    34.99 ] D: P1 -2744
+[    35.01 ] D: P1 -2795
+[    35.01 ] D: P1 -2804
+[    35.54 ] D: P1 -2752
+[    35.54 ] D: P1 -2766
+[    35.54 ] D: P1 -2768
+[    35.54 ] D: P1 -2770
+[    35.54 ] D: P1 -2771
+[    35.54 ] D: P1 -2772
+[    35.55 ] D: P1 -2775
+[    35.56 ] D: P1 -2776
+[    35.56 ] D: P1 -2777
+[    35.56 ] D: P1 -2777
+[    35.56 ] D: P1 -2778
+[    35.57 ] D: P1 -2780
+[    35.57 ] D: P1 -2780
+[    35.58 ] D: P1 -2780
+[    35.59 ] D: P1 -2780
+[    35.89 ] D: P1 -2780
+[    35.89 ] D: P1 -2779
+[    35.90 ] D: P1 -2779
+[    35.90 ] D: P1 -2779
+[    35.90 ] D: P1 -2779
+[    35.90 ] D: P1 -2778
+[    35.92 ] D: P1 -2778
+[    35.92 ] D: P1 -2777
+[    35.92 ] D: P1 -2776
+[    35.92 ] D: P1 -2776
+[    35.93 ] D: P1 -2775
+[    35.93 ] D: P1 -2774
+[    35.94 ] D: P1 -2774
+[    35.95 ] D: P1 -2774
+[    35.95 ] D: P1 -2772
+[    35.95 ] D: P1 -2772
+[    35.95 ] D: P1 -2772
+[    35.97 ] D: P1 -2772
+[    35.97 ] D: P1 -2771
+[    35.97 ] D: P1 -2770
+[    35.97 ] D: P1 -2770
+[    35.98 ] D: P1 -2770
+[    35.98 ] D: P1 -2770
+[    35.99 ] D: P1 -2770
+[    36.17 ] D: sltPositionChanged 264599
+[    36.17 ] D: frame_offset 0 0 217
+[    36.17 ] D: frame_offset 0 1 217
+[    36.17 ] D: frame_offset 0 2 217
+[    36.17 ] D: frame_offset 0 3 217
+[    36.17 ] D: findOverlayItems 1 0
+[    36.17 ] D: "{09c3141f-a719-418f-b8a5-9717f2228e17}" i.value()->sampleClip()->startTime()  6000 328833 328833 6000
+[    36.17 ] D: findOverlayItems
+[    36.17 ] D: frame_offset 0 4 217
+[    36.18 ] D: sltPositionChanged 264599
+[    36.18 ] D: frame_offset 0 0 217
+[    36.18 ] D: frame_offset 0 1 217
+[    36.18 ] D: frame_offset 0 2 217
+[    36.18 ] D: frame_offset 0 3 217
+[    36.19 ] D: frame_offset 0 4 217
+[    36.56 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(144,56)
+[    37.22 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(201,84)
+[    37.23 ] D: _automationChanging false
+[    37.23 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(201,83)
+[    37.23 ] D: mouseMove2
+[    37.25 ] D: _automationChanging false
+[    37.25 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(201,82)
+[    37.25 ] D: mouseMove2
+[    37.62 ] D: _requestForLoading false false
+[    37.62 ] D: _requestForLoading2
+[    37.62 ] D: _numberOfSampleBuffer 1
+[    37.62 ] D: START TO load 0
+[    37.62 ] D: sltPositionChanged 485100 true
+[    37.62 ] D: START TO load 1
+[    37.62 ] D: START TO load 2
+[    37.62 ] D: START TO load 3
+[    37.62 ] D: frame_offset 3 0 217
+[    37.63 ] D: frame_offset 3 1 217
+[    37.63 ] D: frame_offset 3 2 217
+[    37.63 ] D: frame_offset 3 3 217
+[    37.63 ] D: frame_offset 3 4 217
+[    37.65 ] D: sltFirstBufferFilled ("{09c3141f-a719-418f-b8a5-9717f2228e17}") "{09c3141f-a719-418f-b8a5-9717f2228e17}" true
+[    37.65 ] D: _requestForLoading true false
+[    38.60 ] D: AsyncFileReader 3 8
+[    40.08 ] D: AsyncFileReader 4 9
+[    40.47 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    40.47 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    40.47 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    40.47 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    41.58 ] D: AsyncFileReader 0 10
+[    43.06 ] D: AsyncFileReader 1 11
+[    44.53 ] D: AsyncFileReader 2 12
+[    46.03 ] D: AsyncFileReader 3 13
+[    47.51 ] D: AsyncFileReader 4 14
+[    48.99 ] D: AsyncFileReader 0 15
+[    50.49 ] D: AsyncFileReader 1 16
+[    54.59 ] D: _editController->getParameterCount() 143
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0.7 0 0
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0 1 0
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0 1 0
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0 1 0
+[    54.59 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.60 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    54.61 ] D: effectModel.controls Vst3Effect(0x1d1bad3a970)
+[    54.78 ] D: ADDING3 1 
+[    54.79 ] D: Vst3EffectControls(0x1d1ba4c6ed0)
+[    55.03 ] W: qrc:/Vst3Effect.qml:6:1: QML Vst3Effect: Binding loop detected for property "implicitWidth"
+[    55.03 ] D: setTracksRect
+[    55.03 ] D: sltStartContentYChanged1
+[    55.03 ] D: sltStartContentYChanged2
+[    55.03 ] D: sltStartContentYChanged3
+[    55.03 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1707x111)
+[    55.03 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1707x111)
+[    55.03 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1707x111)
+[    55.03 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1707x111)
+[    55.03 ] D: setTracksRect
+[    55.03 ] D: setTracksRect
+[    55.03 ] D: sltStartContentYChanged4
+[    61.51 ] D: _editController->getParameterCount() 143
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0.7 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 1 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0.5 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 1 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 1 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.51 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.52 ] D: info.stepCount 0x8edb9a51b0 0 0 0
+[    61.54 ] D: effectModel.controls Vst3Effect(0x1d1bcce3060)
+[    61.72 ] D: ADDING3 1 
+[    61.72 ] D: Vst3EffectControls(0x1d1ba4c6ed0)
+[    61.97 ] W: qrc:/Vst3Effect.qml:6:1: QML Vst3Effect: Binding loop detected for property "implicitWidth"
+[    61.97 ] D: setTracksRect
+[    61.97 ] D: sltStartContentYChanged1
+[    61.97 ] D: sltStartContentYChanged2
+[    61.97 ] D: sltStartContentYChanged3
+[    61.97 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1707x111)
+[    61.97 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1707x111)
+[    61.97 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1707x111)
+[    61.97 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1707x111)
+[    61.97 ] D: setTracksRect
+[    61.97 ] D: setTracksRect
+[    61.97 ] D: sltStartContentYChanged4
+[    63.49 ] D: _editController->getParameterCount() 143
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0.7 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0.5 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 1 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0.5 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0.5 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0.5 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0.5 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 1 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 1 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.49 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.50 ] D: info.stepCount 0x8edb9a5ff0 0 0 0
+[    63.51 ] D: effectModel.controls Vst3Effect(0x1d1c168c310)
+[    63.69 ] D: ADDING3 1 
+[    63.69 ] D: Vst3EffectControls(0x1d1ba4c6ed0)
+[    63.94 ] W: qrc:/Vst3Effect.qml:6:1: QML Vst3Effect: Binding loop detected for property "implicitWidth"
+[    63.94 ] D: setTracksRect
+[    63.94 ] D: sltStartContentYChanged1
+[    63.94 ] D: sltStartContentYChanged2
+[    63.94 ] D: sltStartContentYChanged3
+[    63.94 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1707x111)
+[    63.94 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1707x111)
+[    63.94 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1707x111)
+[    63.94 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1707x111)
+[    63.94 ] D: setTracksRect
+[    63.94 ] D: setTracksRect
+[    63.94 ] D: sltStartContentYChanged4
+[    70.12 ] D: Plugin does not support requested bus layout
+[    71.22 ] D: Plugin does not support requested bus layout
+[    73.30 ] D: setTracksRect
+[    73.30 ] D: sltStartContentYChanged1
+[    73.30 ] D: sltStartContentYChanged2
+[    73.30 ] D: sltStartContentYChanged3
+[    73.30 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 3332x111)
+[    73.30 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 3332x111)
+[    73.30 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 3332x111)
+[    73.30 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 3332x111)
+[    73.30 ] D: setTracksRect
+[    73.30 ] D: setTracksRect
+[    73.30 ] D: sltStartContentYChanged4
+[    73.30 ] D: setTracksRect
+[    73.30 ] D: sltStartContentYChanged1
+[    73.30 ] D: sltStartContentYChanged2
+[    73.30 ] D: sltStartContentYChanged3
+[    73.30 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 3647x111)
+[    73.30 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 3647x111)
+[    73.30 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 3647x111)
+[    73.30 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 3647x111)
+[    73.30 ] D: setTracksRect
+[    73.30 ] D: setTracksRect
+[    73.30 ] D: sltStartContentYChanged4
+[   106.40 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   106.40 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   106.40 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   106.40 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   106.42 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   106.42 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   106.42 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   106.42 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[   106.44 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null

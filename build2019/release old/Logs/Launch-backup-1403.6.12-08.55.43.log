@@ -1,0 +1,255 @@
+[     4.51 ] I: Log: Log file open in follow path at 1403/6/12 08:51:17 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.51 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.51 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.51 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.51 ] I: Current Render API is: 4.60
+[     4.51 ] I: The subsystem "Renderer" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.51 ] I: The subsystem "Platform" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.51 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.51 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.51 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.58 ] D: Shader Compile successfully.
+[     4.59 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.59 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.59 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.59 ] D: Engine Enabled
+[     4.59 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.59 ] D: Node with id 1 is added to Qt layer
+[     4.59 ] D: Node with id 2460 is added to Qt layer
+[     4.59 ] D: Node with id 2462 is added to Qt layer
+[     4.59 ] D: Node with id 2464 is added to Qt layer
+[     4.59 ] D: Node with id 2466 is added to Qt layer
+[     4.59 ] D: Node with id 2468 is added to Qt layer
+[     4.59 ] D: Node with id 2470 is added to Qt layer
+[     4.59 ] D: Node with id 2472 is added to Qt layer
+[     4.59 ] D: Node with id 2474 is added to Qt layer
+[     4.59 ] D: Node with id 2476 is added to Qt layer
+[     4.59 ] D: Node with id 2478 is added to Qt layer
+[     4.59 ] D: Node with id 2480 is added to Qt layer
+[     4.59 ] D: Node with id 2482 is added to Qt layer
+[     4.59 ] D: Node with id 2484 is added to Qt layer
+[     4.59 ] D: Node with id 2486 is added to Qt layer
+[     4.59 ] D: Node with id 2487 is added to Qt layer
+[     4.59 ] D: Node with id 2489 is added to Qt layer
+[     4.59 ] D: Node with id 2491 is added to Qt layer
+[     4.59 ] D: Node with id 3 is added to Qt layer
+[     4.59 ] D: Node with id 2493 is added to Qt layer
+[     4.59 ] S: New view-port registered with id: 1
+[     4.59 ] S: New view-port registered with id: 2
+[     4.59 ] S: New view-port registered with id: 3
+[     4.59 ] S: New view-port registered with id: 4
+[     4.59 ] S: New view-port registered with id: 5
+[     4.59 ] S: New view-port registered with id: 6
+[     4.70 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     4.70 ] D: Using backend: "OpenGL 3"
+[     4.73 ] W: Floating point comparison needs context sanity check
+[     4.73 ] D: QT onScaleChanged=  144
+[     4.75 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.75 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.75 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.77 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.93 ] D: Engine Started.
+[    61.49 ] D: P1 -463
+[    61.49 ] D: P1 -452
+[    61.49 ] D: P1 -451
+[    61.49 ] D: P1 -451
+[    61.49 ] D: P1 -450
+[    61.49 ] D: P1 -449
+[    61.50 ] D: P1 -448
+[    61.50 ] D: P1 -448
+[    61.50 ] D: P1 -447
+[    61.52 ] D: P1 -446
+[    61.52 ] D: P1 -445
+[    61.52 ] D: P1 -445
+[    61.52 ] D: P1 -444
+[    61.53 ] D: P1 -443
+[    61.53 ] D: P1 -442
+[    61.53 ] D: P1 -442
+[    61.54 ] D: P1 -442
+[    61.55 ] D: P1 -441
+[    61.55 ] D: P1 -439
+[    61.55 ] D: P1 -439
+[    61.55 ] D: P1 -438
+[    61.57 ] D: P1 -437
+[    61.57 ] D: P1 -436
+[    61.57 ] D: P1 -435
+[    61.57 ] D: P1 -435
+[    61.57 ] D: P1 -435
+[    61.58 ] D: P1 -434
+[    61.58 ] D: P1 -432
+[    61.59 ] D: P1 -432
+[    61.60 ] D: P1 -432
+[    61.60 ] D: P1 -430
+[    61.60 ] D: P1 -430
+[    61.61 ] D: P1 -430
+[    61.62 ] D: P1 -429
+[    61.62 ] D: P1 -428
+[    61.63 ] D: P1 -428
+[    61.63 ] D: P1 -426
+[    61.63 ] D: P1 -426
+[    61.65 ] D: P1 -426
+[    61.65 ] D: P1 -425
+[    61.65 ] D: P1 -424
+[    61.67 ] D: P1 -424
+[    62.06 ] D: sltPositionChanged 529199
+[    62.06 ] D: frame_offset 0 0 217
+[    62.06 ] D: frame_offset 0 1 217
+[    62.06 ] D: frame_offset 0 2 217
+[    62.06 ] D: frame_offset 0 3 217
+[    62.06 ] D: frame_offset 0 4 217
+[    62.07 ] D: findOverlayItems 1 0
+[    62.07 ] D: "{a77a8b10-afd8-439b-95b0-b524787b18ae}" i.value()->sampleClip()->startTime()  12000 334833 334833 12000
+[    62.07 ] D: findOverlayItems
+[    62.07 ] D: sltPositionChanged 529199
+[    62.08 ] D: frame_offset 0 0 217
+[    62.08 ] D: frame_offset 0 1 217
+[    62.08 ] D: frame_offset 0 2 217
+[    62.08 ] D: frame_offset 0 3 217
+[    62.08 ] D: frame_offset 0 4 217
+[    91.19 ] D: _editController->getParameterCount() 143
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0.7 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0.5 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 1 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0.5 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0.5 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0.5 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0.5 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 1 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 1 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.19 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 0 0
+[    91.20 ] D: info.stepCount 0x7c96cf5350 0 

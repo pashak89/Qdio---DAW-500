@@ -1,0 +1,136 @@
+[     6.06 ] I: Log: Log file open in follow path at 1403/4/14 10:12:01 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     6.06 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     6.06 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     6.07 ] D: API version is: 4.60 ,shader version is: 4.60
+[     6.07 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     6.07 ] I: Current Render API is: 4.60
+[     6.07 ] I: The subsystem "Renderer" is registered successfully.
+[     6.07 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     6.07 ] I: The subsystem "Platform" is registered successfully.
+[     6.07 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     6.07 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     6.07 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     6.07 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     6.07 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     6.07 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     6.07 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     6.15 ] D: Shader Compile successfully.
+[     6.15 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     6.15 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     6.15 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     6.15 ] D: Engine Enabled
+[     6.15 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     6.15 ] D: Node with id 1 is added to Qt layer
+[     6.15 ] D: Node with id 2460 is added to Qt layer
+[     6.15 ] D: Node with id 2462 is added to Qt layer
+[     6.15 ] D: Node with id 2464 is added to Qt layer
+[     6.15 ] D: Node with id 2466 is added to Qt layer
+[     6.16 ] D: Node with id 2468 is added to Qt layer
+[     6.16 ] D: Node with id 2470 is added to Qt layer
+[     6.16 ] D: Node with id 2472 is added to Qt layer
+[     6.16 ] D: Node with id 2474 is added to Qt layer
+[     6.16 ] D: Node with id 2476 is added to Qt layer
+[     6.16 ] D: Node with id 2478 is added to Qt layer
+[     6.16 ] D: Node with id 2480 is added to Qt layer
+[     6.16 ] D: Node with id 2482 is added to Qt layer
+[     6.16 ] D: Node with id 2484 is added to Qt layer
+[     6.16 ] D: Node with id 2486 is added to Qt layer
+[     6.16 ] D: Node with id 2487 is added to Qt layer
+[     6.16 ] D: Node with id 2489 is added to Qt layer
+[     6.16 ] D: Node with id 2491 is added to Qt layer
+[     6.16 ] D: Node with id 3 is added to Qt layer
+[     6.16 ] D: Node with id 2493 is added to Qt layer
+[     6.16 ] S: New view-port registered with id: 1
+[     6.16 ] S: New view-port registered with id: 2
+[     6.16 ] S: New view-port registered with id: 3
+[     6.16 ] S: New view-port registered with id: 4
+[     6.16 ] S: New view-port registered with id: 5
+[     6.16 ] S: New view-port registered with id: 6
+[     6.26 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     6.26 ] D: Using backend: "OpenGL 3"
+[     6.30 ] W: Floating point comparison needs context sanity check
+[     6.30 ] D: QT onScaleChanged=  144
+[     6.51 ] D: Engine Started.
+[    10.78 ] D: setTracksRect
+[    10.78 ] D: sltStartContentYChanged1
+[    10.78 ] D: sltStartContentYChanged2
+[    10.78 ] D: sltStartContentYChanged3
+[    10.78 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 3582x111)
+[    10.78 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 3582x111)
+[    10.78 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 3582x111)
+[    10.78 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 3582x111)
+[    10.79 ] D: setTracksRect
+[    10.79 ] D: setTracksRect
+[    10.79 ] D: sltStartContentYChanged4
+[    10.79 ] D: setTracksRect
+[    10.79 ] D: sltStartContentYChanged1
+[    10.79 ] D: sltStartContentYChanged2
+[    10.79 ] D: sltStartContentYChanged3
+[    10.79 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 3897x111)
+[    10.79 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 3897x111)
+[    10.79 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 3897x111)
+[    10.79 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 3897x111)
+[    10.79 ] D: setTracksRect
+[    10.79 ] D: setTracksRect
+[    10.79 ] D: sltStartContentYChanged4
+[    10.79 ] D: setTracksRect
+[    10.79 ] D: sltStartContentYChanged1
+[    10.79 ] D: sltStartContentYChanged2
+[    10.79 ] D: sltStartContentYChanged3
+[    10.79 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 3897x111)
+[    10.79 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 3897x111)
+[    10.79 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 3897x111)
+[    10.79 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 3897x111)
+[    10.79 ] D: setTracksRect
+[    10.79 ] D: setTracksRect
+[    10.79 ] D: sltStartContentYChanged4
+[    26.41 ] W: Model size of -60 is less than 0
+[   301.73 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   301.74 ] D: numberOfSpeakersAndSubs 6
+[   301.79 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   301.79 ] D: numberOfSpeakersAndSubs 6
+[   301.81 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   301.82 ] D: numberOfSpeakersAndSubs 6
+[   301.84 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   301.84 ] D: numberOfSpeakersAndSubs 6
+[   301.86 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   301.86 ] D: numberOfSpeakersAndSubs 6
+[   301.90 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   301.90 ] D: numberOfSpeakersAndSubs 6
+[   301.92 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   301.92 ] D: numberOfSpeakersAndSubs 6
+[   301.95 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   301.95 ] D: numberOfSpeakersAndSubs 6
+[   301.97 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   301.97 ] D: numberOfSpeakersAndSubs 6
+[   302.01 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   302.01 ] D: numberOfSpeakersAndSubs 6
+[   302.03 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   302.03 ] D: numberOfSpeakersAndSubs 6
+[   302.06 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   302.06 ] D: numberOfSpeakersAndSubs 6
+[   302.08 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   302.08 ] D: numberOfSpeakersAndSubs 6
+[   302.12 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   302.12 ] D: numberOfSpeakersAndSubs 6
+[   302.14 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   302.14 ] D: numberOfSpeakersAndSubs 6
+[   302.17 ] D: "C:/Users/AmirPasha/Desktop/Rpos/DAW-3/daw-3-SampleEditor/visr_config/generic/bs2051-0+5+0.xml"
+[   302.17 ] D: numberOfSpeakersAndSubs 6
+[   302.21 ] W: Model size of -1 is less than 0
+[   304.72 ] D: CHANGED 0 true
+[   305.11 ] D: CHANGED 1 true
+[   305.99 ] D: CHANGED 1 false
+[   306.30 ] D: CHANGED 0 false
+[   310.78 ] D: setTracksRect
+[   310.78 ] D: sltStartContentYChanged1
+[   310.78 ] D: sltStartContentYChanged2
+[   310.78 ] D: sltStartContentYChanged3
+[   310.78 ] D: _tracksModel->getItem(i)->rect()1 0 QRect(0,0 1642x111)
+[   310.78 ] D: _tracksModel->getItem(i)->rect()1 1 QRect(0,111 1642x111)
+[   310.78 ] D: _tracksModel->getItem(i)->rect()1 2 QRect(0,222 1642x111)
+[   310.78 ] D: _tracksModel->getItem(i)->rect()1 3 QRect(0,333 1642x111)
+[   310.78 ] D: setTracksRect
+[   310.78 ] D: setTracksRect

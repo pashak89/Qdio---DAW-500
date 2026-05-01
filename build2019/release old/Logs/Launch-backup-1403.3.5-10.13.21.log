@@ -1,0 +1,359 @@
+[     1.20 ] I: Log: Log file open in follow path at 1403/3/3 14:38:27 : C:\Projects\SampleEditor\build2019\debug\Logs\Launch.log
+[     1.20 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     1.20 ] D: API version is: 4.60 - Build 31.0.101.4502 ,shader version is: 4.60 - Build 31.0.101.4502
+[     1.20 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     1.20 ] I: Current Render API is: 4.60 - Build 31.0.101.4502
+[     1.20 ] I: The subsystem "Renderer" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     1.20 ] I: The subsystem "Platform" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     1.20 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     1.20 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     1.20 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     1.20 ] D: Engine Enabled
+[     1.20 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     1.20 ] D: Node with id 1 is added to Qt layer
+[     1.20 ] D: Node with id 2457 is added to Qt layer
+[     1.20 ] D: Node with id 2459 is added to Qt layer
+[     1.20 ] D: Node with id 2461 is added to Qt layer
+[     1.20 ] D: Node with id 2463 is added to Qt layer
+[     1.20 ] D: Node with id 2465 is added to Qt layer
+[     1.20 ] D: Node with id 2467 is added to Qt layer
+[     1.20 ] D: Node with id 2469 is added to Qt layer
+[     1.20 ] D: Node with id 2471 is added to Qt layer
+[     1.20 ] D: Node with id 2473 is added to Qt layer
+[     1.21 ] D: Node with id 2475 is added to Qt layer
+[     1.21 ] D: Node with id 2477 is added to Qt layer
+[     1.21 ] D: Node with id 2479 is added to Qt layer
+[     1.21 ] D: Node with id 2481 is added to Qt layer
+[     1.21 ] D: Node with id 2483 is added to Qt layer
+[     1.21 ] D: Node with id 2484 is added to Qt layer
+[     1.21 ] D: Node with id 2486 is added to Qt layer
+[     1.21 ] D: Node with id 2488 is added to Qt layer
+[     1.21 ] D: Node with id 3 is added to Qt layer
+[     1.21 ] D: Node with id 2490 is added to Qt layer
+[     1.21 ] S: New view-port registered with id: 1
+[     1.21 ] E: Src: D:\QD-27-3dEnvironmentToolbox\EngineLib\Core/System/Context.hpp:47:DGE::Core::System::Context::registerEvent:  A duplicate event with name "nodeAddedToScene" is registered for object "class DGE::Scene::SceneNode_SceneNode1"
+[     1.21 ] E: Src: D:\QD-27-3dEnvironmentToolbox\EngineLib\Core/System/Context.hpp:47:DGE::Core::System::Context::registerEvent:  A duplicate event with name "nodeRemovedFromScene" is registered for object "class DGE::Scene::SceneNode_SceneNode1"
+[     1.21 ] E: Src: D:\QD-27-3dEnvironmentToolbox\EngineLib\Core/System/Context.hpp:47:DGE::Core::System::Context::registerEvent:  A duplicate event with name "componentAddedToScene" is registered for object "class DGE::Scene::SceneNode_SceneNode1"
+[     1.21 ] E: Src: D:\QD-27-3dEnvironmentToolbox\EngineLib\Core/System/Context.hpp:47:DGE::Core::System::Context::registerEvent:  A duplicate event with name "componentRemovedFromScene" is registered for object "class DGE::Scene::SceneNode_SceneNode1"
+[     1.22 ] D: Shader Compile successfully.
+[     1.22 ] D: Shader Compile successfully.
+[     1.22 ] D: Shader Compile successfully.
+[     1.22 ] D: Shader Compile successfully.
+[     1.22 ] D: Shader Compile successfully.
+[     1.22 ] D: Shader Compile successfully.
+[     1.22 ] D: Shader Compile successfully.
+[     1.23 ] D: Shader Compile successfully.
+[     1.23 ] D: Shader Compile successfully.
+[     1.23 ] D: Shader Compile successfully.
+[     1.23 ] D: Shader Compile successfully.
+[     1.23 ] D: Shader Compile successfully.
+[     1.23 ] D: Shader Compile successfully.
+[     1.24 ] D: Shader Compile successfully.
+[     1.24 ] D: Shader Compile successfully.
+[     1.24 ] D: Shader Compile successfully.
+[     1.24 ] D: Shader Compile successfully.
+[     1.26 ] D: Engine Started.
+[     4.64 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.64 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.64 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.64 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[     4.64 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[     4.64 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.64 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[     4.64 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.64 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.64 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[     4.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QThirdPersonController::*)(class std::shared_ptr<class DGE::Scene::Component>) __ptr64 Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveCameraController::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QCameraComponent::QCameraComponent(class DGE::QtWrapper::QMLScene::QNode3D * __ptr64,bool) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: MemberFunctionPointer void (__cdecl DGE::QtWrapper::QMLScene::QComponent3D::*)(void) __ptr64 Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QPerspectiveLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `private: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::commonInitConstructor(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::bottomInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::GFX::OrthoLens::OrthoLens(void) __ptr64'::`2'::<lambda_4> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::topInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::GFX::OrthoLens::OrthoLens(void) __ptr64'::`2'::<lambda_3> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::rightInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::GFX::OrthoLens::OrthoLens(void) __ptr64'::`2'::<lambda_2> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::leftInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::GFX::OrthoLens::OrthoLens(void) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::heightScreenInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::GFX::OrthoLens::OrthoLens(void) __ptr64'::`2'::<lambda_6> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QOrthoLens::widthScreenInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::GFX::OrthoLens::OrthoLens(void) __ptr64'::`2'::<lambda_5> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::QtWrapper::QMLScene::QNode3D::QNode3D(class DGE::QtWrapper::QMLScene::QINode3D * __ptr64) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 3 and name: 
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2490 and name: Entity#2490
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2490 and name: Entity#2490
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2491 and name: 
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 1 and name: 
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2465 and name: Entity#2465
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2465 and name: Entity#2465
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2466 and name: 
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2457 and name: CubeEntity#2457
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2457 and name: CubeEntity#2457
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2458 and name: 
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2467 and name: Entity#2467
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2467 and name: Entity#2467
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2468 and name: 
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2463 and name: Entity#2463
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: Destroy Node with id: 2463 and name: Entity#2463
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.65 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2464 and name: 
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2459 and name: Entity#2459
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2459 and name: Entity#2459
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2460 and name: 
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2461 and name: Entity#2461
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2461 and name: Entity#2461
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2462 and name: 
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2469 and name: Entity#2469
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2469 and name: Entity#2469
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2470 and name: 
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2471 and name: Entity#2471
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2471 and name: Entity#2471
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2472 and name: 
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2473 and name: Entity#2473
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2473 and name: Entity#2473
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2474 and name: 
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2475 and name: Entity#2475
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2475 and name: Entity#2475
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2476 and name: 
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2477 and name: Entity#2477
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2477 and name: Entity#2477
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2478 and name: 
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2479 and name: Entity#2479
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2479 and name: Entity#2479
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.66 ] D: Destroy Node with id: 2480 and name: 
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2481 and name: CubeEntity#2481
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2481 and name: CubeEntity#2481
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2482 and name: 
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2483 and name: 
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2484 and name: ArrowX#2484
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2484 and name: ArrowX#2484
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2485 and name: 
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2488 and name: ArrowZ#2488
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2488 and name: ArrowZ#2488
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2489 and name: 
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2486 and name: ArrowY#2486
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::DEntity::DEntity(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2486 and name: ArrowY#2486
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localScaleInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localRotationInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: void __cdecl DGE::QtWrapper::QMLScene::QNode3D::localPositionInitialize(void) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: Destroy Node with id: 2487 and name: 
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `public: __cdecl DGE::Scene::Node::Node(class std::shared_ptr<class DGE::GFX::GCore::Renderer>,class std::shared_ptr<class DGE::Core::System::Context>) __ptr64'::`2'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.67 ] D: LambdaFunctionPointerVoidReturnType class `protected: void __cdecl DGE::GFX::Primitives::Arrow::addArrowVerteces(unsigned char,bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Triangle::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Triangle::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Triangle::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Capsule::regenerateVertices(bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Capsule::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Capsule::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Capsule::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Capsule::regenerateVertices(bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Capsule::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Capsule::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Capsule::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cylinder::regenerateVertices(bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cylinder::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cylinder::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cylinder::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cylinder::regenerateVertices(bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cylinder::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cylinder::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cylinder::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Sphere::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Sphere::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Sphere::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Sphere::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.68 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_4> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_3> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_2> Is Destroyed
+[     4.69 ] D: LambdaFunctionPointerVoidReturnType class `protected: virtual void __cdecl DGE::GFX::Primitives::Cube::regenerateVertices(bool) __ptr64'::`5'::<lambda_1> Is Destroyed
+[     4.69 ] D: -----Released Scene Module-----
+[     4.69 ] D: -----Released GFX Module-----
+[     4.69 ] I: Log: Log file closed, 1403/3/3 14:38:30

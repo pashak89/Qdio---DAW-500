@@ -1,0 +1,362 @@
+[     4.67 ] I: Log: Log file open in follow path at 1403/6/12 08:55:43 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.67 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.67 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.67 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.67 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.67 ] I: Current Render API is: 4.60
+[     4.67 ] I: The subsystem "Renderer" is registered successfully.
+[     4.67 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.67 ] I: The subsystem "Platform" is registered successfully.
+[     4.67 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.67 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.67 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.67 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.67 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.67 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.67 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.75 ] D: Shader Compile successfully.
+[     4.75 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.75 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.75 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.75 ] D: Engine Enabled
+[     4.75 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.75 ] D: Node with id 1 is added to Qt layer
+[     4.75 ] D: Node with id 2460 is added to Qt layer
+[     4.75 ] D: Node with id 2462 is added to Qt layer
+[     4.75 ] D: Node with id 2464 is added to Qt layer
+[     4.75 ] D: Node with id 2466 is added to Qt layer
+[     4.75 ] D: Node with id 2468 is added to Qt layer
+[     4.75 ] D: Node with id 2470 is added to Qt layer
+[     4.75 ] D: Node with id 2472 is added to Qt layer
+[     4.75 ] D: Node with id 2474 is added to Qt layer
+[     4.75 ] D: Node with id 2476 is added to Qt layer
+[     4.75 ] D: Node with id 2478 is added to Qt layer
+[     4.75 ] D: Node with id 2480 is added to Qt layer
+[     4.75 ] D: Node with id 2482 is added to Qt layer
+[     4.75 ] D: Node with id 2484 is added to Qt layer
+[     4.76 ] D: Node with id 2486 is added to Qt layer
+[     4.76 ] D: Node with id 2487 is added to Qt layer
+[     4.76 ] D: Node with id 2489 is added to Qt layer
+[     4.76 ] D: Node with id 2491 is added to Qt layer
+[     4.76 ] D: Node with id 3 is added to Qt layer
+[     4.76 ] D: Node with id 2493 is added to Qt layer
+[     4.76 ] S: New view-port registered with id: 1
+[     4.76 ] S: New view-port registered with id: 2
+[     4.76 ] S: New view-port registered with id: 3
+[     4.76 ] S: New view-port registered with id: 4
+[     4.76 ] S: New view-port registered with id: 5
+[     4.76 ] S: New view-port registered with id: 6
+[     4.86 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     4.86 ] D: Using backend: "OpenGL 3"
+[     4.90 ] W: Floating point comparison needs context sanity check
+[     4.90 ] D: QT onScaleChanged=  144
+[     4.92 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.92 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.93 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.93 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.10 ] D: Engine Started.
+[    21.10 ] D: Plugin does not support requested bus layout
+[    21.11 ] D: ADDED
+[    21.95 ] D: Plugin does not support requested bus layout
+[    21.95 ] D: ADDED
+[   365.01 ] D: Plugin does not support requested bus layout
+[   365.01 ] D: ADDED
+[   369.43 ] D: Plugin does not support requested bus layout
+[   369.43 ] D: ADDED
+[   371.42 ] D: _editController->getParameterCount() 21
+[   371.42 ] D: info.stepCount 0x5304f6110 1 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.02 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.019019 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.530201 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 1 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.0909091 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.333333 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.0909091 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.444444 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.530201 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.029029 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.1 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.0909091 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 1 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0.0833333 0 0
+[   371.42 ] D: info.stepCount 0x5304f6110 0 1 0
+[   371.42 ] D: effectModel.controls Vst3Effect(0x1ae91355eb0)
+[   371.46 ] D: ADDED
+[   381.65 ] D: _editController->getParameterCount() 9
+[   381.65 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   381.65 ] D: info.stepCount 0x5304f6110 0.500075 0 0
+[   381.65 ] D: info.stepCount 0x5304f6110 0.00099001 0 0
+[   381.65 ] D: info.stepCount 0x5304f6110 0 0 0
+[   381.65 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   381.65 ] D: info.stepCount 0x5304f6110 0.0604027 0 0
+[   381.65 ] D: info.stepCount 0x5304f6110 0.331104 0 0
+[   381.65 ] D: info.stepCount 0x5304f6110 1 0 0
+[   381.65 ] D: info.stepCount 0x5304f6110 0 1 0
+[   381.66 ] D: effectModel.controls Vst3Effect(0x1ae91419b00)
+[   381.68 ] D: ADDED
+[   385.54 ] D: Plugin does not support requested bus layout
+[   385.54 ] D: ADDED
+[   386.80 ] D: Plugin does not support requested bus layout
+[   386.80 ] D: ADDED
+[   390.07 ] D: _editController->getParameterCount() 19
+[   390.07 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0.25 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0.285714 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 1 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 1 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 1 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0.273834 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0.0416667 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0 0 0
+[   390.07 ] D: info.stepCount 0x5304f6110 0 1 0
+[   390.09 ] D: effectModel.controls Vst3Effect(0x1ae84426d80)
+[   390.11 ] D: ADDED
+[   394.97 ] D: Plugin does not support requested bus layout
+[   394.98 ] D: ADDED
+[   395.37 ] D: Plugin does not support requested bus layout
+[   395.37 ] D: ADDED
+[   398.57 ] D: Plugin does not support requested bus layout
+[   398.57 ] D: ADDED
+[   399.10 ] D: Plugin does not support requested bus layout
+[   399.10 ] D: ADDED
+[   401.79 ] D: _editController->getParameterCount() 143
+[   401.79 ] D: info.stepCount 0x5304f6110 0.7 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 1 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0.5 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 1 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 1 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.79 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.80 ] D: info.stepCount 0x5304f6110 0 0 0
+[   401.81 ] D: effectModel.controls Vst3Effect(0x1ae92f4a5d0)
+[   401.83 ] D: ADDED
+[   409.59 ] D: P1 -171
+[   409.60 ] D: P1 -216
+[   409.60 ] D: P1 -222
+[   409.60 ] D: P1 -227
+[   409.60 ] D: P1 -231
+[   409.60 ] D: P1 -235
+[   409.61 ] D: P1 -239
+[   409.61 ] D: P1 -246
+[   409.61 ] D: P1 -247
+[   409.61 ] D: P1 -249
+[   409.62 ] D: P1 -252
+[   409.63 ] D: P1 -261
+[   409.63 ] D: P1 -262
+[   409.63 ] D: P1 -263
+[   409.63 ] D: P1 -264
+[   409.64 ] D: P1 -266
+[   409.64 ] D: P1 -266
+[   409.64 ] D: P1 -267
+[   409.65 ] D: P1 -267
+[   409.66 ] D: P1 -267
+[   409.66 ] D: P1 -267
+[   409.66 ] D: P1 -267
+[   409.82 ] D: P1 -268
+[   409.82 ] D: P1 -268
+[   409.82 ] D: P1 -268
+[   409.82 ] D: P1 -268
+[   409.82 ] D: P1 -269
+[   409.83 ] D: P1 -270
+[   409.84 ] D: P1 -270
+[   409.84 ] D: P1 -270
+[   409.84 ] D: P1 -270
+[   409.85 ] D: P1 -270
+[   409.85 ] D: P1 -270
+[   409.85 ] D: P1 -270
+[   409.86 ] D: P1 -270
+[   409.86 ] D: P1 -270
+[   409.87 ] D: P1 -270
+[   409.87 ] D: P1 -270
+[   409.87 ] D: P1 -270
+[   409.87 ] D: P1 -270
+[   409.89 ] D: P1 -270
+[   409.89 ] D: P1 -270
+[   409.89 ] D: P1 -270
+[   409.89 ] D: P1 -270
+[   409.90 ] D: P1 -270
+[   409.90 ] D: P1 -271
+[   409.90 ] D: P1 -271
+[   409.90 ] D: P1 -271
+[   409.91 ] D: P1 -271
+[   409.92 ] D: P1 -272
+[   409.92 ] D: P1 -273
+[   409.92 ] D: P1 -273
+[   409.92 ] D: P1 -273
+[   409.93 ] D: P1 -274
+[   409.94 ] D: P1 -274
+[   409.94 ] D: P1 -274
+[   409.94 ] D: P1 -274
+[   409.94 ] D: P1 -274
+[   409.95 ] D: P1 -276
+[   409.95 ] D: P1 -276
+[   409.95 ] D: P1 -276
+[   409.96 ] D: P1 -276
+[   409.97 ] D: P1 -277
+[   409.97 ] D: P1 -277
+[   409.97 ] D: P1 -277
+[   409.97 ] D: P1 -277
+[   409.98 ] D: P1 -277
+[   409.99 ] D: P1 -278
+[   409.99 ] D: P1 -278
+[   409.99 ] D: P1 -278
+[   410.00 ] D: P1 -278
+[   410.00 ] D: P1 -278
+[   410.02 ] D: P1 -278
+[   410.02 ] D: P1 -278
+[   410.02 ] D: P1 -278
+[   410.04 ] D: P1 -278
+[   410.10 ] D: P1 -278
+[   410.25 ] D: sltPositionChanged 441000
+[   410.25 ] D: frame_offset 0 0 217

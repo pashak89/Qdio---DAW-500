@@ -1,0 +1,201 @@
+[     3.63 ] I: Log: Log file open in follow path at 1403/4/10 23:25:37 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     3.63 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     3.63 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     3.63 ] D: API version is: 4.60 ,shader version is: 4.60
+[     3.63 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     3.63 ] I: Current Render API is: 4.60
+[     3.63 ] I: The subsystem "Renderer" is registered successfully.
+[     3.63 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     3.63 ] I: The subsystem "Platform" is registered successfully.
+[     3.64 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     3.64 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     3.64 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     3.64 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     3.64 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     3.64 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     3.64 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     3.71 ] D: Shader Compile successfully.
+[     3.71 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     3.71 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     3.71 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     3.71 ] D: Engine Enabled
+[     3.71 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     3.71 ] D: Node with id 1 is added to Qt layer
+[     3.71 ] D: Node with id 2460 is added to Qt layer
+[     3.71 ] D: Node with id 2462 is added to Qt layer
+[     3.71 ] D: Node with id 2464 is added to Qt layer
+[     3.72 ] D: Node with id 2466 is added to Qt layer
+[     3.72 ] D: Node with id 2468 is added to Qt layer
+[     3.72 ] D: Node with id 2470 is added to Qt layer
+[     3.72 ] D: Node with id 2472 is added to Qt layer
+[     3.72 ] D: Node with id 2474 is added to Qt layer
+[     3.72 ] D: Node with id 2476 is added to Qt layer
+[     3.72 ] D: Node with id 2478 is added to Qt layer
+[     3.72 ] D: Node with id 2480 is added to Qt layer
+[     3.72 ] D: Node with id 2482 is added to Qt layer
+[     3.72 ] D: Node with id 2484 is added to Qt layer
+[     3.72 ] D: Node with id 2486 is added to Qt layer
+[     3.72 ] D: Node with id 2487 is added to Qt layer
+[     3.72 ] D: Node with id 2489 is added to Qt layer
+[     3.72 ] D: Node with id 2491 is added to Qt layer
+[     3.72 ] D: Node with id 3 is added to Qt layer
+[     3.72 ] D: Node with id 2493 is added to Qt layer
+[     3.72 ] S: New view-port registered with id: 1
+[     3.72 ] S: New view-port registered with id: 2
+[     3.72 ] S: New view-port registered with id: 3
+[     3.72 ] S: New view-port registered with id: 4
+[     3.72 ] S: New view-port registered with id: 5
+[     3.72 ] S: New view-port registered with id: 6
+[     3.78 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     3.78 ] D: Using backend: "OpenGL 3"
+[     3.82 ] W: Floating point comparison needs context sanity check
+[     3.82 ] D: QT onScaleChanged=  144
+[     3.99 ] D: Engine Started.
+[     6.84 ] D: P1 -391
+[     6.84 ] D: P14
+[     6.84 ] D: P1 -407
+[     6.85 ] D: P1 -409
+[     6.85 ] D: P1 -411
+[     6.85 ] D: P1 -412
+[     6.86 ] D: P1 -415
+[     6.86 ] D: P1 -417
+[     6.86 ] D: P1 -419
+[     6.86 ] D: P1 -420
+[     6.87 ] D: P1 -422
+[     6.87 ] D: P1 -428
+[     6.87 ] D: P1 -429
+[     6.88 ] D: P1 -431
+[     6.88 ] D: P1 -432
+[     6.89 ] D: P1 -434
+[     6.89 ] D: P1 -443
+[     6.89 ] D: P1 -445
+[     6.90 ] D: P1 -446
+[     6.91 ] D: P1 -448
+[     6.91 ] D: P1 -457
+[     6.91 ] D: P1 -459
+[     6.91 ] D: P1 -461
+[     6.92 ] D: P1 -463
+[     6.93 ] D: P1 -471
+[     6.93 ] D: P1 -472
+[     6.93 ] D: P1 -474
+[     6.94 ] D: P1 -476
+[     6.94 ] D: P1 -481
+[     6.94 ] D: P1 -482
+[     6.94 ] D: P1 -483
+[     6.95 ] D: P1 -484
+[     6.96 ] D: P1 -488
+[     6.96 ] D: P1 -489
+[     6.96 ] D: P1 -489
+[     6.96 ] D: P1 -491
+[     6.97 ] D: P1 -491
+[    10.93 ] D: P1 -389
+[    10.93 ] D: P14
+[    10.94 ] D: P1 -417
+[    10.94 ] D: P1 -425
+[    10.94 ] D: P1 -443
+[    10.94 ] D: P1 -449
+[    10.95 ] D: P1 -454
+[    10.95 ] D: P1 -459
+[    10.96 ] D: P1 -480
+[    10.96 ] D: P1 -483
+[    10.96 ] D: P1 -486
+[    10.96 ] D: P1 -489
+[    10.98 ] D: P1 -491
+[    11.10 ] D: P1 -490
+[    11.10 ] D: P1 -486
+[    11.11 ] D: P1 -484
+[    11.11 ] D: P1 -483
+[    11.13 ] D: P1 -472
+[    11.13 ] D: P1 -471
+[    11.13 ] D: P1 -469
+[    11.13 ] D: P1 -468
+[    11.13 ] D: P1 -467
+[    11.14 ] D: P1 -466
+[    11.15 ] D: P1 -460
+[    11.15 ] D: P1 -460
+[    11.15 ] D: P1 -459
+[    11.16 ] D: P1 -458
+[    11.16 ] D: P1 -455
+[    11.16 ] D: P1 -455
+[    11.16 ] D: P1 -454
+[    11.17 ] D: P1 -454
+[    11.18 ] D: P1 -451
+[    11.18 ] D: P1 -451
+[    11.18 ] D: P1 -450
+[    11.18 ] D: P1 -450
+[    11.19 ] D: P1 -450
+[    11.20 ] D: P1 -448
+[    11.20 ] D: P1 -448
+[    11.20 ] D: P1 -448
+[    11.21 ] D: P1 -447
+[    11.21 ] D: P1 -446
+[    11.23 ] D: P1 -445
+[    11.23 ] D: P1 -445
+[    11.53 ] D: sltPositionChanged 352799
+[    11.53 ] D: frame_offset 0 0 10
+[    11.53 ] D: frame_offset 0 1 10
+[    11.53 ] D: frame_offset 0 2 10
+[    11.53 ] D: frame_offset 0 3 10
+[    11.53 ] D: frame_offset 0 4 10
+[    11.54 ] D: findOverlayItems 1 0
+[    11.54 ] D: "{a3b88cc1-4b2d-4e94-bee5-ba884ff1238d}" i.value()->sampleClip()->startTime()  8000 22998.8 22998.8 8000
+[    11.54 ] D: findOverlayItems
+[    11.56 ] D: sltPositionChanged 352799
+[    11.56 ] D: frame_offset 0 0 10
+[    11.57 ] D: frame_offset 0 1 10
+[    11.57 ] D: frame_offset 0 2 10
+[    11.57 ] D: frame_offset 0 3 10
+[    11.57 ] D: frame_offset 0 4 10
+[    12.19 ] D: findTrackIndexByPoint 0 QRect(0,0 1957x111) true QPointF(177,16)
+[    12.19 ] D: _startSelectedClipIndex123 "{a3b88cc1-4b2d-4e94-bee5-ba884ff1238d}"
+[    12.19 ] D: copySelectedArea1; QRectF(8000,0 14998.8x111) QRect(0,0 1957x111)
+[    12.19 ] D: copySelectedArea3
+[    12.20 ] D: Ok
+[    12.20 ] D: OK
+[    12.20 ] D: OK
+[    12.20 ] D: IOIO 0 0
+[    12.25 ] D: mouseReleaseEvent
+[    12.53 ] D: _requestForLoading false false
+[    12.53 ] D: _requestForLoading2
+[    12.53 ] D: _numberOfSampleBuffer 1
+[    12.53 ] D: START TO load 0
+[    12.53 ] D: sltPositionChanged 0 true
+[    12.53 ] D: frame_offset 0 0 10
+[    12.53 ] D: frame_offset 0 1 10
+[    12.53 ] D: frame_offset 0 2 10
+[    12.53 ] D: frame_offset 0 3 10
+[    12.54 ] D: frame_offset 0 4 10
+[    12.54 ] D: sltFirstBufferFilled ("{a3b88cc1-4b2d-4e94-bee5-ba884ff1238d}") "{a3b88cc1-4b2d-4e94-bee5-ba884ff1238d}" true
+[    12.54 ] D: _requestForLoading true false
+[    14.09 ] D: findTrackIndexByPoint 0 QRect(0,0 1957x111) true QPointF(179,19)
+[    14.09 ] D: _startSelectedClipIndex123 "{a3b88cc1-4b2d-4e94-bee5-ba884ff1238d}"
+[    14.09 ] D: copySelectedArea1; QRectF(8000,0 14998.8x111) QRect(0,0 1957x111)
+[    14.09 ] D: copySelectedArea3
+[    14.09 ] D: Ok
+[    14.09 ] D: OK
+[    14.09 ] D: OK
+[    14.09 ] D: IOIO1 0 0
+[    14.09 ] D: _movingAutomationPoint 0
+[    14.17 ] D: mouseReleaseEvent
+[    14.61 ] D: findTrackIndexByPoint 0 QRect(0,0 1957x111) true QPointF(147,59)
+[    14.61 ] D: _automationChanging false
+[    14.61 ] D: findTrackIndexByPoint 0 QRect(0,0 1957x111) true QPointF(147,60)
+[    14.61 ] D: mouseMove2
+[    14.70 ] D: _automationChanging false
+[    14.70 ] D: findTrackIndexByPoint 0 QRect(0,0 1957x111) true QPointF(146,60)
+[    14.70 ] D: mouseMove2
+[    14.71 ] D: mouseReleaseEvent
+[    15.03 ] D: _requestForLoading false false
+[    15.03 ] D: _requestForLoading2
+[    15.03 ] D: _numberOfSampleBuffer 1
+[    15.03 ] D: START TO load 0
+[    15.03 ] D: sltPositionChanged 352800 true
+[    15.03 ] D: frame_offset 0 0 10
+[    15.03 ] D: frame_offset 0 1 10
+[    15.04 ] D: frame_offset 0 2 10
+[    15.04 ] D: frame_offset 0 3 10
+[    15.04 ] D: frame_offset 0 4 10
+[    15.05 ] D: sltFirstBufferFilled ("{a3b88cc1-4b2d-4e94-bee5-ba884ff1238d}") "{a3b88cc1-4b2d-4e94-bee5-ba884ff1238d}" true
+[    15.05 ] D: _requestForLoading true false

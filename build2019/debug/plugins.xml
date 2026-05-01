@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<KNOWNPLUGINS>
+  <PLUGIN name="dearVR PRO 2" format="VST3" category="Spatial|Fx|Ambisonics"
+          manufacturer="Dear Reality" version="2.0.0.0" file="C:\Program Files\Common Files\VST3\Dear Reality\dearVR PRO 2.vst3\Contents\x86_64-win\dearVR PRO 2.vst3"
+          uniqueId="d73d6aaa" isInstrument="0" fileTime="da20f13060" infoUpdateTime="19b8575d0e0"
+          numInputs="2" numOutputs="16" isShell="0" hasARAExtension="0"
+          uid="2a82c26c"/>
+  <PLUGIN name="dearVR pro" format="VST3" category="Spatial|Fx|Ambisonics"
+          manufacturer="Plugin Alliance" version="1.4.1" file="C:\Program Files\Common Files\VST3\Dear Reality\dearVR pro.vst3"
+          uniqueId="5690af5c" isInstrument="0" fileTime="175be269140" infoUpdateTime="19b8575d06e"
+          numInputs="1" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="8a17d043"/>
+  <PLUGIN name="Micro" format="VST3" category="Fx|Filter" manufacturer="FabFilter"
+          version="1.2.4.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Micro.vst3"
+          uniqueId="3583941d" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575cf7a"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="478c0a7b"/>
+  <PLUGIN name="One" format="VST3" category="Instrument|Synth" manufacturer="FabFilter"
+          version="3.3.5.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter One.vst3"
+          uniqueId="ec3eed50" isInstrument="1" fileTime="186286bd140" infoUpdateTime="19b8575cf2b"
+          numInputs="0" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="473f754b"/>
+  <PLUGIN name="Pro-C 2" format="VST3" category="Fx|Dynamics" manufacturer="FabFilter"
+          version="2.1.5.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Pro-C 2.vst3"
+          uniqueId="763029ad" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575cecc"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="ee537cab"/>
+  <PLUGIN name="Pro-DS" format="VST3" category="Fx|Dynamics" manufacturer="FabFilter"
+          version="1.1.9.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Pro-DS.vst3"
+          uniqueId="cba24108" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575cea5"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="d436aa86"/>
+  <PLUGIN name="Pro-G" format="VST3" category="Fx|Dynamics" manufacturer="FabFilter"
+          version="1.2.9.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Pro-G.vst3"
+          uniqueId="5a6e43a2" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575ce53"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="3deda504"/>
+  <PLUGIN name="Pro-L 2" format="VST3" category="Fx|Dynamics" manufacturer="FabFilter"
+          version="2.1.1.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Pro-L 2.vst3"
+          uniqueId="45398b95" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575ce01"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="9cbebde2"/>
+  <PLUGIN name="Pro-MB" format="VST3" category="Fx|Dynamics" manufacturer="FabFilter"
+          version="1.2.6.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Pro-MB.vst3"
+          uniqueId="49321b1b" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575cdab"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="87330dad"/>
+  <PLUGIN name="Pro-Q 3" format="VST3" category="Fx|EQ" manufacturer="FabFilter"
+          version="3.2.1.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Pro-Q 3.vst3"
+          uniqueId="ba5f7ab2" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575cd4c"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="8c4652e9"/>
+  <PLUGIN name="Pro-R" format="VST3" category="Fx|Reverb" manufacturer="FabFilter"
+          version="1.1.3.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Pro-R.vst3"
+          uniqueId="78c01fa6" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575cd29"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="7fe57fc1"/>
+  <PLUGIN name="Saturn 2" format="VST3" category="Fx|Distortion" manufacturer="FabFilter"
+          version="2.0.6.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Saturn 2.vst3"
+          uniqueId="5a67e07f" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575ccd5"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="eb74d2e"/>
+  <PLUGIN name="Simplon" format="VST3" category="Fx|Filter" manufacturer="FabFilter"
+          version="1.3.4.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Simplon.vst3"
+          uniqueId="d2072a0" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575cbe2"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="cdd8c4f3"/>
+  <PLUGIN name="Timeless 3" format="VST3" category="Fx|Delay" manufacturer="FabFilter"
+          version="3.0.3.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Timeless 3.vst3"
+          uniqueId="96546ef3" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575cb8f"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="b96c300e"/>
+  <PLUGIN name="Twin 3" format="VST3" category="Instrument|Synth|Fx" manufacturer="FabFilter"
+          version="3.0.0.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Twin 3.vst3"
+          uniqueId="790dfca9" isInstrument="1" fileTime="186286bd140" infoUpdateTime="19b8575ca8d"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="c0b848ab"/>
+  <PLUGIN name="Volcano 3" format="VST3" category="Fx|Filter" manufacturer="FabFilter"
+          version="3.0.2.0" file="C:\Program Files\Common Files\VST3\FabFilter\FabFilter Volcano 3.vst3"
+          uniqueId="9290f1c7" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8575c91e"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="21289bf6"/>
+  <PLUGIN name="3DX" format="VST3" category="Spatial|Fx|Ambisonic|Up-Downmix"
+          manufacturer="NovoNotes" version="1.8.0" file="C:\Program Files\Common Files\VST3\NovoNotes\3DX.vst3"
+          uniqueId="3976d3b8" isInstrument="0" fileTime="19866cd7785" infoUpdateTime="19b8575c828"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="a1832981"/>
+  <PLUGIN name="ValhallaDelay" format="VST3" category="Fx|Delay" manufacturer="Valhalla DSP, LLC"
+          version="2.0.8" file="C:\Program Files\Common Files\VST3\ValhallaDSP\ValhallaDelay.vst3"
+          uniqueId="bd9f9a35" isInstrument="0" fileTime="178f490beb0" infoUpdateTime="19b8575c80b"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="24c20e68"/>
+  <PLUGIN name="ValhallaFreqEcho" format="VST3" category="Fx|Delay" manufacturer="Valhalla DSP, LLC"
+          version="1.2.0" file="C:\Program Files\Common Files\VST3\ValhallaDSP\ValhallaFreqEcho.vst3"
+          uniqueId="39362615" isInstrument="0" fileTime="17574917860" infoUpdateTime="19b8575c74f"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="8abe6eb8"/>
+  <PLUGIN name="ValhallaPlate" format="VST3" category="Fx" manufacturer="Valhalla DSP, LLC"
+          version="1.6.3" file="C:\Program Files\Common Files\VST3\ValhallaDSP\ValhallaPlate.vst3"
+          uniqueId="dd9249b5" isInstrument="0" fileTime="17498194110" infoUpdateTime="19b8575c6f2"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="6ed8a203"/>
+  <PLUGIN name="ValhallaRoom" format="VST3" category="Fx|Reverb" manufacturer="Valhalla DSP, LLC"
+          version="1.6.2" file="C:\Program Files\Common Files\VST3\ValhallaDSP\ValhallaRoom.vst3"
+          uniqueId="f17e5f95" isInstrument="0" fileTime="17498264130" infoUpdateTime="19b8575c685"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="c7cccd11"/>
+  <PLUGIN name="ValhallaShimmer" format="VST3" category="Fx|Reverb" manufacturer="Valhalla DSP, LLC"
+          version="1.2.2" file="C:\Program Files\Common Files\VST3\ValhallaDSP\ValhallaShimmer.vst3"
+          uniqueId="69824d5" isInstrument="0" fileTime="17498362f50" infoUpdateTime="19b8575c615"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="f3c65311"/>
+  <PLUGIN name="ValhallaSpaceModulator" format="VST3" category="Fx|Modulation"
+          manufacturer="Valhalla DSP, LLC" version="1.1.6" file="C:\Program Files\Common Files\VST3\ValhallaDSP\ValhallaSpaceModulator.vst3"
+          uniqueId="96350af5" isInstrument="0" fileTime="17498436620" infoUpdateTime="19b8575c5ac"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="56bd6f4b"/>
+  <PLUGIN name="ValhallaSupermassive" format="VST3" category="Fx" manufacturer="Valhalla DSP, LLC"
+          version="1.2.0" file="C:\Program Files\Common Files\VST3\ValhallaDSP\ValhallaSupermassive.vst3"
+          uniqueId="7e8fe5d5" isInstrument="0" fileTime="175d7dcef30" infoUpdateTime="19b8575c550"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="77982743"/>
+  <PLUGIN name="ValhallaUberMod" format="VST3" category="Fx" manufacturer="Valhalla DSP, LLC"
+          version="1.1.6" file="C:\Program Files\Common Files\VST3\ValhallaDSP\ValhallaUberMod.vst3"
+          uniqueId="62910d95" isInstrument="0" fileTime="1749848adb0" infoUpdateTime="19b8575c4f4"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="fc00b353"/>
+  <PLUGIN name="ValhallaVintageVerb" format="VST3" category="Fx" manufacturer="Valhalla DSP, LLC"
+          version="2.1.1" file="C:\Program Files\Common Files\VST3\ValhallaDSP\ValhallaVintageVerb.vst3"
+          uniqueId="a4a502f5" isInstrument="0" fileTime="174982cc140" infoUpdateTime="19b8575c485"
+          numInputs="0" numOutputs="0" isShell="0" hasARAExtension="0"
+          uid="1f695837"/>
+  <PLUGIN name="Curves Equator Stereo" format="VST3" category="Fx|Dynamics"
+          manufacturer="Waves" version="15.2.115.188" file="C:\Program Files\Common Files\VST3\WaveShell1-VST3 15.2_x64.vst3"
+          uniqueId="c0e61d66" isInstrument="0" fileTime="19285fa1e3a" infoUpdateTime="19b8575c36e"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="269f6881"/>
+  <PLUGIN name="Curves Equator Mono" format="VST3" category="Fx|Dynamics"
+          manufacturer="Waves" version="15.2.115.188" file="C:\Program Files\Common Files\VST3\WaveShell1-VST3 15.2_x64.vst3"
+          uniqueId="c0cf9766" isInstrument="0" fileTime="19285fa1e3a" infoUpdateTime="19b8575c281"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="ad04ce7b"/>
+  <PLUGIN name="StudioVerse Audio Effects Mono/Stereo" format="VST3" category="Fx|StudioVerse"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="36614a16" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b8575bffa"
+          numInputs="1" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="ff1b68da"/>
+  <PLUGIN name="StudioVerse Audio Effects Stereo" format="VST3" category="Fx|StudioVerse"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="364e8516" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b8575bcf2"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="19c53dd5"/>
+  <PLUGIN name="StudioVerse Audio Effects Mono" format="VST3" category="Fx|StudioVerse"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="3637ff16" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b8575b9f5"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="a02aa3cf"/>
+  <PLUGIN name="StudioVerse Instruments Stereo" format="VST3" category="Instrument|Waves"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="362cff25" isInstrument="1" fileTime="19285fa1e20" infoUpdateTime="19b85759f21"
+          numInputs="0" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="4f18f75a"/>
+  <PLUGIN name="GTR Tuner Mono" format="VST3" category="Fx|Guitar" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="e8f83e51" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b857599fb"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="80bfd33c"/>
+  <PLUGIN name="NLS Buss Stereo" format="VST3" category="Fx|Distortion"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="a85275b9" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85759932"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="1cf9e1b7"/>
+  <PLUGIN name="NLS Buss Mono" format="VST3" category="Fx|Distortion" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="a83befb9" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85759864"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="a35f47b1"/>
+  <PLUGIN name="TRACT LinPhase Stereo" format="VST3" category="Fx|EQ" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="46e2a1bb" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85759784"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="fc20f838"/>
+  <PLUGIN name="TRACT LinPhase Mono" format="VST3" category="Fx|EQ" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="46cc1bbb" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b857596cf"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="82865e32"/>
+  <PLUGIN name="CR8 Sampler Stereo" format="VST3" category="Instrument|Waves"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="c1e44bc9" isInstrument="1" fileTime="19285fa1e20" infoUpdateTime="19b85759616"
+          numInputs="0" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="43370c98"/>
+  <PLUGIN name="TRACT Stereo" format="VST3" category="Fx|EQ" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="4328acb2" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b857553d0"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="f46f6e6c"/>
+  <PLUGIN name="TRACT Mono" format="VST3" category="Fx|EQ" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="430c21bb" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b8575533d"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="7ad4bd4e"/>
+  <PLUGIN name="NLS Channel Stereo" format="VST3" category="Fx|Distortion"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="e5307126" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85755245"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="1f43a71c"/>
+  <PLUGIN name="NLS Channel Mono" format="VST3" category="Fx|Distortion"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="e519eb26" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b857551e3"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="a5a90d16"/>
+  <PLUGIN name="GTR Solo Tool Rack Mono/Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="6339aa0d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85755122"
+          numInputs="1" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="891bd83"/>
+  <PLUGIN name="GTR Solo Tool Rack Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="6326e50d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85754f29"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="233b927e"/>
+  <PLUGIN name="GTR Stomp 6 Mono/Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="277a85d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85754b07"
+          numInputs="1" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="d5228f85"/>
+  <PLUGIN name="GTR Stomp 6 Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="264e35d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85754a39"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="efcc6480"/>
+  <PLUGIN name="GTR Stomp 6 Mono" format="VST3" category="Fx|Guitar" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="24e5d5d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85754970"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="7631ca7a"/>
+  <PLUGIN name="GTR Tool Rack Mono/Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="4cb6a72c" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85754890"
+          numInputs="1" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="da75ffb0"/>
+  <PLUGIN name="GTR Tool Rack Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="4ca3e22c" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b857545f2"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="f51fd4ab"/>
+  <PLUGIN name="GTR Amp Mono/Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="75b7592c" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b8575425e"
+          numInputs="1" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="a2a6a964"/>
+  <PLUGIN name="GTR Amp Stereo" format="VST3" category="Fx|Guitar" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="75a49432" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b8575418a"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="bd507e65"/>
+  <PLUGIN name="GTR Amp Mono" format="VST3" category="Fx|Guitar" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="758e0e2c" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b857540bc"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="43b5e459"/>
+  <PLUGIN name="GTR Stomp 4 Mono/Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="a0dda85d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85753faa"
+          numInputs="1" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="d17c3df"/>
+  <PLUGIN name="GTR Stomp 4 Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="a0cae35d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85753edd"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="27c198da"/>
+  <PLUGIN name="GTR Stomp 4 Mono" format="VST3" category="Fx|Guitar" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="a0b45d5d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85753e12"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="ae26fed4"/>
+  <PLUGIN name="GTR Stomp 2 Mono/Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="995ba85d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85753d3f"
+          numInputs="1" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="fdb47921"/>
+  <PLUGIN name="GTR Stomp 2 Stereo" format="VST3" category="Fx|Guitar"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="9948e35d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85753c7c"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="185e4e1c"/>
+  <PLUGIN name="GTR Stomp 2 Mono" format="VST3" category="Fx|Guitar" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="99325d5d" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85753bf2"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="9ec3b416"/>
+  <PLUGIN name="GTR Amp 2Cab Mono" format="VST3" category="Fx|Guitar" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="10330df1" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b8575378e"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="73f97319"/>
+  <PLUGIN name="H-Comp Stereo" format="VST3" category="Fx|Dynamics" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="fb7fabec" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85752e19"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="d359a92f"/>
+  <PLUGIN name="H-Comp Mono" format="VST3" category="Fx|Dynamics" manufacturer="Waves"
+          version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="fb691fe7" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85752d6f"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="59bf0e6a"/>
+  <PLUGIN name="Scheps Omni Channel 2 Stereo" format="VST3" category="Fx|Channel Strip"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="3aab2cf" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85752cb2"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="beeaede1"/>
+  <PLUGIN name="Scheps Omni Channel 2 Mono" format="VST3" category="Fx|Channel Strip"
+          manufacturer="Waves" version="15.0.74.77" file="C:\Program Files\Common Files\VST3\WaveShell2-VST3 15.0_x64.vst3"
+          uniqueId="3942ccf" isInstrument="0" fileTime="19285fa1e20" infoUpdateTime="19b85752a39"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="455053db"/>
+  <PLUGIN name="dearVR pro" format="VST" category="Reverb" manufacturer="Plugin Alliance"
+          version="1.4.1.0" file="C:\Program Files\Steinberg\VstPlugins\Dear Reality\dearVR pro.dll"
+          uniqueId="44524456" isInstrument="0" fileTime="175be269140" infoUpdateTime="19b8574d888"
+          numInputs="16" numOutputs="16" isShell="0" hasARAExtension="0"
+          uid="44524456"/>
+  <PLUGIN name="FabFilter Micro (Mono)" format="VST" category="Effect"
+          manufacturer="FabFilter" version="1.2.4.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Micro (Mono).dll"
+          uniqueId="464d6932" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d7aa"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="464d6932"/>
+  <PLUGIN name="FabFilter Micro" format="VST" category="Effect" manufacturer="FabFilter"
+          version="1.2.4.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Micro.dll"
+          uniqueId="464d6963" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d753"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="464d6963"/>
+  <PLUGIN name="FabFilter One" format="VST" category="Synth" manufacturer="FabFilter"
+          version="3.3.5.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter One.dll"
+          uniqueId="46463031" isInstrument="1" fileTime="186286bd140" infoUpdateTime="19b8574d6f9"
+          numInputs="0" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46463031"/>
+  <PLUGIN name="FabFilter Pro-C 2 (Mono)" format="VST" category="Mastering"
+          manufacturer="FabFilter" version="2.1.5.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-C 2 (Mono).dll"
+          uniqueId="46433232" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d675"
+          numInputs="2" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="46433232"/>
+  <PLUGIN name="FabFilter Pro-C 2" format="VST" category="Mastering" manufacturer="FabFilter"
+          version="2.1.5.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-C 2.dll"
+          uniqueId="46433270" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d5f3"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46433270"/>
+  <PLUGIN name="FabFilter Pro-DS (Mono)" format="VST" category="Mastering"
+          manufacturer="FabFilter" version="1.1.9.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-DS (Mono).dll"
+          uniqueId="46505332" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d583"
+          numInputs="2" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="46505332"/>
+  <PLUGIN name="FabFilter Pro-DS" format="VST" category="Mastering" manufacturer="FabFilter"
+          version="1.1.9.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-DS.dll"
+          uniqueId="46505372" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d507"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46505372"/>
+  <PLUGIN name="FabFilter Pro-G (Mono)" format="VST" category="Mastering"
+          manufacturer="FabFilter" version="1.2.9.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-G (Mono).dll"
+          uniqueId="46504732" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d4a5"
+          numInputs="2" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="46504732"/>
+  <PLUGIN name="FabFilter Pro-G" format="VST" category="Mastering" manufacturer="FabFilter"
+          version="1.2.9.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-G.dll"
+          uniqueId="46504772" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d43d"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46504772"/>
+  <PLUGIN name="FabFilter Pro-L 2" format="VST" category="Mastering" manufacturer="FabFilter"
+          version="2.1.1.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-L 2.dll"
+          uniqueId="464c3270" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d3d6"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="464c3270"/>
+  <PLUGIN name="FabFilter Pro-MB (Mono)" format="VST" category="Mastering"
+          manufacturer="FabFilter" version="1.2.6.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-MB (Mono).dll"
+          uniqueId="46504d32" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d375"
+          numInputs="2" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="46504d32"/>
+  <PLUGIN name="FabFilter Pro-MB" format="VST" category="Mastering" manufacturer="FabFilter"
+          version="1.2.6.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-MB.dll"
+          uniqueId="46504d62" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d30f"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46504d62"/>
+  <PLUGIN name="FabFilter Pro-Q 3" format="VST" category="Unknown" manufacturer="FabFilter"
+          version="3.2.1.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-Q 3.dll"
+          uniqueId="46513370" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d2a5"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46513370"/>
+  <PLUGIN name="FabFilter Pro-R (Mono)" format="VST" category="Reverb"
+          manufacturer="FabFilter" version="1.1.3.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-R (Mono).dll"
+          uniqueId="46505232" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d220"
+          numInputs="1" numOutputs="1" isShell="0" hasARAExtension="0"
+          uid="46505232"/>
+  <PLUGIN name="FabFilter Pro-R" format="VST" category="Reverb" manufacturer="FabFilter"
+          version="1.1.3.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Pro-R.dll"
+          uniqueId="46505272" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d1cf"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46505272"/>
+  <PLUGIN name="FabFilter Saturn 2" format="VST" category="Effect" manufacturer="FabFilter"
+          version="2.0.6.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Saturn 2.dll"
+          uniqueId="46533261" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d16b"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46533261"/>
+  <PLUGIN name="FabFilter Simplon" format="VST" category="Effect" manufacturer="FabFilter"
+          version="1.3.4.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Simplon.dll"
+          uniqueId="4653696d" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574d061"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="4653696d"/>
+  <PLUGIN name="FabFilter Timeless 3" format="VST" category="Reverb" manufacturer="FabFilter"
+          version="3.0.3.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Timeless 3.dll"
+          uniqueId="46335473" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574cffc"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46335473"/>
+  <PLUGIN name="FabFilter Twin 3" format="VST" category="Synth" manufacturer="FabFilter"
+          version="3.0.0.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Twin 3.dll"
+          uniqueId="46543369" isInstrument="1" fileTime="186286bd140" infoUpdateTime="19b8574ced2"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46543369"/>
+  <PLUGIN name="FabFilter Volcano 3" format="VST" category="Effect" manufacturer="FabFilter"
+          version="3.0.2.0" file="C:\Program Files\Steinberg\VstPlugins\FabFilter\FabFilter Volcano 3.dll"
+          uniqueId="4656336c" isInstrument="0" fileTime="186286bd140" infoUpdateTime="19b8574ccee"
+          numInputs="4" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="4656336c"/>
+  <PLUGIN name="MultiEQ_x64" descriptiveName="MultiEQ" format="VST" category="Effect"
+          manufacturer="IEM" version="0.2.2.0" file="C:\Program Files\Steinberg\VstPlugins\MultiEQ_x64.dll"
+          uniqueId="4d754571" isInstrument="0" fileTime="1796c155dcd" infoUpdateTime="19b8574cba0"
+          numInputs="64" numOutputs="64" isShell="0" hasARAExtension="0"
+          uid="4d754571"/>
+  <PLUGIN name="ValhallaDelay_x64" descriptiveName="ValhallaDelay" format="VST"
+          category="Effect" manufacturer="Valhalla DSP, LLC" version="2.0.8.0"
+          file="C:\Program Files\Steinberg\VstPlugins\ValhallaDSP\ValhallaDelay_x64.dll"
+          uniqueId="644c6179" isInstrument="0" fileTime="178f490b6e0" infoUpdateTime="19b8574cb62"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="644c6179"/>
+  <PLUGIN name="ValhallaFreqEcho_x64" descriptiveName="ValhallaFreqEcho"
+          format="VST" category="Effect" manufacturer="Valhalla DSP, LLC"
+          version="1.2.0.0" file="C:\Program Files\Steinberg\VstPlugins\ValhallaDSP\ValhallaFreqEcho_x64.dll"
+          uniqueId="46714568" isInstrument="0" fileTime="17574917090" infoUpdateTime="19b8574cac7"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="46714568"/>
+  <PLUGIN name="ValhallaPlate_x64" descriptiveName="ValhallaPlate" format="VST"
+          category="Effect" manufacturer="Valhalla DSP, LLC" version="1.6.3.0"
+          file="C:\Program Files\Steinberg\VstPlugins\ValhallaDSP\ValhallaPlate_x64.dll"
+          uniqueId="706c6174" isInstrument="0" fileTime="17498193940" infoUpdateTime="19b8574ca53"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="706c6174"/>
+  <PLUGIN name="ValhallaRoom_x64" descriptiveName="ValhallaRoom" format="VST"
+          category="Effect" manufacturer="Valhalla DSP, LLC" version="1.6.2.0"
+          file="C:\Program Files\Steinberg\VstPlugins\ValhallaDSP\ValhallaRoom_x64.dll"
+          uniqueId="5275756d" isInstrument="0" fileTime="17498263960" infoUpdateTime="19b8574c9c1"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="5275756d"/>
+  <PLUGIN name="ValhallaShimmer_x64" descriptiveName="ValhallaShimmer"
+          format="VST" category="Effect" manufacturer="Valhalla DSP, LLC"
+          version="1.2.2.0" file="C:\Program Files\Steinberg\VstPlugins\ValhallaDSP\ValhallaShimmer_x64.dll"
+          uniqueId="73686d72" isInstrument="0" fileTime="17498362780" infoUpdateTime="19b8574c93b"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="73686d72"/>
+  <PLUGIN name="ValhallaSpaceModulator_x64" descriptiveName="ValhallaSpaceModulator"
+          format="VST" category="Effect" manufacturer="Valhalla DSP, LLC"
+          version="1.1.6.0" file="C:\Program Files\Steinberg\VstPlugins\ValhallaDSP\ValhallaSpaceModulator_x64.dll"
+          uniqueId="53704d64" isInstrument="0" fileTime="17498435e50" infoUpdateTime="19b8574c8b5"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="53704d64"/>
+  <PLUGIN name="ValhallaSupermassive_x64" descriptiveName="ValhallaSupermassive"
+          format="VST" category="Effect" manufacturer="Valhalla DSP, LLC"
+          version="1.2.0.0" file="C:\Program Files\Steinberg\VstPlugins\ValhallaDSP\ValhallaSupermassive_x64.dll"
+          uniqueId="734d6173" isInstrument="0" fileTime="175d7dce760" infoUpdateTime="19b8574c851"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="734d6173"/>
+  <PLUGIN name="ValhallaUberMod_x64" descriptiveName="ValhallaUberMod"
+          format="VST" category="Effect" manufacturer="Valhalla DSP, LLC"
+          version="1.1.6.0" file="C:\Program Files\Steinberg\VstPlugins\ValhallaDSP\ValhallaUberMod_x64.dll"
+          uniqueId="75626572" isInstrument="0" fileTime="1749848a5e0" infoUpdateTime="19b8574c7f9"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="75626572"/>
+  <PLUGIN name="ValhallaVintageVerb_x64" descriptiveName="ValhallaVintageVerb"
+          format="VST" category="Effect" manufacturer="Valhalla DSP, LLC"
+          version="2.1.1.0" file="C:\Program Files\Steinberg\VstPlugins\ValhallaDSP\ValhallaVintageVerb_x64.dll"
+          uniqueId="76656533" isInstrument="0" fileTime="174982cb970" infoUpdateTime="19b8574c4c2"
+          numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
+          uid="76656533"/>
+  <BLACKLISTED id="C:\Program Files\Common Files\VST3\WaveShell1-VST3 15.0_x64.vst3"/>
+  <BLACKLISTED id="C:\Program Files\VstPlugins\Waves StudioRack for OBS.dll"/>
+</KNOWNPLUGINS>

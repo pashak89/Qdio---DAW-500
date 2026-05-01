@@ -1,0 +1,370 @@
+[    22.65 ] I: Log: Log file open in follow path at 1403/6/21 22:48:07 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[    22.65 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[    22.65 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[    22.65 ] D: API version is: 4.60 ,shader version is: 4.60
+[    22.65 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[    22.65 ] I: Current Render API is: 4.60
+[    22.65 ] I: The subsystem "Renderer" is registered successfully.
+[    22.65 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[    22.65 ] I: The subsystem "Platform" is registered successfully.
+[    22.65 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[    22.65 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[    22.65 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[    22.65 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[    22.65 ] I: #version 460 core
+#define GLES_Ver 460
+
+[    22.65 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[    22.65 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[    23.12 ] D: Shader Compile successfully.
+[    23.13 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[    23.13 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[    23.13 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[    23.13 ] D: Engine Enabled
+[    23.13 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[    23.13 ] D: Node with id 1 is added to Qt layer
+[    23.13 ] D: Node with id 2460 is added to Qt layer
+[    23.13 ] D: Node with id 2462 is added to Qt layer
+[    23.13 ] D: Node with id 2464 is added to Qt layer
+[    23.14 ] D: Node with id 2466 is added to Qt layer
+[    23.14 ] D: Node with id 2468 is added to Qt layer
+[    23.14 ] D: Node with id 2470 is added to Qt layer
+[    23.14 ] D: Node with id 2472 is added to Qt layer
+[    23.14 ] D: Node with id 2474 is added to Qt layer
+[    23.14 ] D: Node with id 2476 is added to Qt layer
+[    23.15 ] D: Node with id 2478 is added to Qt layer
+[    23.15 ] D: Node with id 2480 is added to Qt layer
+[    23.15 ] D: Node with id 2482 is added to Qt layer
+[    23.15 ] D: Node with id 2484 is added to Qt layer
+[    23.15 ] D: Node with id 2486 is added to Qt layer
+[    23.15 ] D: Node with id 2487 is added to Qt layer
+[    23.16 ] D: Node with id 2489 is added to Qt layer
+[    23.16 ] D: Node with id 2491 is added to Qt layer
+[    23.16 ] D: Node with id 3 is added to Qt layer
+[    23.17 ] D: Node with id 2493 is added to Qt layer
+[    23.17 ] S: New view-port registered with id: 1
+[    23.17 ] S: New view-port registered with id: 2
+[    23.17 ] S: New view-port registered with id: 3
+[    23.17 ] S: New view-port registered with id: 4
+[    23.17 ] S: New view-port registered with id: 5
+[    23.18 ] S: New view-port registered with id: 6
+[    24.31 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[    24.31 ] D: Using backend: "OpenGL 3"
+[    24.58 ] W: Floating point comparison needs context sanity check
+[    24.58 ] D: QT onScaleChanged=  144
+[    24.83 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    24.83 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    24.86 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    24.86 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    25.20 ] D: Engine Started.
+[    27.11 ] D: P1 -456
+[    27.12 ] D: P1 -419
+[    27.12 ] D: P1 -412
+[    27.13 ] D: P1 -396
+[    27.14 ] D: P1 -387
+[    27.15 ] D: P1 -386
+[    27.16 ] D: P1 -383
+[    27.16 ] D: P1 -380
+[    27.17 ] D: P1 -380
+[    27.17 ] D: P1 -380
+[    27.17 ] D: P1 -379
+[    27.17 ] D: P1 -379
+[    27.18 ] D: P1 -378
+[    27.56 ] D: P1 -378
+[    27.58 ] D: P1 -378
+[    27.58 ] D: P1 -378
+[    27.60 ] D: P1 -378
+[    27.60 ] D: P1 -378
+[    27.61 ] D: P1 -378
+[    27.72 ] D: sltPositionChanged 617400
+[    27.73 ] D: frame_offset 0 0 217
+[    27.73 ] D: frame_offset 0 1 217
+[    27.74 ] D: frame_offset 0 2 217
+[    27.74 ] D: findOverlayItems 1 0
+[    27.74 ] D: "{723134cd-004a-4602-9d4d-5eeb7ba57862}" i.value()->sampleClip()->startTime()  14000 336833 336833 14000
+[    27.74 ] D: findOverlayItems
+[    27.74 ] D: frame_offset 0 3 217
+[    27.74 ] D: frame_offset 0 4 217
+[    27.76 ] D: sltPositionChanged 617400
+[    27.76 ] D: frame_offset 0 0 217
+[    27.76 ] D: frame_offset 0 1 217
+[    27.77 ] D: frame_offset 0 2 217
+[    27.77 ] D: frame_offset 0 3 217
+[    27.78 ] D: frame_offset 0 4 217
+[    32.18 ] D: _editController->getParameterCount() 143
+[    32.23 ] D: ADDED 0 0 0
+[    33.53 ] D: ADDED 1 0 0
+[    33.53 ] D: ADDED 2 0 0
+[    33.53 ] D: ADDED 3 0 0
+[    33.53 ] D: ADDED
+[    38.89 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    53.42 ] D: _pointActive1 false true false
+[    55.72 ] D: _pointActive1 true false false
+[    56.54 ] D: _pointActive1 false true false
+[    82.22 ] D: _requestForLoading false false
+[    82.22 ] D: _requestForLoading2
+[    82.22 ] D: _numberOfSampleBuffer 1
+[    82.22 ] D: START TO load 0
+[    82.22 ] D: sltPositionChanged 132300 true
+[    82.23 ] D: START TO load 1
+[    82.23 ] D: START TO load 2
+[    82.23 ] D: START TO load 3
+[    82.23 ] D: frame_offset 0 0 217
+[    82.23 ] D: frame_offset 0 1 217
+[    82.24 ] D: frame_offset 0 2 217
+[    82.24 ] D: frame_offset 0 3 217
+[    82.24 ] D: frame_offset 0 4 217
+[    82.25 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[    82.25 ] D: _requestForLoading true false
+[    94.75 ] D: AsyncFileReader 0 5
+[    96.23 ] D: AsyncFileReader 1 6
+[    97.71 ] D: AsyncFileReader 2 7
+[    99.21 ] D: AsyncFileReader 3 8
+[   100.69 ] D: AsyncFileReader 4 9
+[   101.37 ] D: _pointActive1 false true false
+[   102.17 ] D: AsyncFileReader 0 10
+[   104.11 ] D: AsyncFileReader 1 11
+[   105.59 ] D: AsyncFileReader 2 12
+[   107.07 ] D: AsyncFileReader 3 13
+[   108.57 ] D: AsyncFileReader 4 14
+[   110.05 ] D: AsyncFileReader 0 15
+[   111.53 ] D: AsyncFileReader 1 16
+[   113.03 ] D: AsyncFileReader 2 17
+[   114.51 ] D: AsyncFileReader 3 18
+[   115.99 ] D: AsyncFileReader 4 19
+[   117.49 ] D: AsyncFileReader 0 20
+[   118.97 ] D: AsyncFileReader 1 21
+[   120.45 ] D: AsyncFileReader 2 22
+[   121.95 ] D: AsyncFileReader 3 23
+[   123.43 ] D: AsyncFileReader 4 24
+[   124.91 ] D: AsyncFileReader 0 25
+[   126.40 ] D: AsyncFileReader 1 26
+[   127.31 ] D: _requestForLoading false false
+[   127.31 ] D: _requestForLoading2
+[   127.31 ] D: _numberOfSampleBuffer 1
+[   127.31 ] D: START TO load 0
+[   127.31 ] D: sltPositionChanged 1234800 true
+[   127.32 ] D: START TO load 1
+[   127.32 ] D: START TO load 2
+[   127.32 ] D: START TO load 3
+[   127.32 ] D: frame_offset 9 0 217
+[   127.32 ] D: frame_offset 9 1 217
+[   127.32 ] D: frame_offset 9 2 217
+[   127.33 ] D: frame_offset 9 3 217
+[   127.33 ] D: frame_offset 9 4 217
+[   127.33 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   127.33 ] D: _requestForLoading true false
+[   128.20 ] D: AsyncFileReader 4 14
+[   129.51 ] D: _requestForLoading false false
+[   129.51 ] D: _requestForLoading2
+[   129.51 ] D: _numberOfSampleBuffer 1
+[   129.51 ] D: START TO load 0
+[   129.51 ] D: sltPositionChanged 1234800 true
+[   129.51 ] D: START TO load 1
+[   129.52 ] D: START TO load 2
+[   129.52 ] D: START TO load 3
+[   129.52 ] D: frame_offset 9 0 217
+[   129.52 ] D: frame_offset 9 1 217
+[   129.52 ] D: frame_offset 9 2 217
+[   129.53 ] D: frame_offset 9 3 217
+[   129.53 ] D: frame_offset 9 4 217
+[   129.54 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   129.54 ] D: _requestForLoading true false
+[   130.39 ] D: AsyncFileReader 4 14
+[   131.34 ] D: _requestForLoading false false
+[   131.34 ] D: _requestForLoading2
+[   131.34 ] D: _numberOfSampleBuffer 1
+[   131.34 ] D: START TO load 0
+[   131.34 ] D: sltPositionChanged 1234800 true
+[   131.34 ] D: START TO load 1
+[   131.34 ] D: START TO load 2
+[   131.34 ] D: START TO load 3
+[   131.34 ] D: frame_offset 9 0 217
+[   131.34 ] D: frame_offset 9 1 217
+[   131.35 ] D: frame_offset 9 2 217
+[   131.35 ] D: frame_offset 9 3 217
+[   131.35 ] D: frame_offset 9 4 217
+[   131.36 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   131.36 ] D: _requestForLoading true false
+[   132.22 ] D: AsyncFileReader 4 14
+[   133.46 ] D: _requestForLoading false false
+[   133.46 ] D: _requestForLoading2
+[   133.46 ] D: _numberOfSampleBuffer 1
+[   133.46 ] D: START TO load 0
+[   133.46 ] D: sltPositionChanged 1234800 true
+[   133.46 ] D: START TO load 1
+[   133.46 ] D: START TO load 2
+[   133.46 ] D: frame_offset 9 0 217
+[   133.46 ] D: START TO load 3
+[   133.47 ] D: frame_offset 9 1 217
+[   133.47 ] D: frame_offset 9 2 217
+[   133.48 ] D: frame_offset 9 3 217
+[   133.48 ] D: frame_offset 9 4 217
+[   133.48 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   133.49 ] D: _requestForLoading true false
+[   134.34 ] D: AsyncFileReader 4 14
+[   136.24 ] D: _requestForLoading false false
+[   136.24 ] D: _requestForLoading2
+[   136.24 ] D: _numberOfSampleBuffer 1
+[   136.24 ] D: START TO load 0
+[   136.24 ] D: sltPositionChanged 837899 true
+[   136.24 ] D: START TO load 1
+[   136.24 ] D: START TO load 2
+[   136.24 ] D: START TO load 3
+[   136.24 ] D: frame_offset 3 0 217
+[   136.25 ] D: frame_offset 3 1 217
+[   136.25 ] D: frame_offset 3 2 217
+[   136.25 ] D: frame_offset 3 3 217
+[   136.26 ] D: frame_offset 3 4 217
+[   136.26 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   136.26 ] D: _requestForLoading true false
+[   137.21 ] D: AsyncFileReader 3 8
+[   138.68 ] D: AsyncFileReader 4 9
+[   140.18 ] D: AsyncFileReader 0 10
+[   142.44 ] D: _requestForLoading false false
+[   142.44 ] D: _requestForLoading2
+[   142.44 ] D: _numberOfSampleBuffer 1
+[   142.44 ] D: START TO load 0
+[   142.44 ] D: sltPositionChanged 1014300 true
+[   142.45 ] D: START TO load 1
+[   142.45 ] D: START TO load 2
+[   142.45 ] D: START TO load 3
+[   142.45 ] D: frame_offset 6 0 217
+[   142.45 ] D: frame_offset 6 1 217
+[   142.45 ] D: frame_offset 6 2 217
+[   142.46 ] D: frame_offset 6 3 217
+[   142.46 ] D: frame_offset 6 4 217
+[   142.46 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   142.46 ] D: _requestForLoading true false
+[   143.87 ] D: AsyncFileReader 1 11
+[   145.86 ] D: _requestForLoading false false
+[   145.86 ] D: _requestForLoading2
+[   145.86 ] D: _numberOfSampleBuffer 1
+[   145.86 ] D: START TO load 0
+[   145.87 ] D: sltPositionChanged 1014300 true
+[   145.87 ] D: START TO load 1
+[   145.87 ] D: START TO load 2
+[   145.87 ] D: START TO load 3
+[   145.87 ] D: frame_offset 6 0 217
+[   145.87 ] D: frame_offset 6 1 217
+[   145.87 ] D: frame_offset 6 2 217
+[   145.88 ] D: frame_offset 6 3 217
+[   145.88 ] D: frame_offset 6 4 217
+[   145.88 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   145.88 ] D: _requestForLoading true false
+[   147.28 ] D: AsyncFileReader 1 11
+[   148.76 ] D: AsyncFileReader 2 12
+[   150.26 ] D: AsyncFileReader 3 13
+[   151.82 ] D: _requestForLoading false false
+[   151.82 ] D: _requestForLoading2
+[   151.82 ] D: _numberOfSampleBuffer 1
+[   151.83 ] D: START TO load 0
+[   151.83 ] D: sltPositionChanged 1014300 true
+[   151.83 ] D: START TO load 1
+[   151.83 ] D: START TO load 2
+[   151.83 ] D: START TO load 3
+[   151.83 ] D: frame_offset 6 0 217
+[   151.83 ] D: frame_offset 6 1 217
+[   151.84 ] D: frame_offset 6 2 217
+[   151.84 ] D: frame_offset 6 3 217
+[   151.84 ] D: frame_offset 6 4 217
+[   151.85 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   151.85 ] D: _requestForLoading true false
+[   153.24 ] D: AsyncFileReader 1 11
+[   154.31 ] D: _requestForLoading false false
+[   154.31 ] D: _requestForLoading2
+[   154.31 ] D: _numberOfSampleBuffer 1
+[   154.31 ] D: START TO load 0
+[   154.31 ] D: sltPositionChanged 617400 true
+[   154.31 ] D: START TO load 1
+[   154.31 ] D: START TO load 2
+[   154.31 ] D: START TO load 3
+[   154.31 ] D: frame_offset 0 0 217
+[   154.32 ] D: frame_offset 0 1 217
+[   154.32 ] D: frame_offset 0 2 217
+[   154.32 ] D: frame_offset 0 3 217
+[   154.32 ] D: frame_offset 0 4 217
+[   154.33 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   154.33 ] D: _requestForLoading true false
+[   155.82 ] D: AsyncFileReader 0 5
+[   156.73 ] D: _requestForLoading false false
+[   156.73 ] D: _requestForLoading2
+[   156.73 ] D: _numberOfSampleBuffer 1
+[   156.73 ] D: START TO load 0
+[   156.73 ] D: sltPositionChanged 1058400 true
+[   156.73 ] D: START TO load 1
+[   156.73 ] D: START TO load 2
+[   156.73 ] D: START TO load 3
+[   156.73 ] D: frame_offset 6 0 217
+[   156.74 ] D: frame_offset 6 1 217
+[   156.74 ] D: frame_offset 6 2 217
+[   156.74 ] D: frame_offset 6 3 217
+[   156.74 ] D: frame_offset 6 4 217
+[   156.75 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   156.75 ] D: _requestForLoading true false
+[   157.16 ] D: AsyncFileReader 1 11
+[   158.64 ] D: AsyncFileReader 2 12
+[   160.12 ] D: AsyncFileReader 3 13
+[   160.87 ] D: _requestForLoading false false
+[   160.87 ] D: _requestForLoading2
+[   160.87 ] D: _numberOfSampleBuffer 1
+[   160.87 ] D: START TO load 0
+[   160.87 ] D: sltPositionChanged 1058400 true
+[   160.88 ] D: START TO load 1
+[   160.88 ] D: START TO load 2
+[   160.88 ] D: START TO load 3
+[   160.88 ] D: frame_offset 6 0 217
+[   160.88 ] D: frame_offset 6 1 217
+[   160.88 ] D: frame_offset 6 2 217
+[   160.89 ] D: frame_offset 6 3 217
+[   160.89 ] D: frame_offset 6 4 217
+[   160.90 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   160.90 ] D: _requestForLoading true false
+[   161.30 ] D: AsyncFileReader 1 11
+[   162.86 ] D: _requestForLoading false false
+[   162.86 ] D: _requestForLoading2
+[   162.86 ] D: _numberOfSampleBuffer 1
+[   162.86 ] D: START TO load 0
+[   162.87 ] D: sltPositionChanged 1058400 true
+[   162.87 ] D: START TO load 1
+[   162.87 ] D: START TO load 2
+[   162.87 ] D: START TO load 3
+[   162.87 ] D: frame_offset 6 0 217
+[   162.87 ] D: frame_offset 6 1 217
+[   162.87 ] D: frame_offset 6 2 217
+[   162.88 ] D: frame_offset 6 3 217
+[   162.88 ] D: frame_offset 6 4 217
+[   162.88 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   162.88 ] D: _requestForLoading true false
+[   163.29 ] D: AsyncFileReader 1 11
+[   165.74 ] D: _requestForLoading false false
+[   165.74 ] D: _requestForLoading2
+[   165.74 ] D: _numberOfSampleBuffer 1
+[   165.74 ] D: START TO load 0
+[   165.74 ] D: sltPositionChanged 1058400 true
+[   165.75 ] D: START TO load 1
+[   165.75 ] D: START TO load 2
+[   165.75 ] D: START TO load 3
+[   165.75 ] D: frame_offset 6 0 217
+[   165.75 ] D: frame_offset 6 1 217
+[   165.75 ] D: frame_offset 6 2 217
+[   165.76 ] D: frame_offset 6 3 217
+[   165.76 ] D: frame_offset 6 4 217
+[   165.76 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true
+[   165.76 ] D: _requestForLoading true false
+[   166.18 ] D: AsyncFileReader 1 11
+[   167.66 ] D: AsyncFileReader 2 12
+[   168.46 ] D: _requestForLoading false false
+[   168.46 ] D: _requestForLoading2
+[   168.46 ] D: _numberOfSampleBuffer 1
+[   168.46 ] D: START TO load 0
+[   168.46 ] D: sltPositionChanged 617400 true
+[   168.47 ] D: START TO load 1
+[   168.47 ] D: START TO load 2
+[   168.47 ] D: START TO load 3
+[   168.47 ] D: frame_offset 0 0 217
+[   168.47 ] D: frame_offset 0 1 217
+[   168.48 ] D: frame_offset 0 2 217
+[   168.48 ] D: frame_offset 0 3 217
+[   168.48 ] D: frame_offset 0 4 217
+[   168.48 ] D: sltFirstBufferFilled ("{723134cd-004a-4602-9d4d-5eeb7ba57862}") "{723134cd-004a-4602-9d4d-5eeb7ba57862}" true

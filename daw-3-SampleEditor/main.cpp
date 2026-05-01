@@ -6,6 +6,8 @@
 #define JUCE_WINDOWS 1
 #define JUCE_MSVC 1
 
+#include <QtWebEngine/QtWebEngine>
+
 #include "juceapplication.h"
 #include <boost/filesystem.hpp>
 #include <plugins/vst3effect.h>
@@ -79,6 +81,7 @@ extern "C" FILE* __cdecl __iob_func(void)
 #include <Qt/QEngine.h>
 
 #include "EngineHelper.h"
+#include "ThreeBridge.h"
 
 #if DGE_Platform == DGE_Windows_Platform
 #define _CRTDBG_MAP_ALLOC
@@ -97,7 +100,11 @@ int main(int argc, char* argv[])
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
     {
+        // Must be called before QGuiApplication is constructed
+        QtWebEngine::initialize();
+
         QCoreApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
+        QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts); // WebEngine + OpenGL coexistence
         AudioManager::init(false);
 
         initQEngineResources(true);

@@ -1,0 +1,199 @@
+[     7.87 ] I: Log: Log file open in follow path at 1403/6/26 20:19:36 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     7.87 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     7.87 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     7.87 ] D: API version is: 4.60 ,shader version is: 4.60
+[     7.87 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     7.87 ] I: Current Render API is: 4.60
+[     7.87 ] I: The subsystem "Renderer" is registered successfully.
+[     7.87 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     7.87 ] I: The subsystem "Platform" is registered successfully.
+[     7.87 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     7.87 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     7.87 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     7.87 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     7.88 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     7.88 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     7.88 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     8.03 ] D: Shader Compile successfully.
+[     8.03 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     8.03 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     8.03 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     8.03 ] D: Engine Enabled
+[     8.03 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     8.03 ] D: Node with id 1 is added to Qt layer
+[     8.04 ] D: Node with id 2460 is added to Qt layer
+[     8.04 ] D: Node with id 2462 is added to Qt layer
+[     8.04 ] D: Node with id 2464 is added to Qt layer
+[     8.04 ] D: Node with id 2466 is added to Qt layer
+[     8.04 ] D: Node with id 2468 is added to Qt layer
+[     8.04 ] D: Node with id 2470 is added to Qt layer
+[     8.04 ] D: Node with id 2472 is added to Qt layer
+[     8.04 ] D: Node with id 2474 is added to Qt layer
+[     8.04 ] D: Node with id 2476 is added to Qt layer
+[     8.04 ] D: Node with id 2478 is added to Qt layer
+[     8.04 ] D: Node with id 2480 is added to Qt layer
+[     8.04 ] D: Node with id 2482 is added to Qt layer
+[     8.04 ] D: Node with id 2484 is added to Qt layer
+[     8.04 ] D: Node with id 2486 is added to Qt layer
+[     8.04 ] D: Node with id 2487 is added to Qt layer
+[     8.05 ] D: Node with id 2489 is added to Qt layer
+[     8.05 ] D: Node with id 2491 is added to Qt layer
+[     8.05 ] D: Node with id 3 is added to Qt layer
+[     8.05 ] D: Node with id 2493 is added to Qt layer
+[     8.05 ] S: New view-port registered with id: 1
+[     8.05 ] S: New view-port registered with id: 2
+[     8.05 ] S: New view-port registered with id: 3
+[     8.05 ] S: New view-port registered with id: 4
+[     8.05 ] S: New view-port registered with id: 5
+[     8.05 ] S: New view-port registered with id: 6
+[     8.18 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     8.18 ] D: Using backend: "OpenGL 3"
+[     8.23 ] W: Floating point comparison needs context sanity check
+[     8.23 ] D: QT onScaleChanged=  144
+[     8.31 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     8.31 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     8.31 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     8.32 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     8.53 ] D: Engine Started.
+[    15.34 ] D: P1 -460
+[    15.35 ] D: P1 -445
+[    15.35 ] D: P1 -444
+[    15.35 ] D: P1 -443
+[    15.36 ] D: P1 -441
+[    15.43 ] D: P1 -441
+[    15.44 ] D: P1 -441
+[    15.44 ] D: P1 -440
+[    15.45 ] D: P1 -439
+[    15.46 ] D: P1 -439
+[    15.46 ] D: P1 -437
+[    15.46 ] D: P1 -437
+[    15.47 ] D: P1 -436
+[    15.48 ] D: P1 -434
+[    15.48 ] D: P1 -433
+[    15.48 ] D: P1 -432
+[    15.48 ] D: P1 -431
+[    15.49 ] D: P1 -428
+[    15.49 ] D: P1 -428
+[    15.50 ] D: P1 -428
+[    15.50 ] D: P1 -427
+[    15.51 ] D: P1 -426
+[    15.51 ] D: P1 -424
+[    15.51 ] D: P1 -424
+[    15.52 ] D: P1 -423
+[    15.53 ] D: P1 -423
+[    15.53 ] D: P1 -422
+[    15.53 ] D: P1 -421
+[    15.54 ] D: P1 -420
+[    15.55 ] D: P1 -419
+[    15.55 ] D: P1 -419
+[    15.55 ] D: P1 -419
+[    15.56 ] D: P1 -419
+[    15.56 ] D: P1 -417
+[    15.56 ] D: P1 -417
+[    15.58 ] D: P1 -415
+[    15.58 ] D: P1 -415
+[    15.58 ] D: P1 -415
+[    15.58 ] D: P1 -415
+[    15.59 ] D: P1 -415
+[    15.60 ] D: P1 -415
+[    15.60 ] D: P1 -415
+[    15.60 ] D: P1 -414
+[    15.61 ] D: P1 -414
+[    15.65 ] D: P1 -414
+[    15.66 ] D: P1 -414
+[    15.67 ] D: P1 -414
+[    15.69 ] D: P1 -414
+[    15.69 ] D: P1 -414
+[    15.72 ] D: P1 -414
+[    15.73 ] D: P1 -414
+[    15.73 ] D: P1 -414
+[    15.73 ] D: P1 -414
+[    15.74 ] D: P1 -414
+[    15.74 ] D: P1 -414
+[    15.75 ] D: P1 -414
+[    15.75 ] D: P1 -414
+[    15.76 ] D: P1 -413
+[    15.76 ] D: P1 -413
+[    15.77 ] D: P1 -412
+[    15.78 ] D: P1 -411
+[    15.78 ] D: P1 -411
+[    15.78 ] D: P1 -410
+[    15.79 ] D: P1 -410
+[    15.79 ] D: P1 -410
+[    15.80 ] D: P1 -410
+[    15.81 ] D: P1 -410
+[    15.81 ] D: P1 -409
+[    15.81 ] D: P1 -409
+[    15.82 ] D: P1 -409
+[    15.83 ] D: P1 -408
+[    15.83 ] D: P1 -408
+[    15.83 ] D: P1 -408
+[    15.83 ] D: P1 -407
+[    15.84 ] D: P1 -407
+[    15.85 ] D: P1 -407
+[    15.85 ] D: P1 -407
+[    15.85 ] D: P1 -407
+[    15.86 ] D: P1 -407
+[    15.86 ] D: P1 -406
+[    15.86 ] D: P1 -406
+[    15.88 ] D: P1 -406
+[    16.02 ] D: sltPositionChanged 264599
+[    16.02 ] D: frame_offset 0 0 217
+[    16.02 ] D: frame_offset 0 1 217
+[    16.03 ] D: frame_offset 0 2 217
+[    16.03 ] D: frame_offset 0 3 217
+[    16.03 ] D: findOverlayItems 1 0
+[    16.03 ] D: "{488d47a3-0ecc-43c5-8ac5-e9d01c84ab55}" i.value()->sampleClip()->startTime()  6000 328833 328833 6000
+[    16.03 ] D: findOverlayItems
+[    16.03 ] D: frame_offset 0 4 217
+[    16.03 ] D: sltPositionChanged 264599
+[    16.03 ] D: frame_offset 0 0 217
+[    16.04 ] D: frame_offset 0 1 217
+[    16.04 ] D: frame_offset 0 2 217
+[    16.04 ] D: frame_offset 0 3 217
+[    16.05 ] D: frame_offset 0 4 217
+[    20.54 ] D: _requestForLoading false false
+[    20.54 ] D: _requestForLoading2
+[    20.54 ] D: AsyncFileReader 2 5
+[    20.55 ] D: _numberOfSampleBuffer 1
+[    20.55 ] D: START TO load 0
+[    20.55 ] D: sltPositionChanged 485100 true
+[    20.55 ] D: START TO load 1
+[    20.55 ] D: START TO load 2
+[    20.55 ] D: START TO load 3
+[    20.55 ] D: frame_offset 3 0 217
+[    20.55 ] D: frame_offset 3 1 217
+[    20.55 ] D: frame_offset 3 2 217
+[    20.56 ] D: frame_offset 3 3 217
+[    20.56 ] D: frame_offset 3 4 217
+[    20.58 ] D: sltFirstBufferFilled ("{488d47a3-0ecc-43c5-8ac5-e9d01c84ab55}") "{488d47a3-0ecc-43c5-8ac5-e9d01c84ab55}" true
+[    20.58 ] D: _requestForLoading true false
+[    21.53 ] D: AsyncFileReader 3 9
+[    23.68 ] D: _editController->getParameterCount() 14
+[    23.78 ] D: trackIndex 0 0
+[    27.23 ] D: _requestForLoading false false
+[    27.23 ] D: _requestForLoading2
+[    27.23 ] D: _numberOfSampleBuffer 1
+[    27.23 ] D: START TO load 0
+[    27.23 ] D: sltPositionChanged 485100 true
+[    27.23 ] D: START TO load 1
+[    27.23 ] D: START TO load 2
+[    27.23 ] D: START TO load 3
+[    27.23 ] D: frame_offset 3 0 217
+[    27.23 ] D: frame_offset 3 1 217
+[    27.23 ] D: frame_offset 3 2 217
+[    27.23 ] D: frame_offset 3 3 217
+[    27.24 ] D: frame_offset 3 4 217
+[    27.24 ] D: sltFirstBufferFilled ("{488d47a3-0ecc-43c5-8ac5-e9d01c84ab55}") "{488d47a3-0ecc-43c5-8ac5-e9d01c84ab55}" true
+[    27.24 ] D: _requestForLoading true false
+[    28.18 ] D: AsyncFileReader 3 8
+[    29.68 ] D: AsyncFileReader 4 9
+[    31.16 ] D: AsyncFileReader 0 10
+[    32.64 ] D: AsyncFileReader 1 11
+[    34.14 ] D: AsyncFileReader 2 12
+[    35.62 ] D: AsyncFileReader 3 13
+[    37.10 ] D: AsyncFileReader 4 14
+[    38.60 ] D: AsyncFileReader 0 15
+[    39.45 ] F: Src: C:\Qt\5.15.2\msvc2019_64\include\QtCore/qvector.h:412::  ASSERT: "isDetached()" in file C:\Qt\5.15.2\msvc2019_64\include\QtCore/qvector.h, line 412

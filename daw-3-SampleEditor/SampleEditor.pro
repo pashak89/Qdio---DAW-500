@@ -1,7 +1,8 @@
 QT += quick qml sql
 QT += concurrent
 QT += core gui qml quick multimedia quickcontrols2 \
-        opengl widgets svg sql positioning network openglextensions
+        opengl widgets svg sql positioning network openglextensions \
+        webengine webchannel
 
 QML_IMPORT_PATH += $$PWD/TrackPanels/Eq8Plugin
 
@@ -47,6 +48,7 @@ include(./plugins/plugins.pri)
 SOURCES += \
         EngineHelper.cpp \
         animationeditor.cpp \
+        ThreeBridge.cpp \
         eq/filtervisualizer.cpp \
         eq/multieq.cpp \
         eq/multieqeffect.cpp \
@@ -59,6 +61,7 @@ SOURCES += \
 HEADERS += \
     EngineHelper.h \
     animationeditor.h \
+    ThreeBridge.h \
     eq/filtervisualizer.h \
     eq/multieq.h \
     eq/multieqeffect.h \

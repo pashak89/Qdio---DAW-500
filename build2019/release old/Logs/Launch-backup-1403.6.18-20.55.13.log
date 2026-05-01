@@ -1,0 +1,971 @@
+[     5.08 ] I: Log: Log file open in follow path at 1403/6/18 20:51:22 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     5.08 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     5.08 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     5.08 ] D: API version is: 4.60 ,shader version is: 4.60
+[     5.08 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     5.08 ] I: Current Render API is: 4.60
+[     5.08 ] I: The subsystem "Renderer" is registered successfully.
+[     5.08 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     5.08 ] I: The subsystem "Platform" is registered successfully.
+[     5.08 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     5.08 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     5.08 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     5.08 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     5.08 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     5.08 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     5.08 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     5.19 ] D: Shader Compile successfully.
+[     5.20 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     5.20 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     5.20 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     5.20 ] D: Engine Enabled
+[     5.20 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     5.20 ] D: Node with id 1 is added to Qt layer
+[     5.20 ] D: Node with id 2460 is added to Qt layer
+[     5.20 ] D: Node with id 2462 is added to Qt layer
+[     5.20 ] D: Node with id 2464 is added to Qt layer
+[     5.20 ] D: Node with id 2466 is added to Qt layer
+[     5.20 ] D: Node with id 2468 is added to Qt layer
+[     5.20 ] D: Node with id 2470 is added to Qt layer
+[     5.20 ] D: Node with id 2472 is added to Qt layer
+[     5.20 ] D: Node with id 2474 is added to Qt layer
+[     5.20 ] D: Node with id 2476 is added to Qt layer
+[     5.20 ] D: Node with id 2478 is added to Qt layer
+[     5.20 ] D: Node with id 2480 is added to Qt layer
+[     5.20 ] D: Node with id 2482 is added to Qt layer
+[     5.20 ] D: Node with id 2484 is added to Qt layer
+[     5.20 ] D: Node with id 2486 is added to Qt layer
+[     5.20 ] D: Node with id 2487 is added to Qt layer
+[     5.20 ] D: Node with id 2489 is added to Qt layer
+[     5.20 ] D: Node with id 2491 is added to Qt layer
+[     5.20 ] D: Node with id 3 is added to Qt layer
+[     5.20 ] D: Node with id 2493 is added to Qt layer
+[     5.20 ] S: New view-port registered with id: 1
+[     5.20 ] S: New view-port registered with id: 2
+[     5.20 ] S: New view-port registered with id: 3
+[     5.20 ] S: New view-port registered with id: 4
+[     5.20 ] S: New view-port registered with id: 5
+[     5.20 ] S: New view-port registered with id: 6
+[     5.32 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     5.32 ] D: Using backend: "OpenGL 3"
+[     5.35 ] W: Floating point comparison needs context sanity check
+[     5.35 ] D: QT onScaleChanged=  144
+[     5.41 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.41 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.41 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.42 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     5.60 ] D: Engine Started.
+[    25.98 ] D: _editController->getParameterCount() 13
+[    25.99 ] D: effectModel.controls VST3
+[    25.99 ] D: ADDED 0 0 0
+[    26.03 ] D: ADDED 1 0 0
+[    26.03 ] D: ADDED 2 0 0
+[    26.03 ] D: ADDED 3 0 0
+[    26.06 ] D: ADDED
+[    45.57 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[    46.52 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(202,75)
+[    46.53 ] D: createSelectedPoints 0 -1
+[    47.55 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(265,72)
+[    47.57 ] D: createSelectedPoints 0 -1
+[    47.67 ] D: _pointActive1 false true false
+[    47.76 ] D: _automationChanging true
+[    47.77 ] D: _currentMouseY 266 72 265 72 QSizeF(1, 0)
+[    47.77 ] D: mouseMove2
+[    47.77 ] D: _automationChanging true
+[    47.77 ] D: _currentMouseY 266 71 265 72 QSizeF(0, -1)
+[    47.77 ] D: mouseMove2
+[    47.78 ] D: _pointActive2 false 0
+[    47.78 ] D: createSelectedPoints 0 -1
+[    47.80 ] D: _automationChanging true
+[    47.80 ] D: _currentMouseY 267 70 265 72 QSizeF(1, -1)
+[    47.80 ] D: mouseMove2
+[    47.80 ] D: _automationChanging true
+[    47.80 ] D: _currentMouseY 269 66 265 72 QSizeF(2, -4)
+[    47.80 ] D: mouseMove2
+[    47.80 ] D: _automationChanging true
+[    47.80 ] D: _currentMouseY 269 65 265 72 QSizeF(0, -1)
+[    47.80 ] D: mouseMove2
+[    47.81 ] D: _pointActive2 false 0
+[    47.82 ] D: createSelectedPoints 0 -1
+[    47.83 ] D: _automationChanging true
+[    47.83 ] D: _currentMouseY 269 63 265 72 QSizeF(0, -2)
+[    47.83 ] D: mouseMove2
+[    47.85 ] D: _pointActive2 false 0
+[    47.85 ] D: _automationChanging true
+[    47.85 ] D: createSelectedPoints 0 -1
+[    47.85 ] D: _currentMouseY 269 62 265 72 QSizeF(0, -1)
+[    47.85 ] D: mouseMove2
+[    47.87 ] D: _pointActive2 false 0
+[    47.87 ] D: createSelectedPoints 0 -1
+[    47.88 ] D: _automationChanging true
+[    47.88 ] D: _currentMouseY 270 60 265 72 QSizeF(1, -2)
+[    47.88 ] D: mouseMove2
+[    47.89 ] D: _automationChanging true
+[    47.89 ] D: _currentMouseY 271 56 265 72 QSizeF(1, -4)
+[    47.89 ] D: mouseMove2
+[    47.90 ] D: _pointActive2 false 0
+[    47.90 ] D: _automationChanging true
+[    47.90 ] D: createSelectedPoints 0 -1
+[    47.90 ] D: _currentMouseY 272 55 265 72 QSizeF(1, -1)
+[    47.90 ] D: mouseMove2
+[    47.90 ] D: _automationChanging true
+[    47.90 ] D: _currentMouseY 273 53 265 72 QSizeF(1, -2)
+[    47.90 ] D: mouseMove2
+[    47.92 ] D: _pointActive2 false 0
+[    47.92 ] D: createSelectedPoints 0 -1
+[    47.92 ] D: _automationChanging true
+[    47.92 ] D: _currentMouseY 273 52 265 72 QSizeF(0, -1)
+[    47.92 ] D: mouseMove2
+[    47.92 ] D: _automationChanging true
+[    47.92 ] D: _currentMouseY 273 50 265 72 QSizeF(0, -2)
+[    47.92 ] D: mouseMove2
+[    47.93 ] D: _pointActive2 false 0
+[    47.93 ] D: createSelectedPoints 0 -1
+[    47.93 ] D: _automationChanging true
+[    47.93 ] D: _currentMouseY 273 49 265 72 QSizeF(0, -1)
+[    47.94 ] D: mouseMove2
+[    47.95 ] D: _pointActive2 false 0
+[    47.95 ] D: createSelectedPoints 0 -1
+[    47.95 ] D: _automationChanging true
+[    47.95 ] D: _currentMouseY 273 47 265 72 QSizeF(0, -2)
+[    47.95 ] D: mouseMove2
+[    47.97 ] D: _pointActive2 false 0
+[    47.97 ] D: createSelectedPoints 0 -1
+[    47.97 ] D: _automationChanging true
+[    47.97 ] D: _currentMouseY 273 46 265 72 QSizeF(0, -1)
+[    47.97 ] D: mouseMove2
+[    47.98 ] D: _pointActive2 false 0
+[    47.98 ] D: createSelectedPoints 0 -1
+[    47.98 ] D: _automationChanging true
+[    47.99 ] D: _currentMouseY 274 45 265 72 QSizeF(1, -1)
+[    47.99 ] D: mouseMove2
+[    48.00 ] D: _pointActive2 false 0
+[    48.00 ] D: _automationChanging true
+[    48.00 ] D: createSelectedPoints 0 -1
+[    48.00 ] D: _currentMouseY 274 44 265 72 QSizeF(0, -1)
+[    48.00 ] D: mouseMove2
+[    48.02 ] D: _pointActive2 false 0
+[    48.02 ] D: createSelectedPoints 0 -1
+[    48.03 ] D: _automationChanging true
+[    48.03 ] D: _currentMouseY 274 42 265 72 QSizeF(0, -2)
+[    48.03 ] D: mouseMove2
+[    48.03 ] D: _automationChanging true
+[    48.03 ] D: _currentMouseY 274 42 265 72 QSizeF(0, 0)
+[    48.03 ] D: mouseMove2
+[    48.05 ] D: _pointActive2 false 0
+[    48.05 ] D: createSelectedPoints 0 -1
+[    48.05 ] D: _automationChanging true
+[    48.05 ] D: _currentMouseY 275 42 265 72 QSizeF(1, 0)
+[    48.05 ] D: mouseMove2
+[    48.05 ] D: _automationChanging true
+[    48.05 ] D: _currentMouseY 275 41 265 72 QSizeF(0, -1)
+[    48.05 ] D: mouseMove2
+[    48.07 ] D: _pointActive2 false 0
+[    48.07 ] D: _automationChanging true
+[    48.07 ] D: createSelectedPoints 0 -1
+[    48.07 ] D: _currentMouseY 275 39 265 72 QSizeF(0, -2)
+[    48.07 ] D: mouseMove2
+[    48.08 ] D: _automationChanging true
+[    48.08 ] D: _pointActive2 false 0
+[    48.08 ] D: createSelectedPoints 0 -1
+[    48.08 ] D: _currentMouseY 275 38 265 72 QSizeF(0, -1)
+[    48.08 ] D: mouseMove2
+[    48.08 ] D: _automationChanging true
+[    48.08 ] D: _currentMouseY 275 36 265 72 QSizeF(0, -2)
+[    48.09 ] D: mouseMove2
+[    48.10 ] D: _pointActive2 false 0
+[    48.10 ] D: _automationChanging true
+[    48.10 ] D: createSelectedPoints 0 -1
+[    48.10 ] D: _currentMouseY 276 34 265 72 QSizeF(1, -2)
+[    48.10 ] D: mouseMove2
+[    48.10 ] D: _automationChanging true
+[    48.11 ] D: _currentMouseY 276 33 265 72 QSizeF(0, -1)
+[    48.11 ] D: mouseMove2
+[    48.12 ] D: _pointActive2 false 0
+[    48.12 ] D: createSelectedPoints 0 -1
+[    48.12 ] D: _automationChanging true
+[    48.12 ] D: _currentMouseY 276 31 265 72 QSizeF(0, -2)
+[    48.12 ] D: mouseMove2
+[    48.13 ] D: _pointActive2 false 0
+[    48.13 ] D: _automationChanging true
+[    48.13 ] D: createSelectedPoints 0 -1
+[    48.13 ] D: _currentMouseY 276 30 265 72 QSizeF(0, -1)
+[    48.13 ] D: mouseMove2
+[    48.15 ] D: _pointActive2 false 0
+[    48.15 ] D: _automationChanging true
+[    48.15 ] D: createSelectedPoints 0 -1
+[    48.15 ] D: _currentMouseY 277 29 265 72 QSizeF(1, -1)
+[    48.15 ] D: mouseMove2
+[    48.15 ] D: _automationChanging true
+[    48.15 ] D: _currentMouseY 277 28 265 72 QSizeF(0, -1)
+[    48.15 ] D: mouseMove2
+[    48.17 ] D: _pointActive2 false 0
+[    48.17 ] D: _automationChanging true
+[    48.17 ] D: createSelectedPoints 0 -1
+[    48.17 ] D: _currentMouseY 277 28 265 72 QSizeF(0, 0)
+[    48.17 ] D: mouseMove2
+[    48.17 ] D: _automationChanging true
+[    48.17 ] D: _currentMouseY 277 27 265 72 QSizeF(0, -1)
+[    48.17 ] D: mouseMove2
+[    48.18 ] D: _pointActive2 false 0
+[    48.18 ] D: createSelectedPoints 0 -1
+[    48.21 ] D: _automationChanging true
+[    48.21 ] D: _currentMouseY 277 27 265 72 QSizeF(0, -2)
+[    48.21 ] D: mouseMove2
+[    48.21 ] D: _automationChanging true
+[    48.21 ] D: _currentMouseY 277 27 265 72 QSizeF(0, 0)
+[    48.22 ] D: mouseMove2
+[    48.23 ] D: _pointActive2 false 0
+[    48.23 ] D: createSelectedPoints 0 -1
+[    48.23 ] D: _automationChanging true
+[    48.23 ] D: _currentMouseY 277 27 265 72 QSizeF(0, -1)
+[    48.24 ] D: mouseMove2
+[    48.25 ] D: _pointActive2 false 0
+[    48.25 ] D: createSelectedPoints 0 -1
+[    48.25 ] D: _automationChanging true
+[    48.25 ] D: _currentMouseY 277 27 265 72 QSizeF(0, 0)
+[    48.25 ] D: mouseMove2
+[    48.27 ] D: _pointActive2 false 0
+[    48.27 ] D: createSelectedPoints 0 -1
+[    48.27 ] D: _automationChanging true
+[    48.27 ] D: _currentMouseY 277 27 265 72 QSizeF(0, -1)
+[    48.27 ] D: mouseMove2
+[    48.27 ] D: _automationChanging true
+[    48.27 ] D: _currentMouseY 278 27 265 72 QSizeF(1, 0)
+[    48.27 ] D: mouseMove2
+[    48.28 ] D: _pointActive2 false 0
+[    48.28 ] D: _automationChanging true
+[    48.28 ] D: createSelectedPoints 0 -1
+[    48.28 ] D: _currentMouseY 278 27 265 72 QSizeF(0, -1)
+[    48.28 ] D: mouseMove2
+[    48.30 ] D: _pointActive2 false 0
+[    48.30 ] D: createSelectedPoints 0 -1
+[    48.33 ] D: _automationChanging true
+[    48.33 ] D: _currentMouseY 279 27 265 72 QSizeF(1, -1)
+[    48.33 ] D: mouseMove2
+[    48.35 ] D: _pointActive2 false 0
+[    48.35 ] D: _automationChanging true
+[    48.35 ] D: createSelectedPoints 0 -1
+[    48.35 ] D: _currentMouseY 279 27 265 72 QSizeF(0, 0)
+[    48.35 ] D: mouseMove2
+[    48.37 ] D: _pointActive2 false 0
+[    48.37 ] D: createSelectedPoints 0 -1
+[    48.41 ] D: _automationChanging true
+[    48.41 ] D: _currentMouseY 279 27 265 72 QSizeF(0, -1)
+[    48.41 ] D: mouseMove2
+[    48.41 ] D: _automationChanging true
+[    48.41 ] D: _currentMouseY 279 27 265 72 QSizeF(0, 0)
+[    48.42 ] D: mouseMove2
+[    48.42 ] D: _pointActive2 false 0
+[    48.42 ] D: createSelectedPoints 0 -1
+[    48.53 ] D: createSelectedPoints 0 -1
+[    49.63 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(356,30)
+[    49.65 ] D: createSelectedPoints 0 -1
+[    49.73 ] D: _automationChanging true
+[    49.73 ] D: mouseMove2
+[    49.74 ] D: _automationChanging true
+[    49.74 ] D: mouseMove2
+[    49.75 ] D: _automationChanging true
+[    49.75 ] D: _currentMouseY 359 30 356 30 QSizeF(3, 0)
+[    49.75 ] D: mouseMove2
+[    49.75 ] D: _pointActive1 false true false
+[    49.75 ] D: _automationChanging true
+[    49.75 ] D: _currentMouseY 360 31 356 30 QSizeF(1, 1)
+[    49.75 ] D: mouseMove2
+[    49.76 ] D: _automationChanging true
+[    49.76 ] D: _currentMouseY 360 32 356 30 QSizeF(0, 1)
+[    49.76 ] D: mouseMove2
+[    49.77 ] D: _pointActive2 false 0
+[    49.77 ] D: createSelectedPoints 0 -1
+[    49.77 ] D: _automationChanging true
+[    49.77 ] D: _currentMouseY 362 34 356 30 QSizeF(2, 2)
+[    49.77 ] D: mouseMove2
+[    49.77 ] D: _automationChanging true
+[    49.77 ] D: _currentMouseY 363 34 356 30 QSizeF(1, 0)
+[    49.77 ] D: mouseMove2
+[    49.78 ] D: _automationChanging true
+[    49.78 ] D: _pointActive2 false 0
+[    49.78 ] D: createSelectedPoints 0 -1
+[    49.78 ] D: _currentMouseY 364 35 356 30 QSizeF(1, 1)
+[    49.78 ] D: mouseMove2
+[    49.79 ] D: _automationChanging true
+[    49.79 ] D: _currentMouseY 366 38 356 30 QSizeF(2, 3)
+[    49.79 ] D: mouseMove2
+[    49.79 ] D: _automationChanging true
+[    49.79 ] D: _currentMouseY 366 39 356 30 QSizeF(0, 1)
+[    49.79 ] D: mouseMove2
+[    49.79 ] D: _automationChanging true
+[    49.79 ] D: _currentMouseY 367 39 356 30 QSizeF(1, 0)
+[    49.79 ] D: mouseMove2
+[    49.80 ] D: _pointActive2 false 0
+[    49.80 ] D: createSelectedPoints 0 -1
+[    49.80 ] D: _automationChanging true
+[    49.80 ] D: _currentMouseY 368 41 356 30 QSizeF(1, 2)
+[    49.80 ] D: mouseMove2
+[    49.80 ] D: _automationChanging true
+[    49.80 ] D: _currentMouseY 368 42 356 30 QSizeF(0, 1)
+[    49.80 ] D: mouseMove2
+[    49.82 ] D: _pointActive2 false 0
+[    49.82 ] D: _automationChanging true
+[    49.82 ] D: createSelectedPoints 0 -1
+[    49.82 ] D: _currentMouseY 369 45 356 30 QSizeF(1, 3)
+[    49.82 ] D: mouseMove2
+[    49.82 ] D: _automationChanging true
+[    49.82 ] D: _currentMouseY 371 49 356 30 QSizeF(2, 4)
+[    49.82 ] D: mouseMove2
+[    49.82 ] D: _automationChanging true
+[    49.82 ] D: _currentMouseY 371 50 356 30 QSizeF(0, 1)
+[    49.82 ] D: mouseMove2
+[    49.82 ] D: _automationChanging true
+[    49.82 ] D: _currentMouseY 372 50 356 30 QSizeF(1, 0)
+[    49.82 ] D: mouseMove2
+[    49.83 ] D: _automationChanging true
+[    49.83 ] D: _pointActive2 false 0
+[    49.83 ] D: createSelectedPoints 0 -1
+[    49.83 ] D: _currentMouseY 372 51 356 30 QSizeF(0, 1)
+[    49.83 ] D: mouseMove2
+[    49.84 ] D: _automationChanging true
+[    49.84 ] D: _currentMouseY 373 55 356 30 QSizeF(1, 4)
+[    49.84 ] D: mouseMove2
+[    49.84 ] D: _automationChanging true
+[    49.84 ] D: _currentMouseY 374 55 356 30 QSizeF(1, 0)
+[    49.84 ] D: mouseMove2
+[    49.84 ] D: _automationChanging true
+[    49.84 ] D: _currentMouseY 374 56 356 30 QSizeF(0, 1)
+[    49.84 ] D: mouseMove2
+[    49.85 ] D: _pointActive2 false 0
+[    49.85 ] D: createSelectedPoints 0 -1
+[    49.85 ] D: _automationChanging true
+[    49.85 ] D: _currentMouseY 376 59 356 30 QSizeF(2, 3)
+[    49.85 ] D: mouseMove2
+[    49.85 ] D: _automationChanging true
+[    49.85 ] D: _currentMouseY 377 60 356 30 QSizeF(1, 1)
+[    49.85 ] D: mouseMove2
+[    49.86 ] D: _automationChanging true
+[    49.86 ] D: _currentMouseY 377 61 356 30 QSizeF(0, 1)
+[    49.86 ] D: mouseMove2
+[    49.87 ] D: _automationChanging true
+[    49.87 ] D: _pointActive2 false 0
+[    49.87 ] D: createSelectedPoints 0 -1
+[    49.87 ] D: _currentMouseY 379 65 356 30 QSizeF(2, 4)
+[    49.87 ] D: mouseMove2
+[    49.87 ] D: _automationChanging true
+[    49.87 ] D: _currentMouseY 379 66 356 30 QSizeF(0, 1)
+[    49.87 ] D: mouseMove2
+[    49.87 ] D: _automationChanging true
+[    49.87 ] D: _currentMouseY 379 68 356 30 QSizeF(0, 2)
+[    49.88 ] D: mouseMove2
+[    49.88 ] D: _automationChanging true
+[    49.88 ] D: _pointActive2 false 0
+[    49.88 ] D: createSelectedPoints 0 -1
+[    49.88 ] D: _currentMouseY 380 68 356 30 QSizeF(1, 0)
+[    49.89 ] D: mouseMove2
+[    49.89 ] D: _automationChanging true
+[    49.89 ] D: _currentMouseY 381 69 356 30 QSizeF(1, 1)
+[    49.89 ] D: mouseMove2
+[    49.90 ] D: _pointActive2 false 0
+[    49.90 ] D: createSelectedPoints 0 -1
+[    49.92 ] D: _automationChanging true
+[    49.92 ] D: _currentMouseY 383 72 356 30 QSizeF(2, 3)
+[    49.92 ] D: mouseMove2
+[    49.92 ] D: _automationChanging true
+[    49.92 ] D: _currentMouseY 384 72 356 30 QSizeF(1, 0)
+[    49.92 ] D: mouseMove2
+[    49.92 ] D: _automationChanging true
+[    49.92 ] D: _currentMouseY 384 73 356 30 QSizeF(0, 1)
+[    49.92 ] D: mouseMove2
+[    49.93 ] D: _pointActive2 false 0
+[    49.93 ] D: createSelectedPoints 0 -1
+[    49.93 ] D: _automationChanging true
+[    49.93 ] D: _currentMouseY 385 76 356 30 QSizeF(1, 3)
+[    49.94 ] D: mouseMove2
+[    49.95 ] D: _pointActive2 false 0
+[    49.95 ] D: createSelectedPoints 0 -1
+[    49.95 ] D: _automationChanging true
+[    49.95 ] D: _currentMouseY 387 79 356 30 QSizeF(2, 3)
+[    49.95 ] D: mouseMove2
+[    49.95 ] D: _automationChanging true
+[    49.95 ] D: _currentMouseY 389 83 356 30 QSizeF(2, 4)
+[    49.95 ] D: mouseMove2
+[    49.95 ] D: _automationChanging true
+[    49.95 ] D: _currentMouseY 390 83 356 30 QSizeF(1, 0)
+[    49.96 ] D: mouseMove2
+[    49.96 ] D: _automationChanging true
+[    49.96 ] D: _currentMouseY 390 84 356 30 QSizeF(0, 1)
+[    49.96 ] D: mouseMove2
+[    49.97 ] D: _pointActive2 false 0
+[    49.97 ] D: _automationChanging true
+[    49.97 ] D: createSelectedPoints 0 -1
+[    49.97 ] D: _currentMouseY 391 87 356 30 QSizeF(1, 3)
+[    49.97 ] D: mouseMove2
+[    49.97 ] D: _automationChanging true
+[    49.97 ] D: _currentMouseY 391 88 356 30 QSizeF(0, 1)
+[    49.97 ] D: mouseMove2
+[    49.97 ] D: _automationChanging true
+[    49.97 ] D: _currentMouseY 392 88 356 30 QSizeF(1, 0)
+[    49.97 ] D: mouseMove2
+[    49.98 ] D: _pointActive2 false 0
+[    49.98 ] D: createSelectedPoints 0 -1
+[    49.98 ] D: _automationChanging true
+[    49.98 ] D: _currentMouseY 393 92 356 30 QSizeF(1, 4)
+[    49.99 ] D: mouseMove2
+[    49.99 ] D: _automationChanging true
+[    49.99 ] D: _currentMouseY 394 93 356 30 QSizeF(1, 1)
+[    49.99 ] D: mouseMove2
+[    49.99 ] D: _automationChanging true
+[    49.99 ] D: _currentMouseY 394 94 356 30 QSizeF(0, 1)
+[    49.99 ] D: mouseMove2
+[    50.00 ] D: _pointActive2 false 0
+[    50.00 ] D: _automationChanging true
+[    50.00 ] D: createSelectedPoints 0 -1
+[    50.00 ] D: _currentMouseY 396 99 356 30 QSizeF(2, 5)
+[    50.00 ] D: mouseMove2
+[    50.00 ] D: _automationChanging true
+[    50.00 ] D: _currentMouseY 396 100 356 30 QSizeF(0, 1)
+[    50.01 ] D: mouseMove2
+[    50.02 ] D: _automationChanging true
+[    50.02 ] D: _pointActive2 false 0
+[    50.02 ] D: createSelectedPoints 0 -1
+[    50.02 ] D: _currentMouseY 397 101 356 30 QSizeF(1, 1)
+[    50.02 ] D: mouseMove2
+[    50.02 ] D: _automationChanging true
+[    50.02 ] D: _currentMouseY 399 105 356 30 QSizeF(2, 4)
+[    50.02 ] D: mouseMove2
+[    50.02 ] D: _automationChanging true
+[    50.02 ] D: _currentMouseY 400 106 356 30 QSizeF(1, 1)
+[    50.02 ] D: mouseMove2
+[    50.03 ] D: _pointActive2 false 0
+[    50.03 ] D: _automationChanging true
+[    50.03 ] D: createSelectedPoints 0 -1
+[    50.03 ] D: _currentMouseY 401 107 356 30 QSizeF(1, 2)
+[    50.03 ] D: mouseMove2
+[    50.04 ] D: _automationChanging true
+[    50.04 ] D: _currentMouseY 401 107 356 30 QSizeF(0, 1)
+[    50.04 ] D: mouseMove2
+[    50.04 ] D: _automationChanging true
+[    50.04 ] D: _currentMouseY 402 107 356 30 QSizeF(1, 1)
+[    50.04 ] D: mouseMove2
+[    50.05 ] D: _pointActive2 false 0
+[    50.05 ] D: createSelectedPoints 0 -1
+[    50.07 ] D: _automationChanging true
+[    50.07 ] D: _currentMouseY 403 107 356 30 QSizeF(1, 2)
+[    50.07 ] D: mouseMove2
+[    50.07 ] D: _automationChanging true
+[    50.07 ] D: _currentMouseY 404 107 356 30 QSizeF(1, 0)
+[    50.07 ] D: mouseMove2
+[    50.07 ] D: _automationChanging true
+[    50.07 ] D: _currentMouseY 404 107 356 30 QSizeF(0, 1)
+[    50.07 ] D: mouseMove2
+[    50.08 ] D: _pointActive2 false 0
+[    50.08 ] D: _automationChanging true
+[    50.08 ] D: createSelectedPoints 0 -1
+[    50.08 ] D: _currentMouseY 405 107 356 30 QSizeF(1, 3)
+[    50.08 ] D: mouseMove2
+[    50.09 ] D: _automationChanging true
+[    50.09 ] D: _currentMouseY 406 107 356 30 QSizeF(1, 1)
+[    50.09 ] D: mouseMove2
+[    50.09 ] D: _automationChanging true
+[    50.09 ] D: _currentMouseY 406 107 356 30 QSizeF(0, 1)
+[    50.09 ] D: mouseMove2
+[    50.10 ] D: _pointActive2 false 0
+[    50.10 ] D: createSelectedPoints 0 -1
+[    50.10 ] D: _automationChanging true
+[    50.10 ] D: _currentMouseY 407 107 356 30 QSizeF(1, 1)
+[    50.10 ] D: mouseMove2
+[    50.10 ] D: _automationChanging true
+[    50.10 ] D: _currentMouseY 408 107 356 30 QSizeF(1, 2)
+[    50.10 ] D: mouseMove2
+[    50.11 ] D: _automationChanging true
+[    50.11 ] D: _currentMouseY 409 107 356 30 QSizeF(1, 1)
+[    50.11 ] D: mouseMove2
+[    50.12 ] D: _pointActive2 false 0
+[    50.12 ] D: _automationChanging true
+[    50.12 ] D: createSelectedPoints 0 -1
+[    50.12 ] D: _currentMouseY 410 107 356 30 QSizeF(1, 2)
+[    50.12 ] D: mouseMove2
+[    50.12 ] D: _automationChanging true
+[    50.12 ] D: _currentMouseY 410 107 356 30 QSizeF(0, 1)
+[    50.12 ] D: mouseMove2
+[    50.13 ] D: _pointActive2 false 0
+[    50.13 ] D: _automationChanging true
+[    50.13 ] D: createSelectedPoints 0 -1
+[    50.13 ] D: _currentMouseY 411 107 356 30 QSizeF(1, 3)
+[    50.13 ] D: mouseMove2
+[    50.14 ] D: _automationChanging true
+[    50.14 ] D: _currentMouseY 411 107 356 30 QSizeF(0, 1)
+[    50.14 ] D: mouseMove2
+[    50.15 ] D: _pointActive2 false 0
+[    50.15 ] D: _automationChanging true
+[    50.15 ] D: createSelectedPoints 0 -1
+[    50.15 ] D: _currentMouseY 412 107 356 30 QSizeF(1, 2)
+[    50.15 ] D: mouseMove2
+[    50.15 ] D: _automationChanging true
+[    50.15 ] D: _currentMouseY 412 107 356 30 QSizeF(0, 1)
+[    50.15 ] D: mouseMove2
+[    50.17 ] D: _pointActive2 false 0
+[    50.17 ] D: _automationChanging true
+[    50.17 ] D: createSelectedPoints 0 -1
+[    50.17 ] D: _currentMouseY 413 107 356 30 QSizeF(1, 1)
+[    50.17 ] D: mouseMove2
+[    50.17 ] D: _automationChanging true
+[    50.17 ] D: _currentMouseY 413 107 356 30 QSizeF(0, 1)
+[    50.17 ] D: mouseMove2
+[    50.18 ] D: _pointActive2 false 0
+[    50.18 ] D: createSelectedPoints 0 -1
+[    50.18 ] D: _automationChanging true
+[    50.18 ] D: _currentMouseY 413 107 356 30 QSizeF(0, 0)
+[    50.19 ] D: mouseMove2
+[    50.20 ] D: _pointActive2 false 0
+[    50.20 ] D: createSelectedPoints 0 -1
+[    50.20 ] D: _automationChanging true
+[    50.20 ] D: _currentMouseY 414 107 356 30 QSizeF(1, 1)
+[    50.20 ] D: mouseMove2
+[    50.22 ] D: _pointActive2 false 0
+[    50.22 ] D: createSelectedPoints 0 -1
+[    50.22 ] D: _automationChanging true
+[    50.22 ] D: _currentMouseY 414 107 356 30 QSizeF(0, 0)
+[    50.22 ] D: mouseMove2
+[    50.22 ] D: _automationChanging true
+[    50.22 ] D: _currentMouseY 414 107 356 30 QSizeF(0, 1)
+[    50.22 ] D: mouseMove2
+[    50.23 ] D: _pointActive2 false 0
+[    50.23 ] D: createSelectedPoints 0 -1
+[    50.23 ] D: _automationChanging true
+[    50.23 ] D: _currentMouseY 414 107 356 30 QSizeF(0, 0)
+[    50.24 ] D: mouseMove2
+[    50.25 ] D: _pointActive2 false 0
+[    50.25 ] D: createSelectedPoints 0 -1
+[    51.03 ] D: createSelectedPoints 0 -1
+[    70.53 ] D: P1 -337
+[    70.53 ] D: P14
+[    70.54 ] D: P1 -378
+[    70.54 ] D: P1 -381
+[    70.54 ] D: P1 -382
+[    70.55 ] D: P1 -385
+[    70.55 ] D: P1 -386
+[    70.55 ] D: P1 -388
+[    70.56 ] D: P1 -388
+[    70.56 ] D: P1 -390
+[    70.57 ] D: P1 -390
+[    70.58 ] D: P1 -391
+[    70.58 ] D: P1 -392
+[    70.97 ] D: sltPositionChanged 220500
+[    70.97 ] D: frame_offset 0 0 217
+[    70.97 ] D: findOverlayItems 1 0
+[    70.97 ] D: "{ea5d00aa-230e-4e5d-8904-0abc7f719f54}" i.value()->sampleClip()->startTime()  5000 327833 327833 5000
+[    70.97 ] D: findOverlayItems
+[    70.97 ] D: sltPositionChanged 220500
+[    70.98 ] D: frame_offset 0 0 217
+[    70.98 ] D: frame_offset 0 1 217
+[    70.98 ] D: frame_offset 0 2 217
+[    70.98 ] D: frame_offset 0 3 217
+[    70.99 ] D: frame_offset 0 4 217
+[    71.61 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(170,43)
+[    71.62 ] D: createSelectedPoints 0 -1
+[    72.63 ] D: _requestForLoading false false
+[    72.63 ] D: _requestForLoading2
+[    72.64 ] D: _numberOfSampleBuffer 1
+[    72.64 ] D: START TO load 0
+[    72.64 ] D: sltPositionChanged 396900 true
+[    72.64 ] D: START TO load 1
+[    72.64 ] D: START TO load 2
+[    72.64 ] D: START TO load 3
+[    72.64 ] D: frame_offset 2 0 217
+[    72.64 ] D: frame_offset 2 1 217
+[    72.64 ] D: frame_offset 2 2 217
+[    72.64 ] D: frame_offset 2 3 217
+[    72.64 ] D: frame_offset 2 4 217
+[    72.65 ] D: sltFirstBufferFilled ("{ea5d00aa-230e-4e5d-8904-0abc7f719f54}") "{ea5d00aa-230e-4e5d-8904-0abc7f719f54}" true
+[    72.65 ] D: _requestForLoading true false
+[    73.11 ] D: AsyncFileReader 2 7
+[    74.60 ] D: AsyncFileReader 3 8
+[    76.10 ] D: AsyncFileReader 4 9
+[    76.89 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    76.89 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    76.89 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    76.89 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    77.57 ] D: AsyncFileReader 0 10
+[    79.06 ] D: AsyncFileReader 1 11
+[    80.56 ] D: AsyncFileReader 2 12
+[    82.04 ] D: AsyncFileReader 3 13
+[    83.52 ] D: AsyncFileReader 4 14
+[    85.01 ] D: AsyncFileReader 0 15
+[    86.50 ] D: AsyncFileReader 1 16
+[    87.98 ] D: AsyncFileReader 2 17
+[    89.47 ] D: AsyncFileReader 3 18
+[    90.96 ] D: AsyncFileReader 4 19
+[    92.44 ] D: AsyncFileReader 0 20
+[    93.93 ] D: AsyncFileReader 1 21
+[    95.41 ] D: AsyncFileReader 2 22
+[    96.05 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(182,90)
+[    96.10 ] D: createSelectedPoints 0 -1
+[    96.70 ] D: _requestForLoading false false
+[    96.70 ] D: _requestForLoading2
+[    96.70 ] D: _numberOfSampleBuffer 1
+[    96.70 ] D: START TO load 0
+[    96.70 ] D: sltPositionChanged 441000 true
+[    96.70 ] D: START TO load 1
+[    96.70 ] D: START TO load 2
+[    96.70 ] D: START TO load 3
+[    96.70 ] D: frame_offset 3 0 217
+[    96.70 ] D: frame_offset 3 1 217
+[    96.70 ] D: frame_offset 3 2 217
+[    96.71 ] D: frame_offset 3 3 217
+[    96.71 ] D: frame_offset 3 4 217
+[    96.72 ] D: sltFirstBufferFilled ("{ea5d00aa-230e-4e5d-8904-0abc7f719f54}") "{ea5d00aa-230e-4e5d-8904-0abc7f719f54}" true
+[    96.72 ] D: _requestForLoading true false
+[    97.68 ] D: AsyncFileReader 3 8
+[    99.16 ] D: AsyncFileReader 4 9
+[   100.64 ] D: AsyncFileReader 0 10
+[   102.14 ] D: AsyncFileReader 1 11
+[   103.62 ] D: AsyncFileReader 2 12
+[   105.10 ] D: AsyncFileReader 3 13
+[   105.77 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(3,64)
+[   105.80 ] D: createSelectedPoints 0 -1
+[   106.15 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(37,66)
+[   106.18 ] D: createSelectedPoints 0 -1
+[   106.19 ] D: _automationChanging true
+[   106.19 ] D: mouseMove2
+[   106.20 ] D: _automationChanging true
+[   106.20 ] D: mouseMove2
+[   106.21 ] D: _automationChanging true
+[   106.21 ] D: mouseMove2
+[   106.23 ] D: _automationChanging true
+[   106.24 ] D: mouseMove2
+[   106.24 ] D: _automationChanging true
+[   106.24 ] D: mouseMove2
+[   106.24 ] D: _automationChanging true
+[   106.24 ] D: mouseMove2
+[   106.25 ] D: _automationChanging true
+[   106.25 ] D: mouseMove2
+[   106.25 ] D: _automationChanging true
+[   106.26 ] D: mouseMove2
+[   106.28 ] D: _automationChanging true
+[   106.28 ] D: _currentMouseY 49 40 37 66 QSizeF(12, -26)
+[   106.28 ] D: mouseMove2
+[   106.28 ] D: _automationChanging true
+[   106.28 ] D: _pointActive1 false true false
+[   106.28 ] D: _currentMouseY 63 27 37 66 QSizeF(14, -27)
+[   106.28 ] D: mouseMove2
+[   106.29 ] D: _automationChanging true
+[   106.30 ] D: _pointActive2 false 0
+[   106.30 ] D: createSelectedPoints 0 -1
+[   106.30 ] D: _currentMouseY 63 27 37 66 QSizeF(0, 0)
+[   106.30 ] D: mouseMove2
+[   106.31 ] D: _automationChanging true
+[   106.31 ] D: _currentMouseY 63 27 37 66 QSizeF(0, -1)
+[   106.31 ] D: mouseMove2
+[   106.31 ] D: _automationChanging true
+[   106.32 ] D: _pointActive2 false 0
+[   106.32 ] D: createSelectedPoints 0 -1
+[   106.32 ] D: _currentMouseY 63 27 37 66 QSizeF(0, 0)
+[   106.32 ] D: mouseMove2
+[   106.33 ] D: _automationChanging true
+[   106.33 ] D: _pointActive2 false 0
+[   106.33 ] D: createSelectedPoints 0 -1
+[   106.34 ] D: _currentMouseY 63 27 37 66 QSizeF(0, -1)
+[   106.34 ] D: mouseMove2
+[   106.35 ] D: _automationChanging true
+[   106.36 ] D: _pointActive2 false 0
+[   106.36 ] D: createSelectedPoints 0 -1
+[   106.36 ] D: _currentMouseY 64 27 37 66 QSizeF(1, -1)
+[   106.36 ] D: mouseMove2
+[   106.39 ] D: _automationChanging true
+[   106.40 ] D: _pointActive2 false 0
+[   106.40 ] D: createSelectedPoints 0 -1
+[   106.40 ] D: _currentMouseY 64 27 37 66 QSizeF(0, -1)
+[   106.40 ] D: mouseMove2
+[   106.40 ] D: _automationChanging true
+[   106.40 ] D: _currentMouseY 64 27 37 66 QSizeF(0, 0)
+[   106.40 ] D: mouseMove2
+[   106.42 ] D: _pointActive2 false 0
+[   106.42 ] D: createSelectedPoints 0 -1
+[   106.45 ] D: _pointActive2 false 0
+[   106.45 ] D: createSelectedPoints 0 -1
+[   106.48 ] D: _pointActive2 false 0
+[   106.48 ] D: createSelectedPoints 0 -1
+[   106.51 ] D: createSelectedPoints 0 -1
+[   106.59 ] D: AsyncFileReader 4 14
+[   106.99 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(19,70)
+[   107.01 ] D: createSelectedPoints 0 -1
+[   107.04 ] D: _automationChanging true
+[   107.04 ] D: mouseMove2
+[   107.07 ] D: _automationChanging true
+[   107.07 ] D: mouseMove2
+[   107.07 ] D: _automationChanging true
+[   107.07 ] D: mouseMove2
+[   107.07 ] D: _automationChanging true
+[   107.07 ] D: mouseMove2
+[   107.09 ] D: _automationChanging true
+[   107.10 ] D: mouseMove2
+[   107.11 ] D: _automationChanging true
+[   107.11 ] D: mouseMove2
+[   107.11 ] D: _automationChanging true
+[   107.11 ] D: _pointActive1 false false true
+[   107.11 ] D: _outerActive1
+[   107.11 ] D: _outerActive2
+[   107.11 ] D: _outerActive3
+[   107.12 ] D: mouseMove2
+[   107.12 ] D: _automationChanging true
+[   107.12 ] D: mouseMove2
+[   107.13 ] D: _automationChanging true
+[   107.14 ] D: mouseMove2
+[   107.14 ] D: _automationChanging true
+[   107.14 ] D: mouseMove2
+[   107.15 ] D: _automationChanging true
+[   107.15 ] D: mouseMove2
+[   107.15 ] D: _automationChanging true
+[   107.15 ] D: mouseMove2
+[   107.17 ] D: _automationChanging true
+[   107.17 ] D: mouseMove2
+[   107.18 ] D: _automationChanging true
+[   107.18 ] D: mouseMove2
+[   107.19 ] D: _automationChanging true
+[   107.19 ] D: mouseMove2
+[   107.84 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(6,87)
+[   107.91 ] D: createSelectedPoints 0 -1
+[   108.08 ] D: AsyncFileReader 0 15
+[   108.79 ] D: _requestForLoading false false
+[   108.79 ] D: _requestForLoading2
+[   108.79 ] D: _numberOfSampleBuffer 1
+[   108.79 ] D: START TO load 0
+[   108.79 ] D: sltPositionChanged 441000 true
+[   108.79 ] D: START TO load 1
+[   108.79 ] D: START TO load 2
+[   108.79 ] D: START TO load 3
+[   108.79 ] D: frame_offset 3 0 217
+[   108.79 ] D: frame_offset 3 1 217
+[   108.79 ] D: frame_offset 3 2 217
+[   108.79 ] D: frame_offset 3 3 217
+[   108.80 ] D: frame_offset 3 4 217
+[   108.81 ] D: sltFirstBufferFilled ("{ea5d00aa-230e-4e5d-8904-0abc7f719f54}") "{ea5d00aa-230e-4e5d-8904-0abc7f719f54}" true
+[   108.81 ] D: _requestForLoading true false
+[   109.66 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(29,92)
+[   109.67 ] D: createSelectedPoints 0 -1
+[   109.67 ] D: createSelectedPoints 0 0 0.26087 0.26087
+[   109.80 ] D: _automationChanging false
+[   109.80 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(28,92)
+[   109.80 ] D: mouseMove2
+[   109.81 ] D: _automationChanging false
+[   109.81 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(27,92)
+[   109.81 ] D: mouseMove2
+[   109.81 ] D: _automationChanging false
+[   109.81 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(26,92)
+[   109.81 ] D: mouseMove2
+[   109.81 ] D: _automationChanging false
+[   109.81 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(25,92)
+[   109.81 ] D: mouseMove2
+[   109.81 ] D: createSelectedPoints 0 -1
+[   109.81 ] D: createSelectedPoints 0 0 0.391305 0.26087
+[   109.81 ] D: _automationChanging false
+[   109.81 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(24,92)
+[   109.81 ] D: mouseMove2
+[   109.82 ] D: _automationChanging false
+[   109.82 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(23,92)
+[   109.82 ] D: mouseMove2
+[   109.82 ] D: _automationChanging false
+[   109.82 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(21,92)
+[   109.82 ] D: mouseMove2
+[   109.84 ] D: _automationChanging false
+[   109.84 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(13,92)
+[   109.84 ] D: mouseMove2
+[   109.84 ] D: _automationChanging false
+[   109.84 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(11,92)
+[   109.84 ] D: mouseMove2
+[   109.84 ] D: _automationChanging false
+[   109.84 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(10,92)
+[   109.84 ] D: mouseMove2
+[   109.84 ] D: _automationChanging false
+[   109.84 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(9,92)
+[   109.84 ] D: mouseMove2
+[   109.84 ] D: createSelectedPoints 0 -1
+[   109.84 ] D: createSelectedPoints -1 0 0.5 0.26087
+[   109.84 ] D: _trackIndex::_selected_point_index 0
+[   109.85 ] D: _automationChanging false
+[   109.85 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(3,93)
+[   109.85 ] D: mouseMove2
+[   109.85 ] D: _automationChanging false
+[   109.85 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(2,93)
+[   109.85 ] D: mouseMove2
+[   109.86 ] D: _automationChanging false
+[   109.86 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(0,93)
+[   109.86 ] D: mouseMove2
+[   109.86 ] D: _automationChanging false
+[   109.86 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-2,93)
+[   109.86 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-2,93)
+[   109.86 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-2,93)
+[   109.86 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-2,93)
+[   109.86 ] D: mouseMove2
+[   109.87 ] D: _automationChanging false
+[   109.87 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-8,93)
+[   109.87 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-8,93)
+[   109.87 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-8,93)
+[   109.87 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-8,93)
+[   109.87 ] D: mouseMove2
+[   109.87 ] D: _automationChanging false
+[   109.87 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-9,93)
+[   109.87 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-9,93)
+[   109.87 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-9,93)
+[   109.87 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-9,93)
+[   109.87 ] D: mouseMove2
+[   109.88 ] D: _automationChanging false
+[   109.88 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-10,93)
+[   109.88 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-10,93)
+[   109.88 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-10,93)
+[   109.88 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-10,93)
+[   109.88 ] D: mouseMove2
+[   109.89 ] D: _automationChanging false
+[   109.89 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-14,94)
+[   109.89 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-14,94)
+[   109.89 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-14,94)
+[   109.89 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-14,94)
+[   109.89 ] D: mouseMove2
+[   109.89 ] D: _automationChanging false
+[   109.89 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-15,94)
+[   109.89 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-15,94)
+[   109.89 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-15,94)
+[   109.89 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-15,94)
+[   109.89 ] D: mouseMove2
+[   109.89 ] D: _automationChanging false
+[   109.89 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-16,94)
+[   109.89 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-16,94)
+[   109.89 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-16,94)
+[   109.89 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-16,94)
+[   109.89 ] D: mouseMove2
+[   109.90 ] D: _automationChanging false
+[   109.90 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-19,94)
+[   109.90 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-19,94)
+[   109.90 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-19,94)
+[   109.90 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-19,94)
+[   109.90 ] D: mouseMove2
+[   109.90 ] D: _automationChanging false
+[   109.90 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-20,94)
+[   109.90 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-20,94)
+[   109.90 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-20,94)
+[   109.90 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-20,94)
+[   109.90 ] D: mouseMove2
+[   109.92 ] D: _automationChanging false
+[   109.92 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-22,94)
+[   109.92 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-22,94)
+[   109.92 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-22,94)
+[   109.92 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-22,94)
+[   109.92 ] D: mouseMove2
+[   109.92 ] D: _automationChanging false
+[   109.92 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-23,94)
+[   109.92 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-23,94)
+[   109.92 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-23,94)
+[   109.92 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-23,94)
+[   109.92 ] D: mouseMove2
+[   109.94 ] D: _automationChanging false
+[   109.94 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-25,94)
+[   109.94 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-25,94)
+[   109.94 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-25,94)
+[   109.94 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-25,94)
+[   109.94 ] D: mouseMove2
+[   109.94 ] D: _automationChanging false
+[   109.94 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-26,94)
+[   109.94 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-26,94)
+[   109.94 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-26,94)
+[   109.94 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-26,94)
+[   109.94 ] D: mouseMove2
+[   109.95 ] D: _automationChanging false
+[   109.95 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-28,94)
+[   109.95 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-28,94)
+[   109.95 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-28,94)
+[   109.95 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-28,94)
+[   109.95 ] D: mouseMove2
+[   109.96 ] D: _automationChanging false
+[   109.96 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-29,95)
+[   109.96 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-29,95)
+[   109.96 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-29,95)
+[   109.96 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-29,95)
+[   109.96 ] D: mouseMove2
+[   109.97 ] D: _automationChanging false
+[   109.97 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-33,95)
+[   109.97 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-33,95)
+[   109.97 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-33,95)
+[   109.97 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-33,95)
+[   109.97 ] D: mouseMove2
+[   109.97 ] D: _automationChanging false
+[   109.97 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-34,95)
+[   109.97 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-34,95)
+[   109.97 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-34,95)
+[   109.97 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-34,95)
+[   109.97 ] D: mouseMove2
+[   109.97 ] D: _automationChanging false
+[   109.97 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-35,95)
+[   109.97 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-35,95)
+[   109.97 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-35,95)
+[   109.97 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-35,95)
+[   109.97 ] D: mouseMove2
+[   109.99 ] D: _automationChanging false
+[   109.99 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-39,95)
+[   109.99 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-39,95)
+[   109.99 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-39,95)
+[   109.99 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-39,95)
+[   109.99 ] D: mouseMove2
+[   109.99 ] D: _automationChanging false
+[   109.99 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-40,95)
+[   109.99 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-40,95)
+[   109.99 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-40,95)
+[   109.99 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-40,95)
+[   109.99 ] D: mouseMove2
+[   110.00 ] D: _automationChanging false
+[   110.00 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-43,95)
+[   110.00 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-43,95)
+[   110.00 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-43,95)
+[   110.00 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-43,95)
+[   110.00 ] D: mouseMove2
+[   110.00 ] D: _automationChanging false
+[   110.00 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-44,95)
+[   110.00 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-44,95)
+[   110.00 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-44,95)
+[   110.00 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-44,95)
+[   110.00 ] D: mouseMove2
+[   110.01 ] D: _automationChanging false
+[   110.01 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-45,95)
+[   110.01 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-45,95)
+[   110.01 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-45,95)
+[   110.01 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-45,95)
+[   110.01 ] D: mouseMove2
+[   110.02 ] D: _automationChanging false
+[   110.02 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-47,96)
+[   110.02 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-47,96)
+[   110.02 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-47,96)
+[   110.02 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-47,96)
+[   110.02 ] D: mouseMove2
+[   110.02 ] D: _automationChanging false
+[   110.02 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(-48,96)
+[   110.02 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) false QPointF(-48,96)
+[   110.02 ] D: findTrackIndexByPoint 2 QRect(0,222 1707x111) false QPointF(-48,96)
+[   110.02 ] D: findTrackIndexByPoint 3 QRect(0,333 1707x111) false QPointF(-48,96)
+[   110.02 ] D: mouseMove2
+[   110.68 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true QPointF(18,94)
+[   110.69 ] D: createSelectedPoints 0 -1
+[   111.00 ] D: _requestForLoading false false
+[   111.00 ] D: _requestForLoading2
+[   111.00 ] D: _numberOfSampleBuffer 1
+[   111.00 ] D: START TO load 0
+[   111.00 ] D: sltPositionChanged 0 true
+[   111.00 ] D: START TO load 1
+[   111.00 ] D: START TO load 2
+[   111.00 ] D: START TO load 3
+[   111.00 ] D: frame_offset 0 0 217
+[   111.00 ] D: frame_offset 0 1 217
+[   111.01 ] D: frame_offset 0 2 217
+[   111.01 ] D: frame_offset 0 3 217
+[   111.01 ] D: frame_offset 0 4 217
+[   111.02 ] D: sltFirstBufferFilled ("{ea5d00aa-230e-4e5d-8904-0abc7f719f54}") "{ea5d00aa-230e-4e5d-8904-0abc7f719f54}" true
+[   111.02 ] D: _requestForLoading true false
+[   117.51 ] D: AsyncFileReader 0 5
+[   118.99 ] D: AsyncFileReader 1 6
+[   120.49 ] D: AsyncFileReader 2 7
+[   121.97 ] D: AsyncFileReader 3 8
+[   123.45 ] D: AsyncFileReader 4 9
+[   124.95 ] D: AsyncFileReader 0 10
+[   126.43 ] D: AsyncFileReader 1 11
+[   127.91 ] D: AsyncFileReader 2 12
+[   129.41 ] D: AsyncFileReader 3 13
+[   135.92 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) true

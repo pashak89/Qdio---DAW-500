@@ -1,0 +1,713 @@
+[     4.52 ] I: Log: Log file open in follow path at 1403/5/28 21:26:58 : C:\Users\AmirPasha\Desktop\Rpos\DAW-3\build2019\debug\Logs\Launch.log
+[     4.52 ] I: The subsystem "class DGE::Core::IO::LogSystem::Logger" is registered successfully.
+[     4.52 ] I: The subsystem "class DGE::Core::Windows::QtWindow" is registered successfully.
+[     4.52 ] D: API version is: 4.60 ,shader version is: 4.60
+[     4.52 ] I: The subsystem "class DGE::GFX::GCore::QtWrapper::QtRenderer" is registered successfully.
+[     4.52 ] I: Current Render API is: 4.60
+[     4.52 ] I: The subsystem "Renderer" is registered successfully.
+[     4.52 ] I: The subsystem "class DGE::Core::Platforms::QtPlatform" is registered successfully.
+[     4.52 ] I: The subsystem "Platform" is registered successfully.
+[     4.52 ] I: The subsystem "class DGE::Core::IO::FileSystem::FileManager" is registered successfully.
+[     4.52 ] I: The subsystem "class DGE::Core::CoreModule" is registered successfully.
+[     4.52 ] I: The subsystem "class DGE::Core::Profiling::Profiler" is registered successfully.
+[     4.52 ] I: The subsystem "class DGE::GFX::DrawablesManager" is registered successfully.
+[     4.52 ] I: #version 460 core
+#define GLES_Ver 460
+
+[     4.52 ] I: The subsystem "class DGE::GFX::GraphicsManager" is registered successfully.
+[     4.52 ] I: The subsystem "class DGE::GFX::GFXModule" is registered successfully.
+[     4.60 ] D: Shader Compile successfully.
+[     4.60 ] I: The subsystem "class DGE::Scene::ViewportManager" is registered successfully.
+[     4.60 ] I: The subsystem "class DGE::Scene::SceneModule" is registered successfully.
+[     4.60 ] I: The subsystem "class DGE::Managers::RenderManager" is registered successfully.
+[     4.60 ] D: Engine Enabled
+[     4.60 ] I: The subsystem "class DGE::Engine" is registered successfully.
+[     4.60 ] D: Node with id 1 is added to Qt layer
+[     4.60 ] D: Node with id 2460 is added to Qt layer
+[     4.60 ] D: Node with id 2462 is added to Qt layer
+[     4.60 ] D: Node with id 2464 is added to Qt layer
+[     4.60 ] D: Node with id 2466 is added to Qt layer
+[     4.60 ] D: Node with id 2468 is added to Qt layer
+[     4.60 ] D: Node with id 2470 is added to Qt layer
+[     4.60 ] D: Node with id 2472 is added to Qt layer
+[     4.60 ] D: Node with id 2474 is added to Qt layer
+[     4.60 ] D: Node with id 2476 is added to Qt layer
+[     4.60 ] D: Node with id 2478 is added to Qt layer
+[     4.60 ] D: Node with id 2480 is added to Qt layer
+[     4.60 ] D: Node with id 2482 is added to Qt layer
+[     4.61 ] D: Node with id 2484 is added to Qt layer
+[     4.61 ] D: Node with id 2486 is added to Qt layer
+[     4.61 ] D: Node with id 2487 is added to Qt layer
+[     4.61 ] D: Node with id 2489 is added to Qt layer
+[     4.61 ] D: Node with id 2491 is added to Qt layer
+[     4.61 ] D: Node with id 3 is added to Qt layer
+[     4.61 ] D: Node with id 2493 is added to Qt layer
+[     4.61 ] S: New view-port registered with id: 1
+[     4.61 ] S: New view-port registered with id: 2
+[     4.61 ] S: New view-port registered with id: 3
+[     4.61 ] S: New view-port registered with id: 4
+[     4.61 ] S: New view-port registered with id: 5
+[     4.61 ] S: New view-port registered with id: 6
+[     4.71 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     4.71 ] D: Using backend: "OpenGL 3"
+[     4.74 ] W: Floating point comparison needs context sanity check
+[     4.74 ] D: QT onScaleChanged=  144
+[     4.77 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.77 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.77 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.77 ] W: ShaderEffectSource: 'recursive' must be set to true when rendering recursively.
+[     4.94 ] D: Engine Started.
+[    46.53 ] D: P1 -339
+[    46.53 ] D: P14
+[    46.54 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.54 ] D: P1 -384
+[    46.54 ] D: P1 -394
+[    46.54 ] D: P1 -402
+[    46.55 ] D: P1 -408
+[    46.56 ] D: P1 -415
+[    46.56 ] D: P1 -443
+[    46.56 ] D: P1 -447
+[    46.56 ] D: P1 -452
+[    46.58 ] D: P1 -456
+[    46.76 ] D: P1 -461
+[    46.76 ] D: P1 -411
+[    46.77 ] D: P1 -408
+[    46.77 ] D: P1 -404
+[    46.78 ] D: P1 -392
+[    46.78 ] D: P1 -390
+[    46.78 ] D: P1 -387
+[    46.78 ] D: P1 -385
+[    46.79 ] D: P1 -381
+[    46.79 ] D: P1 -371
+[    46.79 ] D: P1 -370
+[    46.80 ] D: P1 -368
+[    46.80 ] D: P14
+[    46.80 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.81 ] D: P1 -367
+[    46.81 ] D: P14
+[    46.81 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.81 ] D: P1 -362
+[    46.81 ] D: P14
+[    46.81 ] D: P1 -361
+[    46.81 ] D: P14
+[    46.81 ] D: P1 -360
+[    46.81 ] D: P14
+[    46.83 ] D: P1 -359
+[    46.83 ] D: P14
+[    46.83 ] D: P1 -357
+[    46.83 ] D: P14
+[    46.83 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.83 ] D: P1 -357
+[    46.83 ] D: P14
+[    46.84 ] D: P1 -356
+[    46.84 ] D: P14
+[    46.84 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.84 ] D: P1 -355
+[    46.84 ] D: P14
+[    46.84 ] D: P1 -355
+[    46.84 ] D: P14
+[    46.85 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.86 ] D: P1 -354
+[    46.86 ] D: P14
+[    46.86 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.86 ] D: P1 -352
+[    46.86 ] D: P14
+[    46.87 ] D: P1 -351
+[    46.87 ] D: P14
+[    46.88 ] D: P1 -348
+[    46.88 ] D: P14
+[    46.88 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.88 ] D: P1 -348
+[    46.88 ] D: P14
+[    46.88 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.88 ] D: P1 -347
+[    46.88 ] D: P14
+[    46.88 ] D: P1 -346
+[    46.88 ] D: P14
+[    46.89 ] D: P1 -341
+[    46.89 ] D: P14
+[    46.89 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.89 ] D: P1 -340
+[    46.89 ] D: P14
+[    46.90 ] D: P1 -338
+[    46.90 ] D: P14
+[    46.90 ] D: P1 -337
+[    46.90 ] D: P14
+[    46.90 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.90 ] D: P1 -336
+[    46.90 ] D: P14
+[    46.91 ] D: P1 -331
+[    46.91 ] D: P14
+[    46.91 ] D: P1 -330
+[    46.91 ] D: P14
+[    46.91 ] W: qrc:/main.qml:663: TypeError: Cannot read property 'contentY' of undefined
+[    46.91 ] D: P1 -328
+[    46.91 ] D: P1 -328
+[    46.91 ] D: P1 -327
+[    46.93 ] D: P1 -322
+[    46.93 ] D: P1 -322
+[    46.93 ] D: P1 -321
+[    46.94 ] D: P1 -320
+[    46.94 ] D: P1 -317
+[    46.94 ] D: P1 -317
+[    46.95 ] D: P1 -317
+[    46.96 ] D: P1 -316
+[    46.96 ] D: P1 -314
+[    46.96 ] D: P1 -313
+[    46.96 ] D: P1 -313
+[    46.96 ] D: P1 -312
+[    46.97 ] D: P1 -309
+[    46.98 ] D: P1 -308
+[    46.98 ] D: P1 -307
+[    46.99 ] D: P1 -307
+[    46.99 ] D: P1 -304
+[    46.99 ] D: P1 -303
+[    47.00 ] D: P1 -302
+[    47.01 ] D: P1 -302
+[    47.01 ] D: P1 -300
+[    47.01 ] D: P1 -300
+[    47.03 ] D: P1 -300
+[    47.03 ] D: P1 -298
+[    47.04 ] D: P1 -298
+[    47.04 ] D: P1 -298
+[    47.06 ] D: P1 -297
+[    47.09 ] D: P1 -297
+[    47.36 ] D: sltPositionChanged 220500
+[    47.36 ] D: frame_offset 0 0 217
+[    47.36 ] D: frame_offset 0 1 217
+[    47.36 ] D: findOverlayItems 1 1
+[    47.36 ] D: "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" i.value()->sampleClip()->startTime()  5000 327833 327833 5000
+[    47.36 ] D: findOverlayItems
+[    47.36 ] D: sltPositionChanged 220500
+[    47.36 ] D: frame_offset 0 0 217
+[    47.37 ] D: frame_offset 0 1 217
+[    47.37 ] D: frame_offset 0 2 217
+[    47.37 ] D: frame_offset 0 3 217
+[    47.37 ] D: frame_offset 0 4 217
+[    54.48 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:239: ReferenceError: scaleSize2 is not defined
+[    54.48 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:237: ReferenceError: scaleSize2 is not defined
+[    54.48 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.48 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.48 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.48 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.48 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.48 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.49 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.50 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.51 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    54.52 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:218: ReferenceError: scaleSize2 is not defined
+[    54.52 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:199: ReferenceError: scaleSize2 is not defined
+[    54.52 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:198: ReferenceError: scaleSize2 is not defined
+[    54.52 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:208: ReferenceError: scaleSize2 is not defined
+[    54.52 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:204: ReferenceError: scaleSize2 is not defined
+[    54.52 ] W: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:195: ReferenceError: scaleSize2 is not defined
+[    55.76 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(176,178)
+[    55.76 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(176,178)
+[    55.76 ] D: setMultiEq
+[    55.78 ] D: _automationChanging false
+[    55.78 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(176,177)
+[    55.78 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(176,177)
+[    55.78 ] D: mouseMove2
+[    66.16 ] D: _requestForLoading false false
+[    66.16 ] D: _requestForLoading2
+[    66.16 ] D: _numberOfSampleBuffer 1
+[    66.16 ] D: START TO load 0
+[    66.16 ] D: START TO load 1
+[    66.16 ] D: sltPositionChanged 441000 true
+[    66.16 ] D: START TO load 2
+[    66.16 ] D: START TO load 3
+[    66.16 ] D: frame_offset 3 0 217
+[    66.16 ] D: frame_offset 3 1 217
+[    66.16 ] D: frame_offset 3 2 217
+[    66.17 ] D: frame_offset 3 3 217
+[    66.17 ] D: frame_offset 3 4 217
+[    66.18 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[    66.18 ] D: _requestForLoading true false
+[    67.13 ] D: AsyncFileReader 3 8
+[    68.61 ] D: AsyncFileReader 4 9
+[    70.11 ] D: AsyncFileReader 0 10
+[    70.38 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    70.38 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    70.38 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    70.38 ] W: qrc:/Items/CustomRectangle.qml:56: TypeError: Cannot read property 'color' of null
+[    76.72 ] D: _requestForLoading false false
+[    76.73 ] D: _requestForLoading2
+[    76.73 ] D: _numberOfSampleBuffer 1
+[    76.73 ] D: START TO load 0
+[    76.73 ] D: START TO load 1
+[    76.73 ] D: sltPositionChanged 441000 true
+[    76.73 ] D: START TO load 2
+[    76.73 ] D: START TO load 3
+[    76.73 ] D: frame_offset 3 0 217
+[    76.73 ] D: frame_offset 3 1 217
+[    76.73 ] D: frame_offset 3 2 217
+[    76.73 ] D: frame_offset 3 3 217
+[    76.74 ] D: frame_offset 3 4 217
+[    76.74 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[    76.74 ] D: _requestForLoading true false
+[    77.68 ] D: AsyncFileReader 3 8
+[    79.16 ] D: AsyncFileReader 4 9
+[    82.68 ] D: _requestForLoading false false
+[    82.68 ] D: _requestForLoading2
+[    82.68 ] D: _numberOfSampleBuffer 1
+[    82.68 ] D: START TO load 0
+[    82.68 ] D: START TO load 1
+[    82.68 ] D: sltPositionChanged 441000 true
+[    82.68 ] D: START TO load 2
+[    82.68 ] D: START TO load 3
+[    82.68 ] D: frame_offset 3 0 217
+[    82.68 ] D: frame_offset 3 1 217
+[    82.68 ] D: frame_offset 3 2 217
+[    82.68 ] D: frame_offset 3 3 217
+[    82.69 ] D: frame_offset 3 4 217
+[    82.69 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[    82.69 ] D: _requestForLoading true false
+[    83.64 ] D: AsyncFileReader 3 8
+[    87.51 ] D: _requestForLoading false false
+[    87.51 ] D: _requestForLoading2
+[    87.51 ] D: _numberOfSampleBuffer 1
+[    87.51 ] D: START TO load 0
+[    87.51 ] D: START TO load 1
+[    87.51 ] D: sltPositionChanged 441000 true
+[    87.51 ] D: START TO load 2
+[    87.51 ] D: START TO load 3
+[    87.51 ] D: frame_offset 3 0 217
+[    87.51 ] D: frame_offset 3 1 217
+[    87.51 ] D: frame_offset 3 2 217
+[    87.52 ] D: frame_offset 3 3 217
+[    87.52 ] D: frame_offset 3 4 217
+[    87.53 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[    87.53 ] D: _requestForLoading true false
+[    88.48 ] D: AsyncFileReader 3 8
+[    89.96 ] D: AsyncFileReader 4 9
+[   338.12 ] D: _requestForLoading false false
+[   338.12 ] D: _requestForLoading2
+[   338.12 ] D: _numberOfSampleBuffer 1
+[   338.12 ] D: START TO load 0
+[   338.12 ] D: START TO load 1
+[   338.12 ] D: sltPositionChanged 441000 true
+[   338.12 ] D: START TO load 2
+[   338.12 ] D: START TO load 3
+[   338.12 ] D: frame_offset 3 0 217
+[   338.12 ] D: frame_offset 3 1 217
+[   338.13 ] D: frame_offset 3 2 217
+[   338.13 ] D: frame_offset 3 3 217
+[   338.13 ] D: frame_offset 3 4 217
+[   338.14 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   338.14 ] D: _requestForLoading true false
+[   339.09 ] D: AsyncFileReader 3 8
+[   344.88 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(349,210)
+[   344.88 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(349,210)
+[   344.88 ] D: setMultiEq
+[   345.36 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(252,173)
+[   345.36 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(252,173)
+[   345.36 ] D: setMultiEq
+[   345.78 ] D: _requestForLoading false false
+[   345.78 ] D: _requestForLoading2
+[   345.78 ] D: _numberOfSampleBuffer 1
+[   345.78 ] D: START TO load 0
+[   345.78 ] D: START TO load 1
+[   345.78 ] D: sltPositionChanged 837899 true
+[   345.78 ] D: START TO load 2
+[   345.78 ] D: START TO load 3
+[   345.78 ] D: frame_offset 9 0 217
+[   345.78 ] D: frame_offset 9 1 217
+[   345.79 ] D: frame_offset 9 2 217
+[   345.79 ] D: frame_offset 9 3 217
+[   345.79 ] D: frame_offset 9 4 217
+[   345.80 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   345.80 ] D: _requestForLoading true false
+[   346.67 ] D: AsyncFileReader 4 14
+[   348.15 ] D: AsyncFileReader 0 15
+[   354.51 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(349,202)
+[   354.51 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(349,202)
+[   354.51 ] D: setMultiEq
+[   354.91 ] D: _requestForLoading false false
+[   354.91 ] D: _requestForLoading2
+[   354.91 ] D: _numberOfSampleBuffer 1
+[   354.91 ] D: START TO load 0
+[   354.91 ] D: START TO load 1
+[   354.91 ] D: sltPositionChanged 837899 true
+[   354.91 ] D: START TO load 2
+[   354.91 ] D: START TO load 3
+[   354.91 ] D: frame_offset 9 0 217
+[   354.91 ] D: frame_offset 9 1 217
+[   354.91 ] D: frame_offset 9 2 217
+[   354.91 ] D: frame_offset 9 3 217
+[   354.92 ] D: frame_offset 9 4 217
+[   354.92 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   354.92 ] D: _requestForLoading true false
+[   355.79 ] D: AsyncFileReader 4 14
+[   357.27 ] D: AsyncFileReader 0 15
+[   378.67 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(397,181)
+[   378.67 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(397,181)
+[   378.67 ] D: setMultiEq
+[   379.28 ] D: _requestForLoading false false
+[   379.28 ] D: _requestForLoading2
+[   379.28 ] D: _numberOfSampleBuffer 1
+[   379.28 ] D: START TO load 0
+[   379.28 ] D: START TO load 1
+[   379.28 ] D: sltPositionChanged 970200 true
+[   379.28 ] D: START TO load 2
+[   379.28 ] D: START TO load 3
+[   379.28 ] D: frame_offset 11 0 217
+[   379.28 ] D: frame_offset 11 1 217
+[   379.28 ] D: frame_offset 11 2 217
+[   379.28 ] D: frame_offset 11 3 217
+[   379.29 ] D: frame_offset 11 4 217
+[   379.29 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   379.29 ] D: _requestForLoading true false
+[   380.12 ] D: AsyncFileReader 1 16
+[   383.31 ] D: _requestForLoading false false
+[   383.31 ] D: _requestForLoading2
+[   383.31 ] D: _numberOfSampleBuffer 1
+[   383.31 ] D: START TO load 0
+[   383.31 ] D: START TO load 1
+[   383.31 ] D: sltPositionChanged 970200 true
+[   383.31 ] D: START TO load 2
+[   383.31 ] D: START TO load 3
+[   383.31 ] D: frame_offset 11 0 217
+[   383.31 ] D: frame_offset 11 1 217
+[   383.31 ] D: frame_offset 11 2 217
+[   383.32 ] D: frame_offset 11 3 217
+[   383.32 ] D: frame_offset 11 4 217
+[   383.32 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   383.32 ] D: _requestForLoading true false
+[   384.15 ] D: AsyncFileReader 1 16
+[   386.07 ] D: _requestForLoading false false
+[   386.07 ] D: _requestForLoading2
+[   386.07 ] D: _numberOfSampleBuffer 1
+[   386.07 ] D: START TO load 0
+[   386.07 ] D: START TO load 1
+[   386.07 ] D: sltPositionChanged 970200 true
+[   386.07 ] D: START TO load 2
+[   386.07 ] D: START TO load 3
+[   386.07 ] D: frame_offset 11 0 217
+[   386.07 ] D: frame_offset 11 1 217
+[   386.07 ] D: frame_offset 11 2 217
+[   386.08 ] D: frame_offset 11 3 217
+[   386.08 ] D: frame_offset 11 4 217
+[   386.08 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   386.08 ] D: _requestForLoading true false
+[   389.11 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(247,187)
+[   389.11 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(247,187)
+[   389.11 ] D: setMultiEq
+[   389.38 ] D: _requestForLoading false false
+[   389.38 ] D: _requestForLoading2
+[   389.38 ] D: _numberOfSampleBuffer 1
+[   389.38 ] D: START TO load 0
+[   389.38 ] D: START TO load 1
+[   389.38 ] D: sltPositionChanged 617400 true
+[   389.38 ] D: START TO load 2
+[   389.38 ] D: START TO load 3
+[   389.38 ] D: frame_offset 6 0 217
+[   389.38 ] D: frame_offset 6 1 217
+[   389.38 ] D: frame_offset 6 2 217
+[   389.38 ] D: frame_offset 6 3 217
+[   389.38 ] D: frame_offset 6 4 217
+[   389.39 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   389.39 ] D: _requestForLoading true false
+[   413.60 ] D: _requestForLoading false false
+[   413.60 ] D: _requestForLoading2
+[   413.60 ] D: _numberOfSampleBuffer 1
+[   413.60 ] D: START TO load 0
+[   413.60 ] D: START TO load 1
+[   413.60 ] D: sltPositionChanged 617400 true
+[   413.60 ] D: START TO load 2
+[   413.60 ] D: START TO load 3
+[   413.60 ] D: frame_offset 6 0 217
+[   413.60 ] D: frame_offset 6 1 217
+[   413.60 ] D: frame_offset 6 2 217
+[   413.60 ] D: frame_offset 6 3 217
+[   413.61 ] D: frame_offset 6 4 217
+[   413.61 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   413.61 ] D: _requestForLoading true false
+[   415.02 ] D: AsyncFileReader 1 11
+[   427.05 ] D: _requestForLoading false false
+[   427.05 ] D: _requestForLoading2
+[   427.05 ] D: _numberOfSampleBuffer 1
+[   427.05 ] D: START TO load 0
+[   427.05 ] D: START TO load 1
+[   427.05 ] D: sltPositionChanged 617400 true
+[   427.05 ] D: START TO load 2
+[   427.05 ] D: START TO load 3
+[   427.05 ] D: frame_offset 6 0 217
+[   427.05 ] D: frame_offset 6 1 217
+[   427.05 ] D: frame_offset 6 2 217
+[   427.05 ] D: frame_offset 6 3 217
+[   427.05 ] D: frame_offset 6 4 217
+[   427.08 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   427.08 ] D: _requestForLoading true false
+[   428.48 ] D: AsyncFileReader 1 11
+[   430.80 ] D: _requestForLoading false false
+[   430.80 ] D: _requestForLoading2
+[   430.80 ] D: _numberOfSampleBuffer 1
+[   430.80 ] D: START TO load 0
+[   430.80 ] D: START TO load 1
+[   430.80 ] D: sltPositionChanged 617400 true
+[   430.80 ] D: START TO load 2
+[   430.80 ] D: START TO load 3
+[   430.80 ] D: frame_offset 6 0 217
+[   430.80 ] D: frame_offset 6 1 217
+[   430.80 ] D: frame_offset 6 2 217
+[   430.80 ] D: frame_offset 6 3 217
+[   430.81 ] D: frame_offset 6 4 217
+[   430.81 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   430.81 ] D: _requestForLoading true false
+[   432.21 ] D: AsyncFileReader 1 11
+[   434.67 ] D: _requestForLoading false false
+[   434.67 ] D: _requestForLoading2
+[   434.67 ] D: _numberOfSampleBuffer 1
+[   434.67 ] D: START TO load 0
+[   434.67 ] D: START TO load 1
+[   434.67 ] D: sltPositionChanged 617400 true
+[   434.67 ] D: START TO load 2
+[   434.67 ] D: START TO load 3
+[   434.67 ] D: frame_offset 6 0 217
+[   434.67 ] D: frame_offset 6 1 217
+[   434.67 ] D: frame_offset 6 2 217
+[   434.68 ] D: frame_offset 6 3 217
+[   434.68 ] D: frame_offset 6 4 217
+[   434.69 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   434.69 ] D: _requestForLoading true false
+[   436.10 ] D: AsyncFileReader 1 11
+[   437.58 ] D: AsyncFileReader 2 12
+[   439.07 ] D: AsyncFileReader 3 13
+[   440.55 ] D: AsyncFileReader 4 14
+[   456.89 ] D: _requestForLoading false false
+[   456.89 ] D: _requestForLoading2
+[   456.89 ] D: _numberOfSampleBuffer 1
+[   456.89 ] D: START TO load 0
+[   456.89 ] D: START TO load 1
+[   456.89 ] D: sltPositionChanged 617400 true
+[   456.89 ] D: START TO load 2
+[   456.89 ] D: START TO load 3
+[   456.89 ] D: frame_offset 6 0 217
+[   456.89 ] D: frame_offset 6 1 217
+[   456.89 ] D: frame_offset 6 2 217
+[   456.89 ] D: frame_offset 6 3 217
+[   456.89 ] D: frame_offset 6 4 217
+[   456.90 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   456.90 ] D: _requestForLoading true false
+[   458.31 ] D: AsyncFileReader 1 11
+[   459.79 ] D: AsyncFileReader 2 12
+[   487.32 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(313,187)
+[   487.32 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(313,187)
+[   487.32 ] D: setMultiEq
+[   487.68 ] D: _requestForLoading false false
+[   487.68 ] D: _requestForLoading2
+[   487.68 ] D: _numberOfSampleBuffer 1
+[   487.68 ] D: START TO load 0
+[   487.68 ] D: START TO load 1
+[   487.68 ] D: sltPositionChanged 749700 true
+[   487.68 ] D: START TO load 2
+[   487.68 ] D: START TO load 3
+[   487.68 ] D: frame_offset 8 0 217
+[   487.69 ] D: frame_offset 8 1 217
+[   487.69 ] D: frame_offset 8 2 217
+[   487.69 ] D: frame_offset 8 3 217
+[   487.69 ] D: frame_offset 8 4 217
+[   487.70 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   487.70 ] D: _requestForLoading true false
+[   489.08 ] D: AsyncFileReader 3 13
+[   490.58 ] D: AsyncFileReader 4 14
+[   492.06 ] D: AsyncFileReader 0 15
+[   498.11 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(491,174)
+[   498.11 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(491,174)
+[   498.12 ] D: setMultiEq
+[   498.15 ] D: _automationChanging false
+[   498.15 ] D: mouseMove2
+[   498.35 ] D: _requestForLoading false false
+[   498.35 ] D: _requestForLoading2
+[   498.35 ] D: _numberOfSampleBuffer 1
+[   498.35 ] D: START TO load 0
+[   498.35 ] D: START TO load 1
+[   498.35 ] D: sltPositionChanged 749700 true
+[   498.35 ] D: START TO load 2
+[   498.35 ] D: START TO load 3
+[   498.35 ] D: frame_offset 8 0 217
+[   498.35 ] D: frame_offset 8 1 217
+[   498.35 ] D: frame_offset 8 2 217
+[   498.36 ] D: frame_offset 8 3 217
+[   498.36 ] D: frame_offset 8 4 217
+[   498.36 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   498.36 ] D: _requestForLoading true false
+[   499.74 ] D: AsyncFileReader 3 13
+[   501.24 ] D: AsyncFileReader 4 14
+[   505.89 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(414,186)
+[   505.89 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(414,186)
+[   505.89 ] D: setMultiEq
+[   505.90 ] D: _automationChanging false
+[   505.90 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(415,186)
+[   505.90 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(415,186)
+[   505.90 ] D: mouseMove2
+[   505.90 ] D: _automationChanging false
+[   505.90 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(416,186)
+[   505.90 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(416,186)
+[   505.90 ] D: mouseMove2
+[   505.92 ] D: _automationChanging false
+[   505.92 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(417,186)
+[   505.92 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(417,186)
+[   505.92 ] D: mouseMove2
+[   505.93 ] D: _automationChanging false
+[   505.93 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(418,186)
+[   505.93 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(418,186)
+[   505.93 ] D: mouseMove2
+[   505.95 ] D: _automationChanging false
+[   505.95 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(419,185)
+[   505.95 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(419,185)
+[   505.95 ] D: mouseMove2
+[   506.16 ] D: _requestForLoading false false
+[   506.16 ] D: _requestForLoading2
+[   506.16 ] D: _numberOfSampleBuffer 1
+[   506.16 ] D: START TO load 0
+[   506.16 ] D: START TO load 1
+[   506.16 ] D: sltPositionChanged 1014300 true
+[   506.16 ] D: START TO load 2
+[   506.16 ] D: START TO load 3
+[   506.16 ] D: frame_offset 12 0 217
+[   506.16 ] D: frame_offset 12 1 217
+[   506.16 ] D: frame_offset 12 2 217
+[   506.16 ] D: frame_offset 12 3 217
+[   506.17 ] D: frame_offset 12 4 217
+[   506.18 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   506.18 ] D: _requestForLoading true false
+[   507.51 ] D: AsyncFileReader 2 17
+[   509.00 ] D: AsyncFileReader 3 18
+[   514.98 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(431,180)
+[   514.98 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(431,180)
+[   514.98 ] D: setMultiEq
+[   515.37 ] D: _requestForLoading false false
+[   515.37 ] D: _requestForLoading2
+[   515.37 ] D: _numberOfSampleBuffer 1
+[   515.37 ] D: START TO load 0
+[   515.37 ] D: START TO load 1
+[   515.37 ] D: sltPositionChanged 1058400 true
+[   515.37 ] D: START TO load 2
+[   515.37 ] D: START TO load 3
+[   515.37 ] D: frame_offset 12 0 217
+[   515.37 ] D: frame_offset 12 1 217
+[   515.37 ] D: frame_offset 12 2 217
+[   515.37 ] D: frame_offset 12 3 217
+[   515.38 ] D: frame_offset 12 4 217
+[   515.38 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   515.38 ] D: _requestForLoading true false
+[   515.71 ] D: AsyncFileReader 2 17
+[   517.19 ] D: AsyncFileReader 3 18
+[   518.67 ] D: AsyncFileReader 4 19
+[   522.85 ] D: _requestForLoading false false
+[   522.85 ] D: _requestForLoading2
+[   522.85 ] D: _numberOfSampleBuffer 1
+[   522.85 ] D: START TO load 0
+[   522.85 ] D: START TO load 1
+[   522.85 ] D: sltPositionChanged 1058400 true
+[   522.85 ] D: START TO load 2
+[   522.85 ] D: START TO load 3
+[   522.85 ] D: frame_offset 12 0 217
+[   522.85 ] D: frame_offset 12 1 217
+[   522.86 ] D: frame_offset 12 2 217
+[   522.86 ] D: frame_offset 12 3 217
+[   522.86 ] D: frame_offset 12 4 217
+[   522.87 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   522.87 ] D: _requestForLoading true false
+[   523.20 ] D: AsyncFileReader 2 17
+[   524.68 ] D: AsyncFileReader 3 18
+[   548.78 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(398,185)
+[   548.78 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(398,185)
+[   548.78 ] D: setMultiEq
+[   549.09 ] D: _requestForLoading false false
+[   549.09 ] D: _requestForLoading2
+[   549.09 ] D: _numberOfSampleBuffer 1
+[   549.09 ] D: START TO load 0
+[   549.09 ] D: START TO load 1
+[   549.09 ] D: sltPositionChanged 970200 true
+[   549.09 ] D: START TO load 2
+[   549.09 ] D: START TO load 3
+[   549.09 ] D: frame_offset 11 0 217
+[   549.10 ] D: frame_offset 11 1 217
+[   549.10 ] D: frame_offset 11 2 217
+[   549.10 ] D: frame_offset 11 3 217
+[   549.10 ] D: frame_offset 11 4 217
+[   549.11 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   549.11 ] D: _requestForLoading true false
+[   549.95 ] D: AsyncFileReader 1 16
+[   555.87 ] D: _requestForLoading false false
+[   555.87 ] D: _requestForLoading2
+[   555.87 ] D: _numberOfSampleBuffer 1
+[   555.87 ] D: START TO load 0
+[   555.87 ] D: START TO load 1
+[   555.87 ] D: sltPositionChanged 970200 true
+[   555.87 ] D: START TO load 2
+[   555.87 ] D: START TO load 3
+[   555.87 ] D: frame_offset 11 0 217
+[   555.87 ] D: frame_offset 11 1 217
+[   555.87 ] D: frame_offset 11 2 217
+[   555.88 ] D: frame_offset 11 3 217
+[   555.88 ] D: frame_offset 11 4 217
+[   555.89 ] D: sltFirstBufferFilled ("{671cf5de-9d9c-4abf-9225-66c6b5914b09}") "{671cf5de-9d9c-4abf-9225-66c6b5914b09}" true
+[   555.89 ] D: _requestForLoading true false
+[   556.72 ] D: AsyncFileReader 1 16
+[   557.52 ] D: findTrackIndexByPoint 0 QRect(0,0 1707x111) false QPointF(511,168)
+[   557.52 ] D: findTrackIndexByPoint 1 QRect(0,111 1707x111) true QPointF(511,168)
+[   557.52 ] D: setMultiEq
+[   557.84 ] D: _requestForLoading false false
+[   557.84 ] D: _requestForLoading2
+[   557.84 ] D: _numberOfSampleBuffer 1
+[   557.84 ] D: START 
