@@ -1,0 +1,1787 @@
+#include "automationitem.h"
+#include "core/sampleeditor.h"
+#include <core/cliparea.h>
+#include <ui/trackitem.h>
+AutomationItem::AutomationItem(int trackIndex, AreaInfo* areaInfo)
+    : IPainterItem()
+    , _areaInfo(areaInfo) _trackIndex(trackIndex)
+{
+
+    _automation = new Automation(_areaInfo);
+
+    _timerCheckPressAndHold.setInterval(200);
+    connect(&_timerCheckPressAndHold, &QTimer::timeout, this, &AutomationItem::sltTimerMouse);
+
+    _timerCheckDoubleClick.setInterval(300);
+    connect(&_timerCheckDoubleClick, &QTimer::timeout, this, &AutomationItem::sltTimerDoubleClicked);
+
+    _timeMoving.setInterval(30);
+    connect(&_timeMoving, &QTimer::timeout, this, &AutomationItem::sltTimerMoving);
+    _timeMoving.start();
+
+    _timerCursorPosition.setInterval(40);
+    connect(&_timerCursorPosition, &QTimer::timeout, this, &AutomationItem::sltTimerCheckPosition);
+}
+
+void AutomationItem::drawLinesAndCircles(IPainter* painter, int botton)
+{
+
+    auto ranges = _automation->getRanges(_liveMovingEnabled);
+    auto selected_ranges = _automation->selectedLines2Ranegs();
+    int outer_index = MathHelper1::findOuterLine(ranges, QPointF(_currentMouseHoverX, _currentMouseHoverY));
+    _mouseShapeChangingEvent = false;
+    for (int i = 0; i < ranges.count(); i++) {
+
+        if ((ranges[i].p1().x() < 0 && ranges[i].p2().x() < 0)
+            || (ranges[i].p1().x() > _areaInfo->lastWidth() && ranges[i].p2().x() > _areaInfo->lastWidth())) {
+            continue;
+        }
+
+        if (qIsInf(-ranges[i].p1().x())) {
+
+            ranges[i].setP1(QPointF(0, ranges[i].p1().y()));
+        }
+        if (qIsInf(ranges[i].p2().x())) {
+
+            ranges[i].setP2(QPointF(_areaInfo->lastWidth(), ranges[i].p2().y()));
+        }
+
+        float curve_n = 1;
+        float curve_m = 1;
+
+        bool valid = _automation->getCurve(i, curve_n, curve_m, _liveMovingEnabled);
+
+        painter->beginPath();
+        painter->setStrokeStyle("#eeeeee");
+        painter->setLineWidth(2);
+
+        painter->moveTo(ranges[i].p1());
+
+        if (curve_n != 1.0 || curve_m != 1.0) {
+
+            painter->save();
+            painter->beginPath();
+            painter->setFillStyle("#80eeeeee");
+            painter->setLineWidth(2);
+
+            painter->drawSuperellipse(ranges[i].p2().toPoint(), ranges[i].p1().toPoint(), curve_n, curve_m, width);
+
+            painter->stroke();
+            painter->restore();
+
+            bool contains = MathHelper1::isInSuperEllipseArea(ranges[i].p2(), ranges[i].p1(), curve_n, curve_m, _currentMouseHoverX, _currentMouseHoverY);
+
+            bool p = MathHelper1::superEllipseContains(ranges[i].p2().toPoint(), ranges[i].p1().toPoint(), curve_n, curve_m, _currentMouseHoverX, _currentMouseHoverY);
+
+            if (_mousePressAndHold) {
+                if (i == _currentRangeIndex && _pointActive == false) {
+                    painter->setStrokeStyle("#00ff66");
+                } else {
+                    painter->setStrokeStyle("#eeeeee");
+                }
+            } else {
+                if (_areaInfo->altKeyPressed() && i == _currentRangeIndex) {
+                    painter->setStrokeStyle("#00ff66");
+                    _mouseShapeChangingEvent = true;
+                } else {
+                    if (contains) {
+                        painter->setStrokeStyle("#00ff66");
+                        if (p == true) {
+                            painter->setStrokeStyle("#eeeeee");
+                        }
+                    }
+                }
+            }
+
+            if (_selectedLinesMoving) {
+                painter->setStrokeStyle("#eeeeee");
+            }
+
+            if (_automation->inSelectedLine(i, QPointF(_currentMouseHoverX, _currentMouseHoverY)) && _areaInfo->altKeyPressed() == false) {
+                painter->setStrokeStyle("#eeeeee");
+            }
+            if (_automation->isSelectedRange(i) && _mousePressAndHold && _areaInfo->altKeyPressed() == false) {
+                painter->setStrokeStyle("#00ff66");
+            }
+
+        } else {
+
+            QPolygonF _polyInner;
+            QPolygonF _polyOuter;
+
+            MathHelper1::lineAreas(ranges[i].p1(), ranges[i].p2(), _polyInner, _polyOuter);
+            painter->setStrokeStyle("#eeeeee");
+
+            if (_mousePressAndHold) {
+                if (i == _currentRangeIndex && _pointActive == false) {
+                    painter->setStrokeStyle("#00ff66");
+
+                } else {
+                    painter->setStrokeStyle("#eeeeee");
+                }
+            } else {
+                if (_areaInfo->altKeyPressed() && i == _currentRangeIndex) {
+                    painter->setStrokeStyle("#00ff66");
+                    _mouseShapeChangingEvent = true;
+                } else {
+                    if (_outerActive) {
+
+                        // Problem is here (outer_index will be -1) for first and last file
+
+                        if (qAbs(ranges[i].p2().x() - ranges[i].p1().x()) > 0) {
+                            if (outer_index == i) {
+                                if (_polyInner.containsPoint(QPointF(_currentMouseHoverX, _currentMouseHoverY), Qt::WindingFill)) {
+                                } else {
+                                    painter->setStrokeStyle("#00ff66");
+                                }
+                            }
+                        } else {
+                            if (outer_index == i) {
+                                painter->setStrokeStyle("#00ff66");
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (_selectedLinesMoving) {
+                painter->setStrokeStyle("#eeeeee");
+            }
+
+            if (_automation->inSelectedLine(i, QPointF(_currentMouseHoverX, _currentMouseHoverY)) && _areaInfo->altKeyPressed() == false) {
+                painter->setStrokeStyle("#eeeeee");
+            }
+
+            if (i == 0 && selected_ranges.size() == 1) {
+                MathHelper1::lineAreas(selected_ranges[0].p1(), selected_ranges[0].p2(), _polyInner, _polyOuter);
+                if (_polyOuter.containsPoint(QPointF(_currentMouseHoverX, _currentMouseHoverY), Qt::WindingFill)) {
+                    painter->setStrokeStyle("#eeeeee");
+                }
+            }
+            if (i == ranges.size() - 1 && selected_ranges.size() == 1) {
+                MathHelper1::lineAreas(selected_ranges[0].p1(), selected_ranges[0].p2(), _polyInner, _polyOuter);
+                if (_polyOuter.containsPoint(QPointF(_currentMouseHoverX, _currentMouseHoverY), Qt::WindingFill)) {
+                    painter->setStrokeStyle("#eeeeee");
+                }
+            }
+
+            if (_automation->isSelectedRange(i) && _mousePressAndHold && _areaInfo->altKeyPressed() == false) {
+
+                painter->setStrokeStyle("#00ff66");
+            }
+
+            painter->lineTo(ranges[i].p2());
+        }
+
+        painter->setFillStyle("#80eeeeee");
+        painter->stroke();
+
+        if (i != ranges.count() - 1) {
+            drawCircle(painter, i, ranges[i]);
+        }
+
+        // fillAreas(painter, ranges[i], botton, curve_n, curve_m);
+    }
+}
+void AutomationItem::drawCircle(IPainter* painter, int index, QLineF line)
+{
+
+    bool result = _automation->isSelectedPoint2(QPointF(line.p2().x(), line.p2().y()));
+
+    if (result)
+        return;
+
+    painter->beginPath();
+    painter->setFillStyle("#eeeeee");
+    painter->setStrokeStyle("#eeeeee");
+
+    painter->circle(line.p2().x(), line.p2().y(), 4);
+
+    if (_outerActive) {
+        if (index == _currentRangeIndex || index == _currentRangeIndex - 1) {
+            painter->fill();
+        } else {
+            painter->stroke();
+        }
+    } else if (_pointActive) {
+        if (index == _currentRangeIndex) {
+            painter->fill();
+        } else {
+            painter->stroke();
+        }
+
+    } else {
+        painter->stroke();
+    }
+}
+void AutomationItem::fillAreas(IPainter* painter, QLineF line, int botton, float curve_n, float curve_m)
+{
+    if (curve_n != 1.0 || curve_m != 1.0) {
+
+        auto superellipseLines = painter->drawSuperellipse(line.p2().toPoint(), line.p1().toPoint(), curve_n, curve_m, width);
+
+        // first = superellipseLines.first();
+        for (int j = 0; j < superellipseLines.count(); j += 1) {
+
+            if (superellipseLines[j].p1() == superellipseLines[j].p2()) {
+                continue;
+            }
+            if (superellipseLines[j].p1().x() == superellipseLines[j].p2().x()) {
+                continue;
+            }
+
+            painter->beginPath();
+            painter->setLineWidth(0);
+            painter->setFillStyle("#80eeeeee");
+
+            auto value = qRadiansToDegrees(qAtan((superellipseLines[j].p2().y() - superellipseLines[j].p1().y()) / (superellipseLines[j].p2().x() - superellipseLines[j].p1().x())));
+
+            if (qAbs(value) > 85) {
+
+                if (value > 0) {
+                    if (superellipseLines[j].p2().y() > superellipseLines[j].p1().y()) {
+                        painter->moveTo(superellipseLines[j].p1().toPoint());
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x() + 1, superellipseLines[j].p1().toPoint().y());
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x() + 1, botton);
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x(), botton);
+                        painter->lineTo(superellipseLines[j].p1().toPoint());
+                    } else {
+                        painter->moveTo(superellipseLines[j].p1().toPoint());
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x() - 1, superellipseLines[j].p1().toPoint().y());
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x() - 1, botton);
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x(), botton);
+                        painter->lineTo(superellipseLines[j].p1().toPoint());
+                    }
+                } else {
+                    if (superellipseLines[j].p2().y() > superellipseLines[j].p1().y()) {
+                        painter->moveTo(superellipseLines[j].p1().toPoint());
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x() - 1, superellipseLines[j].p1().toPoint().y());
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x() - 1, botton);
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x(), botton);
+                        painter->lineTo(superellipseLines[j].p1().toPoint());
+                    } else {
+                        painter->moveTo(superellipseLines[j].p1().toPoint());
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x() + 1, superellipseLines[j].p1().toPoint().y());
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x() + 1, botton);
+                        painter->lineTo(superellipseLines[j].p1().toPoint().x(), botton);
+                        painter->lineTo(superellipseLines[j].p1().toPoint());
+                    }
+                }
+
+            } else {
+                painter->moveTo(superellipseLines[j].p1().toPoint());
+                painter->lineTo(superellipseLines[j].p2().toPoint());
+                painter->lineTo(superellipseLines[j].p2().toPoint().x(), botton);
+                painter->lineTo(superellipseLines[j].p1().toPoint().x(), botton);
+                painter->lineTo(superellipseLines[j].p1().toPoint());
+            }
+            painter->fill();
+        }
+
+    } else {
+
+        if (qAbs(line.p1().x() - line.p2().x()) < 1) {
+            return;
+        }
+        painter->beginPath();
+        painter->setLineWidth(0);
+        painter->setFillStyle("#80eeeeee");
+
+        painter->moveTo(line.p1().toPoint());
+        painter->lineTo(line.p2().toPoint());
+        painter->lineTo(line.p2().toPoint().x(), botton);
+        painter->lineTo(line.p1().toPoint().x(), botton);
+        painter->lineTo(line.p1().toPoint());
+        painter->fill();
+    }
+}
+void AutomationItem::drawLevel(IPainter* painter)
+{
+    QPointF correctedPoint;
+
+    if (_mousePressAndHold) {
+
+        if (_pointActive) {
+            if (_currentIndex >= 0) {
+                float pixelX;
+                float pixelY;
+                _automation->line2Pixel(_currentIndex, pixelX, pixelY);
+                correctedPoint = QPointF(pixelX, pixelY);
+            }
+        } else if (_outerActive) {
+
+            if (_currentMovingIndex < 0) {
+                if (_automation->getLines().size() > 0)
+                    correctedPoint = QPointF(_automation->time2Pixel(_automation->getLines().first().startTime),
+                        _automation->getLines().first().startY * (_rect.bottom() - _rect.top()) + _rect.top());
+
+            } else if (_currentMovingIndex >= _automation->getLines().size()) {
+
+                if (_automation->getLines().size() > 0)
+                    correctedPoint = QPointF(_automation->time2Pixel(_automation->getLines().last().endTime), _automation->getLines().last().endY * (_rect.bottom() - _rect.top()) + _rect.top());
+
+            } else {
+                auto index = _automation->getLineInSelectedLine(0);
+
+                if (distance_for_label1 > distance_for_label2) {
+                    correctedPoint = QPointF(_automation->time2Pixel(index.startTime), index.startY * (_rect.bottom() - _rect.top()) + _rect.top());
+                } else {
+                    correctedPoint = QPointF(_automation->time2Pixel(index.endTime), index.endY * (_rect.bottom() - _rect.top()) + _rect.top());
+                }
+            }
+        }
+    } else {
+        auto ranges = _automation->getRanges(_liveMovingEnabled);
+
+        if (qIsInf(-ranges[0].p1().x())) {
+
+            ranges[0].setP1(QPointF(0, ranges[0].p1().y()));
+        }
+        if (qIsInf(ranges[ranges.size() - 1].p2().x())) {
+
+            ranges[ranges.size() - 1].setP2(QPointF(_areaInfo->lastWidth(), ranges[ranges.size() - 1].p2().y()));
+        }
+        if ((_innerActive == true || _outerActive == true || _pointActive == true) && _currentRangeIndex >= 0 && ranges.size() > 0 && _currentRangeIndex < ranges.size()) {
+
+            if (_innerActive) {
+                correctedPoint = MathHelper1::mapPointToLine(ranges[_currentRangeIndex].p1(), ranges[_currentRangeIndex].p2(), QPointF(_currentMouseHoverX, _currentMouseHoverY));
+
+            } else if (_outerActive) {
+
+                distance_for_label1 = MathHelper1::distance(ranges[_currentRangeIndex].p2(), QPointF(_currentMouseHoverX, _currentMouseHoverY));
+                distance_for_label2 = MathHelper1::distance(ranges[_currentRangeIndex].p1(), QPointF(_currentMouseHoverX, _currentMouseHoverY));
+
+                if (distance_for_label1 > distance_for_label2) {
+                    correctedPoint = QPointF(ranges[_currentRangeIndex].p1().x(), ranges[_currentRangeIndex].p1().y());
+                } else {
+                    correctedPoint = QPointF(ranges[_currentRangeIndex].p2().x(), ranges[_currentRangeIndex].p2().y());
+                }
+
+            } else if (_pointActive) {
+
+                correctedPoint = QPointF(ranges[_currentRangeIndex].p2().x(), ranges[_currentRangeIndex].p2().y());
+            }
+        }
+    }
+
+    float x = correctedPoint.x() + 20;
+    float y = correctedPoint.y();
+    float value = 200;
+    bool isSelectedLine = isSelectedLines();
+
+    if (isSelectedLine || _selectedLinesMoving) {
+
+        if (_outerActive == true) {
+            auto ranges = _automation->selectedLines2Ranegs();
+            QPointF lastPoint = ranges.last().p2();
+            QPointF firstPoint = ranges.first().p1();
+
+            if (_mousePressAndHold) {
+                if (distance_for_label1 > distance_for_label2) {
+                    x = lastPoint.x() + 10;
+                    y = lastPoint.y();
+                    float p = (1 - ((y - _rect.top()) / (float)(_rect.bottom() - _rect.top()))) * 100;
+                    p = int(p * 10) / 10.0;
+                    value = p; // (200-60) / (100-0) (X-0)+60
+
+                } else {
+
+                    x = firstPoint.x() - 40;
+                    y = firstPoint.y();
+                    float p = (1 - ((y - _rect.top()) / (float)(_rect.bottom() - _rect.top()))) * 100;
+                    p = int(p * 10) / 10.0;
+                    value = p; // (200-60) / (100-0) (X-0)+60
+                }
+            } else {
+                distance_for_label1 = MathHelper1::distance(firstPoint, QPointF(_currentMouseHoverX, _currentMouseHoverY));
+                distance_for_label2 = MathHelper1::distance(lastPoint, QPointF(_currentMouseHoverX, _currentMouseHoverY));
+
+                if (distance_for_label1 > distance_for_label2) {
+                    x = lastPoint.x() + 10;
+                    y = lastPoint.y();
+                    float p = (1 - ((y - _rect.top()) / (float)(_rect.bottom() - _rect.top()))) * 100;
+                    p = int(p * 10) / 10.0;
+                    value = 1.4 * p + 60; // (200-60) / (100-0) (X-0)+60
+
+                } else {
+
+                    x = firstPoint.x() - 40;
+                    y = firstPoint.y();
+                    float p = (1 - ((y - _rect.top()) / (float)(_rect.bottom() - _rect.top()))) * 100;
+                    p = int(p * 10) / 10.0;
+                    value = p; // (200-60) / (100-0) (X-0)+60
+                }
+            }
+        }
+
+    } else if (_selectedPointsMoving || _automation->isSelectedPoint(_currentIndex)) {
+
+        double time, y_temp;
+        bool valid = _automation->getLineInSelectedLine(_currentSelectedPointIndex, time, y_temp);
+        if (valid) {
+            correctedPoint = QPointF(_automation->time2Pixel(time), y_temp * (_rect.bottom() - _rect.top()) + _rect.top());
+        }
+
+        x = correctedPoint.x() + 20;
+        y = correctedPoint.y();
+
+        float p = (1 - ((y - _rect.top()) / (float)(_rect.bottom() - _rect.top()))) * 100;
+        p = int(p * 10) / 10.0;
+        value = p; // (200-60) / (100-0) (X-0)+60
+
+    } else {
+        if (_mousePressAndHold || _innerActive == true || _outerActive == true || _pointActive == true) {
+
+            x = correctedPoint.x() + 20;
+            y = correctedPoint.y();
+
+            float p = (1 - ((y - _rect.top()) / (float)(_rect.bottom() - _rect.top()))) * 100;
+            p = int(p * 10) / 10.0;
+            value = p; // (200-60) / (100-0) (X-0)+60
+            if (_currentIndex >= 0) {
+                if (_currentIndex == _automation->size()) {
+                    _automation->setAutomationEndTempo(_currentIndex - 1, value);
+                } else if (_currentIndex == 0) {
+
+                    _automation->setAutomationStartTempo(_currentIndex, value);
+                } else {
+
+                    _automation->setAutomationEndTempo(_currentIndex - 1, value);
+                    _automation->setAutomationStartTempo(_currentIndex, value);
+                }
+            }
+        }
+    }
+
+    QString t = QString::number(value);
+    if (!t.contains(".")) {
+        t += ".0";
+    }
+
+    QRectF rect = painter->textBoundingBox(t, x, y + 10);
+
+    if (x > _areaInfo->lastWidth()) {
+        x = _areaInfo->lastWidth() - rect.width();
+    }
+    if (x < 0) {
+        x = 0;
+    }
+    rect = painter->textBoundingBox(t, x, y + 10);
+
+    painter->beginPath();
+    painter->setFillStyle("#000000");
+    painter->setStrokeStyle("#000000");
+    painter->drawRect(rect.x() - 5, rect.y() - 5, rect.x() + rect.width() + 5, rect.y() + rect.height() + 5);
+    painter->fill();
+
+    painter->beginPath();
+    painter->setFillStyle("#FFFFFF");
+    painter->setStrokeStyle("#FFFFFF");
+
+    painter->drawText(x, y + 10, t);
+    painter->stroke();
+    painter->fill();
+}
+void AutomationItem::drawHoverCircle(IPainter* painter)
+{
+
+    if (_innerActive == true && _outerActive == false && _mouseHover == true && _pointActive == false && _mouseClick == false && _currentRangeIndex >= 0 && _mouseDoubleClick == false) {
+
+        auto ranges = _automation->getRanges(_liveMovingEnabled);
+
+        if (_currentRangeIndex < 0 || _currentRangeIndex >= ranges.size())
+            return;
+
+        float curve_n = 1;
+        float curve_m = 1;
+
+        bool valid = _automation->getCurve(_currentRangeIndex, curve_n, curve_m, _liveMovingEnabled);
+
+        if (qIsInf(-ranges[0].p1().x())) {
+            ranges[0].setP1(QPointF(0, ranges[0].p1().y()));
+        }
+        if (qIsInf(ranges[ranges.size() - 1].p2().x())) {
+            ranges[ranges.size() - 1].setP2(QPointF(_areaInfo->lastWidth(), ranges[ranges.size() - 1].p2().y()));
+        }
+
+        if (curve_n == 1.0 && curve_m == 1.0) {
+            painter->beginPath();
+            painter->setFillStyle("#eeeeee");
+            painter->setStrokeStyle("#eeeeee");
+            QPointF mapped = MathHelper1::mapPointToLine(ranges[_currentRangeIndex].p1(), ranges[_currentRangeIndex].p2(), QPointF(_currentMouseHoverX, _currentMouseHoverY));
+
+            painter->circle(mapped.x(), mapped.y(), 4);
+            painter->fill();
+        } else {
+            painter->beginPath();
+            painter->setFillStyle("#eeeeee");
+            painter->setStrokeStyle("#eeeeee");
+
+            auto result = MathHelper1::superEllipseXtoY(ranges[_currentRangeIndex].p2(), ranges[_currentRangeIndex].p1(), curve_n, curve_m,
+                _currentMouseHoverX, _currentMouseHoverY);
+
+            painter->circle(result.x(), result.y(), 4);
+            painter->fill();
+        }
+    }
+}
+
+void AutomationItem::checkEvents()
+{
+
+    QVector<QLineF> ranges = _automation->getRanges(_liveMovingEnabled);
+
+    if (qIsInf(-ranges[0].p1().x())) {
+
+        ranges[0].setP1(QPointF(0, ranges[0].p1().y()));
+    }
+    if (qIsInf(ranges[ranges.size() - 1].p2().x())) {
+
+        ranges[ranges.size() - 1].setP2(QPointF(_areaInfo->lastWidth(), ranges[ranges.size() - 1].p2().y()));
+    }
+
+    if (_mouseClick) {
+        _mouseClick = false;
+
+        _automation->findCurrentActives(_mousePressX, _mousePressY, _currentRangeIndex, _pointActive, _innerActive, _outerActive);
+
+        if (_currentRangeIndex >= 0 && (_innerActive == true || _outerActive == true || _pointActive == true)) {
+
+            if (_pointActive == true) {
+
+                int leftIndex, rightIndex;
+                _automation->find_lines_by_point(QPointF(_mousePressX, _mousePressY), leftIndex, rightIndex);
+                _currentIndex = rightIndex;
+                bool selected_point = _automation->isSelectedPoint(_currentIndex);
+
+                if (selected_point) {
+
+                } else {
+                    _automation->clearSelectedLines();
+                }
+
+            } else {
+                _automation->clearSelectedLines();
+            }
+
+        } else {
+        }
+
+        if (_currentRangeIndex >= 0) {
+            if (_innerActive) {
+
+                if (_areaInfo->altKeyPressed() == false) {
+                    float curve_n = 1;
+                    float curve_m = 1;
+
+                    _automation->getCurve(_currentRangeIndex, curve_n, curve_m, _liveMovingEnabled);
+
+                    if (curve_n == 1.0 && curve_m == 1.0) {
+                        QPointF mapped = MathHelper1::mapPointToLine(ranges[_currentRangeIndex].p1(), ranges[_currentRangeIndex].p2(), QPointF(_currentMouseHoverX, _currentMouseHoverY));
+
+                        saveInUndoItems();
+                        _automation->addLine(mapped);
+
+                        _currentRangeIndex = _automation->findRangeIndex(_mousePressX, _mousePressY); // findCurrentLineIndex(_currentMousePressX, _currentMousePressY);
+                        _automation->createSnapLine(true);
+
+                    } else {
+
+                        QPointF a = ranges[_currentRangeIndex].p2();
+                        QPointF b = ranges[_currentRangeIndex].p1();
+
+                        float A, B, centerX, centerY;
+                        if (curve_n < 0) {
+                            centerX = a.x();
+                            centerY = b.y();
+
+                            QPointF bb = QPointF(b.x(), b.y());
+                            QPointF aa = QPointF(a.x(), a.y());
+
+                            B = -(aa.y() - centerY);
+                            A = -(centerX - bb.x());
+
+                        } else {
+
+                            centerX = b.x();
+                            centerY = a.y();
+
+                            QPointF bb = QPointF(b.x(), b.y());
+                            QPointF aa = QPointF(a.x(), a.y());
+
+                            A = (aa.x() - centerX);
+                            B = (centerY - bb.y());
+                        }
+
+                        float p, q, r, s;
+
+                        auto result = MathHelper1::superEllipseXtoY(ranges[_currentRangeIndex].p2(), ranges[_currentRangeIndex].p1(), curve_n, curve_m,
+                            _mousePressX, _mousePressY);
+
+                        double x = result.x();
+                        double y = result.y();
+
+                        MathHelper1::findRoot(qAbs(curve_n), qAbs(curve_m), 0, 0, qAbs(A), qAbs(B), 1000, x - centerX, centerY - y, p, q, r, s);
+
+                        qDebug() << qSetRealNumberPrecision(10) << "eclips_order: " << curve_n << "x_center:" << 0 << "y_center:" << 0
+                                 << "x_radius:" << qAbs(A) << "y_radius:" << qAbs(B) << "sample_number:" << 1000 << "x_point:"
+                                 << x - centerX << "y_point:" << centerY - y << "p:" << p << "q:" << q << "r:" << r << "s:" << s;
+
+                        if (curve_n < 0) {
+                            saveInUndoItems();
+                            _automation->addLine(QPointF(x, y), -p, -q, -r, -s);
+                        } else {
+                            saveInUndoItems();
+                            _automation->addLine(QPointF(x, y), p, q, r, s);
+                        }
+                        _automation->createSnapLine(true);
+                        // Not Impelemeted
+                    }
+                }
+            } else if (_pointActive) {
+
+                int line_index = _automation->find_line(
+                    ranges[_currentRangeIndex].p1().x(),
+                    ranges[_currentRangeIndex].p1().y(),
+                    ranges[_currentRangeIndex].p2().x(),
+                    ranges[_currentRangeIndex].p2().y());
+
+                auto array = _automation->removeLine(line_index);
+                if (array.size() > 0) {
+                    _areaInfo->saveInUndoItems(array);
+                    _automation->createSelectedPoints(_areaInfo->selectedArea().area.left(), _areaInfo->selectedArea().area.right());
+                    _currentRangeIndex = -1;
+                }
+            }
+        }
+    } else if (_mousePressAndHold) {
+
+        if (_mousePressAndHold2) {
+            _mousePressAndHold2 = false;
+            _automation->createSnapLine(true);
+
+            _curveChangingEnabled = false;
+            if (_areaInfo->altKeyPressed()) {
+                _curveChangingEnabled = true;
+            }
+
+            _automation->findCurrentActives(_mousePressX, _mousePressY, _currentRangeIndex, _pointActive, _innerActive, _outerActive);
+
+            if (_innerActive) {
+                _currentIndex = -1;
+            }
+
+            if (_pointActive) {
+                int leftIndex, rightIndex;
+                _automation->find_lines_by_point(QPointF(_mousePressX, _mousePressY), leftIndex, rightIndex);
+                _currentIndex = rightIndex;
+
+                _excludePoint1 = leftIndex;
+                _excludePoint2 = rightIndex;
+
+                _currentSelectedPointIndex = _automation->find_selected_line_start_point(_mousePressX, _mousePressY);
+                _currentSelectedPointIndex--;
+            }
+
+            if (_outerActive) {
+
+                if (_selectedLinesMoving == true || (_automation->inSelectedLine(QPointF(_currentMouseHoverX, _currentMouseHoverY)) && _currentRangeIndex >= 0)) {
+                    // Moving selected line
+                } else {
+                    _currentMovingIndex = _automation->find_line_start_point(ranges[_currentRangeIndex].p1().x(), ranges[_currentRangeIndex].p1().y());
+                    if (_currentMovingIndex < 0 || _currentMovingIndex >= _automation->getLines().size()) {
+
+                        _currentLinePoint.setX(_mousePressX);
+                        _currentLinePoint.setY(_mousePressY);
+
+                        //"A is point on the line"
+                        QPointF correctedPoint = MathHelper1::mapPointToLine(ranges[_currentRangeIndex].p1(), ranges[_currentRangeIndex].p2(),
+                            QPointF(_currentLinePoint.x(), _currentLinePoint.y()));
+
+                        // According to A point we have two lines, on the current line
+                        auto lines = MathHelper1::pointToD(ranges[_currentRangeIndex].p1(), ranges[_currentRangeIndex].p2(), correctedPoint);
+                        QPointF p1 = ranges[_currentRangeIndex].p1();
+                        QPointF p2 = ranges[_currentRangeIndex].p2();
+                        _currentLineSlope = MathHelper1::slope(p1, p2);
+
+                        _currentLinePointD1 = lines.first;
+                        _currentLinePointD2 = lines.second;
+
+                        _currentMovingIndex1 = -1;
+                        _currentMovingIndex2 = -1;
+
+                        _currentMovingIndex1 = _automation->find_line_start_point(ranges[_currentRangeIndex].p1().x(), ranges[_currentRangeIndex].p1().y());
+                        _currentMovingIndex2 = _automation->find_line_start_point(ranges[_currentRangeIndex].p2().x(), ranges[_currentRangeIndex].p2().y());
+
+                    } else {
+                        _automation->initMoveLine(_currentMovingIndex);
+                    }
+                }
+            }
+
+            bool selected_point = _automation->isSelectedPoint(_currentIndex);
+            bool selected_line = _automation->inSelectedLine(QPointF(_currentMouseHoverX, _currentMouseHoverY));
+            if (_currentRangeIndex >= 0 && (_pointActive == true || _innerActive == true || _outerActive == true)) {
+
+                if (_innerActive && _areaInfo->altKeyPressed() == false) {
+                    _automation->clearSelectedLines();
+
+                } else {
+                    if (selected_point || selected_line) {
+
+                    } else {
+
+                        if (_areaInfo->altKeyPressed() == false) {
+                            _automation->clearSelectedLines();
+                        }
+                    }
+                }
+
+            } else {
+            }
+        }
+
+        if (_curveChangingEnabled) {
+            if (_currentRangeIndex >= 0) {
+
+                if (ranges[_currentRangeIndex].p1().y() < ranges[_currentRangeIndex].p2().y()) {
+                    float Y1 = ranges[_currentRangeIndex].p1().y();
+                    float Y2 = ranges[_currentRangeIndex].p2().y();
+
+                    float mid = qAbs(Y2 - Y1) / 2.0 + Y1;
+
+                    int index = _automation->find_line(ranges[_currentRangeIndex].p1().x(), ranges[_currentRangeIndex].p1().y(), ranges[_currentRangeIndex].p2().x(), ranges[_currentRangeIndex].p2().y());
+
+                    float curve_n = 1;
+                    float curve_m = 1;
+                    bool valid = _automation->getCurve(_currentRangeIndex, curve_n, curve_m, _liveMovingEnabled);
+
+                    if (index >= 0) {
+
+                        if (_currentMouseY < mid) {
+                            curve_n = 9.0 / (Y1 - mid) * (_currentMouseY - mid) + 1;
+                            curve_m = 9.0 / (Y1 - mid) * (_currentMouseY - mid) + 1;
+
+                        } else if (_currentMouseY > mid) {
+                            curve_n = -9.0 / (Y2 - mid) * (_currentMouseY - mid) - 1;
+                            curve_m = -9.0 / (Y2 - mid) * (_currentMouseY - mid) - 1;
+
+                        } else {
+                            curve_n = 1;
+                            curve_m = 1;
+                        }
+
+                        if (curve_n <= -4.5) {
+                            curve_n = -4.5;
+                        }
+                        if (curve_m <= -4.5) {
+                            curve_m = -4.5;
+                        }
+                        if (curve_n > 4.5)
+                            curve_n = 4.5;
+
+                        if (curve_m > 4.5)
+                            curve_m = 4.5;
+
+                        _automation->setCurve(index, curve_n, curve_m);
+                    }
+
+                } else {
+
+                    float Y1 = ranges[_currentRangeIndex].p1().y();
+                    float Y2 = ranges[_currentRangeIndex].p2().y();
+
+                    float mid = qAbs(Y2 - Y1) / 2.0 + Y2;
+
+                    int index = _automation->find_line(ranges[_currentRangeIndex].p1().x(), ranges[_currentRangeIndex].p1().y(), ranges[_currentRangeIndex].p2().x(), ranges[_currentRangeIndex].p2().y());
+                    float curve_n = 1;
+                    float curve_m = 1;
+                    bool valid = _automation->getCurve(_currentRangeIndex, curve_n, curve_m, _liveMovingEnabled);
+
+                    if (index >= 0) {
+                        if (_currentMouseY < mid) {
+                            curve_n = -9.0 / (Y2 - mid) * (_currentMouseY - mid) - 1;
+                            curve_m = -9.0 / (Y2 - mid) * (_currentMouseY - mid) - 1;
+                        } else if (_currentMouseY > mid) {
+                            curve_n = 9.0 / (Y1 - mid) * (_currentMouseY - mid) + 1;
+                            curve_m = 9.0 / (Y1 - mid) * (_currentMouseY - mid) + 1;
+                        } else {
+                            curve_n = 1;
+                            curve_m = 1;
+                        }
+
+                        if (curve_n <= -4.5) {
+                            curve_n = -4.5;
+                        }
+                        if (curve_m <= -4.5) {
+                            curve_m = -4.5;
+                        }
+                        if (curve_n > 4.5)
+                            curve_n = 4.5;
+
+                        if (curve_m > 4.5)
+                            curve_m = 4.5;
+
+                        _automation->setCurve(index, curve_n, curve_m);
+                    }
+                }
+            }
+        } else {
+
+            if (_pointActive) {
+
+                if ((_selectedPointsMoving == true || _automation->isSelectedPoint(_currentIndex))) {
+
+                    _selectedPointsMoving = true;
+                    _liveMovingEnabled = true;
+
+                    double final_xpos = _currentMouseX;
+                    double final_ypos = _currentMouseY;
+                    _automation->createSnapLine(false);
+
+                    _automation->findSnap(_currentMouseX, _currentMouseY, final_xpos, final_ypos);
+
+                    if (_saveEditState) {
+                        _saveEditState = false;
+                        saveInUndoItems();
+                    }
+
+                    _automation->moveSelectedPoints(QPointF(final_xpos, _currentMouseY));
+
+                } else {
+
+                    _automation->createSnapLine(false, _excludePoint1, _excludePoint2);
+
+                    _automation->createSelectedPoints(_areaInfo->selectedArea().area.left(), _areaInfo->selectedArea().area.right());
+                    _liveMovingEnabled = true;
+
+                    double final_xpos = _currentMouseX;
+                    double final_ypos = _currentMouseY;
+
+                    if (_areaInfo->altKeyPressed()) {
+
+                    } else {
+                        _automation->findSnap(_currentMouseX, _currentMouseY, final_xpos, final_ypos);
+                    }
+
+                    if (final_ypos < _automation->getWindowRect().top()) {
+                        final_ypos = _automation->getWindowRect().top();
+                    } else if (final_ypos > _automation->getWindowRect().bottom()) {
+                        final_ypos = _automation->getWindowRect().bottom();
+                    } else {
+                        final_ypos = _currentMouseY;
+                    }
+
+                    if (_saveEditState) {
+                        _saveEditState = false;
+                        saveInUndoItems();
+                    }
+
+                    _automation->editLine(_currentIndex, final_xpos, final_ypos);
+
+                    bool result = _automation->correctTemplateLines(_currentIndex);
+
+                    int index = _automation->find_line_start_point(final_xpos, final_ypos);
+                    if (index >= 0) {
+
+                        float pixelX;
+                        float pixelY;
+                        _automation->line2Pixel(index, pixelX, pixelY);
+                        if (result)
+                            _currentRangeIndex = _automation->findRangeIndex(pixelX, pixelY);
+                    }
+                }
+            }
+
+            if (_innerActive) {
+
+                _liveMovingEnabled = true;
+
+                if (_saveEditState) {
+                    _saveEditState = false;
+                    saveInUndoItems();
+                }
+
+                _automation->createSnapLine(false);
+                if (_currentRangeIndex >= 0 && _currentIndex < 0) {
+
+                    float curve_n = 1, curve_m = 1;
+                    bool valid = _automation->getCurve(_currentRangeIndex, curve_n, curve_m, _liveMovingEnabled);
+
+                    if (curve_n == 1.0 && curve_m == 1.0) {
+
+                        QPointF correctedPoint = MathHelper1::mapPointToLine(ranges[_currentRangeIndex].p1(), ranges[_currentRangeIndex].p2(),
+                            QPointF(_currentMouseHoverX, _currentMouseHoverY));
+
+                        double time = _automation->pixel2Time(correctedPoint.x());
+
+                        _automation->addLine(time, correctedPoint.y());
+
+                        _automation->createSnapLine(true);
+                        _currentIndex = _automation->find_line_start_point(correctedPoint.x(), correctedPoint.y());
+
+                        _pointActive = true;
+                        _innerActive = false;
+                        _outerActive = false;
+
+                    } else {
+                        QPointF a = ranges[_currentRangeIndex].p2();
+                        QPointF b = ranges[_currentRangeIndex].p1();
+
+                        float A, B, centerX, centerY;
+                        if (curve_n < 0) {
+                            centerX = a.x();
+                            centerY = b.y();
+
+                            QPointF bb = QPointF(b.x(), b.y());
+                            QPointF aa = QPointF(a.x(), a.y());
+
+                            B = -(aa.y() - centerY);
+                            A = -(centerX - bb.x());
+
+                        } else {
+
+                            centerX = b.x();
+                            centerY = a.y();
+
+                            QPointF bb = QPointF(b.x(), b.y());
+                            QPointF aa = QPointF(a.x(), a.y());
+
+                            A = (aa.x() - centerX);
+                            B = (centerY - bb.y());
+                        }
+
+                        float p, q, r, s;
+
+                        auto result = MathHelper1::superEllipseXtoY(ranges[_currentRangeIndex].p2(), ranges[_currentRangeIndex].p1(), curve_n, curve_m,
+                            _mousePressX, _mousePressY);
+
+                        double x = result.x();
+                        double y = result.y();
+
+                        MathHelper1::findRoot(qAbs(curve_n), qAbs(curve_m), 0, 0, qAbs(A), qAbs(B), 1000, x - centerX, centerY - y, p, q, r, s);
+
+                        qDebug() << qSetRealNumberPrecision(10) << "eclips_order: " << curve_n << "x_center:" << 0 << "y_center:" << 0
+                                 << "x_radius:" << qAbs(A) << "y_radius:" << qAbs(B) << "sample_number:" << 1000 << "x_point:"
+                                 << x - centerX << "y_point:" << centerY - y << "p:" << p << "q:" << q << "r:" << r << "s:" << s;
+
+                        if (curve_n < 0) {
+                            saveInUndoItems();
+                            _automation->addLine(QPointF(x, y), -p, -q, -r, -s);
+
+                        } else {
+                            saveInUndoItems();
+                            _automation->addLine(QPointF(x, y), p, q, r, s);
+                        }
+                        _automation->createSnapLine(true);
+
+                        _currentIndex = _automation->find_line_start_point(x, y);
+                        _pointActive = true;
+                        _innerActive = false;
+                        _outerActive = false;
+                    }
+                }
+
+                double final_xpos = _currentMouseX;
+                double final_ypos = _currentMouseY;
+
+                if (_areaInfo->altKeyPressed()) {
+
+                } else {
+                    _automation->findSnap(_currentMouseX, _currentMouseY, final_xpos, final_ypos);
+                }
+
+                if (final_ypos < _automation->getWindowRect().top()) {
+                    final_ypos = _automation->getWindowRect().top();
+                } else if (final_ypos > _automation->getWindowRect().bottom()) {
+                    final_ypos = _automation->getWindowRect().bottom();
+                } else {
+                }
+
+                _automation->editLine(_currentIndex, final_xpos, final_ypos);
+
+                bool result = _automation->correctTemplateLines(_currentIndex);
+
+                int rightIndex;
+                int leftIndex;
+                _automation->find_lines_by_point(QPointF(final_xpos, final_ypos), leftIndex, rightIndex);
+                _currentIndex = rightIndex;
+
+                if (rightIndex >= 0) {
+                    float pixelX;
+                    float pixelY;
+                    _automation->line2Pixel(rightIndex, pixelX, pixelY);
+                    if (result) {
+                        _currentRangeIndex = _automation->findRangeIndex(pixelX, pixelY);
+                    }
+                }
+            }
+
+            if (_outerActive) {
+
+                if (_selectedLinesMoving == true || (_automation->inSelectedLine(QPointF(_currentMouseHoverX, _currentMouseHoverY)) && _currentRangeIndex >= 0)) {
+                    _selectedLinesMoving = true;
+                    if (_areaInfo->altKeyPressed()) {
+
+                        if (_saveEditState) {
+                            _saveEditState = false;
+                            saveInUndoItems();
+                        }
+
+                        _automation->moveSelectedLines(QPointF(_currentMouseX, _currentMouseY));
+                    } else {
+                        _automation->createSnapLine(false);
+                        float final_xpos = _currentMouseX;
+                        float final_ypos = _currentMouseY;
+                        float firstPointX = _automation->findFirstPointInSelection(QPointF(_currentMouseX, _currentMouseY));
+                        _automation->findSnap(firstPointX, final_xpos);
+                        float curPoint = _automation->convertFirstPointToCurrentPoint(QPointF(final_xpos, _currentMouseY));
+
+                        if (_saveEditState) {
+                            _saveEditState = false;
+                            saveInUndoItems();
+                        }
+
+                        _automation->moveSelectedLines(QPointF(curPoint, final_ypos));
+                    }
+
+                } else if (_liveMovingEnabled || _currentRangeIndex >= 0) {
+
+                    _liveMovingEnabled = true;
+                    _automation->createSnapLine(false);
+
+                    if (_currentMovingIndex < 0) {
+
+                        auto point2 = MathHelper1::DtoPoint2(_currentLineSlope,
+                            QPoint(_currentMouseX, _currentMouseY), _currentLinePointD1, _currentLinePointD2);
+
+                        double final_xpos_2 = _currentMouseX;
+                        double final_yPos_2 = point2.y();
+                        _automation->createSnapLine(false);
+                        _automation->findSnap(point2.x(), point2.y(), final_xpos_2, final_yPos_2);
+
+                        if (final_yPos_2 < _automation->getWindowRect().top()) {
+                            final_yPos_2 = _automation->getWindowRect().top();
+                        } else if (final_yPos_2 > _automation->getWindowRect().bottom()) {
+                            final_yPos_2 = _automation->getWindowRect().bottom();
+                        } else {
+                            final_yPos_2 = point2.y();
+                        }
+
+                        if (_saveEditState) {
+                            _saveEditState = false;
+                            saveInUndoItems();
+                        }
+                        _automation->editLine(_currentMovingIndex2, final_xpos_2, final_yPos_2);
+
+                        bool result = _automation->correctTemplateLines(_currentMovingIndex2);
+                        _currentRangeIndex = 0;
+                    } else if (_currentMovingIndex >= _automation->size()) {
+                        auto point2 = MathHelper1::DtoPoint1(_currentLineSlope,
+                            QPoint(_currentMouseX, _currentMouseY), 0, _currentLinePointD2);
+
+                        double final_xpos_2 = 0;
+                        double final_yPos_2 = point2.y();
+                        _automation->createSnapLine(false);
+                        _automation->findSnap(point2.x(), point2.y(), final_xpos_2, final_yPos_2);
+
+                        if (final_yPos_2 < _automation->getWindowRect().top()) {
+                            final_yPos_2 = _automation->getWindowRect().top();
+                        } else if (final_yPos_2 > _automation->getWindowRect().bottom()) {
+                            final_yPos_2 = _automation->getWindowRect().bottom();
+                        } else {
+                            final_yPos_2 = point2.y();
+                        }
+
+                        if (_saveEditState) {
+                            _saveEditState = false;
+                            saveInUndoItems();
+                        }
+                        _automation->editLine(_currentMovingIndex1, final_xpos_2, final_yPos_2);
+
+                        bool result = _automation->correctTemplateLines(_currentMovingIndex1);
+                        _currentRangeIndex = ranges.size() - 1;
+
+                    } else {
+
+                        double final_xpos = _currentMouseX;
+                        double final_ypos = _currentMouseY;
+                        _automation->createSnapLine(false);
+                        _automation->findSnap(_currentMouseX, _currentMouseY, final_xpos, final_ypos);
+
+                        if (_saveEditState) {
+                            _saveEditState = false;
+                            saveInUndoItems();
+                        }
+                        auto line = _automation->moveLine(_currentMovingIndex, QPointF(final_xpos, final_ypos));
+                        _currentRangeIndex = _automation->findRangeIndex(line.p1().x(), line.p1().y(), line.p2().x(), line.p2().y(), true);
+                    }
+                }
+            }
+        }
+    } else {
+        // Hover
+
+        if (_rect.contains(QPoint(_currentMouseHoverX, _currentMouseHoverY))) {
+            _automation->findCurrentActives(_currentMouseHoverX, _currentMouseHoverY, _currentRangeIndex, _pointActive, _innerActive, _outerActive);
+
+        } else {
+            _currentRangeIndex = -1;
+            _pointActive = false;
+            _innerActive = false;
+            _outerActive = false;
+        }
+
+        if (_innerActive && _areaInfo->altKeyPressed()) {
+            _outerActive = true;
+            _innerActive = false;
+            _pointActive = false;
+        }
+    }
+
+    if (_mouseClick == false && _mouseDoubleClick == true) {
+        _mouseDoubleClick = false;
+
+        double time = _automation->pixel2Time(_mousePressX);
+
+        saveInUndoItems();
+        _automation->addLine(time, _currentMouseY);
+
+        _automation->createSnapLine(true);
+
+        int rightIndex;
+        int leftIndex;
+        _automation->find_lines_by_point(QPointF(_mousePressX, _mousePressY), leftIndex, rightIndex);
+
+        _currentIndex = rightIndex;
+
+        _automation->correctTemplateLines(_currentIndex);
+
+        _pointActive = true;
+        _innerActive = false;
+        _outerActive = false;
+    }
+}
+
+void AutomationItem::saveInUndoItems()
+{
+
+    QJsonArray array;
+    QJsonObject jObject2;
+    jObject2["track_index"] = _trackItem->trackIndex();
+    jObject2["state"] = _trackItem->automation()->getLinesState();
+    jObject2["operation"] = ClipArea::Operation_RefreshAutomationPoint;
+    array.append(jObject2);
+    ActionStack::pushInUndo(array);
+}
+
+void AutomationItem::draw(IPainter* painter)
+{
+
+    _mutex.lock();
+
+    _automation->update(_rect);
+
+    painter->setStrokeStyle("#eeeeee");
+
+    if (_saveingLastTemplatesLines) {
+        _saveingLastTemplatesLines = false;
+        _selectedLinesMoving = false;
+        _selectedPointsMoving = false;
+        _liveMovingEnabled = false;
+
+        _automation->saveTemplateLine();
+        _automation->createSelectedPoints(_areaInfo->selectedArea().area.left(), _areaInfo->selectedArea().area.right());
+    }
+
+    if (qAbs(_lastStartMarker - _areaInfo->selectedArea().area.left()) > 0.0001
+        || qAbs(_lastEndMarker - _areaInfo->selectedArea().area.right()) > 0.001) {
+        _lastEndMarker = _areaInfo->selectedArea().area.right();
+        _lastStartMarker = _areaInfo->selectedArea().area.left();
+        _automation->saveTemplateLine();
+        _automation->createSelectedPoints(_areaInfo->selectedArea().area.left(), _areaInfo->selectedArea().area.right());
+    }
+
+    if (_automation->getSelectedRangeMoveEnabled() == false) {
+        _checkStrachingActive = true;
+
+        checkEvents();
+
+    } else {
+
+        if (_checkStrachingActive == true) {
+            _checkStrachingActive = false;
+        }
+
+        _pointActive = false;
+        _innerActive = false;
+        _outerActive = false;
+        _currentRangeIndex = -1;
+    }
+
+    if (_selectAllRangeEvent) {
+        _selectAllRangeEvent = false;
+        _automation->selectAll();
+    }
+
+    if (_automation->size() > 0) {
+        drawLinesAndCircles(painter, _rect.bottom());
+    } else {
+        drawDashedLine(painter);
+    }
+
+    if (_automation->inSelectedLine(QPointF(_currentMouseHoverX, _currentMouseHoverY)) && _areaInfo->altKeyPressed() == false
+        && _automation->getSelectedRangeMoveEnabled() == false /* check for streachmoving/*/) {
+
+        drawSelectedLines(painter);
+    }
+
+    if (_areaInfo->altKeyPressed() == false && _automation->getSelectedRangeMoveEnabled() == false) {
+        drawHoverCircle(painter);
+    }
+
+    if (_mouseShapeChangingEvent) {
+        _currentCursorShape = Qt::OpenHandCursor;
+        Q_EMIT sigSetCursor(QCursor(Qt::OpenHandCursor));
+    } else {
+
+        if (_currentCursorShape == Qt::OpenHandCursor) {
+            _currentCursorShape = Qt::ArrowCursor;
+            Q_EMIT sigSetCursor(QCursor(Qt::ArrowCursor));
+        }
+    }
+    if (_areaInfo->altKeyPressed() == false) {
+
+        if ((_pointActive || _innerActive || _outerActive) && _automation->size() > 0) {
+            drawLevel(painter);
+        }
+        if (_innerActive && _automation->size() == 0) {
+            drawLevel(painter);
+        }
+    }
+    _mutex.unlock();
+}
+
+Automation* AutomationItem::automation() const
+{
+    return _automation;
+}
+
+void AutomationItem::sltTimerMouse()
+{
+
+    if (_mouseRelease == false && _mouseDoubleClick == false) {
+        _mousePressAndHold2 = true;
+        _mousePressAndHold = true;
+
+        Q_EMIT sigUpdate();
+    }
+    _timerCheckPressAndHold.stop();
+}
+
+void AutomationItem::sltTimerDoubleClicked()
+{
+    if (_mouseDoubleClickCounter >= 2) {
+
+        _mouseDoubleClick = true;
+
+        Q_EMIT sigUpdate();
+    }
+    _mouseDoubleClickCounter = 0;
+    _timerCheckDoubleClick.stop();
+}
+
+int AutomationItem::mousePressEvent(QMouseEvent* event)
+{
+
+    if (!_rect.contains(event->pos()))
+        return 0;
+
+    bool pointActive;
+    bool innerActive;
+    bool outerActive;
+    int currentRangeIndex;
+
+    _mutex.lock();
+    _automation->findCurrentActives(_currentMouseHoverX, _currentMouseHoverY, currentRangeIndex, pointActive, innerActive, outerActive);
+    _mutex.unlock();
+
+    if (pointActive == false && innerActive == false && outerActive == false) {
+
+        return 0;
+    }
+    if (outerActive == true && _automation->size() == 0) {
+
+        return 0;
+    }
+
+    _saveingLastTemplatesLines = true;
+
+    _timerCursorPosition.start();
+    _lastMouseMovingPoint = event->pos();
+
+    _currentMouseX = event->pos().x();
+    _currentMouseY = event->pos().y();
+
+    _mousePressX = event->pos().x();
+    _mousePressY = event->pos().y();
+
+    _preMouseX = event->pos().x();
+    _preMouseY = event->pos().y();
+
+    _mousePressAndHold = false;
+    _mousePressAndHold2 = false;
+    _mouseRelease = false;
+    _mousePress = true;
+
+    _timerCheckPressAndHold.start();
+
+    if (_timerCheckDoubleClick.isActive() == false) {
+        _mouseDoubleClickCounter = 0;
+        _timerCheckDoubleClick.start();
+    }
+
+    if (outerActive || pointActive) {
+        return 2;
+    } else {
+        return 1;
+    }
+}
+
+int AutomationItem::mouseMoveEvent(QMouseEvent* event)
+{
+
+    int L = _rect.left();
+    int R = _rect.right();
+
+    _preMouseX = event->pos().x();
+    _preMouseY = event->pos().y();
+
+    _diff = QSizeF(_preMouseX - _mousePressX, _preMouseY - _mousePressY);
+
+    if (_mousePressAndHold) {
+
+        if (_automation->getLimitXMoving()) {
+
+            float H = _rect.bottom() - _rect.top();
+
+            auto coeff = qAbs(_diff.height()) / 2.0;
+            double p = H / 1000.0;
+            if (coeff > 0)
+                p *= coeff;
+
+            if (_diff.height() > 0) {
+                _currentMouseY += p;
+            }
+            if (_diff.height() < 0) {
+                _currentMouseY -= p;
+            }
+
+        } else if (_automation->getLimitYMoving()) {
+            _currentMouseX += _diff.width();
+        } else {
+
+            _currentMouseX += _diff.width();
+            _currentMouseY += _diff.height();
+        }
+
+        if (_areaInfo->altKeyPressed() == false)
+            _lastMouseMovingPoint = QPoint(_currentMouseX, _currentMouseY);
+
+        Q_EMIT sigCursorPosition(QPoint(_mousePressX, _mousePressY));
+
+        _currentCursorShape = Qt::BlankCursor;
+        Q_EMIT sigSetCursor(QCursor(Qt::BlankCursor));
+        _mouseMoving = true;
+    }
+
+    return 1;
+}
+
+int AutomationItem::mouseReleaseEvent(QMouseEvent* event)
+{
+
+    _timerCursorPosition.stop();
+    _lastMouseMovingPoint = event->pos();
+
+    if (_autoScroll) {
+        _autoScroll = false;
+    }
+
+    _mouseDoubleClickCounter++;
+
+    _timerCheckPressAndHold.stop();
+
+    if (_mousePressAndHold && _currentRangeIndex >= 0 && (_pointActive || _outerActive || _innerActive)) {
+
+        int new_x = _currentMouseX, new_y = _currentMouseY;
+        if (_currentMouseX > width) {
+            new_x = _rect.width();
+        } else if (_currentMouseY < _rect.top()) {
+            new_y = _rect.top();
+        } else if (_currentMouseY > _rect.bottom()) {
+            new_y = _rect.bottom();
+        } else if (_currentMouseX < 0) {
+            new_x = 0;
+        }
+
+        Q_EMIT sigCursorPosition(QPoint(new_x, new_y));
+    }
+
+    if (_mousePressAndHold == false && _mousePress == true) {
+        _mouseClick = true;
+    }
+
+    if (_mousePressAndHold && (_liveMovingEnabled || _selectedLinesMoving || _selectedPointsMoving)) {
+        _saveingLastTemplatesLines = true;
+    }
+
+    _mousePress = false;
+    _mouseRelease = true;
+    _saveEditState = true;
+    _mousePressAndHold = false;
+    _mousePressAndHold2 = false;
+    _currentIndex = -1;
+    _mouseMoving = false;
+
+    _automation->clearMovingLine();
+
+    _currentCursorShape = Qt::ArrowCursor;
+    Q_EMIT sigSetCursor(QCursor(Qt::ArrowCursor));
+
+    return 1;
+}
+
+int AutomationItem::hoverMoveEvent(QHoverEvent* event)
+{
+
+    _currentMouseHoverX = event->pos().x();
+    _currentMouseHoverY = event->pos().y();
+
+    if (!_rect.contains(event->pos())) {
+        _mouseHover = false;
+        return false;
+    }
+
+    _mouseHover = true;
+
+    return true;
+}
+
+int AutomationItem::mouseDoubleClickEvent(QMouseEvent* event)
+{
+
+    return false;
+}
+
+int AutomationItem::keyPressEvent(QKeyEvent* event)
+{
+
+    if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_C) {
+        return createCopyList();
+    }
+    if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_V) {
+        return insertCopiedList();
+    }
+
+    if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_X) {
+
+        _mutex.lock();
+
+        if (_automation->createCopyList()) {
+
+            if (_automation->removeList()) {
+                _mutex.unlock();
+                return 1;
+            }
+        }
+        _mutex.unlock();
+    }
+
+    if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_A) {
+        _selectAllRangeEvent = true;
+    }
+    if (event->modifiers() == Qt::ShiftModifier) {
+
+        _automation->setLimitYMoving(false);
+        _automation->setLimitXMoving(true);
+    }
+
+    if (event->modifiers() == Qt::ControlModifier) {
+
+        _automation->setLimitYMoving(true);
+        _automation->setLimitXMoving(false);
+    }
+
+    if (event->key() == Qt::Key_Delete) {
+
+        if (_automation->removeList()) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+int AutomationItem::keyReleaseEvent(QKeyEvent* event)
+{
+
+    _automation->setLimitYMoving(false);
+    _automation->setLimitXMoving(false);
+    _currentCursorShape = Qt::ArrowCursor;
+    Q_EMIT sigSetCursor(QCursor(Qt::ArrowCursor));
+    return 1;
+}
+
+bool AutomationItem::undo()
+{
+    return true;
+}
+
+bool AutomationItem::redo()
+{
+    return true;
+}
+
+void AutomationItem::sltTimerMoving()
+{
+    if (_mousePressAndHold) {
+        if (_currentMouseX > _rect.width()) {
+            _diff.setWidth(_currentMouseX - rect().width());
+        }
+    }
+}
+
+void AutomationItem::drawDashedLine(IPainter* painter)
+{
+    painter->beginPath();
+    painter->setFillStyle("#eeeeee");
+    painter->setStrokeStyle("#eeeeee");
+    painter->setLineWidth(1);
+    auto ranges = _automation->getRanges(_liveMovingEnabled);
+
+    if (qIsInf(-ranges[0].p1().x())) {
+
+        ranges[0].setP1(QPointF(0, ranges[0].p1().y()));
+    }
+    if (qIsInf(ranges[ranges.size() - 1].p2().x())) {
+
+        ranges[ranges.size() - 1].setP2(QPointF(_areaInfo->lastWidth(), ranges[ranges.size() - 1].p2().y()));
+    }
+
+    if (_innerActive == true && _outerActive == false && _currentRangeIndex >= 0 && _mousePressAndHold == false) {
+        painter->drawLine(ranges[0].p1().x(), ranges[0].p2().y(), _rect.width(), ranges[0].p1().y() + 1);
+
+        // this section is for wave editor, but must fix, drawing just half of height
+        //        painter->stroke();
+        //        painter->beginPath();
+        //        painter->setLineWidth(0);
+        //        painter->moveTo(ranges[0].p1());
+        //        painter->lineTo(ranges[0].p2());
+        //        painter->lineTo(ranges[0].p2().x(), _rect.bottom());
+        //        painter->lineTo(ranges[0].p1().x(), _rect.bottom());
+        //        painter->lineTo(ranges[0].p1());
+        //        painter->setFillStyle("#80eeeeee");
+
+        painter->fill();
+    } else {
+        painter->drawDashedLine(ranges[0].p1().x(), ranges[0].p1().y(), _rect.width(), 1, 5);
+        painter->stroke();
+    }
+}
+
+void AutomationItem::drawSelectedLines(IPainter* painter)
+{
+
+    painter->beginPath();
+    painter->setStrokeStyle("#eeeeee");
+    auto ranges = _automation->selectedLines2Ranegs();
+
+    for (int i = 0; i < ranges.count(); i++) {
+
+        float curve_m = 1;
+        float curve_n = 1;
+
+        painter->setLineWidth(2);
+
+        painter->moveTo(ranges[i].p1());
+
+        bool valid = _automation->getSelectedLinesCurve(i, curve_n, curve_m);
+
+        if (qAbs(ranges[i].p1().x() - ranges[i].p2().x()) < 0.0001 && (i == 0 || i == ranges.size() - 1))
+            continue;
+
+        if (curve_m != 1.0 || curve_n != 1.0) {
+
+            bool contains = MathHelper1::isInSuperEllipseArea(ranges[i].p2(), ranges[i].p1(), curve_n, curve_m, _currentMouseHoverX, _currentMouseHoverY);
+
+            // QPolygonF _polyOuter = MathHelper1::superEllipseArea(ranges[i].p2().toPoint(), ranges[i].p1().toPoint(), curve_n, curve_m, width);
+            bool p = MathHelper1::superEllipseContains(ranges[i].p2().toPoint(), ranges[i].p1().toPoint(), curve_n, curve_m, _currentMouseHoverX, _currentMouseHoverY);
+
+            if (_outerActive) {
+                if (contains) {
+                    if (p == false)
+                        painter->setStrokeStyle("#00ff66");
+                }
+            }
+            painter->drawSuperellipse(ranges[i].p2().toPoint(), ranges[i].p1().toPoint(), curve_n, curve_m, width);
+        } else {
+
+            QPolygonF _polyInner;
+            QPolygonF _polyOuter;
+
+            MathHelper1::lineAreas(ranges[i].p1(), ranges[i].p2(), _polyInner, _polyOuter);
+
+            if (_outerActive) {
+                if (qAbs(ranges[i].p2().x() - ranges[i].p1().x()) > 0) {
+
+                    if (_polyInner.containsPoint(QPointF(_currentMouseHoverX, _currentMouseHoverY), Qt::WindingFill)) {
+
+                    } else if (_polyOuter.containsPoint(QPointF(_currentMouseHoverX, _currentMouseHoverY), Qt::WindingFill)) {
+
+                        painter->setStrokeStyle("#00ff66");
+                    }
+
+                } else {
+
+                    if (_polyOuter.containsPoint(QPointF(_currentMouseHoverX, _currentMouseHoverY), Qt::WindingFill)) {
+
+                        painter->setStrokeStyle("#00ff66");
+                    }
+                }
+            }
+            if (_selectedLinesMoving) {
+                painter->setStrokeStyle("#00ff66");
+            }
+
+            painter->lineTo(ranges[i].p2());
+        }
+    }
+
+    painter->setFillStyle("#80eeeeee");
+    painter->stroke();
+}
+
+bool AutomationItem::isSelectedLines()
+{
+
+    auto ranges = _automation->selectedLines2Ranegs();
+
+    for (int i = 0; i < ranges.count(); i++) {
+
+        float curve_m = 1;
+        float curve_n = 1;
+
+        bool valid = _automation->getCurve(i, curve_n, curve_m, _liveMovingEnabled);
+
+        if (curve_m != 1.0 || curve_n != 1.0) {
+
+            bool contains = MathHelper1::isInSuperEllipseArea(ranges[i].p2(), ranges[i].p1(), curve_n, curve_m, _currentMouseHoverX, _currentMouseHoverY);
+
+            bool p = MathHelper1::superEllipseContains(ranges[i].p2().toPoint(), ranges[i].p1().toPoint(), curve_n, curve_m, _currentMouseHoverX, _currentMouseHoverY);
+
+            if (_outerActive) {
+                if (contains) {
+                    if (p == false)
+                        return true;
+                }
+            }
+
+        } else {
+
+            QPolygonF _polyInner;
+            QPolygonF _polyOuter;
+
+            MathHelper1::lineAreas(ranges[i].p1(), ranges[i].p2(), _polyInner, _polyOuter);
+
+            if (_outerActive) {
+                if (qAbs(ranges[i].p2().x() - ranges[i].p1().x()) > 0) {
+
+                    if (_polyInner.containsPoint(QPointF(_currentMouseHoverX, _currentMouseHoverY), Qt::WindingFill)) {
+
+                    } else if (_polyOuter.containsPoint(QPointF(_currentMouseHoverX, _currentMouseHoverY), Qt::WindingFill)) {
+
+                        return true;
+                    }
+
+                } else {
+
+                    if (_polyOuter.containsPoint(QPointF(_currentMouseHoverX, _currentMouseHoverY), Qt::WindingFill)) {
+
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
+bool AutomationItem::createCopyList()
+{
+    _mutex.lock();
+
+    if (_automation->createCopyList()) {
+        _mutex.unlock();
+
+        return true;
+    }
+    _mutex.unlock();
+    return false;
+}
+
+bool AutomationItem::insertCopiedList()
+{
+    _mutex.lock();
+
+    qDebug() << "APPLY";
+    if (_automation->insertList()) {
+        _mutex.unlock();
+        return true;
+    }
+    _mutex.unlock();
+    return false;
+}
+
+void AutomationItem::sltTimerCheckPosition()
+{
+    _autoScroll = false;
+
+    float _sutoScrollSpeedRight = qAbs(rect().width() - _lastMouseMovingPoint.x()) / 20.0;
+    float _sutoScrollSpeedLeft = qAbs(_lastMouseMovingPoint.x()) / 20.0;
+
+    float startTime = _areaInfo->startTime();
+    float endTime = _areaInfo->endTime();
+
+    if (_lastMouseMovingPoint.x() > rect().width()) {
+
+        _autoScroll = true;
+
+        float rate = _sutoScrollSpeedRight * (_areaInfo->clipDuration() / _areaInfo->lastWidth());
+
+        _areaInfo->setStartTime(startTime + rate);
+        _areaInfo->setEndTime(endTime + rate);
+
+        if (_areaInfo->endTime() > _areaInfo->maxEndTime()) {
+            _areaInfo->setMaxEndTime(_areaInfo->endTime());
+        }
+
+        Q_EMIT sigUpdate();
+    }
+
+    if (_lastMouseMovingPoint.x() < 0) {
+        _autoScroll = true;
+
+        float rate = _sutoScrollSpeedLeft * (_areaInfo->clipDuration() / _areaInfo->lastWidth());
+
+        if (startTime - rate < 0) {
+            _areaInfo->setStartTime(0);
+            _areaInfo->setEndTime(endTime - startTime);
+        } else {
+            _areaInfo->setStartTime(startTime - rate);
+            _areaInfo->setEndTime(endTime - rate);
+        }
+
+        Q_EMIT sigUpdate();
+    }
+}

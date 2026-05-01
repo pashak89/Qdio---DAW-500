@@ -1,0 +1,2855 @@
+#include "trackitem.h"
+#include "audio/mixer.h"
+#include "core/sampleeditor.h"
+#include "core/warp.h"
+#include "global.h"
+#include <QCursor>
+#include <QDir>
+#include <QJsonArray>
+#include <QMimeData>
+#include <QTime>
+#include <QtMath>
+#include <audio/audioengine.h>
+#include <audio/engine.h>
+#include <audio/samplebuffer.h>
+#include <audio/sampleclip.h>
+#include <audio/song.h>
+#include <core/cliparea.h>
+#include <memory>
+#include <ui/clipitem.h>
+
+TrackItem::TrackItem(int trackIndex, Track* track, AreaInfo* areaInfo)
+    : IPainterItem()
+    , _areaInfo(areaInfo)
+    , _track(track)
+    , _trackIndex(trackIndex)
+{
+
+    _titleHeight = _areaInfo->titleHeight();
+    _seperatorHeight = _areaInfo->seperatorHeight();
+
+    _isMasterTrack = false;
+    _automationLaneModel = new AutomationLaneModel(_areaInfo, this);
+
+    _truePeakModel = new TruePeakModel(2);
+
+    _titleColor = QColor(rand() % 255, rand() % 255, rand() % 255);
+
+    _lastRowExpanded = _areaInfo->minTitlebarCount();
+    _rowsExpandedCount = _areaInfo->minTitlebarCount();
+    _rowsExpanded = true;
+
+    _volumeAutomationItem = new VolumeAutomationItem(_trackIndex, _track->volumeAutomation(), _areaInfo);
+    connect(_volumeAutomationItem, &AutomationItem::sigSetCursor, this, &TrackItem::sigSetCursor);
+    connect(_volumeAutomationItem, &AutomationItem::sigCursorPosition, this, &TrackItem::sigCursorPosition);
+    connect(_volumeAutomationItem, &AutomationItem::sigUpdate, this, &TrackItem::sigUpdate);
+
+    connect(_volumeAutomationItem->automation(), &Automation::automatedTrackVolumeChanged, this, &TrackItem::volumeAutomatedValueChanged);
+    connect(_volumeAutomationItem->automation(), &Automation::sigLinesChanged, this, &TrackItem::volumeAutomatedLineChanged);
+    connect(_volumeAutomationItem->automation(), &Automation::enabledChanged, this, &TrackItem::volumeEnabledChanged);
+
+    _automationSelected = Automation::AutomationType_Volume;
+
+    _panAutomationItem = new PanAutomationItem(_trackIndex, _track->panAutomation(), _areaInfo);
+    connect(_panAutomationItem, &AutomationItem::sigSetCursor, this, &TrackItem::sigSetCursor);
+    connect(_panAutomationItem, &AutomationItem::sigCursorPosition, this, &TrackItem::sigCursorPosition);
+    connect(_panAutomationItem, &AutomationItem::sigUpdate, this, &TrackItem::sigUpdate);
+
+    connect(_panAutomationItem->automation(), &Automation::automatedTrackVolumeChanged, this, &TrackItem::panAutomatedValueChanged);
+    connect(_panAutomationItem->automation(), &Automation::sigLinesChanged, this, &TrackItem::panAutomatedLineChanged);
+    connect(_panAutomationItem->automation(), &Automation::enabledChanged, this, &TrackItem::panEnabledChanged);
+
+    connect(AudioManager::getSong(), SIGNAL(playbackStateChanged()), this, SLOT(playbackPositionChanged()));
+
+    _timerReduction.setInterval(40);
+    connect(&_timerReduction, &QTimer::timeout, this, &TrackItem::sltTimerReduction);
+
+    connect(_automationLaneModel, &AutomationLaneModel::sigRowAdded, this, &TrackItem::sltRowAdded);
+    connect(_automationLaneModel, &AutomationLaneModel::sigRowRemoved, this, &TrackItem::sltRowRemoved);
+    connect(_automationLaneModel, &AutomationLaneModel::sigRowChanged, this, &TrackItem::sltRowChanged);
+
+    _keyFramesItem = new KeyFramesItem(_trackIndex, _areaInfo);
+
+    _objectPositionX = new ObjectPositionItem;
+    _objectPositionY = new ObjectPositionItem;
+    _objectPositionZ = new ObjectPositionItem;
+}
+
+ClipItem* TrackItem::createNewSample(QString filePath, QColor titleColor, AreaInfo* areaInfo, int trackIndex, QString clipIndex, Track* track, QRect rect, bool isFake)
+{
+
+    auto _sampleClip = static_cast<SampleClip*>(track->createClip(TimePos(0), filePath, isFake));
+
+    ClipItem* _clipItem = new ClipItem(trackIndex, titleColor, clipIndex, areaInfo, _sampleClip);
+
+    _clipItem->sampleClip()->setSampleFile(filePath);
+
+    _clipItem->setRect(rect);
+
+    return _clipItem;
+}
+
+QString TrackItem::addSampleClip(double time, ClipItem* item)
+{
+
+    auto final_xpos = (time - _areaInfo->startTime()) * _areaInfo->timePerPixel();
+
+    QRect rect = _rect;
+    rect.setX(final_xpos);
+
+    item->setRect(rect);
+
+    connect(item->sampleClip(), &SampleClip::positionChanged, [this](QString clipIndex) {
+        Q_EMIT this->sigPositionChanged(_trackIndex, clipIndex);
+    });
+
+    connect(item->sampleClip(), &SampleClip::sigPlayingChanged, [this](bool state, QString clipIndex) {
+        Q_EMIT this->sigPlayingChanged(state, _trackIndex, clipIndex);
+    });
+
+    connect(item->sampleClip()->sampleBuffer(), &SampleBuffer::sigFirstBufferFilled, this, &TrackItem::sigFirstBufferFilled);
+
+    connect(item, &ClipItem::sigSetCursor, this, &TrackItem::sigSetCursor);
+
+    connect(item, &ClipItem::sigMaxEndTimeChanged, this, &TrackItem::sigMaxEndTimeChanged);
+
+    connect(item, &ClipItem::sigStartTimeChanged, this, &TrackItem::sigStartTimeChanged);
+
+    connect(item, &ClipItem::sigEndTimeChanged, this, &TrackItem::sigEndTimeChanged);
+
+    connect(item, &ClipItem::sigCursorPosition, this, &TrackItem::sigCursorPosition);
+
+    item->setTrackIndex(_trackIndex);
+
+    item->sampleClip()->setBaseStartTime(_areaInfo->startTime());
+
+    item->setAutomationLaneModel(_automationLaneModel);
+    item->setRowsExpandedCount(_rowsExpandedCount);
+
+    _clipItems[item->clipIndex()] = item;
+
+    Q_EMIT sigClipChanged();
+    return item->clipIndex();
+}
+
+QString TrackItem::addSampleClip(ClipItem* item)
+{
+
+    QRect rect = _rect;
+
+    item->setRect(rect);
+
+    connect(item->sampleClip(), &SampleClip::positionChanged, [this](QString clipIndex) {
+        Q_EMIT this->sigPositionChanged(_trackIndex, clipIndex);
+    });
+
+    connect(item->sampleClip(), &SampleClip::sigPlayingChanged, [this](bool state, QString clipIndex) {
+        Q_EMIT this->sigPlayingChanged(state, _trackIndex, clipIndex);
+    });
+
+    connect(item->sampleClip()->sampleBuffer(), &SampleBuffer::sigFirstBufferFilled, this, &TrackItem::sigFirstBufferFilled);
+
+    connect(item, &ClipItem::sigSetCursor, this, &TrackItem::sigSetCursor);
+
+    connect(item, &ClipItem::sigMaxEndTimeChanged, this, &TrackItem::sigMaxEndTimeChanged);
+
+    connect(item, &ClipItem::sigStartTimeChanged, this, &TrackItem::sigStartTimeChanged);
+
+    connect(item, &ClipItem::sigEndTimeChanged, this, &TrackItem::sigEndTimeChanged);
+
+    connect(item, &ClipItem::sigCursorPosition, this, &TrackItem::sigCursorPosition);
+
+    item->setTrackIndex(_trackIndex);
+
+    item->sampleClip()->setBaseStartTime(_areaInfo->startTime());
+
+    item->setAutomationLaneModel(_automationLaneModel);
+    item->setRowsExpandedCount(_rowsExpandedCount);
+
+    _clipItems[item->clipIndex()] = item;
+
+    Q_EMIT sigClipChanged();
+    return item->clipIndex();
+}
+
+QString TrackItem::addSampleClip(double startTime, double endTime, double startOffset, double endOffset, ClipItem* item)
+{
+
+    auto final_xpos = (startTime - _areaInfo->startTime()) * _areaInfo->timePerPixel();
+
+    QRect rect = _rect;
+    rect.setX(final_xpos);
+
+    item->setRect(rect);
+
+    connect(item->sampleClip(), &SampleClip::positionChanged, [this](QString clipIndex) {
+        Q_EMIT this->sigPositionChanged(_trackIndex, clipIndex);
+    });
+
+    connect(item->sampleClip(), &SampleClip::sigPlayingChanged, [this](bool state, QString clipIndex) {
+        Q_EMIT this->sigPlayingChanged(state, _trackIndex, clipIndex);
+    });
+
+    connect(item->sampleClip()->sampleBuffer(), &SampleBuffer::sigFirstBufferFilled, this, &TrackItem::sigFirstBufferFilled);
+
+    connect(item, &ClipItem::sigSetCursor, this, &TrackItem::sigSetCursor);
+
+    connect(item, &ClipItem::sigMaxEndTimeChanged, this, &TrackItem::sigMaxEndTimeChanged);
+
+    connect(item, &ClipItem::sigStartTimeChanged, this, &TrackItem::sigStartTimeChanged);
+
+    connect(item, &ClipItem::sigEndTimeChanged, this, &TrackItem::sigEndTimeChanged);
+
+    connect(item, &ClipItem::sigCursorPosition, this, &TrackItem::sigCursorPosition);
+
+    item->setTrackIndex(_trackIndex);
+
+    item->sampleClip()->setBaseStartTime(_areaInfo->startTime());
+
+    auto startFrame = startTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+    auto endFrame = endTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+    item->sampleClip()->setStartTime(startTime);
+    item->sampleClip()->setEndTime(endTime);
+
+    item->sampleClip()->sampleBuffer()->setOffsetStartFrame(startOffset);
+    item->sampleClip()->sampleBuffer()->setOffsetEndFrame(endOffset);
+
+    item->sampleClip()->sampleBuffer()->setBaseStartFrame(startFrame);
+    item->sampleClip()->sampleBuffer()->setBaseEndFrame(endFrame);
+
+    item->sampleClip()->setStartTimeOffset((item->sampleClip()->sampleBuffer()->offsetStartFrame()) / 256.0);
+    item->sampleClip()->movePosition(startFrame / 256.0);
+    item->sampleClip()->changeLength((endFrame - startFrame) / 256.0);
+    item->sampleClip()->sampleChange();
+
+    item->setAutomationLaneModel(_automationLaneModel);
+    item->setRowsExpandedCount(_rowsExpandedCount);
+
+    _clipItems[item->clipIndex()] = item;
+
+    Q_EMIT sigClipChanged();
+    return item->clipIndex();
+}
+
+QJsonObject TrackItem::resizeSampleClip(QString clipIndex, QRect new_rect, double startTime, double endTime, double startOffset, double endOffset)
+{
+
+    if (!_clipItems.contains(clipIndex)) {
+        return QJsonObject();
+    }
+
+    auto state = _clipItems[clipIndex]->sampleClip()->state();
+    auto old_rect = _clipItems[clipIndex]->rect();
+    QJsonObject jObject;
+    jObject["clip_index"] = clipIndex;
+    jObject["operation"] = ActionStack::Operation_ResizeClipItem;
+    jObject["state"] = state;
+    jObject["rect"] = QString("%1, %2, %3, %4").arg(old_rect.x()).arg(old_rect.y()).arg(old_rect.width()).arg(old_rect.height());
+    jObject["track_index"] = _clipItems[clipIndex]->trackIndex();
+
+    QRect rect = _rect;
+    rect.setX(new_rect.x());
+
+    _clipItems[clipIndex]->setRect(rect);
+
+    auto startFrame = startTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+    auto endFrame = endTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+    _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setOffsetEndFrame(endOffset);
+    _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setOffsetStartFrame(startOffset);
+
+    _clipItems[clipIndex]->sampleClip()->setEndTime(endTime);
+    _clipItems[clipIndex]->sampleClip()->setStartTime(startTime);
+
+    _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setBaseStartFrame(startFrame);
+    _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setBaseEndFrame(endFrame);
+
+    _clipItems[clipIndex]->sampleClip()->setStartTimeOffset((_clipItems[clipIndex]->sampleClip()->sampleBuffer()->offsetStartFrame()) / 256.0);
+    _clipItems[clipIndex]->sampleClip()->movePosition(startFrame / 256.0);
+    _clipItems[clipIndex]->sampleClip()->changeLength((endFrame - startFrame) / 256.0);
+    _clipItems[clipIndex]->sampleClip()->sampleChange();
+
+    Q_EMIT sigClipChanged();
+    return jObject;
+}
+
+QJsonArray TrackItem::splitClipItem(QString clipIndex, double time)
+{
+
+    auto newClipItem1 = _clipItems[clipIndex]->clone(_track);
+    auto newClipItem2 = _clipItems[clipIndex]->clone(_track);
+
+    QJsonArray array;
+
+    auto obj = removeSampleItem(clipIndex);
+    array.append(obj);
+
+    auto _shadowEndTime = time;
+    auto _shadowStartTime = time;
+
+    _mutex.lock();
+
+    {
+
+        auto startFrame = _shadowStartTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+        auto endFrame = newClipItem1->sampleClip()->endTime() / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+        auto frame_diff = (_shadowStartTime - newClipItem1->sampleClip()->startTime()) / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+        newClipItem1->sampleClip()->setStartTime(_shadowStartTime);
+
+        newClipItem1->sampleClip()->sampleBuffer()->setBaseStartFrame(startFrame);
+        newClipItem1->sampleClip()->sampleBuffer()->setBaseEndFrame(endFrame);
+        newClipItem1->sampleClip()->sampleBuffer()->setOffsetStartFrame(newClipItem1->sampleClip()->sampleBuffer()->offsetStartFrame() + frame_diff);
+
+        newClipItem1->sampleClip()->setStartTimeOffset(newClipItem1->sampleClip()->sampleBuffer()->offsetStartFrame() / 256.0);
+
+        auto clipIndex = addSampleClip(_shadowStartTime, newClipItem1);
+
+        QJsonObject jObject;
+        jObject["clip_index"] = clipIndex;
+        jObject["operation"] = ActionStack::Operation_InsertClipItem;
+        jObject["track_index"] = newClipItem1->trackIndex();
+        array.append(jObject);
+
+        newClipItem1->sampleClip()->movePosition(startFrame / 256.0);
+        newClipItem1->sampleClip()->changeLength((endFrame - startFrame) / 256.0);
+        newClipItem1->sampleClip()->sampleChange();
+    }
+    {
+
+        auto startFrame = newClipItem2->sampleClip()->startTime() / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+        auto endFrame = _shadowEndTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+        double frame_diff = (_shadowEndTime - newClipItem2->sampleClip()->endTime()) / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+        newClipItem2->sampleClip()->sampleBuffer()->setOffsetEndFrame(newClipItem2->sampleClip()->sampleBuffer()->offsetEndFrame() + frame_diff);
+
+        newClipItem2->sampleClip()->setEndTime(_shadowEndTime);
+
+        newClipItem2->sampleClip()->sampleBuffer()->setBaseStartFrame(startFrame);
+        newClipItem2->sampleClip()->sampleBuffer()->setBaseEndFrame(endFrame);
+
+        auto clipIndex = addSampleClip(newClipItem2->sampleClip()->startTime(), newClipItem2);
+
+        QJsonObject jObject;
+        jObject["clip_index"] = clipIndex;
+        jObject["operation"] = ActionStack::Operation_InsertClipItem;
+        jObject["track_index"] = newClipItem2->trackIndex();
+        array.append(jObject);
+
+        newClipItem2->sampleClip()->movePosition(startFrame / 256.0);
+        newClipItem2->sampleClip()->changeLength((endFrame - startFrame) / 256.0);
+
+        newClipItem2->sampleClip()->sampleChange();
+    }
+    _mutex.unlock();
+
+    Q_EMIT sigClipChanged();
+    return array;
+}
+
+QJsonArray TrackItem::cutClipItem(QString clipIndex, double startTime, double endTime)
+{
+    QJsonArray array;
+
+    if (_clipItems[clipIndex]->sampleClip()->startTime() >= startTime && _clipItems[clipIndex]->sampleClip()->endTime() <= endTime
+        || (qAbs(_clipItems[clipIndex]->sampleClip()->startTime() - startTime) < 0.001 && qAbs(_clipItems[clipIndex]->sampleClip()->endTime() - endTime) < 0.001)) {
+
+        auto obj = removeSampleItem(clipIndex);
+        array.append(obj);
+        Q_EMIT sigClipChanged();
+        return array;
+    }
+
+    if ((startTime <= _clipItems[clipIndex]->sampleClip()->startTime()
+            || qAbs(_clipItems[clipIndex]->sampleClip()->startTime() - startTime) < 0.001)
+        && _clipItems[clipIndex]->sampleClip()->startTime() < endTime) {
+
+        auto state = _clipItems[clipIndex]->sampleClip()->state();
+        auto rect = _clipItems[clipIndex]->rect();
+        QJsonObject jObject;
+        jObject["clip_index"] = clipIndex;
+        jObject["operation"] = ActionStack::Operation_ResizeClipItem;
+        jObject["state"] = state;
+        jObject["rect"] = QString("%1, %2, %3, %4)").arg(rect.x()).arg(rect.y()).arg(rect.width()).arg(rect.height());
+        jObject["track_index"] = _clipItems[clipIndex]->trackIndex();
+        array.append(jObject);
+
+        _mutex.lock();
+
+        auto _shadowStartTime = endTime;
+
+        auto startFrame = _shadowStartTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+        auto endFrame = _clipItems[clipIndex]->sampleClip()->endTime() / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+        auto frame_diff = (_shadowStartTime - _clipItems[clipIndex]->sampleClip()->startTime()) / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+        _clipItems[clipIndex]->sampleClip()->setStartTime(_shadowStartTime);
+
+        _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setBaseStartFrame(startFrame);
+        _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setBaseEndFrame(endFrame);
+        _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setOffsetStartFrame(_clipItems[clipIndex]->sampleClip()->sampleBuffer()->offsetStartFrame() + frame_diff);
+
+        _clipItems[clipIndex]->sampleClip()->setStartTimeOffset(_clipItems[clipIndex]->sampleClip()->sampleBuffer()->offsetStartFrame() / 256.0);
+
+        _clipItems[clipIndex]->sampleClip()->movePosition(startFrame / 256.0);
+        _clipItems[clipIndex]->sampleClip()->changeLength((endFrame - startFrame) / 256.0);
+        _clipItems[clipIndex]->sampleClip()->sampleChange();
+        _mutex.unlock();
+
+    } else if (startTime < _clipItems[clipIndex]->sampleClip()->endTime()
+        && (_clipItems[clipIndex]->sampleClip()->endTime() <= endTime || qAbs(_clipItems[clipIndex]->sampleClip()->endTime() - endTime) < 0.001)) {
+
+        auto state = _clipItems[clipIndex]->sampleClip()->state();
+        auto rect = _clipItems[clipIndex]->rect();
+
+        QJsonObject jObject;
+        jObject["clip_index"] = clipIndex;
+        jObject["operation"] = ActionStack::Operation_ResizeClipItem;
+        jObject["state"] = state;
+        jObject["rect"] = QString("%1, %2, %3, %4)").arg(rect.x()).arg(rect.y()).arg(rect.width()).arg(rect.height());
+        jObject["track_index"] = _clipItems[clipIndex]->trackIndex();
+        array.append(jObject);
+
+        _mutex.lock();
+
+        auto _shadowEndTime = startTime;
+
+        auto startFrame = _clipItems[clipIndex]->sampleClip()->startTime() / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+        auto endFrame = _shadowEndTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+        double frame_diff = (_shadowEndTime - _clipItems[clipIndex]->sampleClip()->endTime()) / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+        _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setOffsetEndFrame(_clipItems[clipIndex]->sampleClip()->sampleBuffer()->offsetEndFrame() + frame_diff);
+
+        _clipItems[clipIndex]->sampleClip()->setEndTime(_shadowEndTime);
+
+        _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setBaseStartFrame(startFrame);
+        _clipItems[clipIndex]->sampleClip()->sampleBuffer()->setBaseEndFrame(endFrame);
+
+        _clipItems[clipIndex]->sampleClip()->movePosition(startFrame / 256.0);
+        _clipItems[clipIndex]->sampleClip()->changeLength((endFrame - startFrame) / 256.0);
+        _clipItems[clipIndex]->sampleClip()->sampleChange();
+
+        _mutex.unlock();
+    } else {
+
+        auto newClipItem1 = _clipItems[clipIndex]->clone(_track);
+        auto newClipItem2 = _clipItems[clipIndex]->clone(_track);
+
+        auto obj = removeSampleItem(clipIndex);
+        array.append(obj);
+
+        _mutex.lock();
+
+        {
+            auto _shadowStartTime = endTime;
+
+            auto startFrame = _shadowStartTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+            auto endFrame = newClipItem1->sampleClip()->endTime() / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+            auto frame_diff = (_shadowStartTime - newClipItem1->sampleClip()->startTime()) / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+            newClipItem1->sampleClip()->setStartTime(_shadowStartTime);
+
+            newClipItem1->sampleClip()->sampleBuffer()->setBaseStartFrame(startFrame);
+            newClipItem1->sampleClip()->sampleBuffer()->setBaseEndFrame(endFrame);
+            newClipItem1->sampleClip()->sampleBuffer()->setOffsetStartFrame(newClipItem1->sampleClip()->sampleBuffer()->offsetStartFrame() + frame_diff);
+
+            newClipItem1->sampleClip()->setStartTimeOffset(newClipItem1->sampleClip()->sampleBuffer()->offsetStartFrame() / 256.0);
+
+            auto clipIndex = addSampleClip(_shadowStartTime, newClipItem1);
+
+            QJsonObject jObject;
+            jObject["clip_index"] = clipIndex;
+            jObject["operation"] = ActionStack::Operation_InsertClipItem;
+            jObject["track_index"] = newClipItem1->trackIndex();
+            array.append(jObject);
+
+            newClipItem1->sampleClip()->movePosition(startFrame / 256.0);
+            newClipItem1->sampleClip()->changeLength((endFrame - startFrame) / 256.0);
+            newClipItem1->sampleClip()->sampleChange();
+        }
+        {
+            auto _shadowEndTime = startTime;
+
+            auto startFrame = newClipItem2->sampleClip()->startTime() / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+            auto endFrame = _shadowEndTime / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+            double frame_diff = (_shadowEndTime - newClipItem2->sampleClip()->endTime()) / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+            newClipItem2->sampleClip()->sampleBuffer()->setOffsetEndFrame(newClipItem2->sampleClip()->sampleBuffer()->offsetEndFrame() + frame_diff);
+
+            newClipItem2->sampleClip()->setEndTime(_shadowEndTime);
+
+            newClipItem2->sampleClip()->sampleBuffer()->setBaseStartFrame(startFrame);
+            newClipItem2->sampleClip()->sampleBuffer()->setBaseEndFrame(endFrame);
+
+            auto clipIndex = addSampleClip(newClipItem2->sampleClip()->startTime(), newClipItem2);
+
+            QJsonObject jObject;
+            jObject["clip_index"] = clipIndex;
+            jObject["operation"] = ActionStack::Operation_InsertClipItem;
+            jObject["track_index"] = newClipItem2->trackIndex();
+            array.append(jObject);
+
+            newClipItem2->sampleClip()->movePosition(startFrame / 256.0);
+            newClipItem2->sampleClip()->changeLength((endFrame - startFrame) / 256.0);
+
+            newClipItem2->sampleClip()->sampleChange();
+        }
+        _mutex.unlock();
+    }
+
+    Q_EMIT sigClipChanged();
+    return array;
+}
+
+QJsonObject TrackItem::removeSampleItem(QString clipIndex)
+{
+
+    QJsonObject jObject;
+    _mutex.lock();
+    if (_clipItems.contains(clipIndex)) {
+
+        _clipItems[clipIndex]->disconnect(this);
+        _clipItems[clipIndex]->sampleClip()->disconnect(this);
+        _clipItems[clipIndex]->sampleClip()->sampleBuffer()->disconnect(this);
+        if (_clipItems[clipIndex]) {
+
+            auto json = _clipItems[clipIndex]->sampleClip()->state();
+            auto rect = _clipItems[clipIndex]->rect();
+            jObject["clip_index"] = clipIndex;
+            jObject["operation"] = ActionStack::Operation_DeleteClipItem;
+            jObject["state"] = json;
+            jObject["rect"] = QString("%1, %2, %3, %4").arg(rect.x()).arg(rect.y()).arg(rect.width()).arg(rect.height());
+            jObject["track_index"] = _clipItems[clipIndex]->trackIndex();
+
+            delete _clipItems[clipIndex];
+            _clipItems[clipIndex] = Q_NULLPTR;
+            _clipItems.remove(clipIndex);
+        }
+    }
+
+    if (_selectedClipIndex == clipIndex) {
+        _selectedClipIndex = "";
+    }
+
+    _mutex.unlock();
+
+    Q_EMIT sigClipChanged();
+    return jObject;
+}
+
+ClipItem* TrackItem::clone(QString clipIndex, bool fake)
+{
+    return _clipItems[clipIndex]->clone(_track, fake);
+}
+
+QList<QString> TrackItem::setPositionChanged(double duration_in_seconds, bool toPlay)
+{
+
+    QList<QString> list;
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+
+        double samples = duration_in_seconds / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+
+        // I have changed it, now I have loaded all sampleclips before request time
+        // if (i.value()->sampleClip()->startTime() <= duration_in_seconds && i.value()->sampleClip()->endTime() >= duration_in_seconds) {
+        if (duration_in_seconds <= i.value()->sampleClip()->endTime()) {
+
+            i.value()->sampleClip()->sampleBuffer()->sltPositionChanged(samples, i.key(), toPlay);
+            list.append(i.key());
+        }
+    }
+
+    return list;
+}
+
+QString TrackItem::setPositionChanged(QString clipIndex, double duration_in_seconds, bool toPlay)
+{
+
+    double samples = duration_in_seconds / 1000.0 * AudioManager::audioEngine()->outputSampleRate();
+    _clipItems[clipIndex]->sampleClip()->sampleBuffer()->sltPositionChanged(samples, clipIndex, toPlay);
+
+    return clipIndex;
+}
+
+QList<QString> TrackItem::countPositionChanged(double duration_in_seconds)
+{
+
+    QList<QString> list;
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+
+        //        if (i.value()->sampleClip()->startTime() <= duration_in_seconds && i.value()->sampleClip()->endTime() >= duration_in_seconds) {
+        //            list.append(i.key());
+        //            break;
+        //        }
+
+        // I have changed it, now I have loaded all sampleclips before request time
+        if (duration_in_seconds <= i.value()->sampleClip()->endTime()) {
+            list.append(i.key());
+            break;
+        }
+    }
+
+    return list;
+}
+
+void TrackItem::setSelectedClipIndex(QString clipIndex, bool selected)
+{
+    if (_clipItems.contains(clipIndex)) {
+
+        if (selected == true) {
+            _selectedClipIndex = clipIndex;
+
+        } else {
+            _selectedClipIndex = "";
+        }
+    }
+}
+
+void TrackItem::deSelecteAll()
+{
+    _selectedClipIndex = "";
+    _indicatorEnabled = IndicatorType_Disable;
+}
+
+bool TrackItem::contains(QPoint point)
+{
+    return getTotalRect().contains(point);
+}
+
+bool TrackItem::selectedAreaContains(SelectedArea selectedArea)
+{
+    qDebug() << "selectedArea.firstTrackIndex()" << selectedArea.firstTrackIndex()
+             << selectedArea.lastTrackIndex() << selectedArea._lastSubTrackIndex
+             << selectedArea._firstSubTrackIndex;
+    if ((_trackIndex > selectedArea.firstTrackIndex() && _trackIndex < selectedArea.lastTrackIndex())
+        || (_trackIndex == selectedArea.firstTrackIndex() && selectedArea.firstTrackIndex() != selectedArea.lastTrackIndex() && -1 >= selectedArea._firstSubTrackIndex)
+        || (_trackIndex == selectedArea.lastTrackIndex() && selectedArea.firstTrackIndex() != selectedArea.lastTrackIndex() && -1 <= selectedArea._lastSubTrackIndex)
+        || (selectedArea.firstTrackIndex() == _trackIndex && selectedArea.firstTrackIndex() == selectedArea.lastTrackIndex() && -1 >= selectedArea._firstSubTrackIndex
+            && -1 <= selectedArea._lastSubTrackIndex)) {
+        qDebug() << "OK";
+        return true;
+    } else {
+        qDebug() << "RETURN";
+        return false;
+    }
+}
+
+int TrackItem::automationLaneIndex(QPointF point)
+{
+    return _automationLaneModel->getIndex(point);
+}
+
+QString TrackItem::findClipItemPixel(double pixel)
+{
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+
+        if (i.value()->containsPixel(pixel)) {
+            return i.key();
+        }
+    }
+    return 0;
+}
+
+QString TrackItem::findClipItemTime(double time)
+{
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+
+        if (i.value()->containsTime(time)) {
+            return i.key();
+        }
+    }
+
+    return "";
+}
+
+QList<QString> TrackItem::findOverlayItems(double startTime, double endTime)
+{
+
+    QList<QString> list;
+    qDebug() << "findOverlayItems" << _clipItems.size() << _trackIndex;
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+
+        qDebug() << i.key() << "i.value()->sampleClip()->startTime() "
+                 << i.value()->sampleClip()->startTime() << i.value()->sampleClip()->endTime() << endTime << startTime;
+        if (i.value()->sampleClip()->startTime() < endTime && i.value()->sampleClip()->endTime() >= endTime) {
+            list.append(i.key());
+        }
+
+        else if (i.value()->sampleClip()->startTime() <= startTime && i.value()->sampleClip()->endTime() > startTime) {
+            list.append(i.key());
+        }
+
+        else if (i.value()->sampleClip()->startTime() >= startTime && i.value()->sampleClip()->endTime() <= endTime) {
+            list.append(i.key());
+        }
+
+        qDebug() << "findOverlayItems";
+    }
+    return list;
+}
+
+QList<QString> TrackItem::findOverlayItems(QRectF selectedRect)
+{
+    QList<QString> list;
+    if (selectedRect.left() >= 0 && selectedRect.right() >= 0 && selectedRect.left() != selectedRect.right() && (rect().top() >= selectedRect.top() && rect().bottom() <= selectedRect.bottom())) {
+
+        QMapIterator<QString, ClipItem*> i(_clipItems);
+        while (i.hasNext()) {
+            i.next();
+
+            if (i.value()->sampleClip()->startTime() < selectedRect.right() && i.value()->sampleClip()->endTime() >= selectedRect.right()) {
+                list.append(i.key());
+            }
+
+            else if (i.value()->sampleClip()->startTime() <= selectedRect.left() && i.value()->sampleClip()->endTime() > selectedRect.left()) {
+                list.append(i.key());
+            }
+
+            else if (i.value()->sampleClip()->startTime() >= selectedRect.left() && i.value()->sampleClip()->endTime() <= selectedRect.right()) {
+                list.append(i.key());
+            }
+        }
+    }
+    return list;
+}
+
+ClipItem* TrackItem::clipItems(QString index)
+{
+    if (_clipItems.contains(index)) {
+        return _clipItems[index];
+    } else {
+        return Q_NULLPTR;
+    }
+}
+
+ClipItem* TrackItem::getFirstClipItem()
+{
+
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    double minStartTime = _areaInfo->maxEndTime();
+    QString index = "";
+
+    while (i.hasNext()) {
+        i.next();
+
+        if (i.value()->sampleClip()->startTime() <= minStartTime) {
+            minStartTime = i.value()->sampleClip()->startTime();
+
+            index = i.key();
+        }
+    }
+    return clipItems(index);
+}
+
+ClipItem* TrackItem::getLastClipItem()
+{
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    double minEndTime = 0;
+    QString index = "";
+    while (i.hasNext()) {
+        i.next();
+        if (i.value()->sampleClip()->endTime() >= minEndTime) {
+            minEndTime = i.value()->sampleClip()->endTime();
+            index = i.key();
+        }
+    }
+    return clipItems(index);
+}
+
+bool TrackItem::containTitle(QPointF pos)
+{
+    QRectF _tmpRect = rect();
+    _tmpRect.setHeight(_areaInfo->titleHeight());
+
+    if (_tmpRect.contains(pos)) {
+        return true;
+    }
+    return false;
+}
+
+void TrackItem::setRect(const QRect& rect)
+{
+
+    IPainterItem::setRect(rect);
+
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+
+        i.value()->setRect(rect);
+    }
+
+    _volumeAutomationItem->automation()->update(rect);
+    _panAutomationItem->automation()->update(rect);
+    _keyFramesItem->setRect(rect);
+    _objectPositionX->setRect(rect);
+    _objectPositionY->setRect(rect);
+    _objectPositionZ->setRect(rect);
+
+    Q_EMIT sigUpdate();
+}
+
+QRect TrackItem::rect()
+{
+    auto re = _rect;
+
+    // qDebug() << "_rect" << _rect.top() << _rect.height() << _trackIndex << offset;
+    re.setTop(_rect.top());
+    re.setHeight(_rowsExpandedCount * _titleHeight + _seperatorHeight);
+
+    return re;
+}
+
+QRect TrackItem::totalRect()
+{
+
+    return getTotalRect();
+}
+
+QRect TrackItem::getTotalRect()
+{
+    auto _tmprect = TrackItem::rect();
+
+    if (_rowsExpanded && _automationLaneEnabled) {
+        _tmprect.setHeight(_rowsExpandedCount * _titleHeight + getAutomationLaneModel()->totalHeight() + _seperatorHeight);
+    } else {
+
+        _tmprect.setHeight(_rowsExpandedCount * _titleHeight + _seperatorHeight);
+    }
+
+    return _tmprect;
+}
+
+void TrackItem::updateAutomationLane()
+{
+}
+
+QJsonArray TrackItem::deleteSelectedArea(SelectedArea selectedRect)
+{
+
+    QJsonArray jArray;
+    qDebug() << "deleteSelectedArea" << selectedRect.area() << rect();
+    if (selectedRect.area().left() >= 0 && selectedRect.area().right() >= 0 && selectedRect.area().left() != selectedRect.area().right() && (rect().top() >= selectedRect.area().top() && rect().bottom() <= selectedRect.area().bottom())) {
+
+        auto list = findOverlayItems(selectedRect.area().left(), selectedRect.area().right());
+
+        qDebug() << "deleteSelectedArea1" << selectedRect.area().left() << selectedRect.area().right();
+        for (int i = 0; i < list.size(); i++) {
+
+            if (selectedRect.area().right() <= _clipItems[list[i]]->sampleClip()->startTime() || selectedRect.area().left() >= _clipItems[list[i]]->sampleClip()->endTime()
+                || selectedRect.area().top() >= _clipItems[list[i]]->rect().bottom() || selectedRect.area().bottom() <= _clipItems[list[i]]->rect().top()) {
+
+                qDebug() << "deleteSelectedArea2";
+            } else {
+
+                qDebug() << "deleteSelectedArea3";
+                auto array = cutClipItem(list[i], selectedRect.area().left(), selectedRect.area().right());
+                jArray.append(array);
+            }
+        }
+    }
+
+    return jArray;
+}
+
+QVector<TrackItem::CopyItem> TrackItem::copySelectedArea(SelectedArea selectedRect)
+{
+    QVector<TrackItem::CopyItem> list;
+
+    qDebug() << "copySelectedArea1;" << selectedRect.area() << rect();
+    if (selectedRect.area().left() >= 0 && selectedRect.area().right() >= 0 && selectedRect.area().left() != selectedRect.area().right() && (rect().top() >= selectedRect.area().top() && rect().bottom() <= selectedRect.area().bottom())) {
+
+        QMapIterator<QString, ClipItem*> i(_clipItems);
+        while (i.hasNext()) {
+            i.next();
+
+            if (selectedRect.area().right() <= i.value()->sampleClip()->startTime() || selectedRect.area().left() >= i.value()->sampleClip()->endTime()
+                || selectedRect.area().top() >= i.value()->rect().bottom() || selectedRect.area().bottom() <= i.value()->rect().top()) {
+
+                qDebug() << "copySelectedArea2";
+            } else {
+
+                qDebug() << "copySelectedArea3";
+                auto cloneditem = _clipItems[i.key()]->clone(_track, true);
+
+                cloneditem->setAutomationLaneModel(_automationLaneModel);
+                cloneditem->setRowsExpandedCount(_rowsExpandedCount);
+
+                list.append(CopyItem {
+                    selectedRect.area().left(),
+                    selectedRect.area().right(),
+                    _clipItems[i.key()]->sampleClip()->endTime() - _clipItems[i.key()]->sampleClip()->startTime(),
+                    selectedRect.area().left() - _clipItems[i.key()]->sampleClip()->startTime(),
+                    _clipItems[i.key()]->sampleClip()->endTime() - selectedRect.area().right(),
+                    _trackIndex,
+                    cloneditem, selectedRect.area().height() });
+            }
+        }
+
+        if (list.size() == 0) {
+
+            qDebug() << "copySelectedArea4";
+            list.append(CopyItem { -1, -1, -1, -1, -1, _trackIndex, nullptr, selectedRect.area().height() });
+        }
+    }
+    return list;
+}
+
+QVector<ClipItem*> TrackItem::copyAllClipItems()
+{
+    QVector<ClipItem*> list;
+
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+        list.append(_clipItems[i.key()]->clone(_track, true));
+    }
+    return list;
+}
+
+void TrackItem::setKeyFrameEnabled(bool enabled)
+{
+    _keyFramesItem->setKeyFramesEnabled(enabled);
+}
+
+bool TrackItem::keyFramesEnabled()
+{
+    return _keyFramesItem->keyFramesEnabled();
+}
+
+bool TrackItem::isMasterTrack() const
+{
+    return _isMasterTrack;
+}
+
+void TrackItem::setMasterTrack(bool isMasterTrack)
+{
+    _isMasterTrack = isMasterTrack;
+}
+
+Automation::AutomationType TrackItem::getAutomationSelected() const
+{
+    return _automationSelected;
+}
+
+void TrackItem::setAutomationSelected(const Automation::AutomationType& automationSelected)
+{
+    _automationSelected = automationSelected;
+}
+
+void TrackItem::totalRowExpandedChanged()
+{
+    Q_EMIT rowsExpandedChanged(_trackIndex);
+}
+
+QString TrackItem::getAutomationMenuTitle() const
+{
+    return _automationMenuTitle;
+}
+
+void TrackItem::setAutomationMenuTitle(const QString& automationMenuTitle)
+{
+    _automationMenuTitle = automationMenuTitle;
+    Q_EMIT automationMenuTitleChanged();
+}
+
+int TrackItem::getRowsExpandedCount() const
+{
+    return _rowsExpandedCount;
+}
+
+int TrackItem::getLastRowExpanded() const
+{
+    return _lastRowExpanded;
+}
+
+void TrackItem::setLastRowExpanded(int lastRowExpanded)
+{
+    _lastRowExpanded = lastRowExpanded;
+}
+
+AutomationLaneModel* TrackItem::getAutomationLaneModel() const
+{
+    return _automationLaneModel;
+}
+
+bool TrackItem::automationLaneEnabled() const
+{
+    return _automationLaneEnabled;
+}
+
+void TrackItem::setAutomationLaneEnabled(bool enabled)
+{
+
+    _automationLaneEnabled = enabled;
+}
+
+void TrackItem::setRowsExpandedCount(int count)
+{
+
+    qDebug() << "setRowsExpandedCount" << count;
+    if (count < 1) {
+        count = 1;
+    }
+    _rowsExpandedCount = count;
+
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+        i.value()->setRowsExpandedCount(_rowsExpandedCount);
+    }
+
+    auto rect_ = rect();
+    if (_rowsExpanded && _automationLaneEnabled) {
+        rect_.setHeight(_rowsExpandedCount * _titleHeight + getAutomationLaneModel()->totalHeight() + _seperatorHeight);
+    } else {
+
+        rect_.setHeight(_rowsExpandedCount * _titleHeight + _seperatorHeight);
+    }
+    setRect(rect_);
+
+    Q_EMIT rowsExpandedChanged(_trackIndex);
+}
+
+int TrackItem::rowsExpandedCount() const
+{
+    return _rowsExpandedCount;
+}
+
+QColor TrackItem::getTitleColor() const
+{
+    return _titleColor;
+}
+
+bool TrackItem::isSelected() const
+{
+    return _isSelected;
+}
+
+void TrackItem::setSelected(bool isSelected)
+{
+    _isSelected = isSelected;
+}
+
+TruePeakModel* TrackItem::truePeakModel()
+{
+
+    return _truePeakModel;
+}
+
+void TrackItem::updateTruePeak()
+{
+
+    if (((SampleTrack*)track())->audioPort()->bufferUsed() == false) {
+        auto channels = 2;
+        for (int i = 0; i < channels; i++) {
+
+            float AverageMeterLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).AverageMeterLevel);
+            float AverageMeterPeakLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).AverageMeterPeakLevel);
+            float PeakMeterLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).PeakMeterLevel);
+            float PeakMeterPeakLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).PeakMeterPeakLevel);
+            float MaximumPeakLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).MaximumPeakLevel);
+            float MaximumTruePeakLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).MaximumTruePeakLevel);
+
+            AverageMeterLevel -= 1;
+            AverageMeterPeakLevel -= 1;
+            PeakMeterLevel -= 1;
+            PeakMeterPeakLevel -= 1;
+            MaximumPeakLevel -= 1;
+            MaximumTruePeakLevel -= 1;
+
+            if (AverageMeterLevel < -70) {
+                AverageMeterLevel = -70;
+            }
+            if (AverageMeterPeakLevel < -70) {
+                AverageMeterPeakLevel = -70;
+            }
+            if (PeakMeterLevel < -70) {
+                PeakMeterLevel = -70;
+            }
+            if (PeakMeterPeakLevel < -70) {
+                PeakMeterPeakLevel = -70;
+            }
+            if (MaximumPeakLevel < -70) {
+                MaximumPeakLevel = -70;
+            }
+            if (MaximumTruePeakLevel < -70) {
+                MaximumTruePeakLevel = -70;
+            }
+
+            _truePeakModel->insert(i,
+                TruePeakModel::TruePeak { MathHelper1::decibel2yPixel(AverageMeterLevel), MathHelper1::decibel2yPixel(AverageMeterPeakLevel), MathHelper1::decibel2yPixel(PeakMeterLevel),
+                    MathHelper1::decibel2yPixel(PeakMeterPeakLevel), MathHelper1::decibel2yPixel(MaximumPeakLevel), MathHelper1::decibel2yPixel(MaximumTruePeakLevel) });
+        }
+    } else {
+        auto channels = 2;
+        for (int i = 0; i < channels; i++) {
+            float AverageMeterLevel = ((SampleTrack*)track())->truePeakMeter()->getLevels()->getAverageMeterLevel(i);
+            float AverageMeterPeakLevel = ((SampleTrack*)track())->truePeakMeter()->getLevels()->getAverageMeterPeakLevel(i);
+            float PeakMeterLevel = ((SampleTrack*)track())->truePeakMeter()->getLevels()->getPeakMeterLevel(i);
+            float PeakMeterPeakLevel = ((SampleTrack*)track())->truePeakMeter()->getLevels()->getPeakMeterPeakLevel(i);
+            float MaximumPeakLevel = ((SampleTrack*)track())->truePeakMeter()->getLevels()->getMaximumPeakLevel(i);
+            float MaximumTruePeakLevel = ((SampleTrack*)track())->truePeakMeter()->getLevels()->getMaximumTruePeakLevel(i);
+
+            if (AverageMeterLevel < -70) {
+                AverageMeterLevel = -70;
+            }
+            if (AverageMeterPeakLevel < -70) {
+                AverageMeterPeakLevel = -70;
+            }
+            if (PeakMeterLevel < -70) {
+                PeakMeterLevel = -70;
+            }
+            if (PeakMeterPeakLevel < -70) {
+                PeakMeterPeakLevel = -70;
+            }
+            if (MaximumPeakLevel < -70) {
+                MaximumPeakLevel = -70;
+            }
+            if (MaximumTruePeakLevel < -70) {
+                MaximumTruePeakLevel = -70;
+            }
+
+            if (AverageMeterLevel > 6) {
+                AverageMeterLevel = 6;
+            }
+            if (AverageMeterPeakLevel > 6) {
+                AverageMeterPeakLevel = 6;
+            }
+            if (PeakMeterLevel > 6) {
+                PeakMeterLevel = 6;
+            }
+            if (PeakMeterPeakLevel > 6) {
+                PeakMeterPeakLevel = 6;
+            }
+            if (MaximumPeakLevel > 6) {
+                MaximumPeakLevel = 6;
+            }
+            if (MaximumTruePeakLevel > 6) {
+                MaximumTruePeakLevel = 6;
+            }
+
+            _truePeakModel->insert((channels - 1) - i,
+                TruePeakModel::TruePeak { MathHelper1::decibel2yPixel(AverageMeterLevel), MathHelper1::decibel2yPixel(AverageMeterPeakLevel), MathHelper1::decibel2yPixel(PeakMeterLevel),
+                    MathHelper1::decibel2yPixel(PeakMeterPeakLevel), MathHelper1::decibel2yPixel(MaximumPeakLevel), MathHelper1::decibel2yPixel(MaximumTruePeakLevel) });
+        }
+    }
+
+    Q_EMIT truePeakModelChanged();
+}
+
+QString TrackItem::currentClipItem() const
+{
+    return _currentClipItem;
+}
+
+void TrackItem::setCurrentClipItem(const QString& currentClipItem)
+{
+    _currentClipItem = currentClipItem;
+}
+
+int TrackItem::channelCount() const
+{
+    return 2;
+}
+
+void TrackItem::playBackUpdate()
+{
+    auto channels = 2;
+    std::shared_ptr<MeterBallistics> levels;
+    if (AudioManager::mixer() == Q_NULLPTR) {
+        return;
+    } else {
+        levels = std::make_shared<MeterBallistics>(*AudioManager::mixer()->truePeakMeter()->getLevels());
+    }
+
+    for (int i = 0; i < channels; i++) {
+        float AverageMeterLevel = levels->getAverageMeterLevel(i);
+        float AverageMeterPeakLevel = levels->getAverageMeterPeakLevel(i);
+        float PeakMeterLevel = levels->getPeakMeterLevel(i);
+        float PeakMeterPeakLevel = levels->getPeakMeterPeakLevel(i);
+        float MaximumPeakLevel = levels->getMaximumPeakLevel(i);
+        float MaximumTruePeakLevel = levels->getMaximumTruePeakLevel(i);
+
+        if (AverageMeterLevel < -70) {
+            AverageMeterLevel = -70;
+        }
+        if (AverageMeterPeakLevel < -70) {
+            AverageMeterPeakLevel = -70;
+        }
+        if (PeakMeterLevel < -70) {
+            PeakMeterLevel = -70;
+        }
+        if (PeakMeterPeakLevel < -70) {
+            PeakMeterPeakLevel = -70;
+        }
+        if (MaximumPeakLevel < -70) {
+            MaximumPeakLevel = -70;
+        }
+        if (MaximumTruePeakLevel < -70) {
+            MaximumTruePeakLevel = -70;
+        }
+
+        if (AverageMeterLevel > 6) {
+            AverageMeterLevel = 6;
+        }
+        if (AverageMeterPeakLevel > 6) {
+            AverageMeterPeakLevel = 6;
+        }
+        if (PeakMeterLevel > 6) {
+            PeakMeterLevel = 6;
+        }
+        if (PeakMeterPeakLevel > 6) {
+            PeakMeterPeakLevel = 6;
+        }
+        if (MaximumPeakLevel > 6) {
+            MaximumPeakLevel = 6;
+        }
+        if (MaximumTruePeakLevel > 6) {
+            MaximumTruePeakLevel = 6;
+        }
+
+        _truePeakModel->insert((channels - 1) - i,
+            TruePeakModel::TruePeak { MathHelper1::decibel2yPixel(AverageMeterLevel), MathHelper1::decibel2yPixel(AverageMeterPeakLevel), MathHelper1::decibel2yPixel(PeakMeterLevel),
+                MathHelper1::decibel2yPixel(PeakMeterPeakLevel), MathHelper1::decibel2yPixel(MaximumPeakLevel), MathHelper1::decibel2yPixel(MaximumTruePeakLevel) });
+    }
+    Q_EMIT truePeakModelChanged();
+}
+
+void TrackItem::playbackPositionChanged()
+{
+
+    if (AudioManager::getSong()->isPause()) {
+        _timerReduction.start();
+    }
+}
+
+void TrackItem::sltTimerReduction()
+{
+
+    if (AudioManager::getSong()->isPause() == false) {
+        _timerReduction.stop();
+        return;
+    }
+    auto channels = 2;
+
+    int stop_counter = 0;
+    for (int i = 0; i < channels; i++) {
+
+        float AverageMeterLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).AverageMeterLevel);
+        float AverageMeterPeakLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).AverageMeterPeakLevel);
+        float PeakMeterLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).PeakMeterLevel);
+        float PeakMeterPeakLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).PeakMeterPeakLevel);
+        float MaximumPeakLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).MaximumPeakLevel);
+        float MaximumTruePeakLevel = MathHelper1::yPixel2Decibel(_truePeakModel->get(i).MaximumTruePeakLevel);
+
+        AverageMeterLevel -= 1;
+        AverageMeterPeakLevel -= 1;
+        PeakMeterLevel -= 1;
+        PeakMeterPeakLevel -= 1;
+        MaximumPeakLevel -= 1;
+        MaximumTruePeakLevel -= 1;
+
+        if (AverageMeterLevel < -70) {
+            AverageMeterLevel = -70;
+        }
+        if (AverageMeterPeakLevel < -70) {
+            AverageMeterPeakLevel = -70;
+        }
+        if (PeakMeterLevel < -70) {
+            PeakMeterLevel = -70;
+        }
+        if (PeakMeterPeakLevel < -70) {
+            PeakMeterPeakLevel = -70;
+        }
+        if (MaximumPeakLevel < -70) {
+            MaximumPeakLevel = -70;
+        }
+        if (MaximumTruePeakLevel < -70) {
+            MaximumTruePeakLevel = -70;
+        }
+
+        _truePeakModel->insert(i,
+            TruePeakModel::TruePeak { MathHelper1::decibel2yPixel(AverageMeterLevel), MathHelper1::decibel2yPixel(AverageMeterPeakLevel), MathHelper1::decibel2yPixel(PeakMeterLevel),
+                MathHelper1::decibel2yPixel(PeakMeterPeakLevel), MathHelper1::decibel2yPixel(MaximumPeakLevel), MathHelper1::decibel2yPixel(MaximumTruePeakLevel) });
+
+        if (AverageMeterLevel <= -70 && AverageMeterPeakLevel <= -70
+            && PeakMeterLevel <= -70 && PeakMeterPeakLevel <= -70
+            && MaximumPeakLevel <= -70 && MaximumTruePeakLevel <= -70) {
+
+            stop_counter++;
+        }
+    }
+
+    if (stop_counter == channels) {
+        _timerReduction.stop();
+        return;
+    }
+    Q_EMIT truePeakModelChanged();
+}
+
+void TrackItem::sltRowAdded(int index, int count, QString control)
+{
+
+    auto top = rect().top() + _rowsExpandedCount * _areaInfo->titleHeight() + _areaInfo->seperatorHeight();
+    if (control == "Volume") {
+
+        auto H = _automationLaneModel->totalRowCountBefore2(index) * _areaInfo->titleHeight() + index * _areaInfo->seperatorHeight();
+
+        auto tempRect = rect();
+        tempRect.setTop(top + H);
+        tempRect.setHeight(_automationLaneModel->getItem(index)->automationLaneRowCount * _areaInfo->titleHeight());
+
+        _volumeAutomationItem->automation()->setSubTrackIndex(index);
+        _volumeAutomationItem->setRect(tempRect);
+        _volumeAutomationItem->automation()->update(tempRect);
+    }
+    if (control == "Pan") {
+
+        auto H = _automationLaneModel->totalRowCountBefore2(index) * _areaInfo->titleHeight() + index * _areaInfo->seperatorHeight();
+
+        auto tempRect = rect();
+        tempRect.setTop(top + H);
+        tempRect.setHeight(_automationLaneModel->getItem(index)->automationLaneRowCount * _areaInfo->titleHeight());
+
+        _panAutomationItem->automation()->setSubTrackIndex(index);
+        _panAutomationItem->setRect(tempRect);
+        _panAutomationItem->automation()->update(tempRect);
+    }
+
+    auto rect_ = getTotalRect();
+    if (_rowsExpanded && _automationLaneEnabled) {
+        rect_.setHeight(_rowsExpandedCount * _titleHeight + getAutomationLaneModel()->totalHeight() + _seperatorHeight);
+    } else {
+
+        rect_.setHeight(_rowsExpandedCount * _titleHeight + _seperatorHeight);
+    }
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+        i.value()->setRect(rect_);
+    }
+
+    Q_EMIT sigAutomationLaneCountChanged(_trackIndex);
+    Q_EMIT rowsExpandedChanged(_trackIndex);
+}
+
+void TrackItem::sltRowRemoved(int count, QString control)
+{
+
+    if (control == "Volume") {
+
+        QRect tempRect = rect();
+        tempRect.setTop(rect().top() + _areaInfo->titleHeight());
+        tempRect.setHeight(_areaInfo->titleHeight() * (_rowsExpandedCount - 1));
+
+        _volumeAutomationItem->setRect(tempRect);
+        _volumeAutomationItem->automation()->update(tempRect);
+    }
+    if (control == "Pan") {
+
+        QRect tempRect = rect();
+        tempRect.setTop(rect().top() + _areaInfo->titleHeight());
+        tempRect.setHeight(_areaInfo->titleHeight() * (_rowsExpandedCount - 1));
+
+        _panAutomationItem->setRect(tempRect);
+        _panAutomationItem->automation()->update(tempRect);
+    }
+
+    Q_EMIT sigAutomationLaneCountChanged(_trackIndex);
+    Q_EMIT rowsExpandedChanged(_trackIndex);
+    // setRowsExpandedCount(rowsExpandedCount() - count);
+}
+void TrackItem::sltRowChanged()
+{
+    Q_EMIT sigAutomationLaneCountChanged(_trackIndex);
+    Q_EMIT rowsExpandedChanged(_trackIndex);
+    // setRowsExpandedCount(rowsExpandedCount() - count);
+}
+
+void TrackItem::setMasterTrackVolume(float value)
+{
+    if (AudioManager::mixer() == Q_NULLPTR) {
+        return;
+    }
+
+    AudioManager::mixer()->setMasterTrackVolume(value);
+    Q_EMIT masterTrackVolumeChanged();
+}
+
+void TrackItem::setEnvelopesVisible(bool visible)
+{
+    _volumeAutomationItem->setShowEnvelopes(visible);
+    _panAutomationItem->setShowEnvelopes(visible);
+}
+
+float TrackItem::masterTrackVolume() const
+{
+    if (AudioManager::mixer() == Q_NULLPTR) {
+        return 0;
+    }
+
+    return AudioManager::mixer()->masterTrackVolume();
+}
+
+double TrackItem::trackVolume() const
+{
+    return _volumeAutomationItem->yPixel2Value(_volumeAutomationItem->automation()->trackValue());
+}
+
+void TrackItem::setTrackVolume(double trackVolume)
+{
+
+    _volumeAutomationItem->automation()->setTrackValue(_volumeAutomationItem->value2yPixel(trackVolume));
+    Q_EMIT sigUpdate();
+}
+
+double TrackItem::automatedTrackVolume() const
+{
+    return _volumeAutomationItem->automation()->automatedTrackValue();
+}
+
+double TrackItem::trackPan() const
+{
+
+    return _panAutomationItem->yPixel2Value(_panAutomationItem->automation()->trackValue());
+}
+
+void TrackItem::setTrackPan(double pan)
+{
+    _panAutomationItem->automation()->setTrackValue(_panAutomationItem->value2yPixel(pan));
+    Q_EMIT sigUpdate();
+}
+
+double TrackItem::automatedTrackPan() const
+{
+    return _panAutomationItem->automation()->automatedTrackValue();
+}
+
+QString TrackItem::imageUrl() const
+{
+    return _imageUrl;
+}
+
+void TrackItem::setImageUrl(const QString& imageUrl)
+{
+    _imageUrl = imageUrl;
+}
+
+void TrackItem::setRowsExpanded(bool rowsExpanded)
+{
+
+    if (_rowsExpanded != rowsExpanded) {
+        _rowsExpanded = rowsExpanded;
+
+        Q_EMIT rowsExpandedChanged(_trackIndex);
+    }
+}
+
+void TrackItem::updateRect()
+{
+
+    if (_rowsExpanded == true) {
+
+        if (rowsExpandedCount() == 1) {
+            // Back to Defaut
+
+            setRowsExpandedCount(_areaInfo->minTitlebarCount());
+        } else {
+            // Back to Last Height
+
+            setRowsExpandedCount(getLastRowExpanded());
+        }
+        Q_EMIT rowsExpandedChanged(0);
+
+    } else {
+
+        setLastRowExpanded(rowsExpandedCount());
+        setRowsExpandedCount(1);
+        Q_EMIT rowsExpandedChanged(0);
+    }
+}
+
+bool TrackItem::rowsExpanded() const
+{
+    return _rowsExpanded;
+}
+
+int TrackItem::inDraggingCounter() const
+{
+    return _inDraggingCounter;
+}
+
+bool TrackItem::editName() const
+{
+    return _editName;
+}
+
+bool TrackItem::coverBound() const
+{
+    return _coverBound;
+}
+
+void TrackItem::setCoverBound(bool coverBound)
+{
+    _coverBound = coverBound;
+}
+
+bool TrackItem::selectTrackDependSolo() const
+{
+    return _selectTrackDependSolo;
+}
+
+bool TrackItem::isSolo() const
+{
+    return _track->isSolo();
+}
+
+bool TrackItem::isMuted() const
+{
+    return _track->isMuted();
+}
+
+bool TrackItem::partialySolo() const
+{
+    return _partialySolo;
+}
+
+bool TrackItem::selectSolo() const
+{
+    return _selectSolo;
+}
+
+bool TrackItem::isCollapsed() const
+{
+    return _isCollapsed;
+}
+
+QMap<QString, ClipItem*> TrackItem::getClipItems() const
+{
+    return _clipItems;
+}
+
+AutomationItem* TrackItem::volumeAutomationItem() const
+{
+    return _volumeAutomationItem;
+}
+
+AutomationItem* TrackItem::panAutomationItem() const
+{
+    return _panAutomationItem;
+}
+
+QString TrackItem::hoverClipIndex() const
+{
+    return _hoverClipIndex;
+}
+
+QString TrackItem::selectedClipIndex() const
+{
+    return _selectedClipIndex;
+}
+
+TrackItem::IndicatorType TrackItem::indicatorEnabled() const
+{
+    return _indicatorEnabled;
+}
+
+void TrackItem::setIndicatorEnable(TrackItem::IndicatorType indicatorEnabled)
+{
+
+    _indicatorEnabled = indicatorEnabled;
+}
+
+void TrackItem::setIndicator(double currentIndicator)
+{
+    _currentIndicator = currentIndicator;
+}
+
+double TrackItem::currentIndicator() const
+{
+    return _currentIndicator;
+}
+
+Track* TrackItem::track() const
+{
+    return _track;
+}
+
+int TrackItem::trackIndex() const
+{
+    return _trackIndex;
+}
+
+int TrackItem::mousePressEvent(QMouseEvent* event)
+{
+
+    if (!getTotalRect().contains(event->pos())) {
+        return TrackItemEvent_NotSelect;
+    }
+
+    _isSelected = true;
+    Q_EMIT sigSelectedChanged(_trackIndex);
+
+    _mutex.lock();
+    bool status = false;
+    _selectedClipIndex = "";
+
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+
+        status = i.value()->mousePressEvent(event);
+        if (status) {
+            _selectedClipIndex = i.key();
+        }
+    }
+
+    _mutex.unlock();
+
+    bool keyFramesItem = _keyFramesItem->mousePressEvent(event);
+
+    bool objectXSelected _objectPositionX->mousePressEvent(event);
+    bool objectYSelected _objectPositionY->mousePressEvent(event);
+    bool objectZSelected _objectPositionZ->mousePressEvent(event);
+
+    double currentPix = event->pos().x();
+
+    double final_xpos = 0;
+    double final_ypos = 0;
+    findSnap(currentPix, 0, final_xpos, final_ypos);
+
+    // THis _currentIndicator will be change from clieArea::mousePressEvent
+    //_currentIndicator = final_xpos / (double)_areaInfo->lastWidth() * _areaInfo->clipDuration() + _areaInfo->startTime();
+    // Q_EMIT sigCurrentIndicatorChanged(_currentIndicator);
+
+    if (_volumeAutomationItem->automation()->size() > 0 && _automationSelected == Automation::AutomationType_Volume) {
+        double time = _volumeAutomationItem->automation()->pixel2Time(final_xpos);
+        int index = _volumeAutomationItem->automation()->find_line(time);
+
+        if (index >= _volumeAutomationItem->automation()->size()) {
+            Automation::ALine aline = _volumeAutomationItem->automation()->getLine(_volumeAutomationItem->automation()->size() - 1);
+            auto value = _volumeAutomationItem->yPixel2Value(aline.getY(time));
+            _volumeAutomationItem->automation()->setAutomatedTrackValue(value);
+        } else if (index < 0) {
+            Automation::ALine aline = _volumeAutomationItem->automation()->getLine(0);
+            auto value = _volumeAutomationItem->yPixel2Value(aline.getY(time));
+            _volumeAutomationItem->automation()->setAutomatedTrackValue(value);
+        } else {
+            Automation::ALine aline = _volumeAutomationItem->automation()->getLine(index);
+
+            auto value = _volumeAutomationItem->yPixel2Value(aline.getY(time));
+            _volumeAutomationItem->automation()->setAutomatedTrackValue(value);
+        }
+    }
+
+    int automation_event = TrackItemEvent_TrackSelect;
+    if (rect().contains(event->pos())) {
+        if (_panAutomationItem->automation()->size() > 0 && _automationSelected == Automation::AutomationType_Pan && _automationLaneEnabled) {
+            double time = _panAutomationItem->automation()->pixel2Time(final_xpos);
+            int index = _panAutomationItem->automation()->find_line(time);
+
+            if (index >= _panAutomationItem->automation()->size()) {
+                Automation::ALine aline = _panAutomationItem->automation()->getLine(_panAutomationItem->automation()->size() - 1);
+                auto value = _panAutomationItem->yPixel2Value(aline.getY(time));
+                _panAutomationItem->automation()->setAutomatedTrackValue(value);
+            } else if (index < 0) {
+                Automation::ALine aline = _panAutomationItem->automation()->getLine(0);
+                auto value = _panAutomationItem->yPixel2Value(aline.getY(time));
+                _panAutomationItem->automation()->setAutomatedTrackValue(value);
+            } else {
+                Automation::ALine aline = _panAutomationItem->automation()->getLine(index);
+
+                auto value = _panAutomationItem->yPixel2Value(aline.getY(time));
+                _panAutomationItem->automation()->setAutomatedTrackValue(value);
+            }
+        }
+
+        if (_volumeAutomationItem->automation()->size() > 0 && _automationSelected == Automation::AutomationType_Volume && _automationLaneEnabled) {
+            double time = _volumeAutomationItem->automation()->pixel2Time(final_xpos);
+            int index = _volumeAutomationItem->automation()->find_line(time);
+
+            if (index >= _volumeAutomationItem->automation()->size()) {
+                Automation::ALine aline = _volumeAutomationItem->automation()->getLine(_panAutomationItem->automation()->size() - 1);
+                auto value = _volumeAutomationItem->yPixel2Value(aline.getY(time));
+                _volumeAutomationItem->automation()->setAutomatedTrackValue(value);
+            } else if (index < 0) {
+                Automation::ALine aline = _volumeAutomationItem->automation()->getLine(0);
+                auto value = _volumeAutomationItem->yPixel2Value(aline.getY(time));
+                _volumeAutomationItem->automation()->setAutomatedTrackValue(value);
+            } else {
+                Automation::ALine aline = _volumeAutomationItem->automation()->getLine(index);
+
+                auto value = _volumeAutomationItem->yPixel2Value(aline.getY(time));
+                _volumeAutomationItem->automation()->setAutomatedTrackValue(value);
+            }
+        }
+
+        if (_automationSelected == Automation::AutomationType_Volume && _automationLaneEnabled) {
+
+            int automation_event = _volumeAutomationItem->mousePressEvent(event);
+
+            if (automation_event == AutomationItem::AutomationItemEvent_InnerSelect) {
+                return TrackItemEvent_InnerSelect; // inner and point activated
+            }
+            if (automation_event == AutomationItem::AutomationItemEvent_OuterPointSelect) {
+                return TrackItemEvent_OuterPointSelect; // outer activated
+            }
+        }
+
+        if (_automationSelected == Automation::AutomationType_Pan && _automationLaneEnabled) {
+
+            int automation_event = _panAutomationItem->mousePressEvent(event);
+
+            if (automation_event == AutomationItem::AutomationItemEvent_InnerSelect) {
+                return TrackItemEvent_InnerSelect; // inner and point activated
+            }
+            if (automation_event == AutomationItem::AutomationItemEvent_OuterPointSelect) {
+                return TrackItemEvent_OuterPointSelect; // outer activated
+            }
+        }
+
+    } else {
+
+        if (_automationLaneModel->count() > 0) {
+
+            auto automation_event1 = _volumeAutomationItem->mousePressEvent(event);
+            auto automation_event2 = _panAutomationItem->mousePressEvent(event);
+
+            if (automation_event1 == AutomationItem::AutomationItemEvent_InnerSelect) {
+                automation_event = TrackItemEvent_InnerSelect;
+            }
+            if (automation_event1 == AutomationItem::AutomationItemEvent_OuterPointSelect) {
+                automation_event = TrackItemEvent_OuterPointSelect;
+            }
+
+            if (automation_event2 == AutomationItem::AutomationItemEvent_InnerSelect) {
+                automation_event = TrackItemEvent_InnerSelect;
+            }
+            if (automation_event2 == AutomationItem::AutomationItemEvent_OuterPointSelect) {
+                automation_event = TrackItemEvent_OuterPointSelect;
+            }
+
+            if (automation_event1 == AutomationItem::AutomationItemEvent_Select) {
+                automation_event = TrackItemEvent_VolumeAutomationSelect;
+            }
+            if (automation_event2 == AutomationItem::AutomationItemEvent_Select) {
+                automation_event = TrackItemEvent_PanAutomationSelect;
+            }
+
+        } else {
+        }
+    }
+
+    if (keyFramesItem == 0) {
+        if (_selectedClipIndex != "") {
+            return TrackItemEvent_ClipSelect;
+        }
+        return automation_event;
+    } else {
+        return TrackItemEvent_KeyFramesSelect;
+    }
+}
+
+int TrackItem::hoverMoveEvent(QHoverEvent* event)
+{
+
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    bool status = 0;
+    _hoverClipIndex = "";
+    while (i.hasNext()) {
+        i.next();
+
+        if (i.value()->hoverMoveEvent(event) == true) {
+            status = 1;
+            _hoverClipIndex = i.key();
+        }
+    }
+
+    if (_automationLaneModel->count() == 0) {
+        if (_volumeAutomationItem && _volumeAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Volume) {
+            status = _volumeAutomationItem->hoverMoveEvent(event);
+        }
+        if (_panAutomationItem && _panAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Pan) {
+            status = _panAutomationItem->hoverMoveEvent(event);
+        }
+    } else {
+        bool status1 = _volumeAutomationItem->hoverMoveEvent(event);
+        bool status2 = _panAutomationItem->hoverMoveEvent(event);
+        return status1 || status2;
+    }
+
+    _keyFramesItem->hoverMoveEvent(event);
+
+    _objectPositionX->hoverMoveEvent(event);
+    _objectPositionY->hoverMoveEvent(event);
+    _objectPositionZ->hoverMoveEvent(event);
+
+    return status;
+}
+
+int TrackItem::mouseReleaseEvent(QMouseEvent* event)
+{
+
+    _keyFramesItem->mouseReleaseEvent(event);
+    _objectPositionX->mouseReleaseEvent(event);
+    _objectPositionY->mouseReleaseEvent(event);
+    _objectPositionZ->mouseReleaseEvent(event);
+
+    if (rect().contains(event->pos())) {
+
+        if (_volumeAutomationItem && _volumeAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Volume) {
+            return _volumeAutomationItem->mouseReleaseEvent(event);
+        }
+        if (_panAutomationItem && _panAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Pan) {
+            return _panAutomationItem->mouseReleaseEvent(event);
+        }
+
+    } else {
+        if (_rowsExpandedCount > 2) {
+            bool status1 = _volumeAutomationItem->mouseReleaseEvent(event);
+            bool status2 = _panAutomationItem->mouseReleaseEvent(event);
+            return status1 || status2;
+        }
+    }
+
+    return 0;
+}
+
+int TrackItem::mouseMoveEvent(QMouseEvent* event)
+{
+
+    int status = _keyFramesItem->mouseMoveEvent(event);
+
+    _objectPositionX->mouseMoveEvent(event);
+    _objectPositionY->mouseMoveEvent(event);
+    _objectPositionZ->mouseMoveEvent(event);
+
+    if (rect().contains(event->pos())) {
+        if (_volumeAutomationItem && _volumeAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Volume) {
+            return _volumeAutomationItem->mouseMoveEvent(event);
+        }
+        if (_panAutomationItem && _panAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Pan) {
+            return _panAutomationItem->mouseMoveEvent(event);
+        }
+    } else {
+        bool status1 = _volumeAutomationItem->mouseMoveEvent(event);
+        bool status2 = _panAutomationItem->mouseMoveEvent(event);
+        return status1 || status2;
+    }
+
+    return status;
+}
+
+int TrackItem::keyPressEvent(QKeyEvent* event)
+{
+
+    if (_rowsExpandedCount > 2) {
+        if (_automationLaneModel->count() == 0) {
+            if (_volumeAutomationItem && _volumeAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Volume) {
+                return _volumeAutomationItem->keyPressEvent(event);
+            }
+            if (_panAutomationItem && _panAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Pan) {
+                return _panAutomationItem->keyPressEvent(event);
+            }
+        } else {
+
+            bool status1 = _volumeAutomationItem->keyPressEvent(event);
+            bool status2 = _panAutomationItem->keyPressEvent(event);
+            return status1 || status2;
+        }
+    }
+    return 0;
+}
+
+int TrackItem::keyReleaseEvent(QKeyEvent* event)
+{
+
+    if (_automationLaneModel->count() == 0) {
+        if (_volumeAutomationItem && _volumeAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Volume) {
+            return _volumeAutomationItem->keyReleaseEvent(event);
+        }
+        if (_panAutomationItem && _panAutomationItem->showEnvelopes() && _automationSelected == Automation::AutomationType_Pan) {
+            return _panAutomationItem->keyReleaseEvent(event);
+        }
+    } else {
+        bool status1 = _volumeAutomationItem->keyReleaseEvent(event);
+        bool status2 = _panAutomationItem->keyReleaseEvent(event);
+        return status1 || status2;
+    }
+    return 0;
+}
+
+Automation* TrackItem::automation() const
+{
+
+    if (_automationSelected == Automation::AutomationType_Volume)
+        return _volumeAutomationItem->automation();
+    else
+        return _panAutomationItem->automation();
+}
+
+AutomationItem* TrackItem::automationItem() const
+{
+    if (_automationSelected == Automation::AutomationType_Volume)
+        return _volumeAutomationItem;
+    else
+        return _panAutomationItem;
+}
+
+bool TrackItem::createCopyList(SelectedArea selectedArea)
+{
+    if (_automationLaneModel->count() == 0) {
+        return automationItem()->createCopyList(selectedArea);
+    } else {
+
+        bool status1 = _volumeAutomationItem->createCopyList(selectedArea);
+        bool status2 = _panAutomationItem->createCopyList(selectedArea);
+        return status1 || status2;
+    }
+}
+
+int TrackItem::insertCopiedList()
+{
+
+    if (_automationLaneModel->count() == 0) {
+        if (automationItem()->insertCopiedList()) {
+            return -1;
+        }
+        return -2;
+    } else {
+
+        int index = -2;
+        if (_volumeAutomationItem->insertCopiedList()) {
+            if (_volumeAutomationItem->automation()->getSubTrackIndex() > index) {
+                index = _volumeAutomationItem->automation()->getSubTrackIndex();
+            }
+        }
+        if (_panAutomationItem->insertCopiedList()) {
+            if (_panAutomationItem->automation()->getSubTrackIndex() > index) {
+                index = _panAutomationItem->automation()->getSubTrackIndex();
+            }
+        }
+        return index;
+    }
+}
+
+void TrackItem::setCopyList(const QList<Automation::ALine>& copyList, int subTrackIndex)
+{
+
+    if (_automationLaneModel->count() == 0) {
+        qDebug() << "setCopyList1" << _automationSelected << copyList.size();
+        automationItem()->automation()->setCopyList(copyList);
+    } else {
+
+        if (subTrackIndex < 0) {
+            qDebug() << "setCopyList2" << _automationSelected;
+            automationItem()->automation()->setCopyList(copyList);
+        } else {
+            if (_automationLaneModel->getItem(subTrackIndex)->automationLaneControl == "Volume") {
+                _volumeAutomationItem->automation()->setCopyList(copyList);
+            } else {
+                _panAutomationItem->automation()->setCopyList(copyList);
+            }
+        }
+    }
+}
+
+void TrackItem::setCopyList2(const QList<Automation::ALine>& copyList, Automation::AutomationType type)
+{
+
+    qDebug() << "setCopyList2" << type << copyList.size();
+    if (type == Automation::AutomationType_Pan) {
+        _panAutomationItem->automation()->setCopyList(copyList);
+    }
+    if (type == Automation::AutomationType_Volume) {
+        _volumeAutomationItem->automation()->setCopyList(copyList);
+    }
+}
+
+bool TrackItem::cutCopiedList(SelectedArea selectedArea)
+{
+    if (_automationLaneModel->count() == 0) {
+        return automationItem()->cutCopiedList(selectedArea);
+    } else {
+
+        bool status1 = _volumeAutomationItem->cutCopiedList(selectedArea);
+        bool status2 = _panAutomationItem->cutCopiedList(selectedArea);
+        return status1 || status2;
+    }
+}
+
+void TrackItem::clearCopyList()
+{
+
+    if (_automationLaneModel->count() == 0) {
+        automationItem()->automation()->clearCopyList();
+    } else {
+
+        _volumeAutomationItem->automation()->clearCopyList();
+        _panAutomationItem->automation()->clearCopyList();
+    }
+}
+bool TrackItem::removedCopiedList(SelectedArea selectedArea)
+{
+
+    if (_automationLaneModel->count() == 0) {
+        return automationItem()->removedCopiedList(selectedArea);
+    } else {
+        qDebug() << "removedCopiedList" << selectedArea.area();
+
+        for (int i = -1; i < _automationLaneModel->count(); i++) {
+            if (i == -1) {
+                automationItem()->removedCopiedList(selectedArea);
+            } else {
+                if (_automationLaneModel->getItem(i)->automationLaneControl == "Volume") {
+                    _volumeAutomationItem->removedCopiedList(selectedArea);
+                } else {
+                    _panAutomationItem->removedCopiedList(selectedArea);
+                }
+            }
+        }
+        return true;
+    }
+}
+// QList<Automation::ALine> TrackItem::copyList() const
+//{
+//     return _copyList;
+
+//    qDebug() << "setCopyList:setCopyList" << _automationLaneModel->count();
+//    if (_automationLaneModel->count() == 0) {
+//        return automationItem()->automation()->copyList();
+//    } else {
+
+//        auto list1 = _volumeAutomationItem->automation()->copyList();
+//        auto list2 = _panAutomationItem->automation()->copyList();
+//        for (int i = 0; i < list1.size(); i++) {
+//            list2.append(list1[i]);
+//        }
+//        return list2;
+//    }
+//}
+
+void TrackItem::drawTitleLine(IPainter* painter)
+{
+    auto offset = 0;
+
+    painter->beginPath();
+    painter->setFillStyle("#000000");
+    painter->setStrokeStyle("#000000");
+    painter->drawLine(rect().x(), rect().y() + _areaInfo->titleHeight() + offset, rect().x() + rect().width(), rect().y() + _areaInfo->titleHeight() + offset);
+    painter->stroke();
+}
+
+void TrackItem::drawSelectedArea(IPainter* painter)
+{
+
+    auto offset = 0;
+
+    auto _lastWidth = _areaInfo->lastWidth();
+    auto _startTime = _areaInfo->startTime();
+    auto _clipDuration = _areaInfo->clipDuration();
+
+    auto _selectedArea = _areaInfo->selectionArea()->area();
+
+    if (_selectedArea.left() >= 0 && _selectedArea.right() >= 0 && _selectedArea.right() != _selectedArea.left()) {
+
+        painter->beginPath();
+        painter->setFillStyle("#880000FF");
+        painter->setStrokeStyle("#880000FF");
+
+        double startX = ((_selectedArea.left() - _startTime) / (double)_clipDuration) * _lastWidth;
+        double endX = ((_selectedArea.right() - _startTime) / (double)_clipDuration) * _lastWidth;
+        if (_selectedArea.left() < _selectedArea.right()) {
+            startX = ((_selectedArea.left() - _startTime) / (double)_clipDuration) * _lastWidth;
+            endX = ((_selectedArea.right() - _startTime) / (double)_clipDuration) * _lastWidth;
+        } else {
+            endX = ((_selectedArea.left() - _startTime) / (double)_clipDuration) * _lastWidth;
+            startX = ((_selectedArea.right() - _startTime) / (double)_clipDuration) * _lastWidth;
+        }
+
+        QRect drawAreaTotal = QRect(startX, getTotalRect().top() + offset, (endX - startX), getTotalRect().height());
+        QRect drawArea = QRect(startX, rect().top() + offset, (endX - startX), rect().height());
+        QRect drawArea1 = QRect();
+        QRect drawArea2 = QRect();
+
+        if (_automationLaneModel->count() >= 1) {
+
+            auto top = rect().top() + _rowsExpandedCount * _areaInfo->titleHeight() + _areaInfo->seperatorHeight();
+            auto H = _automationLaneModel->totalRowCountBefore2(0) * _areaInfo->titleHeight() + 0 * _areaInfo->seperatorHeight();
+            auto tempRect = rect();
+            tempRect.setTop(top + H + offset);
+            tempRect.setHeight(_automationLaneModel->getItem(0)->automationLaneRowCount * _areaInfo->titleHeight());
+
+            drawArea1 = QRect(startX, tempRect.top(), (endX - startX), tempRect.height());
+
+            if (_automationLaneModel->count() >= 2) {
+                H = _automationLaneModel->totalRowCountBefore2(1) * _areaInfo->titleHeight() + 1 * _areaInfo->seperatorHeight();
+                tempRect = rect();
+                tempRect.setTop(top + H + offset);
+                tempRect.setHeight(_automationLaneModel->getItem(1)->automationLaneRowCount * _areaInfo->titleHeight());
+
+                drawArea2 = QRect(startX, tempRect.top(), (endX - startX), tempRect.height());
+            }
+        }
+
+        if (!(_areaInfo->selectionArea()->isClipSelectedAtLast || _areaInfo->selectionArea()->isClipSelectedAtFirst)) {
+            if (_automationLaneEnabled == true) {
+
+                drawArea = QRect(startX, rect().top() + _areaInfo->titleHeight() + offset, (endX - startX), rect().height() - _areaInfo->titleHeight());
+            }
+        }
+        if (_automationLaneEnabled == true) {
+            if (_areaInfo->selectionArea()->isClipSelectedAtLast == false) {
+
+                drawArea = QRect(startX, rect().top() + _areaInfo->titleHeight() + offset, (endX - startX), rect().height() - _areaInfo->titleHeight());
+            }
+        } else {
+
+            if (!(_areaInfo->selectionArea()->isClipSelectedAtLast || _areaInfo->selectionArea()->isClipSelectedAtFirst)) {
+
+                drawArea = QRect();
+            }
+        }
+
+        if (_areaInfo->selectionArea()->firstTrackIndex() <= _trackIndex && _trackIndex <= _areaInfo->selectionArea()->lastTrackIndex()) {
+
+            if (_areaInfo->selectionArea()->firstTrackIndex() == _trackIndex && _areaInfo->selectionArea()->lastTrackIndex() != _trackIndex) {
+
+                if (_automationLaneModel->count() > 0 && _automationLaneEnabled == true) {
+
+                    if (_areaInfo->selectionArea()->isClipSelectedAtLast == true && _areaInfo->selectionArea()->isClipSelectedAtFirst == true) {
+
+                        painter->fillRect(drawAreaTotal);
+                        painter->stroke();
+                    } else {
+
+                        if (_areaInfo->selectionArea()->_firstSubTrackIndex == -1) {
+                            if (!drawArea.isNull()) {
+                                painter->fillRect(drawArea);
+                            }
+
+                            if (!drawArea1.isNull()) {
+                                painter->fillRect(drawArea1);
+                            }
+                            if (!drawArea2.isNull()) {
+                                painter->fillRect(drawArea2);
+                            }
+                            painter->stroke();
+                        }
+                        if (_areaInfo->selectionArea()->_firstSubTrackIndex == 0) {
+                            if (!drawArea1.isNull()) {
+                                painter->fillRect(drawArea1);
+                            }
+                            if (!drawArea2.isNull()) {
+                                painter->fillRect(drawArea2);
+                            }
+                            painter->stroke();
+                        }
+                        if (_areaInfo->selectionArea()->_firstSubTrackIndex == 1) {
+                            if (!drawArea2.isNull()) {
+                                painter->fillRect(drawArea2);
+                            }
+                            painter->stroke();
+                        }
+                    }
+
+                } else {
+                    if (!drawArea.isNull()) {
+                        painter->fillRect(drawArea);
+                    }
+                    painter->stroke();
+                }
+
+            } else if (_areaInfo->selectionArea()->lastTrackIndex() == _trackIndex && _areaInfo->selectionArea()->firstTrackIndex() != _trackIndex) {
+
+                if (_automationLaneModel->count() > 0 && _automationLaneEnabled == true) {
+
+                    if (_areaInfo->selectionArea()->isClipSelectedAtLast == true || _areaInfo->selectionArea()->isClipSelectedAtFirst == true) {
+                        painter->fillRect(drawAreaTotal);
+                        painter->stroke();
+                    } else {
+                        if (_areaInfo->selectionArea()->_lastSubTrackIndex == -1) {
+                            if (!drawArea.isNull()) {
+                                painter->fillRect(drawArea);
+                            }
+                            painter->stroke();
+                        }
+                        if (_areaInfo->selectionArea()->_lastSubTrackIndex == 0) {
+                            if (!drawArea.isNull()) {
+                                painter->fillRect(drawArea);
+                            }
+                            if (!drawArea1.isNull()) {
+                                painter->fillRect(drawArea1);
+                            }
+
+                            painter->stroke();
+                        }
+                        if (_areaInfo->selectionArea()->_lastSubTrackIndex == 1) {
+                            if (!drawArea.isNull()) {
+                                painter->fillRect(drawArea);
+                            }
+                            if (!drawArea1.isNull()) {
+                                painter->fillRect(drawArea1);
+                            }
+                            if (!drawArea2.isNull()) {
+                                painter->fillRect(drawArea2);
+                            }
+                            painter->stroke();
+                        }
+                    }
+
+                } else {
+
+                    if (!drawArea.isNull()) {
+                        painter->fillRect(drawArea);
+                    }
+                    painter->stroke();
+                }
+
+            } else if (_areaInfo->selectionArea()->lastTrackIndex() == _trackIndex && _areaInfo->selectionArea()->firstTrackIndex() == _trackIndex) {
+
+                if (_automationLaneModel->count() > 0 && _automationLaneEnabled == true) {
+
+                    if (_areaInfo->selectionArea()->isClipSelectedAtLast == true || _areaInfo->selectionArea()->isClipSelectedAtFirst == true) {
+                        painter->fillRect(drawAreaTotal);
+                        painter->stroke();
+                    } else {
+                        for (int i = -1; i <= 1; i++) {
+                            if (i >= _areaInfo->selectionArea()->_firstSubTrackIndex && i <= _areaInfo->selectionArea()->_lastSubTrackIndex) {
+                                if (i == -1) {
+                                    if (!drawArea.isNull()) {
+                                        painter->fillRect(drawArea);
+                                    }
+                                    painter->stroke();
+                                }
+                                if (i == 0) {
+                                    if (!drawArea1.isNull()) {
+                                        painter->fillRect(drawArea1);
+                                    }
+                                    painter->stroke();
+                                }
+                                if (i == 1) {
+                                    if (!drawArea2.isNull()) {
+                                        painter->fillRect(drawArea2);
+                                    }
+                                    painter->stroke();
+                                }
+                            }
+                        }
+                    }
+
+                } else {
+                    if (!drawArea.isNull()) {
+                        painter->fillRect(drawArea);
+                    }
+                    painter->stroke();
+                }
+
+            } else {
+
+                if (_areaInfo->selectionArea()->isClipSelectedAtLast == true || _areaInfo->selectionArea()->isClipSelectedAtFirst == true) {
+                    painter->fillRect(drawAreaTotal);
+                    painter->stroke();
+                } else {
+                    if (_automationLaneModel->count() > 0 && _automationLaneEnabled == true) {
+                        if (!drawArea.isNull()) {
+                            painter->fillRect(drawArea);
+                        }
+
+                        if (!drawArea1.isNull()) {
+                            painter->fillRect(drawArea1);
+                        }
+                        if (!drawArea2.isNull()) {
+                            painter->fillRect(drawArea2);
+                        }
+                        painter->stroke();
+                    } else {
+                        if (!drawArea.isNull()) {
+                            painter->fillRect(drawArea);
+                        }
+                        painter->stroke();
+                    }
+                }
+            }
+        }
+    }
+}
+
+void TrackItem::draw(IPainter* painter)
+{
+
+    int T = rect().top();
+    int B = rect().bottom();
+    auto lastWidth = _areaInfo->lastWidth();
+    if (lastWidth <= 0) {
+        return;
+    }
+
+    drawIndicator(painter);
+    painter->save();
+    painter->beginPath();
+    //    painter->setStrokeStyle(QNanoColor(_titleColor.red(), _titleColor.green(), _titleColor.blue(), 40));
+    //    painter->setFillStyle(QNanoColor(_titleColor.red(), _titleColor.green(), _titleColor.blue(), 40));
+    //    painter->fillRect(_rect);
+
+    //    painter->setStrokeStyle(QNanoColor(_titleColor.red(), _titleColor.green(), _titleColor.blue(), 100));
+    //    painter->setFillStyle(QNanoColor(_titleColor.red(), _titleColor.green(), _titleColor.blue(), 100));
+    //    painter->fillRect(getTotalRect());
+
+    painter->setStrokeStyle("#2f3032");
+    painter->setFillStyle("#2f3032");
+
+    auto offset = 0;
+
+    if (_isMasterTrack) {
+        painter->fillRect(rect().x(), offset + totalRect().top(), rect().width(), _areaInfo->seperatorHeight());
+    } else {
+        //        qDebug() << "rect().height() + rect().y() - _areaInfo->seperatorHeight()"
+        //                 << rect().height() + rect().y() - _areaInfo->seperatorHeight() << _trackIndex << rect().height() << rect().top() << rect() << _rect;
+
+        painter->fillRect(rect().x(), offset + rect().y() + rect().height() - _areaInfo->seperatorHeight(), rect().width(), _areaInfo->seperatorHeight());
+    }
+
+    painter->restore();
+
+    if (_rowsExpanded && _automationLaneEnabled) {
+        drawAutomationLane(painter);
+    }
+
+    drawClips(painter);
+
+    drawSelectedArea(painter);
+
+    if (_volumeAutomationItem->showEnvelopes()) {
+        drawTitleLine(painter);
+    }
+
+    if (_automationLaneModel->count() == 0) {
+        if (_volumeAutomationItem && _volumeAutomationItem->showEnvelopes() == true && _automationSelected == Automation::AutomationType_Volume && _rowsExpandedCount > 2) {
+            QRect tempRect = _rect;
+            tempRect.setTop(offset + rect().top() + _areaInfo->titleHeight());
+            tempRect.setHeight(_areaInfo->titleHeight() * (_rowsExpandedCount - 1));
+            _volumeAutomationItem->setRect(tempRect);
+            _volumeAutomationItem->automation()->update(tempRect);
+            _volumeAutomationItem->draw(painter);
+        }
+
+        if (_panAutomationItem && _panAutomationItem->showEnvelopes() == true && _automationSelected == Automation::AutomationType_Pan && _rowsExpandedCount > 2) {
+            QRect tempRect = _rect;
+            tempRect.setTop(offset + rect().top() + _areaInfo->titleHeight());
+            tempRect.setHeight(_areaInfo->titleHeight() * (_rowsExpandedCount - 1));
+            _panAutomationItem->setRect(tempRect);
+            _panAutomationItem->automation()->update(tempRect);
+            _panAutomationItem->draw(painter);
+        }
+    } else {
+        if (_volumeAutomationItem && _volumeAutomationItem->showEnvelopes() == true && _automationSelected == Automation::AutomationType_Volume && _rowsExpandedCount > 2) {
+            QRect tempRect = _rect;
+            tempRect.setTop(offset + rect().top() + _areaInfo->titleHeight());
+            tempRect.setHeight(_areaInfo->titleHeight() * (_rowsExpandedCount - 1));
+            _volumeAutomationItem->setRect(tempRect);
+            _volumeAutomationItem->automation()->update(tempRect);
+            _volumeAutomationItem->draw(painter);
+        }
+
+        if (_panAutomationItem && _panAutomationItem->showEnvelopes() == true && _automationSelected == Automation::AutomationType_Pan && _rowsExpandedCount > 2) {
+            QRect tempRect = _rect;
+            tempRect.setTop(offset + rect().top() + _areaInfo->titleHeight());
+            tempRect.setHeight(_areaInfo->titleHeight() * (_rowsExpandedCount - 1));
+            _panAutomationItem->setRect(tempRect);
+            _panAutomationItem->automation()->update(tempRect);
+            _panAutomationItem->draw(painter);
+        }
+
+        auto top = rect().top() + _rowsExpandedCount * _areaInfo->titleHeight() + _areaInfo->seperatorHeight();
+        for (int i = 0; i < _automationLaneModel->count(); i++) {
+            auto item = _automationLaneModel->getItem(i);
+
+            if (item->automationLaneControl == "Pan" && _rowsExpandedCount > 2 && _panAutomationItem->showEnvelopes() == true) {
+
+                auto H = _automationLaneModel->totalRowCountBefore2(i) * _areaInfo->titleHeight() + i * _areaInfo->seperatorHeight();
+
+                auto tempRect = _rect;
+                tempRect.setTop(offset + top + H);
+                tempRect.setHeight(_automationLaneModel->getItem(i)->automationLaneRowCount * _areaInfo->titleHeight());
+
+                _panAutomationItem->setRect(tempRect);
+                _panAutomationItem->automation()->update(tempRect);
+                _panAutomationItem->draw(painter);
+            }
+
+            if (item->automationLaneControl == "Volume" && _rowsExpandedCount > 2 && _volumeAutomationItem->showEnvelopes() == true) {
+                auto H = _automationLaneModel->totalRowCountBefore2(i) * _areaInfo->titleHeight() + i * _areaInfo->seperatorHeight();
+
+                auto tempRect = _rect;
+                tempRect.setTop(offset + top + H);
+                tempRect.setHeight(_automationLaneModel->getItem(i)->automationLaneRowCount * _areaInfo->titleHeight());
+
+                _volumeAutomationItem->setRect(tempRect);
+                _volumeAutomationItem->automation()->update(tempRect);
+                _volumeAutomationItem->draw(painter);
+            }
+        }
+    }
+
+    _keyFramesItem->draw(painter);
+
+    _objectPositionX->draw(event);
+    _objectPositionY->draw(event);
+    _objectPositionZ->draw(event);
+}
+
+void TrackItem::drawAutomationLane(IPainter* painter)
+{
+
+    auto offset = 0;
+
+    painter->save();
+    painter->beginPath();
+    painter->setStrokeStyle("#2f3032");
+    painter->setFillStyle("#2f3032");
+    auto top = TrackItem::rect().y() + TrackItem::rect().height();
+    for (int i = 0; i < _automationLaneModel->count(); i++) {
+        auto H = _automationLaneModel->totalRowCountBefore2(i) * _areaInfo->titleHeight() + i * _areaInfo->seperatorHeight();
+        painter->fillRect(rect().x(), offset + top + H + _automationLaneModel->getItem(i)->automationLaneRowCount * _areaInfo->titleHeight(), rect().width(), _areaInfo->seperatorHeight());
+    }
+    painter->fill();
+    painter->restore();
+}
+void TrackItem::drawClips(IPainter* painter)
+{
+    _mutex.lock();
+
+    if (_clipItems.contains(_selectedClipIndex)) {
+        if (_clipItems[_selectedClipIndex])
+            _clipItems[_selectedClipIndex]->draw(painter);
+    }
+
+    QMapIterator<QString, ClipItem*> i(_clipItems);
+    while (i.hasNext()) {
+        i.next();
+
+        if (i.value() == nullptr)
+            continue;
+
+        if (i.key() == _selectedClipIndex)
+            continue;
+
+        i.value()->draw(painter);
+    }
+
+    _mutex.unlock();
+}
+
+void TrackItem::drawIndicator(IPainter* painter)
+{
+    auto offset = 0;
+
+    int Y = rect().top() + offset;
+    auto top = rect().top() + _rowsExpandedCount * _areaInfo->titleHeight() + _areaInfo->seperatorHeight() + offset;
+
+    if (_indicatorEnabled == IndicatorType_Track) {
+        painter->beginPath();
+        painter->setStrokeStyle(_indicatorColor);
+
+        double currentPix = ((_currentIndicator - _areaInfo->startTime()) / (double)_areaInfo->clipDuration()) * _areaInfo->lastWidth();
+
+        painter->moveTo(currentPix, Y);
+        painter->lineTo(currentPix, Y + rect().height());
+        painter->stroke();
+    }
+    if (_indicatorEnabled == IndicatorType_VolumeLane) {
+        painter->beginPath();
+        painter->setStrokeStyle(_indicatorColor);
+
+        int index = _automationLaneModel->getIndex("Volume");
+        if (index >= 0) {
+            double currentPix = ((_currentIndicator - _areaInfo->startTime()) / (double)_areaInfo->clipDuration()) * _areaInfo->lastWidth();
+            auto H = _automationLaneModel->totalRowCountBefore2(index) * _areaInfo->titleHeight() + index * _areaInfo->seperatorHeight();
+
+            Y = top + H;
+            int B = Y + _automationLaneModel->getItem(index)->automationLaneRowCount * _areaInfo->titleHeight();
+
+            painter->moveTo(currentPix, Y);
+            painter->lineTo(currentPix, B);
+            painter->stroke();
+        }
+    }
+
+    if (_indicatorEnabled == IndicatorType_PanLane) {
+        painter->beginPath();
+        painter->setStrokeStyle(_indicatorColor);
+
+        int index = _automationLaneModel->getIndex("Pan");
+        if (index >= 0) {
+            double currentPix = ((_currentIndicator - _areaInfo->startTime()) / (double)_areaInfo->clipDuration()) * _areaInfo->lastWidth();
+            auto H = _automationLaneModel->totalRowCountBefore2(index) * _areaInfo->titleHeight() + index * _areaInfo->seperatorHeight();
+
+            Y = top + H;
+            int B = Y + _automationLaneModel->getItem(index)->automationLaneRowCount * _areaInfo->titleHeight();
+
+            painter->moveTo(currentPix, Y);
+            painter->lineTo(currentPix, B);
+            painter->stroke();
+        }
+    }
+}
+
+void TrackItem::findSnap(double posX, double posY, double& final_xpos, double& final_ypos) // findAutomationPositions
+{
+    double first = 0;
+    double last = 0;
+
+    if (_areaInfo->snapPoints().size() == 0) {
+        final_xpos = posX;
+        return;
+    }
+
+    for (int k = 0; k < _areaInfo->snapPoints().size(); k++) {
+
+        if (_areaInfo->snapPoints()[k].first <= posX && _areaInfo->snapPoints()[k].second >= posX) {
+
+            first = _areaInfo->snapPoints()[k].first;
+            last = _areaInfo->snapPoints()[k].second;
+
+            break;
+        }
+    }
+
+    if (_areaInfo->snapPoints().size() > 0) {
+        if (_areaInfo->snapPoints()[_areaInfo->snapPoints().size() - 1].second < posX) {
+            final_xpos = _areaInfo->snapPoints()[_areaInfo->snapPoints().size() - 1].second;
+            return;
+        }
+
+        if (_areaInfo->snapPoints()[0].first > posX && _areaInfo->snapPoints()[0].first >= 0 && posX > 0) {
+
+            final_xpos = _areaInfo->snapPoints()[0].first;
+            return;
+        }
+
+        if (posX < 0) {
+            final_xpos = _areaInfo->snapPoints()[0].first;
+            return;
+        }
+
+        if (_areaInfo->snapPoints()[0].second > posX && _areaInfo->snapPoints()[0].second >= 0) {
+
+            final_xpos = _areaInfo->snapPoints()[0].first;
+            return;
+        }
+    }
+
+    double mid = (last + first) / 2.0;
+
+    if (posX < mid) {
+        final_xpos = first;
+    }
+    if (posX >= mid) {
+
+        final_xpos = last;
+    }
+}
+
+void TrackItem::findSnap(QVector<QPair<double, double>> _snapPoints, double posX, double posY, double& final_xpos, double& final_ypos)
+{
+    double first = 0;
+    double last = 0;
+
+    if (_snapPoints.size() == 0) {
+        final_xpos = posX;
+        return;
+    }
+
+    for (int k = 0; k < _snapPoints.size(); k++) {
+
+        if (_snapPoints[k].first <= posX && _snapPoints[k].second >= posX) {
+
+            first = _snapPoints[k].first;
+            last = _snapPoints[k].second;
+            break;
+        }
+    }
+
+    if (_snapPoints.size() > 0) {
+        if (_snapPoints[_snapPoints.size() - 1].second < posX) {
+            final_xpos = _snapPoints[_snapPoints.size() - 1].second;
+
+            return;
+        }
+
+        if (_snapPoints[0].first > posX && _snapPoints[0].first >= 0 && posX > 0) {
+
+            final_xpos = _snapPoints[0].first;
+
+            return;
+        }
+
+        if (posX < 0) {
+
+            final_xpos = _snapPoints[0].first;
+
+            return;
+        }
+
+        if (_snapPoints[0].second > posX && _snapPoints[0].second >= 0) {
+
+            final_xpos = _snapPoints[0].first;
+
+            return;
+        }
+    }
+
+    double mid = (last + first) / 2.0;
+
+    if (posX < mid) {
+        final_xpos = first;
+    }
+    if (posX >= mid) {
+        final_xpos = last;
+    }
+}
+
+AutomationLaneModel::AutomationLaneModel(AreaInfo* areaInfo, TrackItem* trackItem, QObject* parent)
+    : _areaInfo(areaInfo)
+    , _trackItem(trackItem)
+    , QAbstractListModel(parent)
+{
+    m_roleNames[ROLE_AutomationLaneIndex] = "AutomationLaneIndex";
+    m_roleNames[ROLE_AutomationLaneDevice] = "AutomationLaneDevice";
+    m_roleNames[ROLE_AutomationLaneControl] = "AutomationLaneControl";
+    m_roleNames[ROLE_AutomationLaneType] = "AutomationLaneType";
+    m_roleNames[ROLE_AutomationLaneRowCount] = "AutomationLaneRowCount";
+    m_roleNames[ROLE_AutomationLaneHeight] = "AutomationLaneHeight";
+    m_roleNames[ROLE_AutomationLaneDisplayText] = "AutomationLaneDisplayText";
+    _titleHeight = areaInfo->titleHeight();
+    _seperatorHeight = areaInfo->seperatorHeight();
+}
+
+void AutomationLaneModel::append(QString automationLaneDevice, QString automationLaneControl, int rowCount)
+{
+    qDebug() << "automationLaneControl" << automationLaneControl;
+    if (automationLaneControl == "Volume") {
+        m_automationLanes.append(AutomationLane { m_automationLanes.size(), automationLaneDevice, automationLaneControl, ROLE_AutomationLaneTypeVolume, 3 });
+    } else {
+        m_automationLanes.append(AutomationLane { m_automationLanes.size(), automationLaneDevice, automationLaneControl, ROLE_AutomationLaneTypePan, 3 });
+    }
+
+    Q_EMIT beginResetModel();
+    Q_EMIT endResetModel();
+    Q_EMIT totalHeightChanged();
+    Q_EMIT sigRowAdded(m_automationLanes.size() - 1, rowCount, automationLaneControl);
+    Q_EMIT countChanged();
+}
+
+void AutomationLaneModel::remove(int index)
+{
+
+    if (index >= 0 && index < m_automationLanes.size()) {
+        auto count = m_automationLanes[index].automationLaneRowCount;
+        auto control = m_automationLanes[index].automationLaneControl;
+        m_automationLanes.removeAt(index);
+
+        Q_EMIT beginResetModel();
+        Q_EMIT endResetModel();
+
+        Q_EMIT totalHeightChanged();
+        Q_EMIT sigRowRemoved(count, control);
+        Q_EMIT countChanged();
+    }
+}
+
+bool AutomationLaneModel::isContained(QString text)
+{
+
+    for (int i = 0; i < m_automationLanes.size(); i++) {
+        if (m_automationLanes[i].automationLaneControl == text) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int AutomationLaneModel::count()
+{
+    return m_automationLanes.size();
+}
+
+int AutomationLaneModel::totalHeight()
+{
+    int height = 0;
+
+    for (int i = 0; i < m_automationLanes.size(); i++) {
+        height += (m_automationLanes[i].automationLaneRowCount * _titleHeight) + _seperatorHeight;
+    }
+    return height;
+}
+
+int AutomationLaneModel::getIndex(QPointF point)
+{
+
+    auto top = _trackItem->rect().top() + _trackItem->rowsExpandedCount() * _areaInfo->titleHeight() + _areaInfo->seperatorHeight();
+    for (int i = 0; i < m_automationLanes.size(); i++) {
+        auto H = totalRowCountBefore2(i) * _areaInfo->titleHeight() + i * _areaInfo->seperatorHeight();
+        auto tempRect = _trackItem->rect();
+        tempRect.setTop(top + H);
+        tempRect.setHeight(getItem(i)->automationLaneRowCount * _areaInfo->titleHeight() + _areaInfo->seperatorHeight());
+        if (tempRect.contains(point.toPoint())) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int AutomationLaneModel::totalRowCount()
+{
+    int count = 0;
+    for (int i = 0; i < m_automationLanes.size(); i++) {
+        count += (m_automationLanes[i].automationLaneRowCount);
+    }
+    return count;
+}
+
+int AutomationLaneModel::totalRowCountBefore(int _index)
+{
+    int count = 0;
+    for (int i = 0; i <= _index; i++) {
+        count += (m_automationLanes[i].automationLaneRowCount);
+    }
+    return count;
+}
+int AutomationLaneModel::totalRowCountBefore2(int _index)
+{
+    int count = 0;
+    for (int i = 0; i < _index; i++) {
+        count += (m_automationLanes[i].automationLaneRowCount);
+    }
+    return count;
+}
+
+void AutomationLaneModel::decrease(int i)
+{
+    if (m_automationLanes[i].automationLaneRowCount > 1) {
+        m_automationLanes[i].automationLaneRowCount--;
+        Q_EMIT sigRowChanged();
+        Q_EMIT dataChanged(QAbstractListModel::index(i, 0), QAbstractListModel::index(i, 0), QVector<int>() << ROLE_AutomationLaneHeight);
+        Q_EMIT totalHeightChanged();
+    }
+}
+
+void AutomationLaneModel::increase(int i)
+{
+    m_automationLanes[i].automationLaneRowCount++;
+    Q_EMIT sigRowChanged();
+    Q_EMIT dataChanged(QAbstractListModel::index(i, 0), QAbstractListModel::index(i, 0), QVector<int>() << ROLE_AutomationLaneHeight);
+    Q_EMIT totalHeightChanged();
+}
+
+void AutomationLaneModel::setLaneHeight(int _index, int posY)
+{
+
+    if (_index >= 0 && _index < m_automationLanes.size() - 1) {
+        auto startY = totalRowCountBefore(_index) * _areaInfo->titleHeight() + _trackItem->rect().bottom() + _areaInfo->seperatorHeight();
+
+        auto diff = posY - startY;
+
+        if (diff > _areaInfo->titleHeight()) {
+
+            m_automationLanes[_index].automationLaneRowCount++;
+
+        } else if (diff < -_areaInfo->titleHeight()) {
+
+            if (m_automationLanes[_index].automationLaneRowCount > 1) {
+                m_automationLanes[_index].automationLaneRowCount--;
+            }
+        }
+
+        Q_EMIT sigRowChanged();
+        Q_EMIT dataChanged(QAbstractListModel::index(_index, 0), QAbstractListModel::index(_index, 0), QVector<int>() << ROLE_AutomationLaneHeight);
+        Q_EMIT dataChanged(QAbstractListModel::index(_index + 1, 0), QAbstractListModel::index(_index + 1, 0), QVector<int>() << ROLE_AutomationLaneHeight);
+        Q_EMIT dataChanged(QAbstractListModel::index(_index + 1, 0), QAbstractListModel::index(_index + 1, 0), QVector<int>() << ROLE_AutomationLaneRowCount);
+        Q_EMIT dataChanged(QAbstractListModel::index(_index, 0), QAbstractListModel::index(_index, 0), QVector<int>() << ROLE_AutomationLaneRowCount);
+
+    } else if (_index == m_automationLanes.size() - 1) {
+
+        auto startY = totalRowCountBefore(_index) * _areaInfo->titleHeight() + _trackItem->rect().bottom() + _areaInfo->seperatorHeight();
+
+        auto diff = posY - startY;
+
+        if (diff > _areaInfo->titleHeight()) {
+
+            m_automationLanes[_index].automationLaneRowCount++;
+
+        } else if (diff < -_areaInfo->titleHeight()) {
+
+            if (m_automationLanes[_index].automationLaneRowCount > 1) {
+                m_automationLanes[_index].automationLaneRowCount--;
+            }
+        }
+
+        Q_EMIT sigRowChanged();
+        Q_EMIT dataChanged(QAbstractListModel::index(_index, 0), QAbstractListModel::index(_index, 0), QVector<int>() << ROLE_AutomationLaneHeight);
+        Q_EMIT dataChanged(QAbstractListModel::index(_index, 0), QAbstractListModel::index(_index, 0), QVector<int>() << ROLE_AutomationLaneRowCount);
+    }
+}
+
+void AutomationLaneModel::updateLanesHeight()
+{
+    for (int i = 0; i < m_automationLanes.size(); i++) {
+        Q_EMIT dataChanged(QAbstractListModel::index(i, 0), QAbstractListModel::index(i, 0), QVector<int>() << ROLE_AutomationLaneHeight);
+    }
+}
+
+QHash<int, QByteArray> AutomationLaneModel::roleNames() const
+{
+    return m_roleNames;
+}
+
+int AutomationLaneModel::rowCount(const QModelIndex& parent) const
+{
+    return m_automationLanes.size();
+}
+
+QVariant AutomationLaneModel::data(const QModelIndex& index, int role) const
+{
+
+    if (!index.isValid())
+        return QVariant();
+
+    if (m_automationLanes.size() == 0 || index.row() < 0)
+        return QVariant();
+
+    AutomationLane value = m_automationLanes[index.row()];
+
+    switch (role) {
+    case ROLE_AutomationLaneIndex:
+        return value.automationLaneIndex;
+    case ROLE_AutomationLaneDevice:
+        return value.automationLaneDevice;
+    case ROLE_AutomationLaneControl:
+        return value.automationLaneControl;
+    case ROLE_AutomationLaneDisplayText:
+        return value.automationLaneControl;
+    case ROLE_AutomationLaneType:
+        return value.automationLaneType;
+    case ROLE_AutomationLaneRowCount:
+        return value.automationLaneRowCount;
+    case ROLE_AutomationLaneHeight:
+        return m_automationLanes[index.row()].automationLaneRowCount * _areaInfo->titleHeight() + _areaInfo->seperatorHeight();
+    }
+    return QVariant();
+}

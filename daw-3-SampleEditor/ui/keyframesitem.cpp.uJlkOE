@@ -1,0 +1,193 @@
+#include "keyframesitem.h"
+
+KeyFramesItem::KeyFramesItem(int trackIndex, AreaInfo* areaInfo)
+    : _areaInfo(areaInfo)
+    , _trackIndex(trackIndex)
+    , _keyFramesEnabled(true)
+{
+}
+
+bool KeyFramesItem::keyFramesEnabled() const
+{
+    return _keyFramesEnabled;
+}
+
+void KeyFramesItem::setKeyFramesEnabled(bool newKeyFramesEnabled)
+{
+    _keyFramesEnabled = newKeyFramesEnabled;
+}
+
+int KeyFramesItem::findPoint(QPointF point)
+{
+    for (int i = 0; i < _points.size(); i++) {
+
+        if (qAbs(point.x() - _points[i].point.x()) < 4) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void KeyFramesItem::draw(IPainter* painter)
+{
+    if (_keyFramesEnabled == false)
+        return;
+
+    drawLine(painter);
+    drawKeyPoints(painter);
+    drawKeyHoverPoint(painter);
+}
+
+int KeyFramesItem::hoverMoveEvent(QHoverEvent* event)
+{
+    if (_keyFramesEnabled == false)
+        return 0;
+
+    _mouseHoverX = event->pos().x();
+    _mouseHoverY = event->pos().y();
+    return 0;
+}
+
+int KeyFramesItem::mousePressEvent(QMouseEvent* event)
+{
+
+    if (_keyFramesEnabled == false)
+        return 0;
+
+    _mousePressed = true;
+    _mousePressedX = event->pos().x();
+    _mousePressedY = event->pos().y();
+    MathHelper1::lineAreas(p1, p2, _polyInner, _polyOuter);
+    if (_polyInner.containsPoint(QPointF(_mousePressedX, _mousePressedY), Qt::WindingFill)) {
+        QPointF mapped = MathHelper1::mapPointToLine(p1, p2, QPointF(_mousePressedX, _mousePressedY));
+
+        _currentPointIndex = findPoint(mapped);
+    }
+
+    return 0;
+}
+
+int KeyFramesItem::mouseReleaseEvent(QMouseEvent* event)
+{
+
+    if (_mouseMoved == false && _mousePressed == true) {
+        QPolygonF _polyInner;
+        QPolygonF _polyOuter;
+        auto p1 = QPointF(_rect.left(), (_rect.top() + _rect.bottom()) / 2);
+        auto p2 = QPointF(_rect.right(), (_rect.top() + _rect.bottom()) / 2);
+
+        MathHelper1::lineAreas(p1, p2, _polyInner, _polyOuter);
+        if (_polyInner.containsPoint(QPointF(_mousePressedX, _mousePressedY), Qt::WindingFill)) {
+            QPointF mapped = MathHelper1::mapPointToLine(p1, p2, QPointF(_mousePressedX, _mousePressedY));
+
+            auto index = findPoint(mapped);
+
+            qDebug() << "(event->button()" << event->button();
+            if (index >= 0) {
+
+                _points[index].type += 1;
+                _points[index].type = _points[index].type % 4;
+
+                if (_points[index].type == 3) {
+                    _points.removeAt(index);
+                }
+
+            } else {
+                _points.append(KeyFramesPoint { mapped, KeyFramesType_Circle });
+            }
+        }
+    }
+
+    _mousePressed = false;
+    _mouseMoved = false;
+    return 0;
+}
+
+int KeyFramesItem::mouseMoveEvent(QMouseEvent* event)
+{
+
+    if (_keyFramesEnabled == false)
+        return 0;
+
+    if (_mousePressed && _currentPointIndex >= 0 && _points.size() > 0) {
+
+        auto point = _points[_currentPointIndex].point;
+        if (event->pos().x() != point.x()) {
+            _mouseMoved = true;
+        }
+    }
+    return 0;
+}
+
+void KeyFramesItem::drawLine(IPainter* painter)
+{
+    painter->beginPath();
+    painter->setFillStyle("#eeeeee");
+    painter->setStrokeStyle("#eeeeee");
+    painter->setLineWidth(1);
+    painter->drawLine(_rect.left(), (_rect.top() + _rect.bottom()) / 2, _rect.right(), (_rect.top() + _rect.bottom()) / 2);
+    painter->stroke();
+}
+
+void KeyFramesItem::drawKeyPoints(IPainter* painter)
+{
+    for (int i = 0; i < _points.size(); i++) {
+        painter->beginPath();
+        painter->setFillStyle("#eeeeee");
+        painter->setStrokeStyle("#eeeeee");
+
+        auto point = _points[i].point;
+
+        if (_points[i].type == KeyFramesType_Triangle) {
+            painter->drawTriangle(QPoint(point.x(), point.y()), 8);
+            painter->fill();
+        } else if (_points[i].type == KeyFramesType_Circle) {
+            painter->circle(point.x(), point.y(), 4);
+            painter->fill();
+        } else if (_points[i].type == KeyFramesType_Dimond) {
+            painter->drawDiamond(QPoint(point.x(), point.y()), 8);
+            painter->fill();
+        }
+    }
+}
+
+void KeyFramesItem::drawKeyHoverPoint(IPainter* painter)
+{
+
+    QPolygonF _polyInner;
+    QPolygonF _polyOuter;
+    auto p1 = QPointF(_rect.left(), (_rect.top() + _rect.bottom()) / 2);
+    auto p2 = QPointF(_rect.right(), (_rect.top() + _rect.bottom()) / 2);
+
+    MathHelper1::lineAreas(p1, p2, _polyInner, _polyOuter);
+    if (_polyInner.containsPoint(QPointF(_mouseHoverX, _mouseHoverY), Qt::WindingFill)) {
+        painter->beginPath();
+
+        QPointF mapped = MathHelper1::mapPointToLine(p1, p2, QPointF(_mouseHoverX, _mouseHoverY));
+
+        auto index = findPoint(mapped);
+
+        if (index >= 0) {
+            mapped = _points[index].point;
+            painter->setFillStyle("#ff3333");
+            painter->setStrokeStyle("#ff3333");
+
+            if (_points[index].type == KeyFramesType_Triangle) {
+                painter->drawTriangle(mapped, 8);
+                painter->fill();
+            } else if (_points[index].type == KeyFramesType_Circle) {
+                painter->circle(mapped.x(), mapped.y(), 4);
+                painter->fill();
+            } else if (_points[index].type == KeyFramesType_Dimond) {
+                painter->drawDiamond(mapped, 8);
+                painter->fill();
+            }
+
+        } else {
+            painter->setFillStyle("#eeeeee");
+            painter->setStrokeStyle("#eeeeee");
+            painter->circle(mapped.x(), mapped.y(), 4);
+            painter->fill();
+        }
+    }
+}

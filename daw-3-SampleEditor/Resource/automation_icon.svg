@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="19.624142mm"
+   height="19.659735mm"
+   viewBox="0 0 19.624142 19.659734"
+   version="1.1"
+   id="svg5"
+   xml:space="preserve"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="automation_icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.457453"
+     inkscape:cx="244.83389"
+     inkscape:cy="377.08792"
+     inkscape:window-width="1350"
+     inkscape:window-height="1230"
+     inkscape:window-x="544"
+     inkscape:window-y="254"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" /><defs
+     id="defs2"><style
+       type="text/css"
+       id="style9">
+   <![CDATA[
+    .fil0 {fill:black;fill-rule:nonzero}
+   ]]>
+  </style><style
+       type="text/css"
+       id="style219">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:6.29;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.61313}
+    .fil0 {fill:none}
+   ]]>
+  </style></defs><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-96.585815,-97.436907)"><g
+       style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+       id="g244"
+       transform="matrix(0.26286594,0,0,0.26286594,96.472345,97.214603)"><g
+         id="Layer_x0020_1"
+         inkscape:label="Layer 1"
+         inkscape:groupmode="layer">
+  <metadata
+   id="CorelCorpID_0Corel-Layer" />
+  <ellipse
+   class="fil0 str0"
+   transform="matrix(0.932017,-0.00328135,0.00328135,0.932017,10.8377,65.0805)"
+   rx="8.0200005"
+   ry="8.1800003"
+   id="ellipse224"
+   cx="0"
+   cy="0" />
+  <ellipse
+   class="fil0 str0"
+   transform="matrix(0.952401,-0.00335311,0.00335311,0.952401,64.4526,11.6317)"
+   rx="8.0200005"
+   ry="8.1800003"
+   id="ellipse226"
+   cx="0"
+   cy="0" />
+  <line
+   class="fil0 str0"
+   x1="25.540001"
+   y1="50.349998"
+   x2="49.209999"
+   y2="26.6"
+   id="line228" />
+  <line
+   class="fil0 str0"
+   x1="25.540001"
+   y1="50.349998"
+   x2="49.209999"
+   y2="26.6"
+   id="line230" />
+ </g></g></g></svg>
