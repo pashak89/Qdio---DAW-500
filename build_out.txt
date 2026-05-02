@@ -1,0 +1,28 @@
+'vswhere.exe' is not recognized as an internal or external command,
+operable program or batch file.
+**********************************************************************
+** Visual Studio 2019 Developer Command Prompt v16.0
+** Copyright (c) 2021 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+Project MESSAGE: Including QNanoPainter OpenGL backends
+Project MESSAGE: Configuring for Visual Studio 2019
+Project MESSAGE: Including QNanoPainter OpenGL backends
+Project MESSAGE: Configuring for Visual Studio 2019
+Project MESSAGE: Including QNanoPainter OpenGL backends
+Project MESSAGE: Configuring for Visual Studio 2019
+
+Microsoft (R) Program Maintenance Utility Version 14.29.30153.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64\nmake.exe" -f Makefile.Debug
+
+Microsoft (R) Program Maintenance Utility Version 14.29.30153.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+	C:\Qt\5.15.2\msvc2019_64\bin\rcc.exe -name qml ..\daw-3-SampleEditor\qml.qrc -o debug\qrc_qml.cpp
+	cl -c -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus /std:c++20 /TP /bigobj -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc /Fddebug\SampleEditor.vc.pdb -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_DEPRECATED_WARNINGS -DDGE_USE_QT -DDGE_USE_GLM -DDGE_USE_Tweeny -DDGE_USE_FreeImage -DGLEW_STATIC -DFREEIMAGE_EXPORTS -DQT_DEPRECATED_WARNINGS -DJUCE_APP_VERSION=1.0.0 -DJUCE_APP_VERSION_HEX=0x10000 -DJUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1 -DJUCE_MODULE_AVAILABLE_juce_graphics=1 -DJUCE_MODULE_AVAILABLE_juce_gui_extra=1 -DJUCE_MODULE_AVAILABLE_juce_gui_basics=1 -DJUCE_MODULE_AVAILABLE_juce_opengl=0 -DJucePlugin_Build_VST=1 -DJucePlugin_Build_VST3=1 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0 -DJucePlugin_Build_Unity=0 -DJUCE_USE_MP3AUDIOFORMAT=1 -DJUCE_STANDALONE_APPLICATION=1 -DJUCE_PLUGINHOST_AU=0 -DJUCE_PLUGINHOST_LADSPA=0 -DJUCE_PLUGINHOST_VST=1 -DJUCE_PLUGINHOST_VST3=1 -DDEBUG=1 -DJUCE_MSVC=1 -DQNANO_QT_GL_INCLUDE -DQNANO_ENABLE_GLES3 -DQNANO_BUILD_GL_BACKENDS -DWINNT -DQT_QUICKCONTROLS2_LIB -DQT_WEBENGINE_LIB -DQT_WEBENGINECORE_LIB -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_OPENGL_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_OPENGLEXTENSIONS_LIB -DQT_GUI_LIB -DQT_QMLMODELS_LIB -DQT_WEBCHANNEL_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CONCURRENT_LIB -DQT_POSITIONING_LIB -DQT_CORE_LIB -DQT_QML_DEBUG -I..\daw-3-SampleEditor -I. -I..\daw-3-SampleEditor\3rdparty\libqnanopainter -I..\daw-3-SampleEditor\3rdparty\visr\include\visr -I..\daw-3-SampleEditor\3rdparty\boost\include\boost-1_85 -I..\daw-3-SampleEditor\juce -I..\daw-3-SampleEditor\juce\modules -I..\daw-3-SampleEditor\3rdparty\win32\include -I..\daw-3-SampleEditor\3rdparty\win32\include\ipp -I..\daw-3-SampleEditor\3rdparty\win64\include -I..\daw-3-SampleEditor\3rdparty\vst\include -I..\daw-3-SampleEditor\3rdparty\vst2\include -I..\daw-3-SampleEditor\3rdparty\DGE-QD-SDK\x64\include -I..\daw-3-SampleEditor\3rdparty\DGE-QD-SDK\x64\include\EngineLib -I..\daw-3-SampleEditor\3rdparty\DGE-QD-SDK\x64\include\EngineLib\Engine -I..\daw-3-SampleEditor\3rdparty\DGE-QD-SDK\x64\include\glm -I..\daw-3-SampleEditor\3rdparty\DGE-QD-SDK\x64\include\glew -I..\daw-3-SampleEditor\3rdparty\DGE-QD-SDK\x64\include\QDLib -I..\daw-3-SampleEditor\3rdparty\DGE-QD-SDK\x64\include\quickflux -I..\daw-3-SampleEditor\3rdparty\DGE-QD-SDK\x64\include\FreeImage -I"C:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/daw-3-SampleEditor/juce/include" -IC:\Qt\5.15.2\msvc2019_64\include -IC:\Qt\5.15.2\msvc2019_64\include\QtQuickControls2 -IC:\Qt\5.15.2\msvc2019_64\include\QtWebEngine -IC:\Qt\5.15.2\msvc2019_64\include\QtWebEngineCore -IC:\Qt\5.15.2\msvc2019_64\include\QtQuick -IC:\Qt\5.15.2\msvc2019_64\include\QtMultimedia -IC:\Qt\5.15.2\msvc2019_64\include\QtOpenGL -IC:\Qt\5.15.2\msvc2019_64\include\QtSvg -IC:\Qt\5.15.2\msvc2019_64\include\QtWidgets -IC:\Qt\5.15.2\msvc2019_64\include\QtOpenGLExtensions -IC:\Qt\5.15.2\msvc2019_64\include\QtGui -IC:\Qt\5.15.2\msvc2019_64\include\QtANGLE -IC:\Qt\5.15.2\msvc2019_64\include\QtQmlModels -IC:\Qt\5.15.2\msvc2019_64\include\QtWebChannel -IC:\Qt\5.15.2\msvc2019_64\include\QtQml -IC:\Qt\5.15.2\msvc2019_64\include\QtNetwork -IC:\Qt\5.15.2\msvc2019_64\include\QtSql -IC:\Qt\5.15.2\msvc2019_64\include\QtConcurrent -IC:\Qt\5.15.2\msvc2019_64\include\QtPositioning -IC:\Qt\5.15.2\msvc2019_64\include\QtCore -Idebug -I/include -IC:\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc -Fodebug\ @C:\Users\AMIRPA~1\AppData\Local\Temp\nmEA58.tmp
+qrc_qml.cpp
+	link /NOLOGO /DYNAMICBASE /NXCOMPAT /DEBUG /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" /MANIFEST:embed /OUT:debug\SampleEditor.exe @C:\Users\AMIRPA~1\AppData\Local\Temp\nmF1DB.tmp
+LINK : warning LNK4044: unrecognized option '/ippchmt'; ignored
+BUILD_EXIT=0

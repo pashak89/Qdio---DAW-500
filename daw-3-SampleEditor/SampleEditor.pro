@@ -47,8 +47,8 @@ include(./plugins/plugins.pri)
 
 SOURCES += \
         EngineHelper.cpp \
+        Scene3DController.cpp \
         animationeditor.cpp \
-        ThreeBridge.cpp \
         eq/filtervisualizer.cpp \
         eq/multieq.cpp \
         eq/multieqeffect.cpp \
@@ -60,8 +60,8 @@ SOURCES += \
 
 HEADERS += \
     EngineHelper.h \
+    Scene3DController.h \
     animationeditor.h \
-    ThreeBridge.h \
     eq/filtervisualizer.h \
     eq/multieq.h \
     eq/multieqeffect.h \

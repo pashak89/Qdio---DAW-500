@@ -140,8 +140,8 @@
         <file>EffectView.qml</file>
         <file>FolderSelect.qml</file>
         <file>AnimationEditor.qml</file>
-        <file>ThreeSceneView.qml</file>
-        <file>three_scene.html</file>
+        <file>web/scene3d.html</file>
+        <file>web/scene2d.html</file>
         <file>ExportSettings.qml</file>
         <file>SaveAsDialog.qml</file>
         <file>TrackPanels/Audio/ChannelCount.qml</file>

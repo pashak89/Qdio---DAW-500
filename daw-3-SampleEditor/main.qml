@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
 import QtQml 2.2
@@ -28,6 +29,7 @@ import QtQml 2.12
 import RubberBandItem 1.0
 import PlotShapeItem 1.0
 import MarkerShapeItem 1.0
+import QtWebEngine 1.10
 import "qrc:/Common/Forms/views/CommonItems"
 import "qrc:/Common/Forms/views/CustomItems"
 import "qrc:/Common/Forms/views/Settings"
@@ -40,7 +42,6 @@ import "qrc:/Items"
 import "qrc:/TrackPanels/Mixer"
 
 Item {
-
     property QEngine qEngine: QEngine
 
     MiddlewareList {
@@ -260,7 +261,7 @@ Item {
         Connections {
             target: _clipArea
             onSigLoad3dView: {
-                view3D.check = true
+                // 3D scene window is opened from C++ at startup; nothing to do.
             }
 
             onSigExportFinished: {
@@ -280,7 +281,7 @@ Item {
             }
 
             onSigProjectLoaded: {
-                view3D.check = true
+                // 3D scene window is opened from C++ at startup; nothing to do.
                 objectCreator.load(objects)
                 projectProgress.close()
             }
@@ -696,16 +697,6 @@ Item {
                                             trackList.theme = theme2
                                         }
                                     }
-                                    Button {
-                                        id: view3D
-                                        text: "3D"
-                                        property bool check: false
-                                        highlighted: check
-                                        onClicked: {
-                                            view3D.check = !view3D.check
-                                            _areaInfo.updateUI()
-                                        }
-                                    }
                                 }
 
                                 Slider {
@@ -781,23 +772,6 @@ Item {
                 samplseEditor.setSampleFile(path)
             }
         }
-        Window {
-            id: sceneWindow
-            visible: view3D.check
-            width: 800
-            height: 450
-            title: "DAW-500 3D Scene"
-
-            onClosing: {
-                close.accepted = false // Prevent destruction
-                view3D.check = false
-            }
-
-            ThreeSceneView {
-                anchors.fill: parent
-            }
-        }
-
         Connections {
             target: objectCreator
             onSigCurrentStatus: {
@@ -853,15 +827,26 @@ Item {
             //void sigKeyFrameRemoved(int trackIndex, qint64 time);
         }
 
-        RowLayout {
+        ColumnLayout {
             anchors.fill: parent
+            anchors.margins: trackList.scaleSize2(12)
+            spacing: 0
+
+            TopBar {
+                Layout.fillWidth: true
+                Layout.minimumHeight: scaleSize2(75)
+                Layout.preferredHeight: scaleSize2(75)
+                Layout.topMargin: scaleSize2(30)
+                Layout.bottomMargin: scaleSize2(30)
+            }
+
+            RowLayout {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                spacing: trackList.scaleSize2(8)
 
             Rectangle {
                 Layout.fillHeight: true
-
-                Layout.topMargin: trackList.scaleSize2(
-                                      30) + trackList.scaleSize2(
-                                      75) + trackList.scaleSize2(30)
 
                 Layout.minimumWidth: eQComponent.width + trackList.scaleSize2(
                                          20)
@@ -956,21 +941,23 @@ Item {
                 }
             }
 
-            ColumnLayout {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                spacing: 0
-                TopBar {
+                ColumnLayout {
                     Layout.fillWidth: true
-                    Layout.minimumHeight: scaleSize2(75)
-                    Layout.preferredHeight: scaleSize2(75)
-                    Layout.topMargin: scaleSize2(30)
-                    Layout.bottomMargin: scaleSize2(30)
-                }
+                    Layout.fillHeight: true
+                    spacing: trackList.scaleSize2(8)
+
+                    RowLayout {
+                        id: mainRowLayout
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        spacing: 0
+                        property real rightPanelWidth: trackList.scaleSize2(350)
+                        Component.onCompleted: rightPanelWidth = Math.round(width * 0.25)
 
                 Frame {
-                    Layout.fillHeight: true
                     Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    Layout.minimumWidth: trackList._width + trackList.scaleSize2(80)
 
                     spacing: 0
                     padding: trackList.scaleSize2(10)
@@ -1010,6 +997,7 @@ Item {
                         anchors.leftMargin: trackList._width
                         width: trackList.scaleSize2(8)
                         color: "#2f3032"
+                        z: trackList.z + 2
                     }
 
                     TrackList {
@@ -1089,13 +1077,82 @@ Item {
                     }
                 }
 
-                SampleEditor {
-                    id: samplseEditor
-                    visible: true
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                }
-            }
+                    Rectangle {
+                        Layout.fillHeight: true
+                        implicitWidth: trackList.scaleSize2(8)
+                        color: "#4C4C4C"
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            cursorShape: Qt.SizeHorCursor
+                            property real pressGlobalX: 0
+                            property real pressWidth: 0
+                            onPressed: {
+                                pressGlobalX = mapToGlobal(mouseX, mouseY).x
+                                pressWidth = mainRowLayout.rightPanelWidth
+                            }
+                            onPositionChanged: {
+                                if (pressed) {
+                                    var dx = mapToGlobal(mouseX, mouseY).x - pressGlobalX
+                                    mainRowLayout.rightPanelWidth = Math.max(
+                                        trackList.scaleSize2(250), pressWidth - dx)
+                                }
+                            }
+                        }
+                    }
+
+                        // Right panel — 3D (top) + 2D (bottom), equal heights
+                        ColumnLayout {
+                            Layout.preferredWidth: mainRowLayout.rightPanelWidth
+                            Layout.minimumWidth: trackList.scaleSize2(250)
+                            Layout.fillHeight: true
+                            spacing: trackList.scaleSize2(8)
+
+                            Rectangle {
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                                color: "transparent"
+                                border.color: "#2f3032"
+                                border.width: trackList.scaleSize2(10)
+                                radius: trackList.scaleSize2(20)
+                                clip: true
+
+                                WebEngineView {
+                                    anchors.fill: parent
+                                    anchors.margins: trackList.scaleSize2(10)
+                                    url: "qrc:/web/scene3d.html"
+                                    webChannel: webChannelObj
+                                }
+                            }
+
+                            Rectangle {
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                                color: "transparent"
+                                border.color: "#2f3032"
+                                border.width: trackList.scaleSize2(10)
+                                radius: trackList.scaleSize2(20)
+                                clip: true
+
+                                WebEngineView {
+                                    anchors.fill: parent
+                                    anchors.margins: trackList.scaleSize2(10)
+                                    url: "qrc:/web/scene2d.html"
+                                    webChannel: webChannelObj
+                                }
+                            }
+                        }
+                    }   // close RowLayout (clip area + right panel)
+
+                    SampleEditor {
+                        id: samplseEditor
+                        visible: true
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: trackList.scaleSize2(280)
+                    }
+                }   // close right-content ColumnLayout
+            }   // close outer horizontal RowLayout (sidebar + right-content)
         }
     }
+
 }

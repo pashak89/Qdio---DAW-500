@@ -1,0 +1,13 @@
+QML debugging is enabled. Only use this in a safe environment.
+[5788:6620:0501/082830.372:VERBOSE1:node_controller.cc(153)] Initializing node 909EA2172E7C0C02.1BBB22AA7B1BD176
+[5788:6620:0501/082830.440:VERBOSE1:webrtc_internals.cc(123)] Could not get the download directory.
+[5788:30948:0501/082830.442:VERBOSE1:media_stream_manager.cc(685)] MSM::InitializeMaybeAsync([this=0000019CCFDFAD20])
+[5788:30948:0501/082830.444:VERBOSE1:media_stream_manager.cc(685)] MDM::MediaDevicesManager()
+[5788:30948:0501/082830.445:VERBOSE1:media_stream_manager.cc(685)] MSM::MediaStreamManager([this=0000019CCFDFAD20]))
+[5788:6620:0501/082830.451:VERBOSE1:json_pref_store.cc(70)] Error while loading JSON file: File doesn't exist., file: C:\Users\AmirPasha\AppData\Local\SampleEditor\QtWebEngine\Default\user_prefs.json
+
+DevTools listening on ws://127.0.0.1:23456/devtools/browser/ffa51071-3e0f-4fdf-baed-e7d6f209ccf8
+[5788:26248:0501/082830.501:VERBOSE1:gl_factory.cc(191)] Using desktop GL implementation.
+[5788:30948:0501/082830.570:VERBOSE1:node.cc(492)] Merging local ports 2C828F6E9588AF1C.17A59995BAB1A89E@909EA2172E7C0C02.1BBB22AA7B1BD176 and 70DB77860D34153A.8038100D775513F4@909EA2172E7C0C02.1BBB22AA7B1BD176
+[5788:2812:0501/082840.463:WARNING:file_util_win.cc(567)] Failed to get temporary file name in C:\Users\AmirPasha\AppData\Local\SampleEditor\QtWebEngine\Default: The system cannot find the path specified. (0x3)
+[5788:2812:0501/082840.465:WARNING:important_file_writer.cc(81)] temp file failure: C:\Users\AmirPasha\AppData\Local\SampleEditor\QtWebEngine\Default\user_prefs.json : could not create temporary file: The system cannot find the path specified. (0x3)

@@ -6,8 +6,6 @@
 #define JUCE_WINDOWS 1
 #define JUCE_MSVC 1
 
-#include <QtWebEngine/QtWebEngine>
-
 #include "juceapplication.h"
 #include <boost/filesystem.hpp>
 #include <plugins/vst3effect.h>
@@ -22,6 +20,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QQuickView>
 #include <QQuickWindow>
 #include <QScreen>
 
@@ -80,18 +79,11 @@ extern "C" FILE* __cdecl __iob_func(void)
 
 #include <Qt/QEngine.h>
 
-// COM headers (pulled in by QtWebEngine) redefine 'interface' as 'struct'.
-// dinput.h (via DGE/SDL3) expects 'interface' = '__interface' (MSVC built-in).
-// Restore it before pulling in DGE headers, then undo it afterwards.
-#ifdef interface
-#undef interface
-#endif
-#define interface __interface
 #include "EngineHelper.h"
-#ifdef interface
-#undef interface
-#endif
-#include "ThreeBridge.h"
+#include "Scene3DController.h"
+
+#include <QtWebEngine/QtWebEngine>
+#include <QWebChannel>
 
 #if DGE_Platform == DGE_Windows_Platform
 #define _CRTDBG_MAP_ALLOC
@@ -110,13 +102,14 @@ int main(int argc, char* argv[])
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
     {
-        // Must be called before QGuiApplication is constructed
+        QCoreApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
+        QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
+
+        // QtWebEngine must be initialised before the QGuiApplication is
+        // constructed (FluxAppManager creates it internally below).
         QtWebEngine::initialize();
 
-        QCoreApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
-        QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts); // WebEngine + OpenGL coexistence
         AudioManager::init(false);
-
         initQEngineResources(true);
         auto appManager = FluxAppManager::getInstance(argc, argv);
         qRegisterMetaType<QList<qint64>>("QList<qint64>");
@@ -183,7 +176,7 @@ int main(int argc, char* argv[])
         // timelineManager->setCanAddTrack(true);
 
         auto objectCreator = new ObjectCreator(timelineManager, engine);
-        auto threeBridge = new ThreeBridge();
+        auto scene3D = new Scene3DController();
 
         auto connection = QObject::connect(engine.get(), SIGNAL(startedEngine()), objectCreator,
             SLOT(onStartedEngine()), ::Qt::DirectConnection);
@@ -195,7 +188,7 @@ int main(int argc, char* argv[])
         qmlRegisterType<CursorManager>("Utility", 1, 0, "CursorManager");
         QObject::connect(
             appManager.get(), &FluxAppManager::startInitialization, appManager.get(),
-            [appManager, objectCreator, threeBridge, engine]() {
+            [appManager, objectCreator, scene3D, engine]() {
                 auto qmlEngine = appManager->qmlAppEngine();
                 auto rootContext = qmlEngine->rootContext();
                 if (qmlEngine && rootContext != nullptr) {
@@ -267,23 +260,23 @@ int main(int argc, char* argv[])
                     QObject::connect(_areaInfo, &AreaInfo::sigKeyFrameChanged, objectCreator,
                         &ObjectCreator::keyFrameChanged, Qt::DirectConnection);
 
-                    QObject::connect(_areaInfo, &AreaInfo::sigPlayBackUpdateTimeout, [objectCreator, threeBridge, _areaInfo]() {
+                    QObject::connect(_areaInfo, &AreaInfo::sigPlayBackUpdateTimeout, [objectCreator, scene3D, _areaInfo]() {
                         if (AudioManager::getSong()->isPause() == false) {
                             const qint64 t = _areaInfo->playheadMarker();
                             objectCreator->setCurrentTime(t);
-                            threeBridge->setPlayhead(t);
+                            scene3D->setPlayhead(t);
                         }
                     });
 
                     QObject::connect(_areaInfo, &AreaInfo::sigObjectPosition, objectCreator,
                         &ObjectCreator::setObjectLocation, Qt::DirectConnection);
 
-                    // Forward entity position from DAW → Three.js
+                    // Forward entity position from DAW → QtQuick3D scene
                     QObject::connect(objectCreator, &ObjectCreator::sigObjectMoved,
-                        threeBridge, &ThreeBridge::setEntityPosition, Qt::QueuedConnection);
+                        scene3D, &Scene3DController::setEntityPosition, Qt::QueuedConnection);
 
-                    // Reverse sync: Three.js user drag → DAW keyframe
-                    QObject::connect(threeBridge, &ThreeBridge::entityMovedFromScene,
+                    // Reverse sync: QtQuick3D drag → DAW keyframe (wired when gizmos are added)
+                    QObject::connect(scene3D, &Scene3DController::entityMovedFromScene,
                         objectCreator, &ObjectCreator::setObjectLocation, Qt::QueuedConnection);
 
                     qmlEngine->rootContext()->setContextProperty("_homePath", _homePath);
@@ -293,15 +286,26 @@ int main(int argc, char* argv[])
                     qmlEngine->rootContext()->setContextProperty("globalValues", properties);
                     qmlEngine->rootContext()->setContextProperty("vst3", vst3);
                     qmlEngine->rootContext()->setContextProperty("objectCreator", objectCreator);
-                    qmlEngine->rootContext()->setContextProperty("threeBridge", threeBridge);
+                    qmlEngine->rootContext()->setContextProperty("scene3D", scene3D);
+
+                    // Expose scene3D over QWebChannel so the Three.js page can
+                    // connect to its signals/slots from JavaScript.
+                    auto* webChannel = new QWebChannel(scene3D);
+                    webChannel->registerObject(QStringLiteral("scene3D"), scene3D);
+                    qmlEngine->rootContext()->setContextProperty("webChannelObj", webChannel);
+
                     qmlEngine->rootContext()->setContextProperty("_clipArea", _clipArea);
 
                     // qmlEngine->rootContext()->setContextProperty("closeClass", &closeClass);
+
+                    // Three.js viewports are embedded in main.qml via WebEngineView
+                    // and connect to scene3D through the webChannelObj above.
                 }
             },
             Qt::DirectConnection);
         appManager->init();
         auto rootItem = appManager->rootItem();
+
         result = appManager->exec();
         appManager->release();
     }

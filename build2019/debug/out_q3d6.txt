@@ -1,0 +1,307 @@
+[     1.08 ] D: QEngine  register in Qt with id:  0
+[     1.08 ] D: ViewPort3D  register in Qt with id:  1
+[     1.09 ] D: QScene3D  register in Qt with id:  2
+[     1.09 ] D: QNode3D  register in Qt with id:  3
+[     1.09 ] D: QComponent3D  register in Qt with id:  4
+[     1.09 ] D: QCameraComponent  register in Qt with id:  5
+[     1.09 ] D: QCameraController  register in Qt with id:  6
+[     1.09 ] D: QFpsCameraController  register in Qt with id:  7
+[     1.09 ] D: QCameraLens  register in Qt with id:  8
+[     1.09 ] D: QPerspectiveLens  register in Qt with id:  9
+[     1.09 ] D: QOrthoLens  register in Qt with id:  10
+[     1.10 ] D: QThirdPersonController  register in Qt with id:  11
+[     1.10 ] D: QEntity3D  register in Qt with id:  12
+[     1.10 ] D: QDAnimationTrackController  register in Qt with id:  13
+[     1.10 ] D: QDPropertyType  register in Qt with id:  14
+[     1.10 ] D: QDModel  register in Qt with id:  15
+[     1.10 ] D: QDModelSource  register in Qt with id:  16
+[     1.10 ] D: QDLine  register in Qt with id:  17
+[     1.10 ] D: QDCube  register in Qt with id:  18
+[     1.10 ] D: QDArrow  register in Qt with id:  19
+[     1.10 ] D: QDSphere  register in Qt with id:  20
+[     1.10 ] D: QDCylinder  register in Qt with id:  21
+[     1.10 ] D: QDCapsule  register in Qt with id:  22
+[     1.10 ] D: QDTriangle  register in Qt with id:  23
+[     1.10 ] D: QDTriangle  register in Qt with id:  24
+[     1.10 ] D: QDShader  register in Qt with id:  25
+[     1.10 ] D: QEnvironment3DManager  register in Qt with id:  26
+[     1.22 ] D: CursorManager  register in Qt with id:  85
+[     1.22 ] D: HighResMouseArea  register in Qt with id:  86
+[     1.22 ] D: AnimationTrackItem  register in Qt with id:  87
+[     1.22 ] D: KeyFrameItem  register in Qt with id:  88
+[     1.22 ] D: KeyFrameItem  register in Qt with id:  89
+[     1.22 ] D: QDAnimationTransition  register in Qt with id:  90
+[     1.22 ] D: AnimationManager  register in Qt with id:  91
+[     1.22 ] D: file opened 
+
+[     1.35 ] D: Data successfully loaded from plugins.xml!
+[     1.35 ] D: LOADED 96
+[     1.44 ] D: Invalid QML type name "main"; type names must begin with an uppercase letter
+[     2.10 ] D: Could not attach Keys property to:  ApplicationWindow_QMLTYPE_373_QML_377(0x131374e6e70)  is not an Item
+[     2.14 ] D: qrc:/TopBar.qml:560:13: QML InfoText3: Binding loop detected for property "value"
+[     2.38 ] D: DPI: 6.376470588235295
+[     3.01 ] D: qrc:/TrackPanels/Audio/TrackAudio.qml:228:5: QML TrackShapeItem: Binding loop detected for property "height"
+[     3.03 ] D: qrc:/TrackPanels/Audio/Row1.qml:10:5: QML Select: Cannot specify top, bottom, and verticalCenter anchors at the same time.
+[     3.05 ] D: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:257:5: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
+[     3.15 ] D: qrc:/TopBar.qml:275:13: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
+[     3.19 ] D: outputChannelsCount 2
+[     3.23 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[     3.23 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[     3.29 ] D: outputChannelsCount 2
+[     3.33 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[     3.34 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[     3.40 ] D: outputChannelsCount 2
+[     3.43 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[     3.44 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[     3.48 ] D: outputChannelsCount 2
+[     3.52 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[     3.52 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[     4.49 ] D: 0 0
+[     4.53 ] D: qrc:/main.qml:805:9: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
+[     4.62 ] D: file:///C:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/build2019/debug/QtQuick/Dialogs/DefaultFileDialog.qml:102:33: QML Settings: Failed to initialize QSettings instance. Status code is: 1
+[     4.62 ] D: file:///C:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/build2019/debug/QtQuick/Dialogs/DefaultFileDialog.qml:102:33: QML Settings: The following application identifiers have not been set: QVector("organizationName", "organizationDomain")
+[     4.67 ] D: qrc:/main.qml:260:9: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
+[     4.71 ] D: file:///C:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/build2019/debug/QtQuick/Dialogs/DefaultFileDialog.qml:102:33: QML Settings: Failed to initialize QSettings instance. Status code is: 1
+[     4.71 ] D: file:///C:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/build2019/debug/QtQuick/Dialogs/DefaultFileDialog.qml:102:33: QML Settings: The following application identifiers have not been set: QVector("organizationName", "organizationDomain")
+[     4.75 ] D: file:///C:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/build2019/debug/QtQuick/Dialogs/DefaultFileDialog.qml:102:33: QML Settings: Failed to initialize QSettings instance. Status code is: 1
+[     4.75 ] D: file:///C:/Users/AmirPasha/Desktop/Claude Projects/DAW-500/build2019/debug/QtQuick/Dialogs/DefaultFileDialog.qml:102:33: QML Settings: The following application identifiers have not been set: QVector("organizationName", "organizationDomain")
+[     4.76 ] D: setWindowRootItem QQuickContentItem(0x131377469d0, name="ApplicationWindow", parent=0x13137747ab0, geometry=0,40 1900x960)
+[     4.84 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36:9: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:92:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:88:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:87:21: Unable to assign [undefined] to double
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:92:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:88:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:87:21: Unable to assign [undefined] to double
+[     4.84 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36:9: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:92:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:88:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:87:21: Unable to assign [undefined] to double
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:92:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:88:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:87:21: Unable to assign [undefined] to double
+[     4.84 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36:9: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:92:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:88:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:87:21: Unable to assign [undefined] to double
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:92:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:88:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:87:21: Unable to assign [undefined] to double
+[     4.84 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36:9: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:92:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:88:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:87:21: Unable to assign [undefined] to double
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:92:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:88:21: Unable to assign [undefined] to QString
+[     4.84 ] D: qrc:/TrackPanels/Mixer/components/SendsSection.qml:87:21: Unable to assign [undefined] to double
+[     4.84 ] D: qrc:/Eq8Plugin/Item/ButtonCombobox/Button_Combobox.qml:80: ReferenceError: model is not defined
+[     4.84 ] D: qrc:/Global.qml:14: TypeError: Cannot read property '0' of undefined
+[     4.84 ] D: qrc:/Global.qml:32: TypeError: Cannot call method 'getResolution' of undefined
+[     4.84 ] D: The QML file ' QUrl("qrc:/main.qml") ' is loaded successfully
+[     4.84 ] D: App started
+[     4.94 ] D: QtWebEngine::initialize() called with QCoreApplication object already created and should be call before. This is depreciated and may fail in the future.
+[     5.34 ] D: qrc:/TrackPanels/Audio/TrackAudio.qml:228:5: QML TrackShapeItem: Binding loop detected for property "height"
+[     5.36 ] D: qrc:/TrackPanels/Audio/Row1.qml:10:5: QML Select: Cannot specify top, bottom, and verticalCenter anchors at the same time.
+[     5.38 ] D: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:257:5: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
+[     5.45 ] D: qrc:/TrackPanels/Audio/TrackAudio.qml:228:5: QML TrackShapeItem: Binding loop detected for property "height"
+[     5.46 ] D: qrc:/TrackPanels/Audio/Row1.qml:10:5: QML Select: Cannot specify top, bottom, and verticalCenter anchors at the same time.
+[     5.48 ] D: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:257:5: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
+[     5.55 ] D: qrc:/TrackPanels/Audio/TrackAudio.qml:228:5: QML TrackShapeItem: Binding loop detected for property "height"
+[     5.57 ] D: qrc:/TrackPanels/Audio/Row1.qml:10:5: QML Select: Cannot specify top, bottom, and verticalCenter anchors at the same time.
+[     5.59 ] D: qrc:/TrackPanels/Audio/Automation/AutomationDropMenu.qml:257:5: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
+[     5.83 ] D: Creating suitable QNanoBackend for OpenGL 4.6 context
+[     5.83 ] D: Using backend: "OpenGL 3"
+[     5.84 ] D: Floating point comparison needs context sanity check
+[     5.84 ] D: QT onScaleChanged=  144
+[    12.75 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    12.76 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    12.76 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    12.76 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    12.76 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    12.76 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    12.76 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    12.77 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    12.77 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    12.77 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    12.77 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    12.78 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    12.78 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    12.78 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    12.78 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    12.78 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    12.78 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    12.78 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    12.78 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    12.79 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    12.79 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    12.79 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    12.79 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    12.79 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    12.80 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    12.80 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    12.80 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    12.80 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    12.80 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    12.80 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    12.80 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    12.81 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.02 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    13.02 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    13.02 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    13.03 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.03 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    13.03 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    13.03 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    13.03 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.03 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    13.03 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    13.03 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    13.04 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.04 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    13.04 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    13.04 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    13.04 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.05 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    13.05 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    13.05 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    13.05 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.05 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    13.05 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    13.05 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    13.06 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.06 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    13.06 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    13.06 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    13.07 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.07 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    13.07 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    13.07 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    13.07 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.35 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    13.35 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    13.35 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    13.36 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.36 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    13.36 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    13.36 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    13.37 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.37 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    13.37 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    13.37 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    13.38 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.38 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    13.38 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    13.38 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    13.38 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.38 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    13.38 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    13.38 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    13.39 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.39 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    13.39 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    13.39 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    13.39 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.39 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    13.40 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    13.40 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    13.40 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    13.40 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    13.40 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    13.40 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    13.40 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.47 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    14.47 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    14.47 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    14.48 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.48 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    14.48 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    14.48 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    14.48 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.48 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    14.48 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    14.48 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    14.49 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.49 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    14.49 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    14.49 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    14.49 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.50 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    14.50 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    14.50 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    14.50 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.51 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    14.51 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    14.51 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    14.51 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.51 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    14.51 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    14.51 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    14.52 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.52 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    14.52 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    14.52 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    14.52 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.89 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    14.89 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    14.89 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    14.90 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.90 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    14.90 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    14.90 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    14.90 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.90 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    14.90 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    14.90 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    14.91 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.91 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    14.91 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    14.91 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    14.91 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.91 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    14.91 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    14.91 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    14.92 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.92 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    14.92 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    14.92 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    14.92 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.93 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    14.93 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    14.93 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    14.93 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    14.94 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    14.94 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    14.94 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    14.94 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    15.22 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    15.22 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    15.22 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    15.23 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    15.23 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    15.23 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    15.23 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    15.23 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    15.23 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    15.23 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    15.23 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    15.24 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    15.24 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    15.24 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    15.24 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    15.24 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    15.25 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    15.25 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    15.25 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    15.25 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    15.26 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    15.26 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    15.26 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    15.26 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    15.26 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:64: TypeError: Cannot read property 'controlVisible' of null
+[    15.26 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:20: TypeError: Cannot read property 'enabled' of null
+[    15.26 ] D: qrc:/TrackPanels/Mixer/delegates/SendsLabelDelegate.qml:21: TypeError: Cannot read property 'name' of null
+[    15.27 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
+[    15.27 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:31: TypeError: Value is null and could not be converted to an object
+[    15.27 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:34: TypeError: Value is null and could not be converted to an object
+[    15.27 ] D: qrc:/TrackPanels/Mixer/delegates/FxLabelDelegate.qml:36: TypeError: Value is null and could not be converted to an object
+[    15.27 ] D: qrc:/Items/ReorderableListView.qml:196: Error: Cannot assign to non-existent property "modelData_"
