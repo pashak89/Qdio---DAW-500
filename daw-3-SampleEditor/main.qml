@@ -1,4 +1,5 @@
 import QtQuick 2.12
+import QtQuick 2.15
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls 2.15
@@ -946,18 +947,27 @@ Item {
                     Layout.fillHeight: true
                     spacing: trackList.scaleSize2(8)
 
-                    RowLayout {
-                        id: mainRowLayout
+                    SplitView {
+                        id: mainSplitView
                         Layout.fillWidth: true
                         Layout.fillHeight: true
-                        spacing: 0
-                        property real rightPanelWidth: trackList.scaleSize2(350)
-                        Component.onCompleted: rightPanelWidth = Math.round(width * 0.25)
+                        orientation: Qt.Horizontal
+                        handle: Item {
+                            implicitWidth: trackList.scaleSize2(18)
+                            Rectangle {
+                                anchors.fill: parent
+                                anchors.leftMargin: trackList.scaleSize2(5)
+                                anchors.rightMargin: trackList.scaleSize2(5)
+                                color: "#4C4C4C"
+                            }
+                            HoverHandler {
+                                cursorShape: Qt.SplitHCursor
+                            }
+                        }
 
                 Frame {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    Layout.minimumWidth: trackList._width + trackList.scaleSize2(80)
+                    SplitView.fillWidth: true
+                    SplitView.minimumWidth: trackList._width + trackList.scaleSize2(80)
 
                     spacing: 0
                     padding: trackList.scaleSize2(10)
@@ -1075,37 +1085,24 @@ Item {
                                      && x < trackList.x + trackList.width
                         }
                     }
-                }
 
                     Rectangle {
-                        Layout.fillHeight: true
-                        implicitWidth: trackList.scaleSize2(8)
-                        color: "#4C4C4C"
-                        MouseArea {
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            cursorShape: Qt.SizeHorCursor
-                            property real pressGlobalX: 0
-                            property real pressWidth: 0
-                            onPressed: {
-                                pressGlobalX = mapToGlobal(mouseX, mouseY).x
-                                pressWidth = mainRowLayout.rightPanelWidth
-                            }
-                            onPositionChanged: {
-                                if (pressed) {
-                                    var dx = mapToGlobal(mouseX, mouseY).x - pressGlobalX
-                                    mainRowLayout.rightPanelWidth = Math.max(
-                                        trackList.scaleSize2(250), pressWidth - dx)
-                                }
-                            }
-                        }
+                        z: 9999
+                        anchors.fill: parent
+                        anchors.margins: -trackList.scaleSize2(10)
+                        color: "transparent"
+                        border.color: "#2f3032"
+                        border.width: trackList.scaleSize2(10)
+                        radius: trackList.scaleSize2(20)
                     }
+                }
 
                         // Right panel — 3D (top) + 2D (bottom), equal heights
                         ColumnLayout {
-                            Layout.preferredWidth: mainRowLayout.rightPanelWidth
-                            Layout.minimumWidth: trackList.scaleSize2(250)
-                            Layout.fillHeight: true
+                            SplitView.preferredWidth: mainSplitView.width > 0
+                                ? Math.round(mainSplitView.width * 0.25)
+                                : trackList.scaleSize2(350)
+                            SplitView.minimumWidth: trackList.scaleSize2(250)
                             spacing: trackList.scaleSize2(8)
 
                             Rectangle {
@@ -1142,7 +1139,7 @@ Item {
                                 }
                             }
                         }
-                    }   // close RowLayout (clip area + right panel)
+                    }   // close SplitView (clip area + right panel)
 
                     SampleEditor {
                         id: samplseEditor
