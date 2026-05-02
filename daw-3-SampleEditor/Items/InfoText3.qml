@@ -80,6 +80,7 @@ TextInput {
         id: fm
         font.family: rootTI.fontFamily
         font.pixelSize: rootTI.fontSize
+        font.bold: true
     }
 
     Text {
@@ -92,6 +93,7 @@ TextInput {
 
         font.pixelSize: fontSize
         font.family: fontFamily
+        font.bold: true
 
         // Center text inside the Rectangle, but don't force its size
         anchors.left: parent.left

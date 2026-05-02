@@ -952,16 +952,19 @@ Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
                         orientation: Qt.Horizontal
-                        handle: Item {
-                            implicitWidth: trackList.scaleSize2(18)
-                            Rectangle {
-                                anchors.fill: parent
-                                anchors.leftMargin: trackList.scaleSize2(5)
-                                anchors.rightMargin: trackList.scaleSize2(5)
-                                color: "#4C4C4C"
-                            }
+                        handle: Rectangle {
+                            implicitWidth: trackList.scaleSize2(8)
+                            color: "#4C4C4C"
                             HoverHandler {
                                 cursorShape: Qt.SplitHCursor
+                            }
+                            Item {
+                                anchors.fill: parent
+                                anchors.leftMargin: -trackList.scaleSize2(6)
+                                anchors.rightMargin: -trackList.scaleSize2(6)
+                                HoverHandler {
+                                    cursorShape: Qt.SplitHCursor
+                                }
                             }
                         }
 

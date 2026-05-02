@@ -307,8 +307,9 @@ Rectangle {
         height: parent.height
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.left: rootMainTrack.left
-        anchors.leftMargin: _width - collapsPanel.width - channelRows.width
+        anchors.bottomMargin: scaleSize2(5)
+        anchors.left: parent.left
+        anchors.leftMargin: _width - channelRows.width
         z: seperator.z + 1
     }
 
