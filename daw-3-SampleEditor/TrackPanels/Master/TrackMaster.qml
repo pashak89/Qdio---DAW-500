@@ -126,8 +126,6 @@ Rectangle {
             anchors {
                 top: parent.top
                 bottom: parent.bottom; bottomMargin: scaleSize2(5)
-                left: parent.left
-                leftMargin: _width - channelRows.width - rootMainTrack.x
             }
         }
     }
@@ -346,6 +344,11 @@ Rectangle {
             }
 
             AnchorChanges {
+                target: channelRows
+                anchors.left: rootMainTrack.left
+            }
+
+            AnchorChanges {
                 target: automationListView
                 anchors.right: rootMainTrack.right
             }
@@ -412,6 +415,16 @@ Rectangle {
             AnchorChanges {
                 target: automationRow
                 anchors.left: rootMainTrack.left
+            }
+
+            AnchorChanges {
+                target: channelRows
+                anchors.left: parent.left
+                anchors.right: undefined
+            }
+            PropertyChanges {
+                target: channelRows
+                anchors.leftMargin: _width - channelRows.width
             }
 
             AnchorChanges {
