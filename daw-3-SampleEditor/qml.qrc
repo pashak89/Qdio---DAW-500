@@ -142,9 +142,13 @@
         <file>AnimationEditor.qml</file>
         <file>web/scene3d.html</file>
         <file>web/scene2d.html</file>
+        <file>web/lib/three.min.js</file>
+        <file>web/lib/OrbitControls.js</file>
+        <file>web/lib/TransformControls.js</file>
         <file>ExportSettings.qml</file>
         <file>SaveAsDialog.qml</file>
         <file>TrackPanels/Audio/ChannelCount.qml</file>
+        <file>TrackPanels/Audio/ObjectKeyframeRow.qml</file>
         <file>TopBar.qml</file>
         <file>Resource/note_icon.svg</file>
         <file>Resource/loop_icon.svg</file>

@@ -368,6 +368,8 @@ signals:
     void sigEffectRemoved(int trackIndex, int effectIndex);
 
     void sigAutomationLaneEnabled(int trackIndex, bool enabled);
+
+    void keyFramesChanged(int trackIndex);
 };
 
 #endif // TRACKSMODEL_H

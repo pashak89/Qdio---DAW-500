@@ -144,6 +144,9 @@ Rectangle {
                     objectCreator.setKeyFrames(
                                 index, clipArea.tracksModel.keyFrames(index))
 
+                    if (typeof scene3D !== 'undefined' && scene3D)
+                        scene3D.setEntityVisible(index, model.objectEnabled)
+
             }
 
             //onSendMessage: funcs.trackLighting(ind, 'select_btn')

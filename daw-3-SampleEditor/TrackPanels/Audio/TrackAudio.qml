@@ -19,7 +19,7 @@ Rectangle {
     property ClipArea clipArea
     property int ind: index
 
-    height: totalTrackRect.height
+    height: totalTrackRect.height + (model.objectEnabled === true ? scaleSize2(37 + 15) + clipArea.seperatorHeight : 0)
     width: parent.width
 
     clip: true
@@ -66,6 +66,16 @@ Rectangle {
     property int channels: model.channelCount
     property var truePeakModel: model.truePeakLevel
     // ---------------------------------------------------------------------------------------------------------------------  properties.
+
+    // Register this track's sphere in the 3D/2D scenes. Initial position is (0,0,0);
+    // real coordinates will be supplied later (per-track sound-localization keyframes).
+    Component.onCompleted: {
+        if (typeof scene3D !== 'undefined' && scene3D) {
+            scene3D.setEntityPosition(index, 0, 0, 0)
+            if (model.color) scene3D.setEntityColor(index, model.color)
+            scene3D.setEntityVisible(index, model.objectEnabled === true)
+        }
+    }
     Collapse {
         id: collapsPanel
         anchors.bottom: parent.bottom
@@ -157,6 +167,17 @@ Rectangle {
             anchors.top: row2.bottom
             anchors.topMargin: scaleSize2(15)
         }
+
+        ObjectKeyframeRow {
+            id: keyframeRow
+            ind: root.ind
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: automationRow.bottom
+            anchors.topMargin: scaleSize2(15)
+            visible: model.objectEnabled === true
+            height: visible ? scaleSize2(37) + clipArea.seperatorHeight : 0
+        }
     }
 
     ClipShapeItem {
@@ -246,6 +267,7 @@ Rectangle {
         id: seperator
 
         y: rootMainTrack.height + rootMainTrack.y - clipArea.seperatorHeight
+           + (model.objectEnabled === true ? scaleSize2(37 + 15) + clipArea.seperatorHeight : 0)
 
         anchors.leftMargin: model.automationLaneCount > 0 & model.automationLaneEnabled
                             & rowsExpanded ? -scaleSize2(10) : 0

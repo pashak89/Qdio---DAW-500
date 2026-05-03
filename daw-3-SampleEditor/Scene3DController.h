@@ -1,7 +1,9 @@
 #pragma once
 
+#include <QColor>
 #include <QHash>
 #include <QObject>
+#include <QVariantMap>
 #include <QVector3D>
 
 // Bridges DAW timeline state to the Three.js WebEngine viewports embedded in main.qml.
@@ -18,24 +20,32 @@ public:
     int selectedTrack() const { return m_selectedTrack; }
 
     Q_INVOKABLE QVector3D entityPosition(int trackIndex) const;
+    Q_INVOKABLE QVariantMap entityPositionMap(int trackIndex) const;
     Q_INVOKABLE QList<int> entityIds() const;
+    Q_INVOKABLE QString entityColor(int trackIndex) const;
+    Q_INVOKABLE bool entityVisible(int trackIndex) const;
 
     // Called by QML when the user drags an entity in the scene.
     Q_INVOKABLE void entityMovedInScene(int trackIndex, double x, double y, double z);
 
     // Called by QML when the user clicks a sphere (raycast hit).
     Q_INVOKABLE void entityClicked(int trackIndex);
+    Q_INVOKABLE void log(const QString& msg) const;
 
 public slots:
     void setPlayhead(qint64 time);
     void setEntityPosition(int trackIndex, double x, double y, double z);
+    void setEntityColor(int trackIndex, const QColor& color);
+    void setEntityVisible(int trackIndex, bool visible);
     void setSelected(int trackIndex);
     void resetScene();
 
 signals:
     void playheadMoved(qint64 time);
-    void entityAdded(int trackIndex, QVector3D position);
-    void entityPositionChanged(int trackIndex, QVector3D position);
+    void entityAdded(int trackIndex, double x, double y, double z);
+    void entityPositionChanged(int trackIndex, double x, double y, double z);
+    void entityColorChanged(int trackIndex, QString colorHex);
+    void entityVisibilityChanged(int trackIndex, bool visible);
     void sceneReset();
     void trackSelected(int trackIndex);
 
@@ -44,6 +54,8 @@ signals:
 
 private:
     QHash<int, QVector3D> m_positions;
+    QHash<int, QColor>    m_colors;
+    QHash<int, bool>      m_visible;
     qint64 m_playhead { 0 };
     int    m_selectedTrack { -1 };
 };

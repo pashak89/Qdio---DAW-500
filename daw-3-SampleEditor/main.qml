@@ -31,6 +31,7 @@ import RubberBandItem 1.0
 import PlotShapeItem 1.0
 import MarkerShapeItem 1.0
 import QtWebEngine 1.10
+import QtWebChannel 1.0
 import "qrc:/Common/Forms/views/CommonItems"
 import "qrc:/Common/Forms/views/CustomItems"
 import "qrc:/Common/Forms/views/Settings"
@@ -1122,6 +1123,7 @@ Item {
                                     anchors.margins: trackList.scaleSize2(10)
                                     url: "qrc:/web/scene3d.html"
                                     webChannel: webChannelObj
+                                    onJavaScriptConsoleMessage: scene3D.log("3D-JS L" + lineNumber + ": " + message)
                                 }
                             }
 
@@ -1139,6 +1141,7 @@ Item {
                                     anchors.margins: trackList.scaleSize2(10)
                                     url: "qrc:/web/scene2d.html"
                                     webChannel: webChannelObj
+                                    onJavaScriptConsoleMessage: scene3D.log("2D-JS L" + lineNumber + ": " + message)
                                 }
                             }
                         }

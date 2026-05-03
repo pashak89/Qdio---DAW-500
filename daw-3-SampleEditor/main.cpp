@@ -84,6 +84,8 @@ extern "C" FILE* __cdecl __iob_func(void)
 
 #include <QtWebEngine/QtWebEngine>
 #include <QWebChannel>
+#include <QtWebChannel/QQmlWebChannel>
+#include <QFile>
 
 #if DGE_Platform == DGE_Windows_Platform
 #define _CRTDBG_MAP_ALLOC
@@ -112,6 +114,16 @@ int main(int argc, char* argv[])
         AudioManager::init(false);
         initQEngineResources(true);
         auto appManager = FluxAppManager::getInstance(argc, argv);
+
+        qInstallMessageHandler([](QtMsgType type, const QMessageLogContext&, const QString& msg) {
+            static QFile logFile(QStringLiteral("C:/Users/AmirPasha/dawlog.txt"));
+            static bool opened = logFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
+            if (!opened) return;
+            const char* tag = (type == QtDebugMsg) ? "DBG" : (type == QtInfoMsg) ? "INF" : (type == QtWarningMsg) ? "WRN" : "ERR";
+            const QString line = QStringLiteral("[%1] %2\n").arg(tag, msg);
+            logFile.write(line.toUtf8());
+            logFile.flush();
+        });
         qRegisterMetaType<QList<qint64>>("QList<qint64>");
         qRegisterMetaType<QMap<qint64, int>>("QMap<qint64,int>");
         qRegisterMetaType<QMap<qint64, double>>("QMap<qint64,double>");
@@ -290,7 +302,7 @@ int main(int argc, char* argv[])
 
                     // Expose scene3D over QWebChannel so the Three.js page can
                     // connect to its signals/slots from JavaScript.
-                    auto* webChannel = new QWebChannel(scene3D);
+                    auto* webChannel = new QQmlWebChannel(scene3D);
                     webChannel->registerObject(QStringLiteral("scene3D"), scene3D);
                     qmlEngine->rootContext()->setContextProperty("webChannelObj", webChannel);
 
