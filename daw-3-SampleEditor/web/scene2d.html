@@ -4,31 +4,46 @@
 <meta charset="utf-8">
 <title>DAW-500 Three.js 2D Scene</title>
 <style>
+  @font-face {
+    font-family: 'Source Sans Pro';
+    src: url('qrc:///Resource/font/SourceSansPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
   html, body { margin: 0; padding: 0; overflow: hidden; background: #1e1e1e;
-               font-family: 'Courier New', monospace; }
-  #status   { position: absolute; top: 6px; right: 160px; color: #777;
-              font-size: 10px; letter-spacing: 1px; }
-  #projInfo { position: absolute; top: 36px; left: 50%; transform: translateX(-50%);
-              color: #777; font-size: 11px; letter-spacing: 2px; }
+               font-family: 'Source Sans Pro', sans-serif; }
+  #status, #projInfo, #hint, #projSel {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 13px;
+      font-weight: normal;
+      color: #aaa;
+      letter-spacing: 0;
+      line-height: 1;
+  }
+  #status   { position: absolute; top: 8px;  right: 160px; }
+  #projInfo { position: absolute; top: 36px; left: 50%; transform: translateX(-50%); }
+  #hint     { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); }
   #projSel  { position: absolute; top: 6px; right: 8px; width: 140px;
-              background: #2a2a2a; color: #ccc; border: 1px solid #444;
-              font-family: 'Courier New', monospace; font-size: 11px; padding: 2px; }
-  #hint     { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
-              color: #444; font-size: 10px; }
-  #gizmo    { position: absolute; left: 8px; bottom: 8px; width: 80px; height: 80px;
-              pointer-events: none; }
+              background: #2a2a2a; border: 1px solid #444; padding: 3px 6px;
+              -webkit-appearance: none; appearance: none; }
+  #gizmoWrap { position: absolute; left: 8px; bottom: 28px; width: 80px; height: 80px;
+               pointer-events: none; }
+  #gizmoWrap canvas { position: absolute; left: 0; top: 0; width: 80px; height: 80px; }
 </style>
 </head>
 <body>
 <div id="status">connecting…</div>
-<div id="projInfo">TOP   (X / Z)</div>
+<div id="projInfo">TOP (X / Z)</div>
 <select id="projSel">
-  <option value="top">Top  (X/Z)</option>
-  <option value="front">Front (X/Y)</option>
-  <option value="side">Side  (Z/Y)</option>
+  <option value="top">Top (X / Z)</option>
+  <option value="front">Front (X / Y)</option>
+  <option value="side">Side (Z / Y)</option>
 </select>
 <div id="hint">Drag: pan | Scroll: zoom | Click sphere: select</div>
-<canvas id="gizmo"></canvas>
+<div id="gizmoWrap">
+  <canvas id="gizmo"></canvas>
+  <canvas id="gizmoLbl"></canvas>
+</div>
 
 <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
 <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
@@ -39,9 +54,9 @@ const PALETTE = ['#4488ff','#ff4488','#44ff88','#ffaa44',
                  '#aa44ff','#44ccff','#ff8844','#88ff44'];
 const BASE_SIZE = 10;
 const PROJECTIONS = {
-    top:   { pos: [0, 100, 0],  up: [0, 0, -1], label: 'TOP   (X / Z)' },
+    top:   { pos: [0, 100, 0],  up: [0, 0, -1], label: 'TOP (X / Z)' },
     front: { pos: [0, 0, 100],  up: [0, 1,  0], label: 'FRONT (X / Y)' },
-    side:  { pos: [100, 0, 0],  up: [0, 1,  0], label: 'SIDE  (Z / Y)' },
+    side:  { pos: [100, 0, 0],  up: [0, 1,  0], label: 'SIDE (Z / Y)' },
 };
 
 const $status   = document.getElementById('status');
@@ -213,13 +228,40 @@ function syncGizmo() {
 }
 syncGizmo();
 
+// ── Gizmo labels (overlay canvas) ─────────────────────────────────────────
+const gLblCanvas = document.getElementById('gizmoLbl');
+const gLblCtx = gLblCanvas.getContext('2d');
+gLblCanvas.width = 80;
+gLblCanvas.height = 80;
+
+function drawGizmoLabels() {
+    gLblCtx.clearRect(0, 0, 80, 80);
+    gLblCtx.font = '13px "Source Sans Pro", sans-serif';
+    const axes = [
+        { dir: new THREE.Vector3(1, 0, 0), label: 'X', color: '#ff5555' },
+        { dir: new THREE.Vector3(0, 1, 0), label: 'Y', color: '#55ee55' },
+        { dir: new THREE.Vector3(0, 0, 1), label: 'Z', color: '#5599ff' },
+    ];
+    for (const ax of axes) {
+        const v = ax.dir.clone().multiplyScalar(0.9);
+        v.project(gCamera);
+        const x = (v.x + 1) / 2 * 80;
+        const y = (1 - (v.y + 1) / 2) * 80;
+        gLblCtx.fillStyle = ax.color;
+        gLblCtx.fillText(ax.label, x + 2, y + 4);
+    }
+}
+
 // ── Animate ────────────────────────────────────────────────────────────────
 applyProjection('top');
-(function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-    gRenderer.render(gScene, gCamera);
-})();
+document.fonts.ready.then(() => {
+    (function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+        gRenderer.render(gScene, gCamera);
+        drawGizmoLabels();
+    })();
+});
 
 // ── QWebChannel bridge ─────────────────────────────────────────────────────
 new QWebChannel(qt.webChannelTransport, (channel) => {

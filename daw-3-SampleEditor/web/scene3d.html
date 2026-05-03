@@ -4,17 +4,36 @@
 <meta charset="utf-8">
 <title>DAW-500 Three.js Scene</title>
 <style>
+  @font-face {
+    font-family: 'Source Sans Pro';
+    src: url('qrc:///Resource/font/SourceSansPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
   html, body { margin: 0; padding: 0; overflow: hidden; background: #1e1e1e;
-               font-family: 'Courier New', monospace; }
-  #status { position: absolute; top: 6px; right: 8px; color: #777; font-size: 10px;
-            letter-spacing: 1px; }
-  #hint   { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
-            color: #444; font-size: 10px; }
+               font-family: 'Source Sans Pro', sans-serif; }
+  #status, #hint {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 13px;
+      font-weight: normal;
+      color: #aaa;
+      letter-spacing: 0;
+      line-height: 1;
+  }
+  #status { position: absolute; top: 8px; right: 8px; }
+  #hint   { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); }
+  #gizmoWrap { position: absolute; left: 10px; bottom: 28px; width: 80px; height: 80px;
+               pointer-events: none; }
+  #gizmoWrap canvas { position: absolute; left: 0; top: 0; width: 80px; height: 80px; }
 </style>
 </head>
 <body>
 <div id="status">connecting…</div>
 <div id="hint">Left-drag: orbit | Right-drag: pan | Scroll: zoom | Click sphere: select</div>
+<div id="gizmoWrap">
+  <canvas id="gizmo3d"></canvas>
+  <canvas id="gizmoLbl"></canvas>
+</div>
 
 <!-- Bridge to C++. qwebchannel.js is provided by Qt at this fixed URL. -->
 <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
@@ -49,8 +68,48 @@ scene.add(sun);
 // 30×30 floor grid centred at the origin (matches QtQuick3D version)
 scene.add(new THREE.GridHelper(30, 30, 0x484848, 0x333333));
 
-// World axes helper — replaces the bottom-left gizmo from the QtQuick3D viewport
-scene.add(new THREE.AxesHelper(0.9));
+// (no center axes — orientation shown by corner gizmo only)
+
+// ── Bottom-left orientation gizmo ───────────────────────────────────────────
+const gCanvas = document.getElementById('gizmo3d');
+const gRenderer = new THREE.WebGLRenderer({ canvas: gCanvas, antialias: true, alpha: true });
+gRenderer.setPixelRatio(window.devicePixelRatio);
+gRenderer.setSize(80, 80, false);
+gRenderer.setClearColor(0x000000, 0);
+
+const gScene = new THREE.Scene();
+gScene.add(new THREE.AxesHelper(0.9));
+const gCamera = new THREE.PerspectiveCamera(50, 1, 0.01, 10);
+
+const gLblCanvas = document.getElementById('gizmoLbl');
+const gLblCtx = gLblCanvas.getContext('2d');
+gLblCanvas.width = 80;
+gLblCanvas.height = 80;
+
+function syncGizmo() {
+    const dir = camera.position.clone().sub(controls ? controls.target : new THREE.Vector3()).normalize();
+    gCamera.position.copy(dir.multiplyScalar(2.5));
+    gCamera.up.copy(camera.up);
+    gCamera.lookAt(0, 0, 0);
+}
+
+function drawGizmoLabels() {
+    gLblCtx.clearRect(0, 0, 80, 80);
+    gLblCtx.font = '13px "Source Sans Pro", sans-serif';
+    const axes = [
+        { dir: new THREE.Vector3(1, 0, 0), label: 'X', color: '#ff5555' },
+        { dir: new THREE.Vector3(0, 1, 0), label: 'Y', color: '#55ee55' },
+        { dir: new THREE.Vector3(0, 0, 1), label: 'Z', color: '#5599ff' },
+    ];
+    for (const ax of axes) {
+        const v = ax.dir.clone().multiplyScalar(0.9);
+        v.project(gCamera);
+        const x = (v.x + 1) / 2 * 80;
+        const y = (1 - (v.y + 1) / 2) * 80;
+        gLblCtx.fillStyle = ax.color;
+        gLblCtx.fillText(ax.label, x + 2, y + 4);
+    }
+}
 
 // ── Camera controls ─────────────────────────────────────────────────────────
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -132,11 +191,16 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-(function animate() {
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
-})();
+document.fonts.ready.then(() => {
+    (function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+        syncGizmo();
+        gRenderer.render(gScene, gCamera);
+        drawGizmoLabels();
+    })();
+});
 
 // ── QWebChannel bridge to Scene3DController ────────────────────────────────
 new QWebChannel(qt.webChannelTransport, (channel) => {
