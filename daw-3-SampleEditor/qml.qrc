@@ -148,7 +148,6 @@
         <file>ExportSettings.qml</file>
         <file>SaveAsDialog.qml</file>
         <file>TrackPanels/Audio/ChannelCount.qml</file>
-        <file>TrackPanels/Audio/ObjectKeyframeRow.qml</file>
         <file>TopBar.qml</file>
         <file>Resource/note_icon.svg</file>
         <file>Resource/loop_icon.svg</file>

@@ -19,7 +19,7 @@ Rectangle {
     property ClipArea clipArea
     property int ind: index
 
-    height: totalTrackRect.height + (model.objectEnabled === true ? scaleSize2(37 + 15) + clipArea.seperatorHeight : 0)
+    height: totalTrackRect.height
     width: parent.width
 
     clip: true
@@ -167,17 +167,6 @@ Rectangle {
             anchors.top: row2.bottom
             anchors.topMargin: scaleSize2(15)
         }
-
-        ObjectKeyframeRow {
-            id: keyframeRow
-            ind: root.ind
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: automationRow.bottom
-            anchors.topMargin: scaleSize2(15)
-            visible: model.objectEnabled === true
-            height: visible ? scaleSize2(37) + clipArea.seperatorHeight : 0
-        }
     }
 
     ClipShapeItem {
@@ -267,7 +256,6 @@ Rectangle {
         id: seperator
 
         y: rootMainTrack.height + rootMainTrack.y - clipArea.seperatorHeight
-           + (model.objectEnabled === true ? scaleSize2(37 + 15) + clipArea.seperatorHeight : 0)
 
         anchors.leftMargin: model.automationLaneCount > 0 & model.automationLaneEnabled
                             & rowsExpanded ? -scaleSize2(10) : 0

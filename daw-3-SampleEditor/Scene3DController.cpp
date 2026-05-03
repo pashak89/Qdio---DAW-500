@@ -12,16 +12,6 @@ QVector3D Scene3DController::entityPosition(int trackIndex) const
     return m_positions.value(trackIndex);
 }
 
-QVariantMap Scene3DController::entityPositionMap(int trackIndex) const
-{
-    const QVector3D p = m_positions.value(trackIndex);
-    QVariantMap m;
-    m.insert(QStringLiteral("x"), double(p.x()));
-    m.insert(QStringLiteral("y"), double(p.y()));
-    m.insert(QStringLiteral("z"), double(p.z()));
-    return m;
-}
-
 QList<int> Scene3DController::entityIds() const
 {
     return m_positions.keys();

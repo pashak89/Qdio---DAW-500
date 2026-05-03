@@ -1032,7 +1032,6 @@ void TracksModel::addKeyFrame(int trackIndex, qint64 time, int type)
     if (trackIndex >= 0 && trackIndex < _rootItem->childCount()) {
         auto trackItem = _rootItem->child(trackIndex)->trackItem();
         trackItem->keyFramesAutomationItem()->addKeyFrame(time, type);
-        emit keyFramesChanged(trackIndex);
     }
 }
 void TracksModel::saveKeyFrameEdited(int trackIndex, QString status)
@@ -1057,7 +1056,6 @@ void TracksModel::removeKeyFrame(int trackIndex, qint64 time)
     if (trackIndex >= 0 && trackIndex < _rootItem->childCount()) {
         auto trackItem = _rootItem->child(trackIndex)->trackItem();
         trackItem->keyFramesAutomationItem()->removeKeyFrame(time);
-        emit keyFramesChanged(trackIndex);
     }
 }
 

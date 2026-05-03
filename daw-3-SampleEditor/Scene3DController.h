@@ -3,7 +3,6 @@
 #include <QColor>
 #include <QHash>
 #include <QObject>
-#include <QVariantMap>
 #include <QVector3D>
 
 // Bridges DAW timeline state to the Three.js WebEngine viewports embedded in main.qml.
@@ -20,7 +19,6 @@ public:
     int selectedTrack() const { return m_selectedTrack; }
 
     Q_INVOKABLE QVector3D entityPosition(int trackIndex) const;
-    Q_INVOKABLE QVariantMap entityPositionMap(int trackIndex) const;
     Q_INVOKABLE QList<int> entityIds() const;
     Q_INVOKABLE QString entityColor(int trackIndex) const;
     Q_INVOKABLE bool entityVisible(int trackIndex) const;
