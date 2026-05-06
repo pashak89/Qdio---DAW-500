@@ -627,6 +627,36 @@ void AsyncEffectLoader::loadEffects()
     _effectInfo.clear();
 
     _scanned.clear();
+
+    // Cache fast-path: if plugins.xml exists from a previous run, load it into
+    // knownPluginList and skip rescanning. The user can force a rescan by
+    // deleting plugins.xml. Cuts startup from many minutes (Waves etc.) to ~0s.
+    {
+        auto cachePath = QCoreApplication::applicationDirPath() + "/plugins.xml";
+        juce::XmlDocument xmlDoc(juce::File(cachePath.toStdString()));
+        if (auto mainElement = xmlDoc.getDocumentElement()) {
+            knownPluginList.recreateFromXml(*mainElement);
+            const auto descs = knownPluginList.getTypes();
+            for (int k = 0; k < descs.size(); ++k) {
+                try {
+                    auto formatName      = QString::fromStdString(descs[k].pluginFormatName.toStdString());
+                    auto name            = QString::fromStdString(descs[k].name.toStdString());
+                    auto category        = QString::fromStdString(descs[k].category.toStdString());
+                    auto manufacturerName = QString::fromStdString(descs[k].manufacturerName.toStdString());
+                    auto path            = QString::fromStdString(descs[k].fileOrIdentifier.toStdString());
+                    Q_EMIT newPluginFound(formatName, name, category, manufacturerName, path, descs[k].uniqueId);
+                    _scanned.insert(descs[k].uniqueId, true);
+                } catch (...) {
+                    // ignore malformed entries; nothing else to do here
+                }
+            }
+            qDebug() << "[plugins] Loaded" << descs.size() << "from cache plugins.xml — skipping rescan";
+            Q_EMIT resultReady();
+            return;
+        }
+        qDebug() << "[plugins] No plugins.xml cache; performing full scan";
+    }
+
     for (int i = 0; i < audioPluginFormatManager.getFormats().size(); i++) {
 
         if (_quit == true) {

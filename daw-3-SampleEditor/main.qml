@@ -851,9 +851,9 @@ Item {
                 Layout.fillHeight: true
 
                 Layout.minimumWidth: eQComponent.width + trackList.scaleSize2(
-                                         20)
+                                         55)
                 Layout.preferredWidth: eQComponent.width + trackList.scaleSize2(
-                                           20)
+                                           55)
                 color: "transparent"
                 border.color: "#2f3032"
                 border.width: trackList.scaleSize2(10)
@@ -863,36 +863,18 @@ Item {
                 Flickable {
                     id: flickable
                     anchors.fill: parent
+                    anchors.margins: trackList.scaleSize2(10)
 
                     clip: true
                     interactive: false
-                    contentWidth: eQComponent.width + trackList.scaleSize2(20)
+                    contentWidth: flickable.width
                     contentHeight: eQComponent.height + mixer.height
-                    anchors.verticalCenter: parent.verticalCenter
 
                     property bool isScrolling: false
                     Timer {
                         id: scrollTimer
                         interval: 1000
                         onTriggered: flickable.isScrolling = false
-                    }
-
-                    ScrollBar.vertical: ScrollBar {
-                        id: scrollBar
-                        policy: ScrollBar.AsNeeded
-                        anchors.right: parent.right
-                        width: 8
-                        contentItem: Rectangle {
-                            implicitWidth: 8
-                            radius: width / 2
-                            color: trackList.theme.bg7
-                            opacity: flickable.isScrolling ? 1.0 : 0.0
-                            Behavior on opacity {
-                                NumberAnimation {
-                                    duration: 200
-                                }
-                            }
-                        }
                     }
 
                     Column {
@@ -926,6 +908,39 @@ Item {
                     }
                 }
 
+                // Standalone scrollbar — centered in the gap between EQ right edge
+                // and the inner frame border on the right side.
+                ScrollBar {
+                    id: scrollBar
+                    orientation: Qt.Vertical
+                    anchors.top: flickable.top
+                    anchors.bottom: flickable.bottom
+                    anchors.topMargin: 3
+                    anchors.bottomMargin: 3
+                    // x: midpoint of the gap between EQ right and inner frame right
+                    // EQ right (parent coords) = flickable.x + (flickable.width + eQComponent.width) / 2
+                    // inner frame right (parent coords) = parent.width - border
+                    x: {
+                        var eqRight = flickable.x + (flickable.width + eQComponent.width) / 2
+                        var frameRight = parent.width - trackList.scaleSize2(10)
+                        return (eqRight + frameRight) / 2 - scrollBar.width / 2
+                    }
+                    width: trackList.scaleSize2(20)
+                    position: flickable.contentHeight > 0
+                              ? flickable.contentY / flickable.contentHeight : 0
+                    size: flickable.contentHeight > 0
+                          ? flickable.height / flickable.contentHeight : 1
+                    contentItem: Rectangle {
+                        implicitWidth: trackList.scaleSize2(20)
+                        radius: width / 2
+                        color: trackList.theme.bg7
+                        opacity: flickable.isScrolling && flickable.contentHeight > flickable.height
+                                 ? 1.0 : 0.0
+                        Behavior on opacity { NumberAnimation { duration: 200 } }
+                    }
+                    background: Rectangle { color: "transparent" }
+                }
+
                 MouseArea {
                     anchors.fill: parent
                     acceptedButtons: Qt.NoButton
@@ -940,6 +955,15 @@ Item {
                         scrollTimer.restart()
                         wheel.accepted = true
                     }
+                }
+
+                Rectangle {
+                    z: 9999
+                    anchors.fill: parent
+                    color: 'transparent'
+                    border.color: "#2f3032"
+                    border.width: trackList.scaleSize2(10)
+                    radius: trackList.scaleSize2(20)
                 }
             }
 

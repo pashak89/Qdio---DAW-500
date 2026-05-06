@@ -14,6 +14,7 @@ Rectangle {
     id: track_list
     visible: true
     color: "transparent"
+    clip: true
     property var cursorPosition: cursorPositionClass
 
     property int _width: scaleSize2(600)
@@ -481,6 +482,25 @@ Rectangle {
         model: _clipArea.tracksModel
         delegate: TrackAudio {
             clipArea: _clipArea
+        }
+
+        ScrollBar.vertical: ScrollBar {
+            policy: ScrollBar.AsNeeded
+            anchors.topMargin: 3
+            anchors.bottomMargin: 3
+            anchors.rightMargin: 3
+            width: 6
+            position: trackListView.contentHeight > 0
+                      ? trackListView.contentY / trackListView.contentHeight : 0
+            size: trackListView.contentHeight > 0
+                  ? trackListView.height / trackListView.contentHeight : 1
+            contentItem: Rectangle {
+                implicitWidth: 6
+                radius: width / 2
+                color: track_list.theme.bg7
+                opacity: trackListView.contentHeight > trackListView.height ? 0.75 : 0.0
+            }
+            background: Rectangle { color: "transparent" }
         }
     }
 

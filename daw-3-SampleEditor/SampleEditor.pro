@@ -8,7 +8,16 @@ QML_IMPORT_PATH += $$PWD/TrackPanels/Eq8Plugin
 
 CONFIG += qt warn_on depend_includepath
 CONFIG += c++20
-QMAKE_CXXFLAGS += /std:c++20 /TP /bigobj
+QMAKE_CXXFLAGS += /std:c++20 /TP /bigobj /MP
+
+# Link-speed wins (massive reduction in incremental build time):
+#  /INCREMENTAL       — patch the existing .exe instead of full relink
+#  /DEBUG:FASTLINK    — partial PDB, debugger reads .obj files directly (much faster generation)
+CONFIG(debug, debug|release) {
+    QMAKE_LFLAGS_DEBUG += /INCREMENTAL /DEBUG:FASTLINK
+    # Disable optimisations that block /INCREMENTAL (these are normally release-only anyway)
+    QMAKE_LFLAGS_DEBUG -= /OPT:REF /OPT:ICF
+}
 
 DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += DGE_USE_QT DGE_USE_GLM DGE_USE_Tweeny DGE_USE_FreeImage GLEW_STATIC FREEIMAGE_EXPORTS
