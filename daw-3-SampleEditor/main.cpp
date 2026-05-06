@@ -287,9 +287,17 @@ int main(int argc, char* argv[])
                     QObject::connect(objectCreator, &ObjectCreator::sigObjectMoved,
                         scene3D, &Scene3DController::setEntityPosition, Qt::QueuedConnection);
 
-                    // Reverse sync: QtQuick3D drag → DAW keyframe (wired when gizmos are added)
+                    // Reverse sync: QtQuick3D drag → DAW position (+ auto-record when lane is open)
                     QObject::connect(scene3D, &Scene3DController::entityMovedFromScene,
                         objectCreator, &ObjectCreator::setObjectLocation, Qt::QueuedConnection);
+
+                    // Keyframe lane toggle → enable/disable auto-record for that track
+                    QObject::connect(_areaInfo, &AreaInfo::sigKeyframeLaneToggled,
+                        objectCreator, &ObjectCreator::setKeyframeLaneActive, Qt::DirectConnection);
+
+                    // Keyframe lane lines changed (user clicked orange line) → sync ObjectPosAutomation
+                    QObject::connect(_areaInfo, &AreaInfo::sigKeyFrameLinesChanged,
+                        objectCreator, &ObjectCreator::syncObjectKeyframes, Qt::DirectConnection);
 
                     qmlEngine->rootContext()->setContextProperty("_homePath", _homePath);
                     qmlEngine->rootContext()->setContextProperty("cursorPositionClass", cursorPosition);

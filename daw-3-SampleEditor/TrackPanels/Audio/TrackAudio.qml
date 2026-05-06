@@ -125,6 +125,8 @@ Rectangle {
                 } else {
 
                     model.selectedTrack = true
+                    if (typeof scene3D !== 'undefined' && scene3D)
+                        scene3D.setSelected(index)
                 }
 
                 if (mouse.button === Qt.RightButton) {

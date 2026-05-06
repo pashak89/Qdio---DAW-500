@@ -1,0 +1,18 @@
+QML debugging is enabled. Only use this in a safe environment.
+CREAED AudioDevice::AudioDevice
+DEFAULT: 3 0.09 2 2
+0 MME 2
+addItem "MME" 2 1
+1 ASIO 3
+addItem "ASIO" 3 2
+addItem "Microsoft Sound Mapper - Output" 2 1
+addItem "1 - LG HDR 4K (AMD High Definit" 3 2
+addItem "Realtek Digital Output (Realtek" 4 3
+addItem "2 - LG Ultra HD (AMD High Defin" 5 4
+success_ful true
+QObject::startTimer: Timers can only be used with threads started with QThread
+GHELLO 459.375
+SetProcessDPIAwareness failed. (Access is denied.)
+SetProcessDPIAwareness failed. (Access is denied.)
+[28792:29340:0504/140844.322:ERROR:render_process_impl.cc(235)] WebFrame LEAKED 1 TIMES
+[29476:28836:0504/140844.328:ERROR:render_process_impl.cc(235)] WebFrame LEAKED 1 TIMES

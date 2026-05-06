@@ -1,0 +1,33 @@
+[     1.07 ] D: QEngine  register in Qt with id:  0
+[     1.07 ] D: ViewPort3D  register in Qt with id:  1
+[     1.07 ] D: QScene3D  register in Qt with id:  2
+[     1.07 ] D: QNode3D  register in Qt with id:  3
+[     1.07 ] D: QComponent3D  register in Qt with id:  4
+[     1.07 ] D: QCameraComponent  register in Qt with id:  5
+[     1.07 ] D: QCameraController  register in Qt with id:  6
+[     1.07 ] D: QFpsCameraController  register in Qt with id:  7
+[     1.07 ] D: QCameraLens  register in Qt with id:  8
+[     1.07 ] D: QPerspectiveLens  register in Qt with id:  9
+[     1.07 ] D: QOrthoLens  register in Qt with id:  10
+[     1.07 ] D: QThirdPersonController  register in Qt with id:  11
+[     1.07 ] D: QEntity3D  register in Qt with id:  12
+[     1.08 ] D: QDAnimationTrackController  register in Qt with id:  13
+[     1.08 ] D: QDPropertyType  register in Qt with id:  14
+[     1.08 ] D: QDModel  register in Qt with id:  15
+[     1.08 ] D: QDModelSource  register in Qt with id:  16
+[     1.08 ] D: QDLine  register in Qt with id:  17
+[     1.08 ] D: QDCube  register in Qt with id:  18
+[     1.08 ] D: QDArrow  register in Qt with id:  19
+[     1.08 ] D: QDSphere  register in Qt with id:  20
+[     1.08 ] D: QDCylinder  register in Qt with id:  21
+[     1.08 ] D: QDCapsule  register in Qt with id:  22
+[     1.08 ] D: QDTriangle  register in Qt with id:  23
+[     1.08 ] D: QDTriangle  register in Qt with id:  24
+[     1.08 ] D: QDShader  register in Qt with id:  25
+[     1.08 ] D: QEnvironment3DManager  register in Qt with id:  26
+[   501.82 ] D: -----Released Core Module-----
+[   501.82 ] D: Remain subsystems that must be free: 
+[   501.82 ] D: class DGE::QtWrapper::QEngine_QEngine1
+[   501.82 ] D: class DGE::Core::System::DObject_DObject3
+[   501.82 ] D: Total References to context is: 3
+Can't release instance of class FluxAppManager because the reference counter isn't zero and is: 2

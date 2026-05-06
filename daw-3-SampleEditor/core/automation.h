@@ -1745,6 +1745,19 @@ public:
 
         //_cLines.print();
     }
+    QList<qint64> getPointTimes() const
+    {
+        QList<qint64> out;
+        const CPointList* list = (!_tLines.empty()) ? &_tLines : &_cLines;
+        for (CPoint* p = list->head(); p; p = p->next()) {
+            const double t = p->time();
+            if (std::isinf(t))
+                continue;
+            out.append(qint64(t));
+        }
+        return out;
+    }
+
     void createTemp()
     {
         std::lock_guard<std::mutex> lock(linesMutex);

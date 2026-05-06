@@ -1,6 +1,7 @@
 
 SOURCES += \
         $$PWD/automation.cpp \
+        $$PWD/objectautomation.cpp \
     $$PWD/backgroundarea.cpp \
         $$PWD/beatbar.cpp \
     $$PWD/bottomarea.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     $$PWD/automation.h \
+    $$PWD/objectautomation.h \
     $$PWD/backgroundarea.h \
     $$PWD/beatbar.h \
     $$PWD/bottomarea.h \

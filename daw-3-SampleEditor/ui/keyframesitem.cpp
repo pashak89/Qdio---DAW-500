@@ -4,6 +4,7 @@ KeyFramesItem::KeyFramesItem(int trackIndex, AreaInfo* areaInfo)
     : _areaInfo(areaInfo)
     , _trackIndex(trackIndex)
     , _keyFramesEnabled(false)
+    , _automation(new ObjectPosAutomation(this))
 {
 }
 
@@ -131,26 +132,32 @@ QJsonObject KeyFramesItem::save()
         jsonObj["posz"] = _points[i].posZ;
         jsonArray.append(jsonObj);
     }
-
     jObject2["state"] = jsonArray;
+    // Persist bezier tangents and interp types
+    jObject2["automation"] = _automation->save();
     return jObject2;
 }
 
 void KeyFramesItem::load(QJsonObject obj)
 {
-
     _points.clear();
+    _automation->blockSignals(true);
     Q_EMIT sigUpdate();
-
     Q_EMIT _areaInfo->sigKeyFrameClear(_trackIndex);
 
     QJsonArray array = obj["state"].toArray();
     for (int i = 0; i < array.size(); i++) {
         QJsonObject jsonObj = array[i].toObject();
-        addKeyFrame(jsonObj["time"].toDouble(), jsonObj["type"].toInt(), jsonObj["posx"].toDouble(), jsonObj["posy"].toDouble(), jsonObj["posz"].toDouble());
-
-        // Q_EMIT _areaInfo->sigAddKeyFrameWithPosition(_trackIndex, jsonObj["time"].toDouble(), jsonObj["type"].toInt(), jsonObj["posx"].toDouble(), jsonObj["posy"].toDouble(), jsonObj["posz"].toDouble());
+        addKeyFrame(jsonObj["time"].toDouble(), jsonObj["type"].toInt(),
+                    jsonObj["posx"].toDouble(), jsonObj["posy"].toDouble(), jsonObj["posz"].toDouble());
     }
+
+    // Restore bezier tangents if present (written by the new save path)
+    if (obj.contains("automation"))
+        _automation->load(obj["automation"].toObject());
+
+    _automation->blockSignals(false);
+    Q_EMIT _automation->changed();
 }
 
 int KeyFramesItem::insertToPoints(QPointF point, int type, double x, double y, double z)
@@ -159,9 +166,9 @@ int KeyFramesItem::insertToPoints(QPointF point, int type, double x, double y, d
     int _index = -1;
     if (_points.size() == 0) {
         if (type == 0)
-            _points.append(KeyFramesPoint { point, KeyFramesType_Circle, x, y, x });
+            _points.append(KeyFramesPoint { point, KeyFramesType_Bezier, x, y, z });
         else
-            _points.append(KeyFramesPoint { point, KeyFramesType_Dimond, x, y, z });
+            _points.append(KeyFramesPoint { point, KeyFramesType_Linear, x, y, z });
 
         return _points.size() - 1;
     }
@@ -170,16 +177,16 @@ int KeyFramesItem::insertToPoints(QPointF point, int type, double x, double y, d
             if (_index == -1) {
 
                 if (type == 0)
-                    _points.append(KeyFramesPoint { point, KeyFramesType_Circle, x, y, x });
+                    _points.append(KeyFramesPoint { point, KeyFramesType_Bezier, x, y, z });
                 else
-                    _points.append(KeyFramesPoint { point, KeyFramesType_Dimond, x, y, z });
+                    _points.append(KeyFramesPoint { point, KeyFramesType_Linear, x, y, z });
 
                 return _points.size() - 1;
             } else {
                 if (type == 0)
-                    _points.insert(_index, KeyFramesPoint { point, KeyFramesType_Circle, x, y, x });
+                    _points.insert(_index, KeyFramesPoint { point, KeyFramesType_Bezier, x, y, z });
                 else
-                    _points.insert(_index, KeyFramesPoint { point, KeyFramesType_Dimond, x, y, z });
+                    _points.insert(_index, KeyFramesPoint { point, KeyFramesType_Linear, x, y, z });
 
                 return _index;
             }
@@ -189,9 +196,9 @@ int KeyFramesItem::insertToPoints(QPointF point, int type, double x, double y, d
     }
 
     if (type == 0)
-        _points.prepend(KeyFramesPoint { point, KeyFramesType_Circle, x, y, x });
+        _points.prepend(KeyFramesPoint { point, KeyFramesType_Bezier, x, y, z });
     else
-        _points.prepend(KeyFramesPoint { point, KeyFramesType_Dimond, x, y, z });
+        _points.prepend(KeyFramesPoint { point, KeyFramesType_Linear, x, y, z });
 
     return 0;
 }
@@ -219,19 +226,20 @@ void KeyFramesItem::setObjectPosition(double x, double y, double z)
 void KeyFramesItem::addKeyFrame(qint64 time, int type, double x, double y, double z)
 {
     auto line = getLine();
-
     _lastInsertedIndex = insertToPoints(QPointF(time, line.p1().y()), type, x, y, z);
+
+    // Keep ObjectPosAutomation in sync
+    const KeyInterp interp = (type == KeyFramesType_Bezier) ? KeyInterp::Bezier
+                           : (type == KeyFramesType_Hold)   ? KeyInterp::Hold
+                           : KeyInterp::Linear;
+    _automation->addKey(time, QVector3D(float(x), float(y), float(z)), interp);
 
     Q_EMIT sigUpdate();
 }
 
 void KeyFramesItem::addKeyFrame(qint64 time, int type)
 {
-    auto line = getLine();
-
-    _lastInsertedIndex = insertToPoints(QPointF(time, line.p1().y()), type, m_objectPositionX, m_objectPositionY, m_objectPositionZ);
-
-    Q_EMIT sigUpdate();
+    addKeyFrame(time, type, m_objectPositionX, m_objectPositionY, m_objectPositionZ);
 }
 
 void KeyFramesItem::removeKeyFrame(qint64 time)
@@ -240,8 +248,8 @@ void KeyFramesItem::removeKeyFrame(qint64 time)
     int index = findPoint(QPointF(time, line.p1().y()));
 
     if (index >= 0) {
-
         _points.takeAt(index);
+        _automation->removeKey(time);
         Q_EMIT sigUpdate();
     }
 }
@@ -337,9 +345,88 @@ void KeyFramesItem::draw(IPainter* painter)
 
     drawLine(painter);
     drawKeyPoints(painter);
+    drawBezierHandles(painter);
     if (_mouseMoved == false) {
         drawKeyHoverPoint(painter);
     }
+}
+
+void KeyFramesItem::drawBezierHandles(IPainter* painter)
+{
+    for (int i = 0; i < _points.size(); i++) {
+        if (_points[i].type != KeyFramesType_Bezier)
+            continue;
+
+        const ObjectKeyFrame* kf = _automation->key(qint64(_points[i].point.x()));
+        if (!kf)
+            continue;
+
+        const float kx = float(time2Pixel(_points[i].point.x()));
+        const float ky = float(_points[i].point.y());
+
+        // tangentOut handle (outgoing, to the right visually)
+        // Represent as a screen-space offset: use tangentOut.x() as time-pixels, .y() as vertical pixels
+        const float ohx = kx + float(kf->tangentOut.x());
+        const float ohy = ky - float(kf->tangentOut.y());
+
+        // tangentIn handle (incoming, stored on this keyframe but shown to the left)
+        const float ihx = kx - float(kf->tangentIn.x());
+        const float ihy = ky + float(kf->tangentIn.y());
+
+        // Draw dashed lines from key to handles
+        painter->setStrokeStyle("#aaaaaa");
+        painter->setLineWidth(1);
+        painter->beginPath();
+        painter->moveTo(kx, ky);
+        painter->lineTo(ohx, ohy);
+        painter->stroke();
+
+        painter->beginPath();
+        painter->moveTo(kx, ky);
+        painter->lineTo(ihx, ihy);
+        painter->stroke();
+
+        // Draw handle dots
+        painter->setFillStyle("#ffcc00");
+        painter->setStrokeStyle("#ffcc00");
+        painter->beginPath();
+        painter->circle(ohx, ohy, 4);
+        painter->fill();
+
+        painter->beginPath();
+        painter->circle(ihx, ihy, 4);
+        painter->fill();
+    }
+}
+
+int KeyFramesItem::findHandle(QPointF screenPos, HandleSide& side)
+{
+    const float hitRadius = 8.f;
+    for (int i = 0; i < _points.size(); i++) {
+        if (_points[i].type != KeyFramesType_Bezier)
+            continue;
+        const ObjectKeyFrame* kf = _automation->key(qint64(_points[i].point.x()));
+        if (!kf) continue;
+
+        const float kx = float(time2Pixel(_points[i].point.x()));
+        const float ky = float(_points[i].point.y());
+
+        const float ohx = kx + float(kf->tangentOut.x());
+        const float ohy = ky - float(kf->tangentOut.y());
+        if (QVector2D(screenPos.x() - ohx, screenPos.y() - ohy).length() < hitRadius) {
+            side = HandleSide::Out;
+            return i;
+        }
+
+        const float ihx = kx - float(kf->tangentIn.x());
+        const float ihy = ky + float(kf->tangentIn.y());
+        if (QVector2D(screenPos.x() - ihx, screenPos.y() - ihy).length() < hitRadius) {
+            side = HandleSide::In;
+            return i;
+        }
+    }
+    side = HandleSide::None;
+    return -1;
 }
 
 int KeyFramesItem::hoverMoveEvent(QHoverEvent* event)
@@ -354,7 +441,6 @@ int KeyFramesItem::hoverMoveEvent(QHoverEvent* event)
 
 int KeyFramesItem::mousePressEvent(QMouseEvent* event)
 {
-
     if (_keyFramesEnabled == false)
         return 0;
 
@@ -362,9 +448,20 @@ int KeyFramesItem::mousePressEvent(QMouseEvent* event)
     _mouseMoved = false;
     _mousePressedX = event->pos().x();
     _mousePressedY = event->pos().y();
+    _handleDragPoint = -1;
+    _handleDragSide  = HandleSide::None;
+
+    // Check bezier handle hit first
+    const QPointF screenPos(event->pos().x(), event->pos().y());
+    HandleSide hside = HandleSide::None;
+    int hi = findHandle(screenPos, hside);
+    if (hi >= 0) {
+        _handleDragPoint = hi;
+        _handleDragSide  = hside;
+        return 1;
+    }
 
     auto _polyInner = lineArea();
-
     if (_polyInner.containsPoint(QPointF(pixel2Time(_mousePressedX), _mousePressedY), Qt::WindingFill)) {
         QPointF mapped = mapPointToLine(QPointF(pixel2Time(_mousePressedX), _mousePressedY));
         _currentPointIndex = findPoint(mapped);
@@ -375,11 +472,9 @@ int KeyFramesItem::mousePressEvent(QMouseEvent* event)
             _nextPointIndex = _currentPointIndex + 1;
             _lastPointIndex = _currentPointIndex - 1;
         }
-
         return 1;
-    } else {
-        return 0;
     }
+    return 0;
 }
 
 double KeyFramesItem::time2Pixel(double time)
@@ -405,6 +500,30 @@ int KeyFramesItem::mouseReleaseEvent(QMouseEvent* event)
 
     if (_keyFramesEnabled == false)
         return 0;
+
+    // Right-click on existing keyframe: cycle interpolation type Hold→Linear→Bezier→Hold
+    if (event->button() == Qt::RightButton && _mouseMoved == false) {
+        auto _polyInner = lineArea();
+        if (_polyInner.containsPoint(QPointF(pixel2Time(_mousePressedX), _mousePressedY), Qt::WindingFill)) {
+            QPointF mapped = mapPointToLine(QPointF(pixel2Time(_mousePressedX), _mousePressedY));
+            auto index = findPoint(mapped);
+            if (index >= 0) {
+                const int nextType = (_points[index].type + 1) % 3;
+                _points[index].type = nextType;
+                const KeyInterp nextInterp = (nextType == KeyFramesType_Bezier) ? KeyInterp::Bezier
+                                           : (nextType == KeyFramesType_Hold)   ? KeyInterp::Hold
+                                           : KeyInterp::Linear;
+                _automation->setInterp(qint64(_points[index].point.x()), nextInterp);
+                _mousePressed = false;
+                _mouseMoved   = false;
+                Q_EMIT sigUpdate();
+                return 1;
+            }
+        }
+        _mousePressed = false;
+        _mouseMoved   = false;
+        return 0;
+    }
 
     if (_mouseMoved == false && _mousePressed == true) {
 
@@ -507,9 +626,32 @@ void KeyFramesItem::findSnap(QVector<QPair<double, double>> _snapPoints, double 
 
 int KeyFramesItem::mouseMoveEvent(QMouseEvent* event)
 {
-
     if (_keyFramesEnabled == false)
         return 0;
+
+    // Handle bezier tangent dragging
+    if (_mousePressed && _handleDragPoint >= 0) {
+        const float kx = float(time2Pixel(_points[_handleDragPoint].point.x()));
+        const float ky = float(_points[_handleDragPoint].point.y());
+        const float dx = float(event->pos().x()) - kx;
+        const float dy = ky - float(event->pos().y());  // invert Y so up = positive
+
+        const qint64 time = qint64(_points[_handleDragPoint].point.x());
+        const ObjectKeyFrame* kf = _automation->key(time);
+        if (kf) {
+            QVector3D tOut = kf->tangentOut;
+            QVector3D tIn  = kf->tangentIn;
+            if (_handleDragSide == HandleSide::Out) {
+                tOut = QVector3D(dx, dy, tOut.z());
+            } else {
+                tIn = QVector3D(-dx, -dy, tIn.z());
+            }
+            _automation->setTangents(time, tIn, tOut);
+            Q_EMIT sigUpdate();
+        }
+        _mouseMoved = true;
+        return 1;
+    }
 
     if (_mousePressed) {
 
@@ -601,14 +743,15 @@ void KeyFramesItem::drawKeyPoints(IPainter* painter)
             painter->setFillStyle("#ff3333");
             painter->setStrokeStyle("#ff3333");
         }
-        if (_points[i].type == KeyFramesType_Triangle) {
-            painter->drawTriangle(QPoint(time2Pixel(point.x()), point.y()), 8);
+        const float px = float(time2Pixel(point.x()));
+        const float py = float(point.y());
+        if (_points[i].type == KeyFramesType_Hold) {
+            painter->fillRect(px - 5, py - 5, 10, 10);
+        } else if (_points[i].type == KeyFramesType_Bezier) {
+            painter->circle(px, py, 4);
             painter->fill();
-        } else if (_points[i].type == KeyFramesType_Circle) {
-            painter->circle(time2Pixel(point.x()), point.y(), 4);
-            painter->fill();
-        } else if (_points[i].type == KeyFramesType_Dimond) {
-            painter->drawDiamond(QPoint(time2Pixel(point.x()), point.y()), 8);
+        } else {  // Linear (diamond)
+            painter->drawDiamond(QPointF(px, py), 8);
             painter->fill();
         }
     }
@@ -629,14 +772,15 @@ void KeyFramesItem::drawKeyHoverPoint(IPainter* painter)
             painter->setFillStyle("#ff3333");
             painter->setStrokeStyle("#ff3333");
 
-            if (_points[index].type == KeyFramesType_Triangle) {
-                painter->drawTriangle(QPointF(time2Pixel(mapped.x()), mapped.y()), 8);
+            const float hx = float(time2Pixel(mapped.x()));
+            const float hy = float(mapped.y());
+            if (_points[index].type == KeyFramesType_Hold) {
+                painter->fillRect(hx - 5, hy - 5, 10, 10);
+            } else if (_points[index].type == KeyFramesType_Bezier) {
+                painter->circle(hx, hy, 4);
                 painter->fill();
-            } else if (_points[index].type == KeyFramesType_Circle) {
-                painter->circle(time2Pixel(mapped.x()), mapped.y(), 4);
-                painter->fill();
-            } else if (_points[index].type == KeyFramesType_Dimond) {
-                painter->drawDiamond(QPointF(time2Pixel(mapped.x()), mapped.y()), 8);
+            } else {  // Linear
+                painter->drawDiamond(QPointF(hx, hy), 8);
                 painter->fill();
             }
 

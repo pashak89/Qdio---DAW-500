@@ -22,6 +22,8 @@
 #pragma once
 
 #include <QtCore/QObject>
+#include <QSet>
+#include "core/objectautomation.h"
 
 #include <Qt/QEngine.h>
 
@@ -82,6 +84,8 @@ public slots:
     Q_INVOKABLE void setCurrentTime(qint64 time);
 
     Q_INVOKABLE void setObjectLocation(int trackIndex, double x, double y, double z);
+    Q_INVOKABLE void setKeyframeLaneActive(int trackIndex, bool active);
+    void syncObjectKeyframes(int trackIndex, QList<qint64> times);
     Q_INVOKABLE void play();
     Q_INVOKABLE void pause();
     Q_INVOKABLE void stop();
@@ -128,6 +132,12 @@ protected:
     QMap<int, DGE::Scene::DEntity*> m_objects;
     QMap<int, AnimationTrackItem*> _tracklist;
     QMap<int, QMap<quint64, QJsonObject>> _lastKeyFrames;
+
+    // Per-track 3D position keyframes — drives scene3D during playback
+    QMap<int, QVector3D>        m_lastPositions;
+    QMap<int, ObjectPosAutomation*> m_objectAutomations;
+    QSet<int>                    m_keyframeLaneActive;
+    qint64                       m_currentTime = 0;
 
     QList<qint64> removing_list;
     bool _is_undoing = false;

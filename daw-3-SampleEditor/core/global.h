@@ -847,6 +847,8 @@ signals:
 
     void sigPlayBackUpdateTimeout();
     void sigLastWidthChanged();
+    void sigKeyframeLaneToggled(int trackIndex, bool active);
+    void sigKeyFrameLinesChanged(int trackIndex, QList<qint64> times);
     void sigZoomLevelChanged();
     void sigClipDurationChanged();
     void sigStartTimeChanged();

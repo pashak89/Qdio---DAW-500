@@ -1,4 +1,8 @@
 #include "trackitem.h"
+#include <QFile>
+#include <QTextStream>
+#include <QDateTime>
+#include <cstdio>
 #include "audio/mixer.h"
 #include "core/sampleeditor.h"
 #include "core/warp.h"
@@ -80,6 +84,25 @@ TrackItem::TrackItem(int trackIndex, Track* track, AreaInfo* areaInfo)
     connect(_keyFramesAutomationItem->automation().data(), &Automation::valueChanged, this, &TrackItem::panAutomatedValueChanged);
     connect(_keyFramesAutomationItem->automation().data(), &Automation::sigLinesChanged, this, &TrackItem::panAutomatedLineChanged);
     connect(_keyFramesAutomationItem->automation().data(), &Automation::enabledChanged, this, &TrackItem::panEnabledChanged);
+
+    // Bridge: when keyframe lane points change (user clicks orange line),
+    // collect current point times and notify the engine to sync ObjectPosAutomation
+    connect(_keyFrameAutomation.data(), &Automation::sigLinesChanged, this, [this]() {
+        QList<qint64> times = _keyFrameAutomation->getPointTimes();
+        // Direct file log for debugging via C stdio (bypasses Qt logging)
+        if (FILE* f = std::fopen("C:\\temp\\kf\\kf_debug.log", "a")) {
+            QStringList tsl;
+            for (qint64 t : times) tsl << QString::number(t);
+            const QString line = QDateTime::currentDateTime().toString("hh:mm:ss.zzz")
+                + "  TrackItem::sigLinesChanged track=" + QString::number(_trackIndex)
+                + " times=[" + tsl.join(',') + "]\n";
+            const QByteArray ba = line.toUtf8();
+            std::fwrite(ba.constData(), 1, ba.size(), f);
+            std::fflush(f);
+            std::fclose(f);
+        }
+        Q_EMIT _areaInfo->sigKeyFrameLinesChanged(_trackIndex, times);
+    });
 
     _automationLaneModel = QSharedPointer<AutomationLaneModel>(new AutomationLaneModel(_areaInfo, this));
     connect(_automationLaneModel.data(), &AutomationLaneModel::sigValueChanged, this, &TrackItem::sigUpdate);
@@ -1283,6 +1306,7 @@ void TrackItem::setAutomationSubMenuTitle(const QString& newAutomationSubMenuTit
 
     _automationSubMenuTitle = newAutomationSubMenuTitle;
     setKeyFrameEnabled(false);
+    Q_EMIT _areaInfo->sigKeyframeLaneToggled(_trackIndex, false);  // reset; KeyFrames branch sets it back to true
 
     // I disabled these -1, beacuse by enabling, if volumeitem is in second line, it will be shown in first one as well in UI
     if (_automationSubMenuTitle == "Volume") {
@@ -1306,6 +1330,7 @@ void TrackItem::setAutomationSubMenuTitle(const QString& newAutomationSubMenuTit
     } else if (_automationSubMenuTitle == "KeyFrames") {
         // _keyFramesAutomationItem->automation()->setSubTrackIndex(-1);
         Q_EMIT _keyFramesAutomationItem->sigUpdate();
+        Q_EMIT _areaInfo->sigKeyframeLaneToggled(_trackIndex, true);
 
         if (_keyFramesAutomationItem->automation()->isAutomated())
             _keyFramesAutomationItem->setAutomatedNormalized(_keyFramesAutomationItem->automation()->getY(_currentIndicator));

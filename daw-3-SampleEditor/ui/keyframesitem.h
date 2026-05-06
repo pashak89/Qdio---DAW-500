@@ -10,6 +10,8 @@
 #include "core/automation.h"
 #include "core/beatbar.h"
 #include "core/mathhelper.h"
+#include "core/objectautomation.h"
+#include <QVector2D>
 #include "ui/ipainteritem.h"
 #include "ui/plotitem.h"
 class TrackItem;
@@ -17,9 +19,9 @@ class KeyFramesItem : public IPainterItem {
     Q_OBJECT
 
     enum KeyFramesType {
-        KeyFramesType_Circle = 0,
-        KeyFramesType_Dimond = 1,
-        KeyFramesType_Triangle = 2,
+        KeyFramesType_Bezier = 0,   // circle icon
+        KeyFramesType_Linear = 1,   // diamond icon
+        KeyFramesType_Hold   = 2,   // square icon
     };
 
 public:
@@ -33,6 +35,8 @@ public:
     explicit KeyFramesItem(int trackIndex, AreaInfo* areaInfo);
     bool keyFramesEnabled() const;
     void setKeyFramesEnabled(bool newKeyFramesEnabled);
+
+    ObjectPosAutomation* automation() const { return _automation; }
 
     void setObjectPosition(double x, double y, double z);
 
@@ -69,7 +73,14 @@ private:
     bool _mousePressed = false;
     bool _mouseMoved = false;
 
+    // Bezier handle drag state
+    enum class HandleSide { None, Out, In };
+    int        _handleDragPoint = -1;   // index into _points being handle-dragged
+    HandleSide _handleDragSide  = HandleSide::None;
+
     QList<KeyFramesPoint> _points;
+
+    ObjectPosAutomation* _automation = nullptr;
 
     int _keyFrameType = 0;
 
@@ -103,7 +114,9 @@ private:
     void drawLine(IPainter* painter);
     void drawKeyPoints(IPainter* painter);
     void drawKeyHoverPoint(IPainter* painter);
+    void drawBezierHandles(IPainter* painter);
     int findPoint(QPointF point);
+    int findHandle(QPointF screenPos, HandleSide& side);
 
     QPointF mapPointToLine(QPointF point);
     QPolygonF lineArea();

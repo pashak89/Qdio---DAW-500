@@ -1,4 +1,23 @@
 #include "EngineHelper.h"
+#include <QFile>
+#include <QTextStream>
+#include <QDateTime>
+#include <cstdio>
+
+namespace {
+static void kfLog(const QString& msg)
+{
+    FILE* f = std::fopen("C:\\temp\\kf\\kf_debug.log", "a");
+    if (f) {
+        const QString line = QDateTime::currentDateTime().toString("hh:mm:ss.zzz") + "  " + msg + "\n";
+        const QByteArray ba = line.toUtf8();
+        std::fwrite(ba.constData(), 1, ba.size(), f);
+        std::fflush(f);
+        std::fclose(f);
+    }
+}
+}
+
 #include <Core/BaseTypes/DMetaHelper.h>
 #include <Core/BaseTypes/DPath.h>
 #include <Core/IO/LogSystem/Log.h>
@@ -41,6 +60,7 @@ ObjectCreator::ObjectCreator(AnimationManager* animationManager, DGE::QtWrapper:
     , m_animationManager(animationManager)
 {
     connect(m_animationManager, &AnimationManager::currentTimeChanged, this, &ObjectCreator::currentTimeChanged);
+    kfLog("=== ObjectCreator constructed ===");
 }
 
 void ObjectCreator::canPlayChanged()
@@ -469,18 +489,33 @@ void ObjectCreator::editKeyFrameWithPosition(int trackindex, QString status)
 
 void ObjectCreator::addKeyFrame(int trackindex, quint64 time, int type)
 {
-
     if (_tracklist.contains(trackindex)) {
-
         if (_tracklist[trackindex]->containsKeyFrame(time)) {
             return;
         }
-
         _tracklist[trackindex]->addKeyFrame(time, (KeyFrameItem::TransitionType)type);
-
         setCurrentTime(time);
         m_animationManager->updateCanPlay();
     }
+
+    // Capture the current 3D position into our ObjectPosAutomation.
+    // Prefer the live entity localPosition so each keyframe captures wherever
+    // the object actually is right now, not whatever was last cached.
+    QVector3D pos;
+    if (m_objects.contains(trackindex) && m_objects[trackindex]) {
+        auto p = m_objects[trackindex]->localPosition();
+        pos = QVector3D(float(p[0]), float(p[1]), float(p[2]));
+    } else {
+        pos = m_lastPositions.value(trackindex, QVector3D());
+    }
+    m_lastPositions[trackindex] = pos;
+
+    if (!m_objectAutomations.contains(trackindex))
+        m_objectAutomations[trackindex] = new ObjectPosAutomation(this);
+    const KeyInterp interp = (type == 2) ? KeyInterp::Hold
+                           : (type == 0) ? KeyInterp::Bezier
+                           : KeyInterp::Linear;
+    m_objectAutomations[trackindex]->addKey(qint64(time), pos, interp);
 }
 
 void ObjectCreator::editKeyFrame(int trackindex, quint64 lastTime, quint64 newTime, int type)
@@ -492,23 +527,22 @@ void ObjectCreator::editKeyFrame(int trackindex, quint64 lastTime, quint64 newTi
 
 void ObjectCreator::removeKeyFrame(int trackindex, quint64 time)
 {
-
     if (removing_list.contains(time)) {
         return;
     }
     setCurrentTime(time);
     if (_tracklist.contains(trackindex)) {
-
         double last = -1;
         if (_lastKeyFrames[trackindex].size() > 0)
             last = _lastKeyFrames[trackindex].lastKey();
-
         _tracklist[trackindex]->removeKeyFrame(time);
-
-        if (last >= 0) {
+        if (last >= 0)
             setCurrentTime(last);
-        }
     }
+
+    // Mirror removal into ObjectPosAutomation
+    if (m_objectAutomations.contains(trackindex))
+        m_objectAutomations[trackindex]->removeKey(qint64(time));
 }
 
 void ObjectCreator::keyFrameChanged(int trackIndex, QMap<quint64, int> list)
@@ -567,7 +601,81 @@ void ObjectCreator::setKeyFrames(int trackIndex, QMap<qint64, int> keyFrames)
 
 void ObjectCreator::setCurrentTime(qint64 time)
 {
+    m_currentTime = time;
     m_animationManager->setCurrentTime(time);
+
+    // Evaluate all per-track ObjectPosAutomations and push positions to scene3D
+    for (auto it = m_objectAutomations.constBegin(); it != m_objectAutomations.constEnd(); ++it) {
+        ObjectPosAutomation* oa = it.value();
+        if (oa && !oa->isEmpty()) {
+            QVector3D p = oa->evaluate(time);
+            kfLog(QString("eval track=%1 t=%2 keys=%3 pos=(%4,%5,%6)")
+                .arg(it.key()).arg(time).arg(oa->count())
+                .arg(p.x()).arg(p.y()).arg(p.z()));
+            emit sigObjectMoved(it.key(), double(p.x()), double(p.y()), double(p.z()));
+        }
+    }
+}
+
+void ObjectCreator::syncObjectKeyframes(int trackIndex, QList<qint64> times)
+{
+    // Read current entity position; new keys capture this so motion is non-zero
+    QVector3D pos;
+    bool fromEntity = false;
+    if (m_objects.contains(trackIndex) && m_objects[trackIndex]) {
+        auto p = m_objects[trackIndex]->localPosition();
+        pos = QVector3D(float(p[0]), float(p[1]), float(p[2]));
+        fromEntity = true;
+    } else {
+        pos = m_lastPositions.value(trackIndex, QVector3D());
+    }
+    m_lastPositions[trackIndex] = pos;
+    {
+        QStringList ts;
+        for (qint64 t : times) ts << QString::number(t);
+        kfLog(QString("syncObjectKeyframes track=%1 times=[%2] live-pos=(%3,%4,%5) fromEntity=%6")
+            .arg(trackIndex).arg(ts.join(','))
+            .arg(pos.x()).arg(pos.y()).arg(pos.z())
+            .arg(fromEntity ? "yes" : "no"));
+    }
+
+    if (!m_objectAutomations.contains(trackIndex))
+        m_objectAutomations[trackIndex] = new ObjectPosAutomation(this);
+    ObjectPosAutomation* oa = m_objectAutomations[trackIndex];
+
+    // Add any new times with the live position
+    QSet<qint64> wantSet;
+    for (qint64 t : times) {
+        wantSet.insert(t);
+        if (!oa->hasKey(t)) {
+            kfLog(QString("  add key t=%1 pos=(%2,%3,%4)")
+                .arg(t).arg(pos.x()).arg(pos.y()).arg(pos.z()));
+            oa->addKey(t, pos, KeyInterp::Linear);
+        } else {
+            QVector3D ep = oa->key(t)->pos;
+            kfLog(QString("  keep key t=%1 existing-pos=(%2,%3,%4)")
+                .arg(t).arg(ep.x()).arg(ep.y()).arg(ep.z()));
+        }
+    }
+    // Remove any times no longer present in the lane
+    QList<qint64> existing = oa->keyTimes();
+    for (qint64 t : existing) {
+        if (!wantSet.contains(t)) {
+            kfLog(QString("  remove key t=%1").arg(t));
+            oa->removeKey(t);
+        }
+    }
+
+    // Re-evaluate current playhead so the scene reflects the new automation
+    setCurrentTime(m_currentTime);
+}
+
+void ObjectCreator::setKeyframeLaneActive(int trackIndex, bool active)
+{
+    if (active)
+        m_keyframeLaneActive.insert(trackIndex);
+    else
+        m_keyframeLaneActive.remove(trackIndex);
 }
 
 void ObjectCreator::onMouseReleased()
@@ -627,11 +735,22 @@ void ObjectCreator::onMousePressed()
 
 void ObjectCreator::setObjectLocation(int trackIndex, double x, double y, double z)
 {
-    qDebug() << "setObjectLocation" << trackIndex << x << y << z;
+    kfLog(QString("setObjectLocation track=%1 pos=(%2,%3,%4) laneActive=%5 currentTime=%6")
+        .arg(trackIndex).arg(x).arg(y).arg(z)
+        .arg(m_keyframeLaneActive.contains(trackIndex) ? "yes" : "no")
+        .arg(m_currentTime));
+    const QVector3D pos{ float(x), float(y), float(z) };
+    m_lastPositions[trackIndex] = pos;
     if (m_objects.contains(trackIndex)) {
-
         m_objects[trackIndex]->setLocalPosition(x, y, z);
         m_objects[trackIndex]->requestToUpdate();
+    }
+    // Auto-record: if the keyframe lane is active for this track, write a keyframe
+    // at the current playhead time whenever the entity is dragged in the 3D scene.
+    if (m_keyframeLaneActive.contains(trackIndex)) {
+        if (!m_objectAutomations.contains(trackIndex))
+            m_objectAutomations[trackIndex] = new ObjectPosAutomation(this);
+        m_objectAutomations[trackIndex]->addKey(m_currentTime, pos, KeyInterp::Linear);
     }
 }
 
