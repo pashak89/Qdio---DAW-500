@@ -3,7 +3,10 @@
 #include <QColor>
 #include <QHash>
 #include <QObject>
+#include <QVariantList>
 #include <QVector3D>
+
+class ObjectPosAutomation;
 
 // Bridges DAW timeline state to the Three.js WebEngine viewports embedded in main.qml.
 // Signals flow C++ -> QML/JS via QWebChannel. Q_INVOKABLE methods flow QML/JS -> C++.
@@ -38,6 +41,11 @@ public slots:
     void setSelected(int trackIndex);
     void resetScene();
 
+    // Phase 1: per-track keyframe / path push to JS
+    void attachAutomation(int trackIndex, ObjectPosAutomation* automation);
+    void pushKeyframesFor(int trackIndex);
+    void pushPathFor(int trackIndex);
+
 signals:
     void playheadMoved(qint64 time);
     void entityAdded(int trackIndex, double x, double y, double z);
@@ -50,10 +58,16 @@ signals:
     // Reverse sync: emitted on user drag, consumed by ObjectCreator.
     void entityMovedFromScene(int trackIndex, double x, double y, double z);
 
+    // Phase 1: keyframe / path signals consumed by Three.js viewports
+    void keyframesCleared(int trackIndex);
+    void keyframeAdded(int trackIndex, QString kfId, double x, double y, double z, int interp);
+    void pathSampled(int trackIndex, QVariantList xyzFlat);
+
 private:
     QHash<int, QVector3D> m_positions;
     QHash<int, QColor>    m_colors;
     QHash<int, bool>      m_visible;
+    QHash<int, ObjectPosAutomation*> m_automations;
     qint64 m_playhead { 0 };
     int    m_selectedTrack { -1 };
 };

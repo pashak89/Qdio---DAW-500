@@ -160,6 +160,60 @@ transformCtl.addEventListener('objectChange', () => {
 
 // ── Track entities ─────────────────────────────────────────────────────────
 const entities = new Map();
+
+// ── Keyframes & paths (Phase 1) ────────────────────────────────────────────
+const kfMarkers = new Map();   // trackIndex -> Map<kfId, { mesh, interp }>
+const pathLines = new Map();   // trackIndex -> THREE.Line
+const KF_INTERP_HOLD = 0;
+const KF_INTERP_LINEAR = 1;
+const KF_INTERP_BEZIER = 2;
+
+function makeKfGeometry(interp) {
+    if (interp === KF_INTERP_LINEAR) return new THREE.OctahedronGeometry(0.13, 0);
+    if (interp === KF_INTERP_HOLD)   return new THREE.BoxGeometry(0.18, 0.18, 0.18);
+    return new THREE.SphereGeometry(0.10, 16, 16);
+}
+function trackBaseColor(trackIndex) {
+    const e = entities.get(trackIndex);
+    return e ? e.baseColor : new THREE.Color(DEFAULT_COLOR);
+}
+function clearKeyframesForTrack(trackIndex) {
+    const m = kfMarkers.get(trackIndex);
+    if (m) {
+        for (const { mesh } of m.values()) {
+            scene.remove(mesh); mesh.geometry.dispose(); mesh.material.dispose();
+        }
+        m.clear();
+    }
+}
+function addKfMarker(trackIndex, kfId, x, y, z, interp) {
+    let map = kfMarkers.get(trackIndex);
+    if (!map) { map = new Map(); kfMarkers.set(trackIndex, map); }
+    const baseColor = trackBaseColor(trackIndex);
+    const mat = new THREE.MeshPhongMaterial({
+        color: baseColor,
+        emissive: baseColor.clone().multiplyScalar(0.6),
+        shininess: 60,
+    });
+    const mesh = new THREE.Mesh(makeKfGeometry(interp), mat);
+    mesh.position.set(x, y, z);
+    mesh.userData = { type: 'keyframe', trackIndex, kfId, interp };
+    scene.add(mesh);
+    map.set(kfId, { mesh, interp });
+}
+function setPathFor(trackIndex, flat) {
+    const old = pathLines.get(trackIndex);
+    if (old) { scene.remove(old); old.geometry.dispose(); old.material.dispose(); pathLines.delete(trackIndex); }
+    if (!flat || flat.length < 6) return;
+    const baseColor = trackBaseColor(trackIndex);
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(flat, 3));
+    const line = new THREE.Line(geo, new THREE.LineBasicMaterial({
+        color: baseColor, transparent: true, opacity: 0.7,
+    }));
+    scene.add(line);
+    pathLines.set(trackIndex, line);
+}
 function ensureEntity(trackIndex) {
     if (entities.has(trackIndex)) return entities.get(trackIndex);
     const baseColor = new THREE.Color(DEFAULT_COLOR);
@@ -384,7 +438,22 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
     scene3D.entityColorChanged.connect((trackIndex, hex) => applyEntityColor(trackIndex, hex));
     scene3D.entityVisibilityChanged.connect((trackIndex, vis) => applyEntityVisibility(trackIndex, vis));
     scene3D.trackSelected.connect((trackIndex) => setSelectedTrack(trackIndex));
-    scene3D.sceneReset.connect(() => clearAllEntities());
+    scene3D.sceneReset.connect(() => {
+        for (const tIdx of kfMarkers.keys()) clearKeyframesForTrack(tIdx);
+        kfMarkers.clear();
+        for (const [, line] of pathLines) {
+            scene.remove(line); line.geometry.dispose(); line.material.dispose();
+        }
+        pathLines.clear();
+        clearAllEntities();
+    });
+
+    // Phase 1: keyframe markers + path line
+    scene3D.keyframesCleared.connect((trackIndex) => clearKeyframesForTrack(trackIndex));
+    scene3D.keyframeAdded.connect((trackIndex, kfId, x, y, z, interp) => {
+        addKfMarker(trackIndex, kfId, x, y, z, interp);
+    });
+    scene3D.pathSampled.connect((trackIndex, flat) => setPathFor(trackIndex, flat));
 
     scene3D.entityIds((ids) => { ids.forEach((id) => bootstrapEntity(scene3D, id)); });
 });

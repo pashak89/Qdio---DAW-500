@@ -1,6 +1,8 @@
 #include "Scene3DController.h"
 
+#include "core/objectautomation.h"
 #include <QtDebug>
+#include <algorithm>
 
 Scene3DController::Scene3DController(QObject* parent)
     : QObject(parent)
@@ -93,4 +95,62 @@ void Scene3DController::resetScene()
     m_visible.clear();
     m_selectedTrack = -1;
     emit sceneReset();
+}
+
+void Scene3DController::attachAutomation(int trackIndex, ObjectPosAutomation* automation)
+{
+    if (!automation) return;
+    if (m_automations.value(trackIndex) == automation) return;
+    m_automations[trackIndex] = automation;
+    // Whenever the automation mutates (add/remove/move/tangent/interp), re-push.
+    QObject::connect(automation, &ObjectPosAutomation::changed, this,
+        [this, trackIndex]() {
+            pushKeyframesFor(trackIndex);
+            pushPathFor(trackIndex);
+        });
+    pushKeyframesFor(trackIndex);
+    pushPathFor(trackIndex);
+}
+
+void Scene3DController::pushKeyframesFor(int trackIndex)
+{
+    auto* oa = m_automations.value(trackIndex, nullptr);
+    if (!oa) return;
+    emit keyframesCleared(trackIndex);
+    const auto& keys = oa->keys();
+    for (auto it = keys.constBegin(); it != keys.constEnd(); ++it) {
+        const ObjectKeyFrame& kf = it.value();
+        const QString id = QStringLiteral("k_%1_%2").arg(trackIndex).arg(it.key());
+        emit keyframeAdded(trackIndex, id,
+                           double(kf.pos.x()), double(kf.pos.y()), double(kf.pos.z()),
+                           int(kf.interp));
+    }
+}
+
+void Scene3DController::pushPathFor(int trackIndex)
+{
+    auto* oa = m_automations.value(trackIndex, nullptr);
+    if (!oa || oa->isEmpty()) {
+        emit pathSampled(trackIndex, QVariantList{});
+        return;
+    }
+    const QList<qint64> times = oa->keyTimes();
+    const qint64 t0 = times.first();
+    const qint64 t1 = times.last();
+    QVariantList flat;
+    if (t1 <= t0) {
+        QVector3D p = oa->evaluate(t0);
+        flat << double(p.x()) << double(p.y()) << double(p.z());
+        emit pathSampled(trackIndex, flat);
+        return;
+    }
+    constexpr int N = 128;
+    flat.reserve(N * 3);
+    for (int i = 0; i < N; ++i) {
+        const double u = double(i) / double(N - 1);
+        const qint64 t = t0 + qint64(u * double(t1 - t0));
+        QVector3D p = oa->evaluate(t);
+        flat << double(p.x()) << double(p.y()) << double(p.z());
+    }
+    emit pathSampled(trackIndex, flat);
 }

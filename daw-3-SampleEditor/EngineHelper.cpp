@@ -510,8 +510,7 @@ void ObjectCreator::addKeyFrame(int trackindex, quint64 time, int type)
     }
     m_lastPositions[trackindex] = pos;
 
-    if (!m_objectAutomations.contains(trackindex))
-        m_objectAutomations[trackindex] = new ObjectPosAutomation(this);
+    ensureAutomation(trackindex);
     const KeyInterp interp = (type == 2) ? KeyInterp::Hold
                            : (type == 0) ? KeyInterp::Bezier
                            : KeyInterp::Linear;
@@ -639,9 +638,7 @@ void ObjectCreator::syncObjectKeyframes(int trackIndex, QList<qint64> times)
             .arg(fromEntity ? "yes" : "no"));
     }
 
-    if (!m_objectAutomations.contains(trackIndex))
-        m_objectAutomations[trackIndex] = new ObjectPosAutomation(this);
-    ObjectPosAutomation* oa = m_objectAutomations[trackIndex];
+    ObjectPosAutomation* oa = ensureAutomation(trackIndex);
 
     // Add any new times with the live position
     QSet<qint64> wantSet;
@@ -668,6 +665,23 @@ void ObjectCreator::syncObjectKeyframes(int trackIndex, QList<qint64> times)
 
     // Re-evaluate current playhead so the scene reflects the new automation
     setCurrentTime(m_currentTime);
+}
+
+void ObjectCreator::setKeyFrameInterp(int trackIndex, qint64 time, int interp)
+{
+    auto* oa = ensureAutomation(trackIndex);
+    oa->setInterp(time, KeyInterp(interp));
+}
+
+ObjectPosAutomation* ObjectCreator::ensureAutomation(int trackIndex)
+{
+    auto it = m_objectAutomations.find(trackIndex);
+    if (it != m_objectAutomations.end())
+        return it.value();
+    auto* oa = new ObjectPosAutomation(this);
+    m_objectAutomations[trackIndex] = oa;
+    emit sigAutomationCreated(trackIndex, oa);
+    return oa;
 }
 
 void ObjectCreator::setKeyframeLaneActive(int trackIndex, bool active)
@@ -748,9 +762,9 @@ void ObjectCreator::setObjectLocation(int trackIndex, double x, double y, double
     // Auto-record: if the keyframe lane is active for this track, write a keyframe
     // at the current playhead time whenever the entity is dragged in the 3D scene.
     if (m_keyframeLaneActive.contains(trackIndex)) {
-        if (!m_objectAutomations.contains(trackIndex))
-            m_objectAutomations[trackIndex] = new ObjectPosAutomation(this);
-        m_objectAutomations[trackIndex]->addKey(m_currentTime, pos, KeyInterp::Linear);
+        ensureAutomation(trackIndex)->addKey(m_currentTime, pos, KeyInterp::Linear);
+        // Mirror to the timeline lane so the user sees an orange marker too.
+        emit sigAutoRecordedKeyFrame(trackIndex, quint64(m_currentTime), 1 /*Linear*/);
     }
 }
 

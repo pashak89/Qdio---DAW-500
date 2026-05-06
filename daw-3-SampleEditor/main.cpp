@@ -287,6 +287,19 @@ int main(int argc, char* argv[])
                     QObject::connect(objectCreator, &ObjectCreator::sigObjectMoved,
                         scene3D, &Scene3DController::setEntityPosition, Qt::QueuedConnection);
 
+                    // Wire each per-track ObjectPosAutomation to the scene controller
+                    // so keyframe markers and the trajectory line are pushed to JS.
+                    QObject::connect(objectCreator, &ObjectCreator::sigAutomationCreated,
+                        scene3D, &Scene3DController::attachAutomation, Qt::DirectConnection);
+
+                    // Right-click cycle in timeline lane → ObjectCreator's automation interp
+                    QObject::connect(_areaInfo, &AreaInfo::sigInterpChanged,
+                        objectCreator, &ObjectCreator::setKeyFrameInterp, Qt::DirectConnection);
+
+                    // Auto-record from 3D/2D viewport drag → timeline lane orange marker
+                    QObject::connect(objectCreator, &ObjectCreator::sigAutoRecordedKeyFrame,
+                        _areaInfo, &AreaInfo::sigAddKeyFrame, Qt::QueuedConnection);
+
                     // Reverse sync: QtQuick3D drag → DAW position (+ auto-record when lane is open)
                     QObject::connect(scene3D, &Scene3DController::entityMovedFromScene,
                         objectCreator, &ObjectCreator::setObjectLocation, Qt::QueuedConnection);

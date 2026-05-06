@@ -849,6 +849,9 @@ signals:
     void sigLastWidthChanged();
     void sigKeyframeLaneToggled(int trackIndex, bool active);
     void sigKeyFrameLinesChanged(int trackIndex, QList<qint64> times);
+    // Right-click cycle on a keyframe in the timeline lane changed its interp.
+    // interp values match KeyInterp enum: 0=Hold, 1=Linear, 2=Bezier.
+    void sigInterpChanged(int trackIndex, qint64 time, int interp);
     void sigZoomLevelChanged();
     void sigClipDurationChanged();
     void sigStartTimeChanged();

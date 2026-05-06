@@ -86,6 +86,9 @@ public slots:
     Q_INVOKABLE void setObjectLocation(int trackIndex, double x, double y, double z);
     Q_INVOKABLE void setKeyframeLaneActive(int trackIndex, bool active);
     void syncObjectKeyframes(int trackIndex, QList<qint64> times);
+
+    ObjectPosAutomation* ensureAutomation(int trackIndex);
+    void setKeyFrameInterp(int trackIndex, qint64 time, int interp);
     Q_INVOKABLE void play();
     Q_INVOKABLE void pause();
     Q_INVOKABLE void stop();
@@ -95,6 +98,11 @@ public slots:
 
 signals:
     void sigKeyFrameEdited(int trackIndex, QString status);
+    void sigAutomationCreated(int trackIndex, ObjectPosAutomation* automation);
+    // Emitted when ObjectCreator auto-records a keyframe (e.g., user drags the
+    // sphere with the keyframe lane active). main.cpp routes this to AreaInfo
+    // so the timeline lane gets an orange marker too.
+    void sigAutoRecordedKeyFrame(int trackIndex, quint64 time, int type);
 
     void sigObjectMoved(int trackIndex, double x, double y, double z);
     void sigSaveObjectMove(int trackIndex, double x, double y, double z);

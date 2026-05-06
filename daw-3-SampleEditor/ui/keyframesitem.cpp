@@ -513,7 +513,9 @@ int KeyFramesItem::mouseReleaseEvent(QMouseEvent* event)
                 const KeyInterp nextInterp = (nextType == KeyFramesType_Bezier) ? KeyInterp::Bezier
                                            : (nextType == KeyFramesType_Hold)   ? KeyInterp::Hold
                                            : KeyInterp::Linear;
-                _automation->setInterp(qint64(_points[index].point.x()), nextInterp);
+                const qint64 kfTime = qint64(_points[index].point.x());
+                _automation->setInterp(kfTime, nextInterp);
+                Q_EMIT _areaInfo->sigInterpChanged(_trackIndex, kfTime, int(nextInterp));
                 _mousePressed = false;
                 _mouseMoved   = false;
                 Q_EMIT sigUpdate();
