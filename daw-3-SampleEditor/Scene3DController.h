@@ -28,14 +28,27 @@ public:
     Q_INVOKABLE QString entityColor(int trackIndex) const;
     Q_INVOKABLE bool entityVisible(int trackIndex) const;
 
-    // Called by QML when the user drags an entity in the scene.
+    // ── Live + Commit transform API (professional commit-only animation) ──
+    // Called by JS on every pointer-move during a drag. Updates only the live
+    // sphere position — no keyframe writes.
+    Q_INVOKABLE void entityMovedLiveInScene(int trackIndex, double x, double y, double z);
+    // Called by JS once on mouse release / drag end. The C++ side decides
+    // (per Auto Key Mode) whether to write/update a keyframe.
+    Q_INVOKABLE void entityCommittedInScene(int trackIndex, double x, double y, double z);
+    // Back-compat alias for the previous always-on auto-record entry. Forwards
+    // to the live path so legacy callers no longer write kfs during drag.
     Q_INVOKABLE void entityMovedInScene(int trackIndex, double x, double y, double z);
 
     // Called by QML when the user clicks a sphere (raycast hit).
     Q_INVOKABLE void entityClicked(int trackIndex);
     Q_INVOKABLE void log(const QString& msg) const;
 
-    // Phase 3: live tangent drag from JS — kfId="k_<track>_<time>", side="in"|"out"
+    // Tangent drag — live preview vs commit. kfId is the kf's stable UUID.
+    Q_INVOKABLE void tangentChangedLiveInScene(const QString& kfId, const QString& side,
+                                               double x, double y, double z);
+    Q_INVOKABLE void tangentCommittedInScene(const QString& kfId, const QString& side,
+                                             double x, double y, double z);
+    // Back-compat alias.
     Q_INVOKABLE void tangentChangedInScene(const QString& kfId, const QString& side,
                                            double x, double y, double z);
 
@@ -65,7 +78,12 @@ signals:
     void sceneReset();
     void trackSelected(int trackIndex);
 
-    // Reverse sync: emitted on user drag, consumed by ObjectCreator.
+    // Reverse sync: live drag → ObjectCreator::setObjectLocationLive
+    void entityMovedFromSceneLive(int trackIndex, double x, double y, double z);
+    // Reverse sync: drag release → ObjectCreator::commitObjectLocation
+    void entityCommittedFromScene(int trackIndex, double x, double y, double z);
+    // Back-compat — same as entityMovedFromSceneLive (forwarded). Will be
+    // removed once the JS migration completes.
     void entityMovedFromScene(int trackIndex, double x, double y, double z);
 
     // Phase 1 / R6: keyframe / path signals consumed by Three.js viewports.

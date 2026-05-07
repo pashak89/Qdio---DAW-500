@@ -280,15 +280,17 @@ int main(int argc, char* argv[])
                         }
                     });
 
-                    // Also evaluate when the user scrubs the playhead while paused.
-                    // playheadMarkerChanged fires on any playhead change.
-                    QObject::connect(_areaInfo, &AreaInfo::playheadMarkerChanged, [objectCreator, scene3D, _areaInfo]() {
-                        if (AudioManager::getSong()->isPause() == true) {
+                    // Forward every playhead change to ObjectCreator. During playback the
+                    // sigPlayBackUpdateTimeout path also updates time at 60Hz; outside of
+                    // playback (stopped or initial state) we still need m_currentTime to
+                    // follow the user's clicks/scrubs on the timeline ruler so kf commits
+                    // land at the correct playhead time.
+                    QObject::connect(_areaInfo, &AreaInfo::playheadMarkerChanged,
+                        [objectCreator, scene3D, _areaInfo]() {
                             const qint64 t = _areaInfo->playheadMarker();
                             objectCreator->setCurrentTime(t);
                             scene3D->setPlayhead(t);
-                        }
-                    });
+                        });
 
                     QObject::connect(_areaInfo, &AreaInfo::sigObjectPosition, objectCreator,
                         &ObjectCreator::setObjectLocation, Qt::DirectConnection);
@@ -319,16 +321,29 @@ int main(int argc, char* argv[])
                     // _tracklist + ObjectPosAutomation, not the visible lane.
                     QObject::connect(objectCreator, &ObjectCreator::sigAutoRecordedKeyFrame,
                         [_clipArea](int trackIndex, quint64 time, int type) {
-                            qDebug() << "[KFLane] sigAutoRecordedKeyFrame received track="
-                                     << trackIndex << " time=" << time << " type=" << type;
-                            if (auto tm = _clipArea->tracksModel()) {
-                                tm->addKeyFrame(trackIndex, qint64(time), type);
+                            qDebug() << "[KFLane] sigAutoRecordedKeyFrame track="
+                                     << trackIndex << "time=" << time << "type=" << type;
+                            auto* tm = _clipArea->tracksModel();
+                            if (!tm) {
+                                qDebug() << "[KFLane] tracksModel() is null — skipping";
+                                return;
                             }
+                            tm->addKeyFrame(trackIndex, qint64(time), type);
+                            // Auto-expand the keyframe lane so the orange dot is immediately
+                            // visible without the user having to manually open it.
+                            tm->setAutomationLaneEnabled(trackIndex, true);
                         });
 
-                    // Reverse sync: QtQuick3D drag → DAW position (+ auto-record when lane is open)
+                    // Reverse sync: live drag (every pointer-move) → ObjectCreator::setObjectLocationLive
+                    QObject::connect(scene3D, &Scene3DController::entityMovedFromSceneLive,
+                        objectCreator, &ObjectCreator::setObjectLocationLive, Qt::QueuedConnection);
+                    // Reverse sync: drag release → ObjectCreator::commitObjectLocation
+                    // (Auto Key Mode decides whether to write a kf.)
+                    QObject::connect(scene3D, &Scene3DController::entityCommittedFromScene,
+                        objectCreator, &ObjectCreator::commitObjectLocation, Qt::QueuedConnection);
+                    // Back-compat — legacy entityMovedFromScene signal aliases to live.
                     QObject::connect(scene3D, &Scene3DController::entityMovedFromScene,
-                        objectCreator, &ObjectCreator::setObjectLocation, Qt::QueuedConnection);
+                        objectCreator, &ObjectCreator::setObjectLocationLive, Qt::QueuedConnection);
 
                     // Keyframe lane toggle → enable/disable auto-record for that track
                     QObject::connect(_areaInfo, &AreaInfo::sigKeyframeLaneToggled,

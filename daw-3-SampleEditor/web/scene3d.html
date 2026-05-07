@@ -388,18 +388,28 @@ transformCtl.setMode('translate');
 transformCtl.setSize(1.5);
 scene.add(transformCtl);
 
-// Disable orbit while the user is dragging an arrow handle
+// Gizmo (XYZ axis arrows): live preview during drag, commit on release.
+// commitObjectLocation in C++ gates by Auto Key Mode — when ON it writes a kf,
+// when OFF the position update is purely visual.
+let _xformLastTrack = -1;
 transformCtl.addEventListener('dragging-changed', (ev) => {
     controls.enabled = !ev.value;
+    if (!ev.value && _xformLastTrack >= 0 && transformCtl.object && window.scene3D) {
+        const obj = transformCtl.object;
+        window.scene3D.entityCommittedInScene(_xformLastTrack,
+            obj.position.x, obj.position.y, obj.position.z);
+        _xformLastTrack = -1;
+    }
 });
 
-// Push position back to C++ as the user drags
 transformCtl.addEventListener('objectChange', () => {
     const obj = transformCtl.object;
     if (!obj || !window.scene3D) return;
     const idx = obj.userData.trackIndex;
-    if (idx !== undefined)
-        window.scene3D.entityMovedInScene(idx, obj.position.x, obj.position.y, obj.position.z);
+    if (idx !== undefined) {
+        _xformLastTrack = idx;
+        window.scene3D.entityMovedLiveInScene(idx, obj.position.x, obj.position.y, obj.position.z);
+    }
 });
 
 // ── Tangent-handle drag (Phase 3) ───────────────────────────────────────────
@@ -454,7 +464,8 @@ renderer.domElement.addEventListener('pointermove', (ev) => {
         rayFromEvent(ev);
         if (tdRay.ray.intersectPlane(tdPlane, tdHit) && window.scene3D) {
             const off = tdHit.clone().sub(tangentHandles.kfPos);
-            window.scene3D.tangentChangedInScene(
+            tDrag.lastVec = { x: off.x, y: off.y, z: off.z };
+            window.scene3D.tangentChangedLiveInScene(
                 tangentHandles.kfId, tDrag.side, off.x, off.y, off.z);
         }
         return;
@@ -473,6 +484,12 @@ function endTangentDrag(ev) {
     if (!tDrag) return;
     try { renderer.domElement.releasePointerCapture(ev.pointerId); } catch (_) {}
     setHandleHighlight(tDrag.mesh, false);
+    // Single commit on release — one undo entry per tangent transform.
+    if (tDrag.lastVec && tangentHandles.kfId && window.scene3D) {
+        window.scene3D.tangentCommittedInScene(
+            tangentHandles.kfId, tDrag.side,
+            tDrag.lastVec.x, tDrag.lastVec.y, tDrag.lastVec.z);
+    }
     tDrag = null;
     controls.enabled = true;
     if (transformCtl) transformCtl.enabled = true;

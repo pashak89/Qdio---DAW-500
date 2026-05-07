@@ -44,10 +44,30 @@ bool Scene3DController::entityVisible(int trackIndex) const
     return m_visible.value(trackIndex, true);
 }
 
-void Scene3DController::entityMovedInScene(int trackIndex, double x, double y, double z)
+void Scene3DController::entityMovedLiveInScene(int trackIndex, double x, double y, double z)
 {
+    // Drag-frame: visual position only, no keyframe mutation.
     m_positions.insert(trackIndex, QVector3D(float(x), float(y), float(z)));
     emit entityPositionChanged(trackIndex, x, y, z);
+    emit entityMovedFromSceneLive(trackIndex, x, y, z);
+}
+
+void Scene3DController::entityCommittedInScene(int trackIndex, double x, double y, double z)
+{
+    // Drag release: the single point at which animation data may be written
+    // (subject to Auto Key Mode in ObjectCreator).
+    m_positions.insert(trackIndex, QVector3D(float(x), float(y), float(z)));
+    scnLog(QString("[Scene3D] entityCommittedInScene track=%1 pos=(%2,%3,%4)")
+        .arg(trackIndex).arg(x).arg(y).arg(z));
+    emit entityCommittedFromScene(trackIndex, x, y, z);
+}
+
+void Scene3DController::entityMovedInScene(int trackIndex, double x, double y, double z)
+{
+    // Back-compat: legacy JS that calls this from drag-frame events should
+    // behave as a live update only. Emit the legacy signal too so any old
+    // listener (none expected) still fires; primary path is the live signal.
+    entityMovedLiveInScene(trackIndex, x, y, z);
     emit entityMovedFromScene(trackIndex, x, y, z);
 }
 
@@ -213,21 +233,27 @@ void Scene3DController::clearTangentSelection()
     emit tangentsCleared();
 }
 
-void Scene3DController::tangentChangedInScene(const QString& kfId, const QString& side,
-                                              double x, double y, double z)
+// Helper: locate the (track, time, automation) tuple owning a kf with the
+// given stable UUID. Returns true on success.
+static bool resolveKfId(const QHash<int, ObjectPosAutomation*>& automations,
+                        const QString& kfId,
+                        int& track, qint64& time, ObjectPosAutomation*& oa)
 {
-    // kfId is now the kf's stable UUID. Find the (track, time) it lives at.
-    if (kfId.isEmpty()) return;
-    int foundTrack = -1;
-    qint64 foundTime = -1;
-    ObjectPosAutomation* oa = nullptr;
-    for (auto it = m_automations.constBegin(); it != m_automations.constEnd(); ++it) {
+    if (kfId.isEmpty()) return false;
+    for (auto it = automations.constBegin(); it != automations.constEnd(); ++it) {
         if (!it.value()) continue;
         const qint64 t = it.value()->timeForId(kfId);
-        if (t >= 0) { foundTrack = it.key(); foundTime = t; oa = it.value(); break; }
+        if (t >= 0) { track = it.key(); time = t; oa = it.value(); return true; }
     }
-    if (!oa || foundTime < 0) return;
-    const ObjectKeyFrame* kf = oa->key(foundTime);
+    return false;
+}
+
+void Scene3DController::tangentChangedLiveInScene(const QString& kfId, const QString& side,
+                                                  double x, double y, double z)
+{
+    int track = -1; qint64 time = -1; ObjectPosAutomation* oa = nullptr;
+    if (!resolveKfId(m_automations, kfId, track, time, oa)) return;
+    const ObjectKeyFrame* kf = oa->key(time);
     if (!kf) return;
 
     QVector3D newIn  = kf->tangentIn;
@@ -237,9 +263,28 @@ void Scene3DController::tangentChangedInScene(const QString& kfId, const QString
     else if (side == QLatin1String("out")) newOut = dragVec;
     else return;
 
-    oa->setTangents(foundTime, newIn, newOut);
-    // Re-push handle positions so any other viewport mirrors the drag.
-    setSelectedKeyframe(foundTrack, foundTime);
+    oa->setTangents(time, newIn, newOut);
+    setSelectedKeyframe(track, time);
+}
+
+void Scene3DController::tangentCommittedInScene(const QString& kfId, const QString& side,
+                                                double x, double y, double z)
+{
+    // For the moment a commit is just a final live apply (no full undo wiring
+    // yet — that comes after the live/commit split is verified). Logging the
+    // commit gives us a clear signal in kf_debug.log for verification.
+    int track = -1; qint64 time = -1; ObjectPosAutomation* oa = nullptr;
+    if (!resolveKfId(m_automations, kfId, track, time, oa)) return;
+    scnLog(QString("[Scene3D] tangentCommittedInScene id=%1 side=%2 vec=(%3,%4,%5)")
+        .arg(kfId).arg(side).arg(x).arg(y).arg(z));
+    tangentChangedLiveInScene(kfId, side, x, y, z);
+}
+
+void Scene3DController::tangentChangedInScene(const QString& kfId, const QString& side,
+                                              double x, double y, double z)
+{
+    // Back-compat alias.
+    tangentChangedLiveInScene(kfId, side, x, y, z);
 }
 
 void Scene3DController::pushPathFor(int trackIndex)

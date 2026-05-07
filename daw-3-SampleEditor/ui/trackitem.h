@@ -500,7 +500,13 @@ public:
 
     int addLine2(double time, float Ypos)
     {
-
+        // Call the base Automation's add_point so the lane data structure (_cLines)
+        // gets the new control point and sigLinesChanged fires for downstream sync.
+        // Without this, auto-recorded kfs only land in _points (visual marker) and
+        // ObjectPosAutomation (engine) — but the lane's own data stays empty,
+        // causing a later user lane click to be mis-interpreted as a kf MOVE
+        // (single-time diff) instead of an ADD.
+        Automation::add_point(double(time), defaultNormalized());
         return 0;
     }
     bool removeLine2(int index)

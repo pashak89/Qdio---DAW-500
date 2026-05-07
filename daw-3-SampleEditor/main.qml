@@ -539,6 +539,38 @@ Item {
                                         _clipArea.pause()
                                     }
                                 }
+                                // Auto Key Mode toggle (Maya/Blender convention).
+                                // palette.buttonText is unreliable on Windows — use background+contentItem.
+                                ToolButton {
+                                    id: autoKeyToggle
+                                    checkable: true
+                                    checked: objectCreator.autoKeyMode
+                                    focusPolicy: Qt.NoFocus
+                                    implicitWidth: 90
+                                    implicitHeight: 26
+                                    background: Rectangle {
+                                        radius: 4
+                                        color: autoKeyToggle.checked ? "#3a1010" : "#2a2a2a"
+                                        border.color: autoKeyToggle.checked ? "#ff5050" : "#555555"
+                                        border.width: 1
+                                    }
+                                    contentItem: Text {
+                                        text: autoKeyToggle.checked ? "● Auto Key" : "○ Auto Key"
+                                        color: autoKeyToggle.checked ? "#ff5050" : "#888888"
+                                        font.pixelSize: 12
+                                        horizontalAlignment: Text.AlignHCenter
+                                        verticalAlignment: Text.AlignVCenter
+                                    }
+                                    ToolTip.visible: hovered
+                                    ToolTip.text: autoKeyToggle.checked
+                                        ? "Auto Key ON — body-drag sphere creates/updates keyframe at playhead."
+                                        : "Auto Key OFF — all transforms are visual only; add keyframes explicitly in the lane."
+                                    onClicked: objectCreator.autoKeyMode = checked
+                                    Connections {
+                                        target: objectCreator
+                                        function onAutoKeyModeChanged(on) { autoKeyToggle.checked = on }
+                                    }
+                                }
                                 Label {
                                     visible: !_areaInfo.selectedAreaActive
                                     text: "Insert Marker: " + _areaInfo.timeSelectionStart.join(

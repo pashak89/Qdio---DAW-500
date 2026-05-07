@@ -148,14 +148,28 @@ function applyGizmoAxes() {
     transformCtl.showZ = (projection !== 'front');
 }
 
+// Gizmo (XYZ axis arrows): live preview during drag, commit on release.
+// commitObjectLocation in C++ gates by Auto Key Mode — when ON it writes a kf,
+// when OFF the position update is purely visual.
 let gizmoDragging = false;
-transformCtl.addEventListener('dragging-changed', (ev) => { gizmoDragging = ev.value; });
+let _xform2dLastTrack = -1;
+transformCtl.addEventListener('dragging-changed', (ev) => {
+    gizmoDragging = ev.value;
+    if (!ev.value && _xform2dLastTrack >= 0 && transformCtl.object && window.scene3D) {
+        const obj = transformCtl.object;
+        window.scene3D.entityCommittedInScene(_xform2dLastTrack,
+            obj.position.x, obj.position.y, obj.position.z);
+        _xform2dLastTrack = -1;
+    }
+});
 transformCtl.addEventListener('objectChange', () => {
     const obj = transformCtl.object;
     if (!obj || !window.scene3D) return;
     const idx = obj.userData.trackIndex;
-    if (idx !== undefined)
-        window.scene3D.entityMovedInScene(idx, obj.position.x, obj.position.y, obj.position.z);
+    if (idx !== undefined) {
+        _xform2dLastTrack = idx;
+        window.scene3D.entityMovedLiveInScene(idx, obj.position.x, obj.position.y, obj.position.z);
+    }
 });
 
 // ── Track entities ─────────────────────────────────────────────────────────
@@ -460,7 +474,8 @@ renderer.domElement.addEventListener('pointermove', (ev) => {
         dragRay.setFromCamera(dragNdc, camera);
         if (dragRay.ray.intersectPlane(tdPlane, tdHit) && window.scene3D) {
             const off = tdHit.clone().sub(tangentHandles.kfPos);
-            window.scene3D.tangentChangedInScene(
+            tDrag.lastVec = { x: off.x, y: off.y, z: off.z };
+            window.scene3D.tangentChangedLiveInScene(
                 tangentHandles.kfId, tDrag.side, off.x, off.y, off.z);
         }
         return;
@@ -478,6 +493,11 @@ function endTangentDrag(ev) {
     if (!tDrag) return;
     try { renderer.domElement.releasePointerCapture(ev.pointerId); } catch (_) {}
     setHandleHighlight(tDrag.mesh, false);
+    if (tDrag.lastVec && tangentHandles.kfId && window.scene3D) {
+        window.scene3D.tangentCommittedInScene(
+            tangentHandles.kfId, tDrag.side,
+            tDrag.lastVec.x, tDrag.lastVec.y, tDrag.lastVec.z);
+    }
     tDrag = null;
     if (transformCtl) transformCtl.enabled = true;
 }
@@ -509,10 +529,18 @@ renderer.domElement.addEventListener('pointerdown', (ev) => {
 renderer.domElement.addEventListener('pointerup', (ev) => {
     dragging = false;
     const moved = Math.hypot(ev.clientX - pressX, ev.clientY - pressY);
-    if (moved <= 4 && dragMode === 'entity' && draggedMesh && window.scene3D) {
-        // No real movement → treat as click → select
+    if (dragMode === 'entity' && draggedMesh && window.scene3D) {
         const idx = draggedMesh.userData.trackIndex;
-        if (idx !== undefined) window.scene3D.entityClicked(idx);
+        if (idx !== undefined) {
+            if (moved <= 4) {
+                // No real movement → treat as click → select
+                window.scene3D.entityClicked(idx);
+            } else {
+                // Drag release → commit (Auto Key Mode decides kf write).
+                window.scene3D.entityCommittedInScene(idx,
+                    draggedMesh.position.x, draggedMesh.position.y, draggedMesh.position.z);
+            }
+        }
     }
     dragMode = 'none';
     draggedMesh = null;
@@ -525,7 +553,7 @@ renderer.domElement.addEventListener('pointermove', (ev) => {
             if (window.scene3D) {
                 const idx = draggedMesh.userData.trackIndex;
                 if (idx !== undefined)
-                    window.scene3D.entityMovedInScene(idx,
+                    window.scene3D.entityMovedLiveInScene(idx,
                         draggedMesh.position.x, draggedMesh.position.y, draggedMesh.position.z);
             }
         }

@@ -52,6 +52,7 @@ using namespace DGE::Scene;
 
 class ObjectCreator : public QObject {
     Q_OBJECT
+    Q_PROPERTY(bool autoKeyMode READ autoKeyMode WRITE setAutoKeyMode NOTIFY autoKeyModeChanged)
 
 public:
     explicit ObjectCreator(AnimationManager* animationManager = Q_NULLPTR, QEngineRef engineRef = Q_NULLPTR, QObject* parent = nullptr);
@@ -83,12 +84,27 @@ public slots:
     Q_INVOKABLE void setKeyFrames(int trackIndex, QMap<qint64, int> keyFrames);
     Q_INVOKABLE void setCurrentTime(qint64 time);
 
+    // Live transform — sphere moves visually while user drags. Never writes
+    // a keyframe. Call this on every pointer-move during a drag.
+    Q_INVOKABLE void setObjectLocationLive(int trackIndex, double x, double y, double z);
+    // Commit transform — fires once on mouse release / transform finalization.
+    // In Auto Key mode: update existing kf at current time, OR create one.
+    // In Manual Key mode: only updates the live position (no kf write).
+    Q_INVOKABLE void commitObjectLocation(int trackIndex, double x, double y, double z);
+    // Back-compat shim — forwards to setObjectLocationLive. Will be removed
+    // once all callers migrate to the live/commit split.
     Q_INVOKABLE void setObjectLocation(int trackIndex, double x, double y, double z);
     Q_INVOKABLE void setKeyframeLaneActive(int trackIndex, bool active);
     void syncObjectKeyframes(int trackIndex, QList<qint64> times);
 
     ObjectPosAutomation* ensureAutomation(int trackIndex);
     void setKeyFrameInterp(int trackIndex, qint64 time, int interp);
+
+    // Auto Key Mode — when true (default), commit operations write keyframes
+    // at the current playhead. When false, transforms are visual-only and the
+    // user must explicitly create keyframes via the lane or a shortcut.
+    bool autoKeyMode() const { return m_autoKeyMode; }
+    void setAutoKeyMode(bool on);
     Q_INVOKABLE void play();
     Q_INVOKABLE void pause();
     Q_INVOKABLE void stop();
@@ -107,6 +123,7 @@ signals:
     void sigObjectMoved(int trackIndex, double x, double y, double z);
     void sigSaveObjectMove(int trackIndex, double x, double y, double z);
     void sigCurrentTimeChanged(qint64 time);
+    void autoKeyModeChanged(bool on);
     void sigEngineStarted();
     void sigSaveObjectsReady(QStringList result);
     void sigCurrentStatus(int trackIndex, QString currentChanges);
@@ -144,8 +161,9 @@ protected:
     // Per-track 3D position keyframes — drives scene3D during playback
     QMap<int, QVector3D>        m_lastPositions;
     QMap<int, ObjectPosAutomation*> m_objectAutomations;
-    QSet<int>                    m_keyframeLaneActive;
+    QSet<int>                    m_keyframeLaneActive;   // legacy — to be removed
     qint64                       m_currentTime = 0;
+    bool                         m_autoKeyMode = true;
 
     QList<qint64> removing_list;
     bool _is_undoing = false;

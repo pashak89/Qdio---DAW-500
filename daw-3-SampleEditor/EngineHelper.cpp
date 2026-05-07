@@ -600,6 +600,9 @@ void ObjectCreator::setKeyFrames(int trackIndex, QMap<qint64, int> keyFrames)
 
 void ObjectCreator::setCurrentTime(qint64 time)
 {
+    // Log only on actual change to avoid 60Hz spam during playback.
+    if (time != m_currentTime)
+        kfLog(QString("setCurrentTime t=%1").arg(time));
     m_currentTime = time;
     m_animationManager->setCurrentTime(time);
 
@@ -839,29 +842,63 @@ void ObjectCreator::onMousePressed()
     _beforeAnimationChanged = doc.toJson(QJsonDocument::Compact);
 }
 
-void ObjectCreator::setObjectLocation(int trackIndex, double x, double y, double z)
+void ObjectCreator::setObjectLocationLive(int trackIndex, double x, double y, double z)
 {
-    kfLog(QString("setObjectLocation track=%1 pos=(%2,%3,%4) laneActive=%5 currentTime=%6")
-        .arg(trackIndex).arg(x).arg(y).arg(z)
-        .arg(m_keyframeLaneActive.contains(trackIndex) ? "yes" : "no")
-        .arg(m_currentTime));
+    // LIVE only — sphere position update; no keyframe writes.
     const QVector3D pos{ float(x), float(y), float(z) };
     m_lastPositions[trackIndex] = pos;
     if (m_objects.contains(trackIndex)) {
         m_objects[trackIndex]->setLocalPosition(x, y, z);
         m_objects[trackIndex]->requestToUpdate();
     }
-    // Auto-record: a 3D drag is always the user expressing "this object is at
-    // position P at time T". Establish (or update) a keyframe at the current
-    // playhead time on every drag. The duplicate guard prevents lane-marker spam
-    // during a continuous drag at a single playhead frame.
+}
+
+void ObjectCreator::commitObjectLocation(int trackIndex, double x, double y, double z)
+{
+    // Always update the live position so the sphere lands at the released spot.
+    setObjectLocationLive(trackIndex, x, y, z);
+
+    if (!m_autoKeyMode) {
+        kfLog(QString("commit-MANUAL track=%1 pos=(%2,%3,%4) t=%5 (no kf write)")
+            .arg(trackIndex).arg(x).arg(y).arg(z).arg(m_currentTime));
+        return;
+    }
+
     ObjectPosAutomation* oa = ensureAutomation(trackIndex);
-    const bool alreadyAtT = oa->hasKey(m_currentTime);
-    oa->addKey(m_currentTime, pos, KeyInterp::Linear);
-    if (!alreadyAtT) {
-        kfLog(QString("  auto-record FIRE sigAutoRecordedKeyFrame t=%1").arg(m_currentTime));
+    const QVector3D pos{ float(x), float(y), float(z) };
+
+    // Update-vs-create with NO duplicates: if a kf already lives at the
+    // current playhead time, mutate it (preserving id, interp, tangents).
+    if (const ObjectKeyFrame* existing = oa->key(m_currentTime)) {
+        const QString id = existing->id;
+        const KeyInterp keepInterp = existing->interp;
+        kfLog(QString("commit-AUTO UPDATE id=%1 track=%2 pos=(%3,%4,%5) t=%6 interp=%7")
+            .arg(id).arg(trackIndex).arg(x).arg(y).arg(z).arg(m_currentTime).arg(int(keepInterp)));
+        oa->addKeyWithId(id, m_currentTime, pos, keepInterp);
+    } else {
+        const QString newId = makeKeyFrameId();
+        kfLog(QString("commit-AUTO ADD id=%1 track=%2 pos=(%3,%4,%5) t=%6")
+            .arg(newId).arg(trackIndex).arg(x).arg(y).arg(z).arg(m_currentTime));
+        oa->addKeyWithId(newId, m_currentTime, pos, KeyInterp::Linear);
         emit sigAutoRecordedKeyFrame(trackIndex, quint64(m_currentTime), 1 /*Linear*/);
     }
+}
+
+// Back-compat: legacy callers (existing JS path before live/commit split lands)
+// only get the live update — never a kf write. Drag operations should migrate
+// to call setObjectLocationLive during the drag and commitObjectLocation on
+// release.
+void ObjectCreator::setObjectLocation(int trackIndex, double x, double y, double z)
+{
+    setObjectLocationLive(trackIndex, x, y, z);
+}
+
+void ObjectCreator::setAutoKeyMode(bool on)
+{
+    if (m_autoKeyMode == on) return;
+    m_autoKeyMode = on;
+    kfLog(QString("autoKeyMode = %1").arg(on ? "ON" : "OFF"));
+    emit autoKeyModeChanged(on);
 }
 
 void ObjectCreator::play()
