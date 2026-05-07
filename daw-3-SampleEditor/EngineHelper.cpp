@@ -640,6 +640,36 @@ void ObjectCreator::syncObjectKeyframes(int trackIndex, QList<qint64> times)
 
     ObjectPosAutomation* oa = ensureAutomation(trackIndex);
 
+    // Detect a single-time move (kf dragged on the timeline lane). The lane is
+    // fixedVertical so the only thing the user changed is the time. Preserve
+    // pos/interp/tangents at the new time instead of inserting a fresh kf with
+    // the live entity position.
+    {
+        const QList<qint64> existing = oa->keyTimes();
+        QSet<qint64> existingSet;
+        for (qint64 t : existing) existingSet.insert(t);
+        QSet<qint64> wantS;
+        for (qint64 t : times) wantS.insert(t);
+        QSet<qint64> removed = existingSet; removed.subtract(wantS);
+        QSet<qint64> added   = wantS;       added.subtract(existingSet);
+        if (removed.size() == 1 && added.size() == 1) {
+            const qint64 oldT = *removed.begin();
+            const qint64 newT = *added.begin();
+            if (auto* oldKey = oa->key(oldT)) {
+                const ObjectKeyFrame copy = *oldKey;
+                kfLog(QString("  move key t=%1 -> %2 pos=(%3,%4,%5) interp=%6")
+                    .arg(oldT).arg(newT)
+                    .arg(copy.pos.x()).arg(copy.pos.y()).arg(copy.pos.z())
+                    .arg(int(copy.interp)));
+                oa->removeKey(oldT);
+                oa->addKey(newT, copy.pos, copy.interp);
+                oa->setTangents(newT, copy.tangentIn, copy.tangentOut);
+                setCurrentTime(m_currentTime);
+                return;
+            }
+        }
+    }
+
     // Add any new times with the live position
     QSet<qint64> wantSet;
     for (qint64 t : times) {
@@ -671,6 +701,33 @@ void ObjectCreator::setKeyFrameInterp(int trackIndex, qint64 time, int interp)
 {
     auto* oa = ensureAutomation(trackIndex);
     oa->setInterp(time, KeyInterp(interp));
+
+    // Seed Catmull-Rom tangents when switching to Bezier with zero handles.
+    if (KeyInterp(interp) == KeyInterp::Bezier) {
+        const ObjectKeyFrame* kf = oa->key(time);
+        if (kf && kf->tangentIn.isNull() && kf->tangentOut.isNull()) {
+            const QList<qint64> times = oa->keyTimes();
+            const int idx = times.indexOf(time);
+            const bool hasPrev = (idx > 0);
+            const bool hasNext = (idx < times.size() - 1);
+            const QVector3D selfPos = kf->pos;
+            const QVector3D prevPos = hasPrev ? oa->key(times[idx - 1])->pos : selfPos;
+            const QVector3D nextPos = hasNext ? oa->key(times[idx + 1])->pos : selfPos;
+            QVector3D tOut, tIn;
+            if (hasPrev && hasNext) {
+                tOut = (nextPos - prevPos) * 0.25f;
+                tIn  = (prevPos - nextPos) * 0.25f;
+            } else if (hasNext) {
+                tOut = (nextPos - selfPos) * 0.33f;
+                tIn  = -tOut;
+            } else if (hasPrev) {
+                tIn  = (prevPos - selfPos) * 0.33f;
+                tOut = -tIn;
+            }
+            if (!tOut.isNull() || !tIn.isNull())
+                oa->setTangents(time, tIn, tOut);
+        }
+    }
 }
 
 ObjectPosAutomation* ObjectCreator::ensureAutomation(int trackIndex)
@@ -761,10 +818,24 @@ void ObjectCreator::setObjectLocation(int trackIndex, double x, double y, double
     }
     // Auto-record: if the keyframe lane is active for this track, write a keyframe
     // at the current playhead time whenever the entity is dragged in the 3D scene.
-    if (m_keyframeLaneActive.contains(trackIndex)) {
-        ensureAutomation(trackIndex)->addKey(m_currentTime, pos, KeyInterp::Linear);
-        // Mirror to the timeline lane so the user sees an orange marker too.
-        emit sigAutoRecordedKeyFrame(trackIndex, quint64(m_currentTime), 1 /*Linear*/);
+    // Auto-record when the lane toggle is on, OR when the track already has any
+    // ObjectPosAutomation keyframes (so dragging a sphere on an automated track
+    // intuitively updates / appends keyframes without the user toggling a flag).
+    const bool laneOn = m_keyframeLaneActive.contains(trackIndex);
+    const bool hasExistingKfs = m_objectAutomations.contains(trackIndex)
+                                && !m_objectAutomations[trackIndex]->isEmpty();
+    kfLog(QString("  auto-record check: laneOn=%1 hasExistingKfs=%2")
+        .arg(laneOn ? "y" : "n").arg(hasExistingKfs ? "y" : "n"));
+    if (laneOn || hasExistingKfs) {
+        // Skip if we already have a kf at this exact playhead time (avoid spamming
+        // the lane with duplicates during a continuous drag).
+        ObjectPosAutomation* oa = ensureAutomation(trackIndex);
+        const bool alreadyAtT = oa->hasKey(m_currentTime);
+        oa->addKey(m_currentTime, pos, KeyInterp::Linear);
+        if (!alreadyAtT) {
+            kfLog(QString("  auto-record FIRE sigAutoRecordedKeyFrame t=%1").arg(m_currentTime));
+            emit sigAutoRecordedKeyFrame(trackIndex, quint64(m_currentTime), 1 /*Linear*/);
+        }
     }
 }
 

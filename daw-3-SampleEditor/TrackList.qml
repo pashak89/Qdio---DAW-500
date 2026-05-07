@@ -178,6 +178,7 @@ Rectangle {
         anchors.leftMargin: leftMargin
         hoverEnabled: false
         propagateComposedEvents: true
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
         property bool startByMasterTrack: false
         property int leftMargin: _width + scaleSize2(10)
         property real logicalX: 0
@@ -201,6 +202,7 @@ Rectangle {
             }
         }
         onReleased: {
+            console.log("[QML] mouseArea2 onReleased button=", mouse.button)
             mouse.accepted = false
 
             let localAreaPoint = trackListView.mapFromGlobal(logicalX, logicalY)
@@ -369,6 +371,7 @@ Rectangle {
 
         onPressed: {
 
+            console.log("[QML] mouseArea2 onPressed button=", mouse.button)
             mouse.accepted = true
             automationPressed = false
             var g = _clipArea.globalPos()

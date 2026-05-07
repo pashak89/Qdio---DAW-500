@@ -207,6 +207,13 @@ void AutomationShapeItem::sltUpdateAutomation(AutomationItem* automationItem)
     auto lines = automationItem->automation()->getFinalLines();
     auto selectedLines = automationItem->automation()->getSelectedLines();
 
+    // If this is the KeyFrames lane, fetch the per-time interp type so the
+    // marker shapes (circle/diamond/square) reflect Bezier/Linear/Hold.
+    KeyFramesAutomationItem* kfLane = nullptr;
+    if (automationItem == _trackItem->keyFramesAutomationItem().data()) {
+        kfLane = _trackItem->keyFramesAutomationItem().data();
+    }
+
     {
         QMutexLocker lock(&m_mutex);
         m_pendingUpserts.clear();
@@ -226,7 +233,10 @@ void AutomationShapeItem::sltUpdateAutomation(AutomationItem* automationItem)
 
             if (i < lines.size() - 1) {
 
-                m_pendingPoints.push_back(ColoredPoint { lines[i].fp2(), color, lines[i].p2()->hovred() });
+                int shape = 0;
+                if (kfLane && lines[i].p2())
+                    shape = kfLane->interpTypeAt(qint64(lines[i].p2()->time()));
+                m_pendingPoints.push_back(ColoredPoint { lines[i].fp2(), color, lines[i].p2()->hovred(), shape });
             }
 
             m_pendingUpserts.push_back(ColoredLine { QLineF(lines[i].fp1(), lines[i].fp2()), color, lines[i].curveM(), lines[i].curveN(), lines[i].startX(), lines[i].endX() });
@@ -1491,19 +1501,20 @@ void CircleMarkersNode::rebuild()
 
     const qreal EPS = 1e-3;
     QVector<CircleMarker> markers;
-    auto addJoint = [&](const QPointF& p, const QColor& c, bool fill) {
+    auto addJoint = [&](const QPointF& p, const QColor& c, bool fill, int shape) {
         for (auto& jt : markers) {
             if (samePt(jt.p, p, EPS)) {
                 jt.color = c; // last one wins; or comment this line for "first wins"
+                jt.shape = shape;
                 return;
             }
         }
-        markers.push_back({ p, c, fill });
+        markers.push_back({ p, c, fill, shape });
     };
 
     for (const auto& s : m_points) {
 
-        addJoint(s.line, s.fill ? Qt::white : s.color, s.fill);
+        addJoint(s.line, s.fill ? Qt::white : s.color, s.fill, s.shape);
     }
 
     auto segs = 64;
@@ -1512,18 +1523,21 @@ void CircleMarkersNode::rebuild()
     if (segs < 8)
         segs = 8;
 
-    // PASS 1: count verts/indices exactly
+    // PASS 1: count verts/indices exactly per shape.
+    // shape: 0 = circle (existing), 1 = diamond, 2 = square. Diamond/square
+    // always render as filled quads (4 verts, 6 indices).
     int totalVerts = 0;
     int totalIdxs = 0;
 
     for (const auto& m : markers) {
 
-        if (m.fill) {
-            // filled disk: 1 center + (segs+1) rim verts; segs * 3 indices
+        if (m.shape == 1 || m.shape == 2) {
+            totalVerts += 4;
+            totalIdxs += 6;
+        } else if (m.fill) {
             totalVerts += (segs + 2);
             totalIdxs += (segs * 3);
         } else {
-            // ring: two rims (outer + inner), (segs+1)*2 verts; segs*2 triangles -> segs*6 indices
             totalVerts += 2 * (segs + 1);
             totalIdxs += segs * 6;
         }
@@ -1546,7 +1560,29 @@ void CircleMarkersNode::rebuild()
         const float cx = pixelSnap ? float(std::round(m.p.x()) + 0.5) : float(m.p.x());
         const float cy = pixelSnap ? float(std::round(m.p.y()) + 0.5) : float(m.p.y());
 
-        if (m.fill) {
+        if (m.shape == 1) {
+            // Diamond: 4 verts (top, right, bottom, left), 2 tris.
+            const float dr = r + 1.5f; // slightly larger so diamond reads at same visual weight
+            writeColored(v[vOfs + 0], cx,      cy - dr, col); // top
+            writeColored(v[vOfs + 1], cx + dr, cy,      col); // right
+            writeColored(v[vOfs + 2], cx,      cy + dr, col); // bottom
+            writeColored(v[vOfs + 3], cx - dr, cy,      col); // left
+            idx[iOfs + 0] = quint16(vOfs + 0); idx[iOfs + 1] = quint16(vOfs + 1); idx[iOfs + 2] = quint16(vOfs + 2);
+            idx[iOfs + 3] = quint16(vOfs + 0); idx[iOfs + 4] = quint16(vOfs + 2); idx[iOfs + 5] = quint16(vOfs + 3);
+            vOfs += 4;
+            iOfs += 6;
+        } else if (m.shape == 2) {
+            // Square: 4 verts (TL, TR, BR, BL), 2 tris.
+            const float sr = r;
+            writeColored(v[vOfs + 0], cx - sr, cy - sr, col); // TL
+            writeColored(v[vOfs + 1], cx + sr, cy - sr, col); // TR
+            writeColored(v[vOfs + 2], cx + sr, cy + sr, col); // BR
+            writeColored(v[vOfs + 3], cx - sr, cy + sr, col); // BL
+            idx[iOfs + 0] = quint16(vOfs + 0); idx[iOfs + 1] = quint16(vOfs + 1); idx[iOfs + 2] = quint16(vOfs + 2);
+            idx[iOfs + 3] = quint16(vOfs + 0); idx[iOfs + 4] = quint16(vOfs + 2); idx[iOfs + 5] = quint16(vOfs + 3);
+            vOfs += 4;
+            iOfs += 6;
+        } else if (m.fill) {
             // Filled fan
             writeColored(v[vOfs + 0], cx, cy, col);
 

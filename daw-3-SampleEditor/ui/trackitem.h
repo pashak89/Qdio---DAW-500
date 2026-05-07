@@ -626,18 +626,31 @@ public:
         return 0;
     }
 
+    // Returns KeyFramesType for the kf at the given time. Falls back to the
+    // local _interpByTime cache (populated by right-click cycling), then to
+    // _points (legacy), then defaults to Linear.
+    // Numbers: 0 = Bezier (circle), 1 = Linear (diamond), 2 = Hold (square).
+    int interpTypeAt(qint64 time) const
+    {
+        auto cit = _interpByTime.constFind(time);
+        if (cit != _interpByTime.constEnd()) return cit.value();
+        auto pit = _points.constFind(quint64(time));
+        if (pit != _points.constEnd()) return pit.value().type;
+        return 1; // Linear default
+    }
+
     // Right-click on an existing keyframe in the lane cycles its interpolation
     // type Bezier(0) → Linear(1) → Hold(2) → Bezier. The change is propagated to
     // ObjectCreator's per-track ObjectPosAutomation via AreaInfo::sigInterpChanged
     // so the 3D path reshapes (linear ↔ curved ↔ stepped) immediately.
     int mousePressEvent(QMouseEvent* event)
     {
+        qDebug() << "[KFLane] PRESS button=" << int(event->button())
+                 << " track=" << _trackIndex << " pos=" << event->pos();
         if (event->button() == Qt::RightButton) {
             _rightPressX = event->pos().x();
             _rightPressY = event->pos().y();
             _rightPressed = true;
-            qDebug() << "[KFLane] RIGHT-PRESS track=" << _trackIndex
-                     << "pos=" << event->pos();
             return AutomationItem::AutomationItemEvent_InnerSelect;
         }
         return AutomationItem::mousePressEvent(event);
@@ -645,36 +658,25 @@ public:
 
     int mouseReleaseEvent(QMouseEvent* event)
     {
+        qDebug() << "[KFLane] RELEASE button=" << int(event->button())
+                 << " track=" << _trackIndex << " pos=" << event->pos()
+                 << " wasPressed=" << _rightPressed;
         if (event->button() == Qt::RightButton) {
             const bool wasPressed = _rightPressed;
             _rightPressed = false;
-            qDebug() << "[KFLane] RIGHT-RELEASE track=" << _trackIndex
-                     << "wasPressed=" << wasPressed
-                     << "pos=" << event->pos();
             if (!wasPressed)
                 return AutomationItem::AutomationItemEvent_NotSelect;
 
-            // Find the closest keyframe by X (lane is fixedVertical so Y is irrelevant).
+            // Hit-test against the lane's fixed Y (lane is fixedVertical).
             const double clickX = event->pos().x();
             const double pxThr = double(ScreenInterface::scaleSize2(20, _areaInfo->zoomFactor()));
-            qint64 hitTime = -1;
-            double bestDx = pxThr;
-            // Iterate the underlying Automation's CPoints (each line endpoint = a kf).
-            // We collect unique times from _interpByTime first (it gets seeded on
-            // any prior cycle), then fall through to _points (legacy), then to
-            // walking the automation lines via hitTestLines.
-            // Simpler: collect candidate times from the Automation's lines.
-            const auto* lines = _automation->selectedLines(); (void)lines; // unused — prefer hitTestLines
-            // Use hitTestLines with the lane's fixed Y as a primary attempt.
             const double laneY = _automation->getYPixel(_automation->defaultNormalized());
-            auto hit = _automation->hitTestLines(
-                clickX, laneY, pxThr, pxThr * 2.0);
+            auto hit = _automation->hitTestLines(clickX, laneY, pxThr, pxThr * 2.0);
+            qint64 hitTime = -1;
             if (hit.state == Automation::OnPoint) {
                 CPoint* cp = (hit.endpoint == 0) ? hit.index.p1() : hit.index.p2();
                 if (cp) hitTime = qint64(cp->time());
             }
-            qDebug() << "[KFLane]   hit.state=" << int(hit.state)
-                     << " hitTime=" << hitTime;
             if (hitTime >= 0) {
                 int curType = _interpByTime.value(hitTime, 1 /*Linear*/);
                 const int nextType = (curType + 1) % 3;
@@ -684,9 +686,6 @@ public:
                 // KeyFramesType (0=Bezier, 1=Linear, 2=Hold) → KeyInterp (0=Hold, 1=Linear, 2=Bezier)
                 const int interpInt = (nextType == 0) ? 2
                                     : (nextType == 2) ? 0 : 1;
-                qDebug() << "[KFLane]   cycled t=" << hitTime
-                         << " nextType=" << nextType
-                         << " interpInt=" << interpInt;
                 Q_EMIT _areaInfo->sigInterpChanged(_trackIndex, hitTime, interpInt);
                 Q_EMIT sigUpdate();
             }

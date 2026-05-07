@@ -38,6 +38,9 @@ struct ColoredPoint {
     QPointF line;
     QColor color;
     bool fill = false;
+    // 0 = circle (Bezier / default), 1 = diamond (Linear), 2 = square (Hold).
+    // Numbers match KeyFramesType in ui/keyframesitem.h.
+    int shape = 0;
 };
 
 class CircleMarkersNode : public QSGGeometryNode {
@@ -59,6 +62,7 @@ public:
         QPointF p;
         QColor color;
         bool fill = false;
+        int shape = 0;
     };
     void setPoints(const QVector<ColoredPoint>& points)
     {

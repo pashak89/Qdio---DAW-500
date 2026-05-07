@@ -127,6 +127,53 @@ void Scene3DController::pushKeyframesFor(int trackIndex)
     }
 }
 
+void Scene3DController::setSelectedKeyframe(int trackIndex, qint64 time)
+{
+    auto* oa = m_automations.value(trackIndex, nullptr);
+    if (!oa) { emit tangentsCleared(); return; }
+    const ObjectKeyFrame* kf = oa->key(time);
+    if (!kf || kf->interp != KeyInterp::Bezier) { emit tangentsCleared(); return; }
+    const QString id = QStringLiteral("k_%1_%2").arg(trackIndex).arg(time);
+    emit tangentsForSelected(id,
+        double(kf->pos.x()),        double(kf->pos.y()),        double(kf->pos.z()),
+        double(kf->tangentIn.x()),  double(kf->tangentIn.y()),  double(kf->tangentIn.z()),
+        double(kf->tangentOut.x()), double(kf->tangentOut.y()), double(kf->tangentOut.z()));
+}
+
+void Scene3DController::clearTangentSelection()
+{
+    emit tangentsCleared();
+}
+
+void Scene3DController::tangentChangedInScene(const QString& kfId, const QString& side,
+                                              double x, double y, double z)
+{
+    // Parse "k_<trackIndex>_<time>"
+    if (!kfId.startsWith(QStringLiteral("k_"))) return;
+    const QStringList parts = kfId.split('_');
+    if (parts.size() != 3) return;
+    bool okT = false, okTime = false;
+    const int trackIndex = parts[1].toInt(&okT);
+    const qint64 time    = parts[2].toLongLong(&okTime);
+    if (!okT || !okTime) return;
+
+    auto* oa = m_automations.value(trackIndex, nullptr);
+    if (!oa) return;
+    const ObjectKeyFrame* kf = oa->key(time);
+    if (!kf) return;
+
+    QVector3D newIn  = kf->tangentIn;
+    QVector3D newOut = kf->tangentOut;
+    const QVector3D dragVec{float(x), float(y), float(z)};
+    if (side == QLatin1String("in"))       newIn  = dragVec;
+    else if (side == QLatin1String("out")) newOut = dragVec;
+    else return;
+
+    oa->setTangents(time, newIn, newOut);
+    // Re-push handle positions so any other viewport mirrors the drag.
+    setSelectedKeyframe(trackIndex, time);
+}
+
 void Scene3DController::pushPathFor(int trackIndex)
 {
     auto* oa = m_automations.value(trackIndex, nullptr);

@@ -185,6 +185,88 @@ function setPathFor(trackIndex, flat) {
     pathLines.set(trackIndex, line);
 }
 
+// ── Phase 2: Bezier tangent handle visualisation ────────────────────────────
+const tangentHandles = { inMesh: null, outMesh: null, inLine: null, outLine: null, kfId: null };
+
+function clearTangentHandles() {
+    for (const k of ['inMesh', 'outMesh', 'inLine', 'outLine']) {
+        if (tangentHandles[k]) {
+            scene.remove(tangentHandles[k]);
+            tangentHandles[k].geometry.dispose();
+            if (tangentHandles[k].material) tangentHandles[k].material.dispose();
+            tangentHandles[k] = null;
+        }
+    }
+    tangentHandles.kfId = null;
+}
+
+function showTangentHandles(kfId, kx, ky, kz, inX, inY, inZ, outX, outY, outZ) {
+    const kfPos  = new THREE.Vector3(kx, ky, kz);
+    const inPos  = new THREE.Vector3(kx + inX,  ky + inY,  kz + inZ);
+    const outPos = new THREE.Vector3(kx + outX, ky + outY, kz + outZ);
+
+    // Reuse existing meshes when same kfId — keeps drag glassy & avoids GPU churn.
+    if (tangentHandles.kfId === kfId && tangentHandles.inMesh) {
+        tangentHandles.inMesh.position.copy(inPos);
+        tangentHandles.outMesh.position.copy(outPos);
+        updateTangentLine(tangentHandles.inLine,  kfPos, inPos);
+        updateTangentLine(tangentHandles.outLine, kfPos, outPos);
+        tangentHandles.kfPos = kfPos;
+        return;
+    }
+
+    clearTangentHandles();
+    tangentHandles.kfId = kfId;
+    tangentHandles.kfPos = kfPos;
+    const hColor  = new THREE.Color(0xffaa00);
+    const mkMat   = () => new THREE.MeshPhongMaterial({
+        color: hColor, emissive: hColor.clone().multiplyScalar(0.5) });
+    const mkLine  = (a, b) => new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([a, b]),
+        new THREE.LineBasicMaterial({ color: hColor, transparent: true, opacity: 0.7 }));
+    const hGeom = new THREE.SphereGeometry(0.09, 12, 12);
+
+    tangentHandles.inMesh  = new THREE.Mesh(hGeom.clone(), mkMat());
+    tangentHandles.inMesh.position.copy(inPos);
+    tangentHandles.inMesh.userData = { type: 'tangent', kfId, side: 'in' };
+    scene.add(tangentHandles.inMesh);
+
+    tangentHandles.outMesh = new THREE.Mesh(hGeom.clone(), mkMat());
+    tangentHandles.outMesh.position.copy(outPos);
+    tangentHandles.outMesh.userData = { type: 'tangent', kfId, side: 'out' };
+    scene.add(tangentHandles.outMesh);
+
+    tangentHandles.inLine  = mkLine(kfPos, inPos);
+    scene.add(tangentHandles.inLine);
+    tangentHandles.outLine = mkLine(kfPos, outPos);
+    scene.add(tangentHandles.outLine);
+
+    hGeom.dispose();
+}
+
+function updateTangentLine(line, a, b) {
+    const pos = line.geometry.attributes.position;
+    pos.array[0] = a.x; pos.array[1] = a.y; pos.array[2] = a.z;
+    pos.array[3] = b.x; pos.array[4] = b.y; pos.array[5] = b.z;
+    pos.needsUpdate = true;
+    line.geometry.computeBoundingSphere();
+}
+
+function setHandleHighlight(mesh, hover) {
+    if (!mesh) return;
+    const m = mesh.material;
+    const c = new THREE.Color(0xffaa00);
+    if (hover) {
+        m.color.set(0xffe066);
+        m.emissive.copy(c);   // strong glow
+        mesh.scale.setScalar(1.35);
+    } else {
+        m.color.copy(c);
+        m.emissive.copy(c).multiplyScalar(0.5);
+        mesh.scale.setScalar(1.0);
+    }
+}
+
 function ensureEntity(trackIndex) {
     if (entities.has(trackIndex)) return entities.get(trackIndex);
     const baseColor = new THREE.Color(DEFAULT_COLOR);
@@ -264,6 +346,85 @@ transformCtl.addEventListener('objectChange', () => {
     if (idx !== undefined)
         window.scene3D.entityMovedInScene(idx, obj.position.x, obj.position.y, obj.position.z);
 });
+
+// ── Tangent-handle drag (Phase 3) ───────────────────────────────────────────
+// Capture-phase pointerdown so it pre-empts OrbitControls + TransformControls.
+const tdRay   = new THREE.Raycaster();
+const tdNdc   = new THREE.Vector2();
+const tdPlane = new THREE.Plane();
+const tdHit   = new THREE.Vector3();
+let tDrag = null;     // { mesh, side } during drag
+let tHover = null;    // currently hovered handle mesh
+
+function tangentMeshes() {
+    const out = [];
+    if (tangentHandles.inMesh)  out.push(tangentHandles.inMesh);
+    if (tangentHandles.outMesh) out.push(tangentHandles.outMesh);
+    return out;
+}
+function rayFromEvent(ev) {
+    const r = renderer.domElement.getBoundingClientRect();
+    tdNdc.x =  ((ev.clientX - r.left) / r.width)  * 2 - 1;
+    tdNdc.y = -((ev.clientY - r.top)  / r.height) * 2 + 1;
+    tdRay.setFromCamera(tdNdc, camera);
+}
+function pickTangentAt(ev) {
+    const meshes = tangentMeshes();
+    if (!meshes.length) return null;
+    rayFromEvent(ev);
+    const hits = tdRay.intersectObjects(meshes, false);
+    return hits.length ? hits[0].object : null;
+}
+
+renderer.domElement.addEventListener('pointerdown', (ev) => {
+    if (ev.button !== 0) return;
+    const hit = pickTangentAt(ev);
+    if (!hit) return;
+    ev.stopPropagation();
+    ev.preventDefault();
+    controls.enabled = false;
+    if (transformCtl) transformCtl.enabled = false;
+    try { renderer.domElement.setPointerCapture(ev.pointerId); } catch (_) {}
+
+    tDrag = { mesh: hit, side: hit.userData.side };
+    setHandleHighlight(hit, true);
+    // Plane through the kf center, facing the camera
+    const camDir = new THREE.Vector3();
+    camera.getWorldDirection(camDir);
+    tdPlane.setFromNormalAndCoplanarPoint(camDir.normalize(), tangentHandles.kfPos);
+}, true);
+
+renderer.domElement.addEventListener('pointermove', (ev) => {
+    if (tDrag) {
+        rayFromEvent(ev);
+        if (tdRay.ray.intersectPlane(tdPlane, tdHit) && window.scene3D) {
+            const off = tdHit.clone().sub(tangentHandles.kfPos);
+            window.scene3D.tangentChangedInScene(
+                tangentHandles.kfId, tDrag.side, off.x, off.y, off.z);
+        }
+        return;
+    }
+    // Hover feedback
+    const hit = pickTangentAt(ev);
+    if (hit !== tHover) {
+        if (tHover) setHandleHighlight(tHover, false);
+        tHover = hit;
+        if (tHover) setHandleHighlight(tHover, true);
+        renderer.domElement.style.cursor = tHover ? 'grab' : '';
+    }
+});
+
+function endTangentDrag(ev) {
+    if (!tDrag) return;
+    try { renderer.domElement.releasePointerCapture(ev.pointerId); } catch (_) {}
+    setHandleHighlight(tDrag.mesh, false);
+    tDrag = null;
+    controls.enabled = true;
+    if (transformCtl) transformCtl.enabled = true;
+}
+renderer.domElement.addEventListener('pointerup',     endTangentDrag);
+renderer.domElement.addEventListener('pointercancel', endTangentDrag);
+window.addEventListener('blur', () => { if (tDrag) endTangentDrag({ pointerId: -1 }); });
 
 // ── Picking (click-to-select) ───────────────────────────────────────────────
 const ray = new THREE.Raycaster();
@@ -352,11 +513,22 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
     });
 
     // Phase 1: keyframe markers + path line
-    scene3D.keyframesCleared.connect((trackIndex) => clearKeyframesForTrack(trackIndex));
+    scene3D.keyframesCleared.connect((trackIndex) => {
+        clearKeyframesForTrack(trackIndex);
+        // Note: tangent handles are NOT cleared here — keyframesCleared fires on
+        // every automation `changed` (incl. tangent edits). Explicit
+        // tangentsCleared handles non-Bezier interp transitions.
+    });
     scene3D.keyframeAdded.connect((trackIndex, kfId, x, y, z, interp) => {
         addKfMarker(trackIndex, kfId, x, y, z, interp);
     });
     scene3D.pathSampled.connect((trackIndex, flat) => setPathFor(trackIndex, flat));
+
+    // Phase 2: Bezier tangent handles
+    scene3D.tangentsForSelected.connect((kfId, kx, ky, kz, inX, inY, inZ, outX, outY, outZ) => {
+        showTangentHandles(kfId, kx, ky, kz, inX, inY, inZ, outX, outY, outZ);
+    });
+    scene3D.tangentsCleared.connect(() => clearTangentHandles());
 
     // Bootstrap any entities that already exist on the C++ side
     scene3D.entityIds((ids) => {

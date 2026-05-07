@@ -280,6 +280,16 @@ int main(int argc, char* argv[])
                         }
                     });
 
+                    // Also evaluate when the user scrubs the playhead while paused.
+                    // playheadMarkerChanged fires on any playhead change.
+                    QObject::connect(_areaInfo, &AreaInfo::playheadMarkerChanged, [objectCreator, scene3D, _areaInfo]() {
+                        if (AudioManager::getSong()->isPause() == true) {
+                            const qint64 t = _areaInfo->playheadMarker();
+                            objectCreator->setCurrentTime(t);
+                            scene3D->setPlayhead(t);
+                        }
+                    });
+
                     QObject::connect(_areaInfo, &AreaInfo::sigObjectPosition, objectCreator,
                         &ObjectCreator::setObjectLocation, Qt::DirectConnection);
 
@@ -292,13 +302,29 @@ int main(int argc, char* argv[])
                     QObject::connect(objectCreator, &ObjectCreator::sigAutomationCreated,
                         scene3D, &Scene3DController::attachAutomation, Qt::DirectConnection);
 
-                    // Right-click cycle in timeline lane → ObjectCreator's automation interp
+                    // Right-click cycle → interp change + tangent handle display for Bezier kfs
                     QObject::connect(_areaInfo, &AreaInfo::sigInterpChanged,
-                        objectCreator, &ObjectCreator::setKeyFrameInterp, Qt::DirectConnection);
+                        [objectCreator, scene3D](int trackIndex, qint64 time, int interp) {
+                            objectCreator->setKeyFrameInterp(trackIndex, time, interp);
+                            if (interp == 2) // Bezier: push seeded tangents to viewports
+                                scene3D->setSelectedKeyframe(trackIndex, time);
+                            else
+                                scene3D->clearTangentSelection();
+                        });
 
-                    // Auto-record from 3D/2D viewport drag → timeline lane orange marker
+                    // Auto-record from 3D/2D viewport drag → timeline lane orange marker.
+                    // Use the QML-exposed TracksModel::addKeyFrame which actually
+                    // updates the visible KeyFramesAutomationItem (the lane). The
+                    // sigAddKeyFrame route only updates ObjectCreator's engine
+                    // _tracklist + ObjectPosAutomation, not the visible lane.
                     QObject::connect(objectCreator, &ObjectCreator::sigAutoRecordedKeyFrame,
-                        _areaInfo, &AreaInfo::sigAddKeyFrame, Qt::QueuedConnection);
+                        [_clipArea](int trackIndex, quint64 time, int type) {
+                            qDebug() << "[KFLane] sigAutoRecordedKeyFrame received track="
+                                     << trackIndex << " time=" << time << " type=" << type;
+                            if (auto tm = _clipArea->tracksModel()) {
+                                tm->addKeyFrame(trackIndex, qint64(time), type);
+                            }
+                        });
 
                     // Reverse sync: QtQuick3D drag → DAW position (+ auto-record when lane is open)
                     QObject::connect(scene3D, &Scene3DController::entityMovedFromScene,

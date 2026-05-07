@@ -33,6 +33,10 @@ public:
     Q_INVOKABLE void entityClicked(int trackIndex);
     Q_INVOKABLE void log(const QString& msg) const;
 
+    // Phase 3: live tangent drag from JS — kfId="k_<track>_<time>", side="in"|"out"
+    Q_INVOKABLE void tangentChangedInScene(const QString& kfId, const QString& side,
+                                           double x, double y, double z);
+
 public slots:
     void setPlayhead(qint64 time);
     void setEntityPosition(int trackIndex, double x, double y, double z);
@@ -45,6 +49,10 @@ public slots:
     void attachAutomation(int trackIndex, ObjectPosAutomation* automation);
     void pushKeyframesFor(int trackIndex);
     void pushPathFor(int trackIndex);
+
+    // Phase 2: push Bezier tangent handles for a specific keyframe
+    void setSelectedKeyframe(int trackIndex, qint64 time);
+    void clearTangentSelection();
 
 signals:
     void playheadMoved(qint64 time);
@@ -62,6 +70,13 @@ signals:
     void keyframesCleared(int trackIndex);
     void keyframeAdded(int trackIndex, QString kfId, double x, double y, double z, int interp);
     void pathSampled(int trackIndex, QVariantList xyzFlat);
+
+    // Phase 2: Bezier tangent handle signals
+    void tangentsForSelected(QString kfId,
+                             double kx, double ky, double kz,
+                             double inX, double inY, double inZ,
+                             double outX, double outY, double outZ);
+    void tangentsCleared();
 
 private:
     QHash<int, QVector3D> m_positions;
