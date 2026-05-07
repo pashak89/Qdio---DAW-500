@@ -740,7 +740,17 @@ void ObjectCreator::setKeyFrameInterp(int trackIndex, qint64 time, int interp)
     auto* oa = ensureAutomation(trackIndex);
     oa->setInterp(time, KeyInterp(interp));
 
-    // Seed Catmull-Rom tangents when switching to Bezier with zero handles.
+    // Seed tangents when switching to Bezier with zero handles. We align the
+    // handles with the existing LINEAR direction so the Bezier curve initially
+    // looks identical to the previous linear path — the user sees no immediate
+    // motion change. This matches Maya/Blender's "Bezier (Auto)" default:
+    // switching interp does not deform the curve; the user shapes it manually
+    // by dragging handles afterwards.
+    //
+    // Math: a cubic Bezier with control points at p0, p0 + 1/3*(p1-p0),
+    // p1 - 1/3*(p1-p0), p1 IS the straight line from p0 to p1. So we set:
+    //   tangentOut = (nextPos - selfPos) / 3   — handle 1/3 of the way to next
+    //   tangentIn  = (prevPos - selfPos) / 3   — handle 1/3 of the way to prev
     if (KeyInterp(interp) == KeyInterp::Bezier) {
         const ObjectKeyFrame* kf = oa->key(time);
         if (kf && kf->tangentIn.isNull() && kf->tangentOut.isNull()) {
@@ -749,18 +759,14 @@ void ObjectCreator::setKeyFrameInterp(int trackIndex, qint64 time, int interp)
             const bool hasPrev = (idx > 0);
             const bool hasNext = (idx < times.size() - 1);
             const QVector3D selfPos = kf->pos;
-            const QVector3D prevPos = hasPrev ? oa->key(times[idx - 1])->pos : selfPos;
-            const QVector3D nextPos = hasNext ? oa->key(times[idx + 1])->pos : selfPos;
             QVector3D tOut, tIn;
-            if (hasPrev && hasNext) {
-                tOut = (nextPos - prevPos) * 0.25f;
-                tIn  = (prevPos - nextPos) * 0.25f;
-            } else if (hasNext) {
-                tOut = (nextPos - selfPos) * 0.33f;
-                tIn  = -tOut;
-            } else if (hasPrev) {
-                tIn  = (prevPos - selfPos) * 0.33f;
-                tOut = -tIn;
+            if (hasNext) {
+                const QVector3D nextPos = oa->key(times[idx + 1])->pos;
+                tOut = (nextPos - selfPos) * (1.0f / 3.0f);
+            }
+            if (hasPrev) {
+                const QVector3D prevPos = oa->key(times[idx - 1])->pos;
+                tIn = (prevPos - selfPos) * (1.0f / 3.0f);
             }
             if (!tOut.isNull() || !tIn.isNull())
                 oa->setTangents(time, tIn, tOut);
