@@ -3,6 +3,8 @@
 #include <QColor>
 #include <QHash>
 #include <QObject>
+#include <QSet>
+#include <QString>
 #include <QVariantList>
 #include <QVector3D>
 
@@ -66,9 +68,17 @@ signals:
     // Reverse sync: emitted on user drag, consumed by ObjectCreator.
     void entityMovedFromScene(int trackIndex, double x, double y, double z);
 
-    // Phase 1: keyframe / path signals consumed by Three.js viewports
+    // Phase 1 / R6: keyframe / path signals consumed by Three.js viewports.
+    //
+    // Reconciliation model (avoids GPU thrash during high-frequency tangent drags):
+    //   keyframesCleared    — full reset (track removal / scene reset)
+    //   keyframeAdded       — kf with this id NEW; JS creates marker mesh
+    //   keyframeUpdated     — kf already known; JS updates pos / replaces geometry if interp differs
+    //   keyframeRemoved     — kf gone; JS disposes mesh
     void keyframesCleared(int trackIndex);
     void keyframeAdded(int trackIndex, QString kfId, double x, double y, double z, int interp);
+    void keyframeUpdated(int trackIndex, QString kfId, double x, double y, double z, int interp);
+    void keyframeRemoved(int trackIndex, QString kfId);
     void pathSampled(int trackIndex, QVariantList xyzFlat);
 
     // Phase 2: Bezier tangent handle signals
@@ -83,6 +93,14 @@ private:
     QHash<int, QColor>    m_colors;
     QHash<int, bool>      m_visible;
     QHash<int, ObjectPosAutomation*> m_automations;
+    // Per-track snapshot of (kfId → publishedKey-state) — lets pushKeyframesFor
+    // emit narrow add / update / remove diffs instead of clear-then-readd-all.
+    struct PublishedKey {
+        qint64 time = 0;
+        double x = 0, y = 0, z = 0;
+        int interp = 1;
+    };
+    QHash<int, QHash<QString, PublishedKey>> m_publishedKeys;
     qint64 m_playhead { 0 };
     int    m_selectedTrack { -1 };
 };

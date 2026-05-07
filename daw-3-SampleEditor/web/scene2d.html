@@ -189,6 +189,12 @@ function clearKeyframesForTrack(trackIndex) {
 function addKfMarker(trackIndex, kfId, x, y, z, interp) {
     let map = kfMarkers.get(trackIndex);
     if (!map) { map = new Map(); kfMarkers.set(trackIndex, map); }
+    const existing = map.get(kfId);
+    if (existing) {
+        scene.remove(existing.mesh);
+        existing.mesh.geometry.dispose();
+        existing.mesh.material.dispose();
+    }
     const baseColor = trackBaseColor(trackIndex);
     const mat = new THREE.MeshPhongMaterial({
         color: baseColor,
@@ -201,14 +207,47 @@ function addKfMarker(trackIndex, kfId, x, y, z, interp) {
     scene.add(mesh);
     map.set(kfId, { mesh, interp });
 }
+function updateKfMarker(trackIndex, kfId, x, y, z, interp) {
+    const map = kfMarkers.get(trackIndex);
+    const entry = map ? map.get(kfId) : null;
+    if (!entry) { addKfMarker(trackIndex, kfId, x, y, z, interp); return; }
+    entry.mesh.position.set(x, y, z);
+    if (entry.interp !== interp) {
+        entry.mesh.geometry.dispose();
+        entry.mesh.geometry = makeKfGeometry(interp);
+        entry.mesh.userData.interp = interp;
+        entry.interp = interp;
+    }
+}
+function removeKfMarker(trackIndex, kfId) {
+    const map = kfMarkers.get(trackIndex);
+    const entry = map ? map.get(kfId) : null;
+    if (!entry) return;
+    scene.remove(entry.mesh);
+    entry.mesh.geometry.dispose();
+    entry.mesh.material.dispose();
+    map.delete(kfId);
+}
 function setPathFor(trackIndex, flat) {
-    const old = pathLines.get(trackIndex);
-    if (old) { scene.remove(old); old.geometry.dispose(); old.material.dispose(); pathLines.delete(trackIndex); }
-    if (!flat || flat.length < 6) return;
+    const haveData = !!flat && flat.length >= 6;
+    let line = pathLines.get(trackIndex);
+    if (!haveData) {
+        if (line) { scene.remove(line); line.geometry.dispose(); line.material.dispose(); pathLines.delete(trackIndex); }
+        return;
+    }
+    if (line && line.geometry.attributes.position
+        && line.geometry.attributes.position.array.length === flat.length) {
+        const arr = line.geometry.attributes.position.array;
+        for (let i = 0; i < flat.length; ++i) arr[i] = flat[i];
+        line.geometry.attributes.position.needsUpdate = true;
+        line.geometry.computeBoundingSphere();
+        return;
+    }
+    if (line) { scene.remove(line); line.geometry.dispose(); line.material.dispose(); }
     const baseColor = trackBaseColor(trackIndex);
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.Float32BufferAttribute(flat, 3));
-    const line = new THREE.Line(geo, new THREE.LineBasicMaterial({
+    line = new THREE.Line(geo, new THREE.LineBasicMaterial({
         color: baseColor, transparent: true, opacity: 0.7,
     }));
     scene.add(line);
@@ -605,6 +644,12 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
     });
     scene3D.keyframeAdded.connect((trackIndex, kfId, x, y, z, interp) => {
         addKfMarker(trackIndex, kfId, x, y, z, interp);
+    });
+    scene3D.keyframeUpdated.connect((trackIndex, kfId, x, y, z, interp) => {
+        updateKfMarker(trackIndex, kfId, x, y, z, interp);
+    });
+    scene3D.keyframeRemoved.connect((trackIndex, kfId) => {
+        removeKfMarker(trackIndex, kfId);
     });
     scene3D.pathSampled.connect((trackIndex, flat) => setPathFor(trackIndex, flat));
 

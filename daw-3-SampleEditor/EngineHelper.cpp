@@ -640,32 +640,65 @@ void ObjectCreator::syncObjectKeyframes(int trackIndex, QList<qint64> times)
 
     ObjectPosAutomation* oa = ensureAutomation(trackIndex);
 
-    // Detect a single-time move (kf dragged on the timeline lane). The lane is
-    // fixedVertical so the only thing the user changed is the time. Preserve
-    // pos/interp/tangents at the new time instead of inserting a fresh kf with
-    // the live entity position.
+    // Detect kf "moves" on the timeline lane (lane is fixedVertical, so only
+    // the time changed). The lane can emit multiple simultaneous moves in one
+    // sigLinesChanged when snap-quantization shifts neighbors, so we generalize:
+    // when |removed| == |added|, pair each removed time with its nearest added
+    // time (greedy by absolute delta) and transfer pos/interp/tangents to the
+    // new time. This preserves each kf's 3D position — only the timing changes.
     {
         const QList<qint64> existing = oa->keyTimes();
         QSet<qint64> existingSet;
         for (qint64 t : existing) existingSet.insert(t);
         QSet<qint64> wantS;
         for (qint64 t : times) wantS.insert(t);
-        QSet<qint64> removed = existingSet; removed.subtract(wantS);
-        QSet<qint64> added   = wantS;       added.subtract(existingSet);
-        if (removed.size() == 1 && added.size() == 1) {
-            const qint64 oldT = *removed.begin();
-            const qint64 newT = *added.begin();
-            if (auto* oldKey = oa->key(oldT)) {
-                const ObjectKeyFrame copy = *oldKey;
-                kfLog(QString("  move key t=%1 -> %2 pos=(%3,%4,%5) interp=%6")
-                    .arg(oldT).arg(newT)
-                    .arg(copy.pos.x()).arg(copy.pos.y()).arg(copy.pos.z())
-                    .arg(int(copy.interp)));
-                oa->removeKey(oldT);
-                oa->addKey(newT, copy.pos, copy.interp);
-                oa->setTangents(newT, copy.tangentIn, copy.tangentOut);
-                setCurrentTime(m_currentTime);
-                return;
+        QList<qint64> removed = (existingSet - wantS).values();
+        QList<qint64> added   = (wantS - existingSet).values();
+        if (!removed.isEmpty() && removed.size() == added.size()) {
+            // Greedy nearest-pair matching: for each removed time, pair with the
+            // closest unpaired added time.
+            QVector<bool> usedAdded(added.size(), false);
+            QList<QPair<qint64, qint64>> pairs;
+            pairs.reserve(removed.size());
+            for (qint64 oldT : removed) {
+                int bestIdx = -1;
+                qint64 bestDelta = std::numeric_limits<qint64>::max();
+                for (int i = 0; i < added.size(); ++i) {
+                    if (usedAdded[i]) continue;
+                    const qint64 d = std::llabs(added[i] - oldT);
+                    if (d < bestDelta) { bestDelta = d; bestIdx = i; }
+                }
+                if (bestIdx < 0) break;
+                usedAdded[bestIdx] = true;
+                pairs.append({oldT, added[bestIdx]});
+            }
+            if (pairs.size() == removed.size()) {
+                // Identity-preserving move: each kf has a stable id stored in
+                // ObjectKeyFrame::id. Look up the id at each old time BEFORE
+                // mutating, then call moveTimeById() — the kf object is the
+                // SAME object at the new time (pos/interp/tangents/id intact).
+                QList<QString> ids;
+                ids.reserve(pairs.size());
+                bool allFound = true;
+                for (const auto& p : pairs) {
+                    const ObjectKeyFrame* k = oa->key(p.first);
+                    if (!k || k->id.isEmpty()) { allFound = false; break; }
+                    ids.append(k->id);
+                }
+                if (allFound) {
+                    for (int i = 0; i < pairs.size(); ++i) {
+                        const qint64 oldT = pairs[i].first;
+                        const qint64 newT = pairs[i].second;
+                        const ObjectKeyFrame* k = oa->keyById(ids[i]);
+                        kfLog(QString("  move-by-id id=%1 t=%2 -> %3 pos=(%4,%5,%6) interp=%7")
+                            .arg(ids[i]).arg(oldT).arg(newT)
+                            .arg(k ? k->pos.x() : 0.0).arg(k ? k->pos.y() : 0.0).arg(k ? k->pos.z() : 0.0)
+                            .arg(k ? int(k->interp) : -1));
+                        oa->moveTimeById(ids[i], newT);
+                    }
+                    setCurrentTime(m_currentTime);
+                    return;
+                }
             }
         }
     }
@@ -699,6 +732,8 @@ void ObjectCreator::syncObjectKeyframes(int trackIndex, QList<qint64> times)
 
 void ObjectCreator::setKeyFrameInterp(int trackIndex, qint64 time, int interp)
 {
+    kfLog(QString("setKeyFrameInterp track=%1 time=%2 interp=%3")
+        .arg(trackIndex).arg(time).arg(interp));
     auto* oa = ensureAutomation(trackIndex);
     oa->setInterp(time, KeyInterp(interp));
 
@@ -816,26 +851,16 @@ void ObjectCreator::setObjectLocation(int trackIndex, double x, double y, double
         m_objects[trackIndex]->setLocalPosition(x, y, z);
         m_objects[trackIndex]->requestToUpdate();
     }
-    // Auto-record: if the keyframe lane is active for this track, write a keyframe
-    // at the current playhead time whenever the entity is dragged in the 3D scene.
-    // Auto-record when the lane toggle is on, OR when the track already has any
-    // ObjectPosAutomation keyframes (so dragging a sphere on an automated track
-    // intuitively updates / appends keyframes without the user toggling a flag).
-    const bool laneOn = m_keyframeLaneActive.contains(trackIndex);
-    const bool hasExistingKfs = m_objectAutomations.contains(trackIndex)
-                                && !m_objectAutomations[trackIndex]->isEmpty();
-    kfLog(QString("  auto-record check: laneOn=%1 hasExistingKfs=%2")
-        .arg(laneOn ? "y" : "n").arg(hasExistingKfs ? "y" : "n"));
-    if (laneOn || hasExistingKfs) {
-        // Skip if we already have a kf at this exact playhead time (avoid spamming
-        // the lane with duplicates during a continuous drag).
-        ObjectPosAutomation* oa = ensureAutomation(trackIndex);
-        const bool alreadyAtT = oa->hasKey(m_currentTime);
-        oa->addKey(m_currentTime, pos, KeyInterp::Linear);
-        if (!alreadyAtT) {
-            kfLog(QString("  auto-record FIRE sigAutoRecordedKeyFrame t=%1").arg(m_currentTime));
-            emit sigAutoRecordedKeyFrame(trackIndex, quint64(m_currentTime), 1 /*Linear*/);
-        }
+    // Auto-record: a 3D drag is always the user expressing "this object is at
+    // position P at time T". Establish (or update) a keyframe at the current
+    // playhead time on every drag. The duplicate guard prevents lane-marker spam
+    // during a continuous drag at a single playhead frame.
+    ObjectPosAutomation* oa = ensureAutomation(trackIndex);
+    const bool alreadyAtT = oa->hasKey(m_currentTime);
+    oa->addKey(m_currentTime, pos, KeyInterp::Linear);
+    if (!alreadyAtT) {
+        kfLog(QString("  auto-record FIRE sigAutoRecordedKeyFrame t=%1").arg(m_currentTime));
+        emit sigAutoRecordedKeyFrame(trackIndex, quint64(m_currentTime), 1 /*Linear*/);
     }
 }
 

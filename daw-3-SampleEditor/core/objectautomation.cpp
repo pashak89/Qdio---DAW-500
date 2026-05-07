@@ -1,5 +1,12 @@
 #include "objectautomation.h"
 
+#include <QUuid>
+
+QString makeKeyFrameId()
+{
+    return QUuid::createUuid().toString(QUuid::WithoutBraces).left(8);
+}
+
 ObjectPosAutomation::ObjectPosAutomation(QObject* parent)
     : QObject(parent)
 {
@@ -9,11 +16,74 @@ void ObjectPosAutomation::addKey(qint64 t, QVector3D pos, KeyInterp k)
 {
     ObjectKeyFrame kf;
     if (m_keys.contains(t))
-        kf = m_keys[t];   // preserve existing tangents when overwriting
+        kf = m_keys[t];   // preserve existing id + tangents when overwriting
+    if (kf.id.isEmpty())
+        kf.id = makeKeyFrameId();
     kf.time   = t;
     kf.pos    = pos;
     kf.interp = k;
     m_keys[t] = kf;
+    emit changed();
+}
+
+const ObjectKeyFrame* ObjectPosAutomation::keyById(const QString& id) const
+{
+    if (id.isEmpty()) return nullptr;
+    for (auto it = m_keys.constBegin(); it != m_keys.constEnd(); ++it) {
+        if (it.value().id == id)
+            return &it.value();
+    }
+    return nullptr;
+}
+
+qint64 ObjectPosAutomation::timeForId(const QString& id) const
+{
+    if (const ObjectKeyFrame* kf = keyById(id))
+        return kf->time;
+    return -1;
+}
+
+void ObjectPosAutomation::addKeyWithId(const QString& id, qint64 t,
+                                       QVector3D pos, KeyInterp k)
+{
+    // If this id already exists somewhere else, relocate it first so it ends
+    // up at the new time without splitting identity.
+    const qint64 existingTime = timeForId(id);
+    if (existingTime >= 0 && existingTime != t)
+        m_keys.remove(existingTime);
+
+    ObjectKeyFrame kf;
+    if (m_keys.contains(t))
+        kf = m_keys[t];           // preserve tangents at this time slot
+    kf.id     = id.isEmpty() ? makeKeyFrameId() : id;
+    kf.time   = t;
+    kf.pos    = pos;
+    kf.interp = k;
+    m_keys[t] = kf;
+    emit changed();
+}
+
+void ObjectPosAutomation::moveTimeById(const QString& id, qint64 newTime)
+{
+    if (id.isEmpty()) return;
+    const qint64 oldTime = timeForId(id);
+    if (oldTime < 0 || oldTime == newTime) return;
+    // If a different key already occupies newTime, refuse — caller must
+    // resolve the conflict (remove or merge) explicitly.
+    if (m_keys.contains(newTime) && m_keys[newTime].id != id)
+        return;
+    ObjectKeyFrame kf = m_keys[oldTime];
+    kf.time = newTime;
+    m_keys.remove(oldTime);
+    m_keys[newTime] = kf;
+    emit changed();
+}
+
+void ObjectPosAutomation::removeById(const QString& id)
+{
+    const qint64 t = timeForId(id);
+    if (t < 0) return;
+    m_keys.remove(t);
     emit changed();
 }
 
@@ -107,6 +177,7 @@ QJsonObject ObjectPosAutomation::save() const
     for (auto it = m_keys.constBegin(); it != m_keys.constEnd(); ++it) {
         const ObjectKeyFrame& kf = it.value();
         QJsonObject o;
+        o["id"]     = kf.id;
         o["time"]   = kf.time;
         o["x"]      = double(kf.pos.x());
         o["y"]      = double(kf.pos.y());
@@ -131,6 +202,8 @@ void ObjectPosAutomation::load(const QJsonObject& obj)
     for (const auto& v : arr) {
         const QJsonObject o = v.toObject();
         ObjectKeyFrame kf;
+        kf.id     = o["id"].toString();
+        if (kf.id.isEmpty()) kf.id = makeKeyFrameId();   // legacy projects
         kf.time   = qint64(o["time"].toDouble());
         kf.pos    = { float(o["x"].toDouble()),
                       float(o["y"].toDouble()),
