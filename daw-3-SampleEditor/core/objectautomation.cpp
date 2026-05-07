@@ -144,17 +144,20 @@ QVector3D ObjectPosAutomation::evaluate(qint64 t) const
         return kR.pos;
     const float u = float(t - kL.time) / span;   // normalised 0..1
 
-    switch (kL.interp) {
-    case KeyInterp::Hold:
+    // Hold takes precedence — Hold means "stay at kL.pos until kR".
+    if (kL.interp == KeyInterp::Hold)
         return kL.pos;
-    case KeyInterp::Linear:
-        return lerp(kL.pos, kR.pos, u);
-    case KeyInterp::Bezier: {
+
+    // Bezier if EITHER endpoint is Bezier. This matches Maya/Blender convention:
+    // a kf's interp affects both adjacent segments. Without this, dragging the
+    // tangentIn handle of a Bezier kf has no visible effect when the previous
+    // kf is Linear, because kL.interp would route to the lerp branch.
+    if (kL.interp == KeyInterp::Bezier || kR.interp == KeyInterp::Bezier) {
         QVector3D p1 = kL.pos + kL.tangentOut;
         QVector3D p2 = kR.pos + kR.tangentIn;
         return cubicBezier(u, kL.pos, p1, p2, kR.pos);
     }
-    }
+
     return lerp(kL.pos, kR.pos, u);
 }
 
