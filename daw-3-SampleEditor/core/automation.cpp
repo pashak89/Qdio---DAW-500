@@ -1077,6 +1077,12 @@ void Automation::edit_point(CPoint* point, double t, double y, double eps)
             point->prev()->setY(y);
         }
     }
+
+    // Emit so downstream consumers (e.g. KeyFramesAutomation bridge in
+    // TrackItem → syncObjectKeyframes → ObjectPosAutomation::moveTimeById)
+    // see the time change. Without this, dragging a kf via OnPoint hit-test
+    // mutates _cLines silently and the engine never learns the kf moved.
+    Q_EMIT sigLinesChanged();
 }
 
 void Automation::edit_line(CPointList* list, QPointF d, double eps)

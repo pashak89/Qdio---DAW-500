@@ -1748,8 +1748,14 @@ public:
     QList<qint64> getPointTimes() const
     {
         QList<qint64> out;
-        const CPointList* list = (!_tLines.empty()) ? &_tLines : &_cLines;
-        for (CPoint* p = list->head(); p; p = p->next()) {
+        // Always use _cLines (the authoritative data store). _tLines is a
+        // render-time clone built by encofrMonotone / buildListFromSegments
+        // and clones points at the moment of rendering — so it goes stale
+        // immediately when edit_line mutates _cLines in-place during a drag.
+        // Using _tLines here caused getPointTimes() to return the PRE-drag
+        // times even after edit_line had already shifted them, making
+        // syncObjectKeyframes see no change and skip the moveTimeById call.
+        for (CPoint* p = _cLines.head(); p; p = p->next()) {
             const double t = p->time();
             if (std::isinf(t))
                 continue;
