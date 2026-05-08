@@ -517,6 +517,22 @@ renderer.domElement.addEventListener('pointerup', (ev) => {
     ndc.y = -((ev.clientY - r.top)  / r.height) * 2 + 1;
     ray.setFromCamera(ndc, camera);
 
+    // Hit-test kf markers FIRST (smaller meshes, user-intent priority), then
+    // fall back to entity spheres. Tangent handles are picked separately in
+    // their own pointerdown handler.
+    const kfMeshes = [];
+    for (const map of kfMarkers.values()) {
+        for (const { mesh } of map.values()) kfMeshes.push(mesh);
+    }
+    const kfHits = ray.intersectObjects(kfMeshes, false);
+    if (kfHits.length && window.scene3D) {
+        const ud = kfHits[0].object.userData;
+        if (ud && ud.kfId !== undefined && ud.trackIndex !== undefined) {
+            window.scene3D.keyframeClickedInScene(ud.trackIndex, ud.kfId);
+            return;
+        }
+    }
+
     const meshes = [...entities.values()].map(e => e.mesh);
     const hits = ray.intersectObjects(meshes, false);
     if (hits.length && window.scene3D) {

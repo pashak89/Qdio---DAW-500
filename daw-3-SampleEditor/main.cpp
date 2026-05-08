@@ -333,6 +333,44 @@ int main(int argc, char* argv[])
                                 scene3D->clearTangentSelection();
                         });
 
+                    // 3D/2D viewport kf-marker click → update lane selection
+                    // halo, then route through the same sigKFSelected path so
+                    // tangent display stays consistent.
+                    QObject::connect(scene3D, &Scene3DController::kfClickedInScene,
+                        [_clipArea, _areaInfo](int trackIndex, qint64 time) {
+                            if (auto* tm = _clipArea->tracksModel()) {
+                                if (auto ti = tm->trackItem(trackIndex)) {
+                                    if (auto kfLane = ti->keyFramesAutomationItem())
+                                        kfLane->setSelectedKfTime(time);
+                                }
+                            }
+                            Q_EMIT _areaInfo->sigKFSelected(trackIndex, time);
+                        });
+
+                    // Lane left-click → select kf → push tangents (Bezier) /
+                    // clear (Linear/Hold) to BOTH 3D and 2D viewports. The lane
+                    // already updated its own selection halo before emitting.
+                    QObject::connect(_areaInfo, &AreaInfo::sigKFSelected,
+                        [objectCreator, scene3D, _clipArea](int trackIndex, qint64 time) {
+                            // Look up the interp at this time to decide whether to
+                            // show tangent handles (Bezier only).
+                            int interp = 1; // Linear default
+                            if (auto* tm = _clipArea->tracksModel()) {
+                                if (auto ti = tm->trackItem(trackIndex)) {
+                                    if (auto kfLane = ti->keyFramesAutomationItem()) {
+                                        const int t = kfLane->interpTypeAt(time);
+                                        // KeyFramesType (0=Bezier,1=Linear,2=Hold)
+                                        // → KeyInterp (0=Hold,1=Linear,2=Bezier)
+                                        interp = (t == 0) ? 2 : (t == 2) ? 0 : 1;
+                                    }
+                                }
+                            }
+                            if (interp == 2)
+                                scene3D->setSelectedKeyframe(trackIndex, time);
+                            else
+                                scene3D->clearTangentSelection();
+                        });
+
                     // Auto-record from 3D/2D viewport drag → timeline lane orange marker.
                     // Use the QML-exposed TracksModel::addKeyFrame which actually
                     // updates the visible KeyFramesAutomationItem (the lane). The

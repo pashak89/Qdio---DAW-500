@@ -41,6 +41,10 @@ public:
 
     // Called by QML when the user clicks a sphere (raycast hit).
     Q_INVOKABLE void entityClicked(int trackIndex);
+    // Called by JS when the user clicks a kf marker in the 3D/2D viewport.
+    // Decodes kfId → time, emits kfClickedInScene so main.cpp can route to
+    // lane selection + tangent display.
+    Q_INVOKABLE void keyframeClickedInScene(int trackIndex, const QString& kfId);
     Q_INVOKABLE void log(const QString& msg) const;
 
     // Tangent drag — live preview vs commit. kfId is the kf's stable UUID.
@@ -105,6 +109,10 @@ signals:
                              double inX, double inY, double inZ,
                              double outX, double outY, double outZ);
     void tangentsCleared();
+
+    // User clicked a kf marker in the 3D/2D viewport. Routed in main.cpp
+    // to update the lane's selection halo + tangent display.
+    void kfClickedInScene(int trackIndex, qint64 time);
 
 private:
     QHash<int, QVector3D> m_positions;

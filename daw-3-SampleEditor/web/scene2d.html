@@ -425,6 +425,17 @@ function pickEntityAt(ev) {
     const hits = dragRay.intersectObjects(meshes, false);
     return hits.length ? hits[0].object : null;
 }
+function pickKfAt(ev) {
+    eventNdc(ev);
+    dragRay.setFromCamera(dragNdc, camera);
+    const kfMeshes = [];
+    for (const map of kfMarkers.values()) {
+        for (const { mesh } of map.values()) kfMeshes.push(mesh);
+    }
+    if (!kfMeshes.length) return null;
+    const hits = dragRay.intersectObjects(kfMeshes, false);
+    return hits.length ? hits[0].object : null;
+}
 function rayPlaneTo(ev, target) {
     eventNdc(ev);
     dragRay.setFromCamera(dragNdc, camera);
@@ -505,11 +516,25 @@ renderer.domElement.addEventListener('pointerup',     endTangentDrag, true);
 renderer.domElement.addEventListener('pointercancel', endTangentDrag, true);
 window.addEventListener('blur', () => { if (tDrag) endTangentDrag({ pointerId: -1 }); });
 
+let kfPickedAtPress = null;
 renderer.domElement.addEventListener('pointerdown', (ev) => {
     if (tDrag) return;
     if (gizmoDragging) return;   // TransformControls owns this gesture
     dragging = true; lastX = ev.clientX; lastY = ev.clientY;
     pressX = ev.clientX; pressY = ev.clientY;
+    kfPickedAtPress = null;
+
+    // Try kf markers first — they're small & user-intent specific.
+    const kfHit = pickKfAt(ev);
+    if (kfHit && kfHit.userData && kfHit.userData.kfId !== undefined) {
+        kfPickedAtPress = {
+            trackIndex: kfHit.userData.trackIndex,
+            kfId: kfHit.userData.kfId,
+        };
+        dragMode = 'none';
+        draggedMesh = null;
+        return;
+    }
 
     const hit = pickEntityAt(ev);
     if (hit) {
@@ -529,6 +554,10 @@ renderer.domElement.addEventListener('pointerdown', (ev) => {
 renderer.domElement.addEventListener('pointerup', (ev) => {
     dragging = false;
     const moved = Math.hypot(ev.clientX - pressX, ev.clientY - pressY);
+    if (kfPickedAtPress && moved <= 4 && window.scene3D) {
+        window.scene3D.keyframeClickedInScene(kfPickedAtPress.trackIndex, kfPickedAtPress.kfId);
+    }
+    kfPickedAtPress = null;
     if (dragMode === 'entity' && draggedMesh && window.scene3D) {
         const idx = draggedMesh.userData.trackIndex;
         if (idx !== undefined) {

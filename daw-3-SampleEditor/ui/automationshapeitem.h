@@ -41,6 +41,9 @@ struct ColoredPoint {
     // 0 = circle (Bezier / default), 1 = diamond (Linear), 2 = square (Hold).
     // Numbers match KeyFramesType in ui/keyframesitem.h.
     int shape = 0;
+    // When true, the marker draws an additional outer glow ring to indicate
+    // the kf is currently selected (left-clicked in the lane or in 3D/2D).
+    bool selected = false;
 };
 
 class CircleMarkersNode : public QSGGeometryNode {

@@ -234,9 +234,13 @@ void AutomationShapeItem::sltUpdateAutomation(AutomationItem* automationItem)
             if (i < lines.size() - 1) {
 
                 int shape = 0;
-                if (kfLane && lines[i].p2())
-                    shape = kfLane->interpTypeAt(qint64(lines[i].p2()->time()));
-                m_pendingPoints.push_back(ColoredPoint { lines[i].fp2(), color, lines[i].p2()->hovred(), shape });
+                bool selected = false;
+                if (kfLane && lines[i].p2()) {
+                    const qint64 t = qint64(lines[i].p2()->time());
+                    shape = kfLane->interpTypeAt(t);
+                    selected = (kfLane->selectedKfTime() == t);
+                }
+                m_pendingPoints.push_back(ColoredPoint { lines[i].fp2(), color, lines[i].p2()->hovred(), shape, selected });
             }
 
             m_pendingUpserts.push_back(ColoredLine { QLineF(lines[i].fp1(), lines[i].fp2()), color, lines[i].curveM(), lines[i].curveN(), lines[i].startX(), lines[i].endX() });
@@ -1501,6 +1505,11 @@ void CircleMarkersNode::rebuild()
 
     const qreal EPS = 1e-3;
     QVector<CircleMarker> markers;
+    // Selected kfs get an extra outer ring drawn first so the regular shape
+    // sits on top. This list is intentionally separate from `markers` so
+    // joint-deduplication on overlapping kfs doesn't drop the highlight.
+    struct SelHalo { QPointF p; };
+    QVector<SelHalo> selHalos;
     auto addJoint = [&](const QPointF& p, const QColor& c, bool fill, int shape) {
         for (auto& jt : markers) {
             if (samePt(jt.p, p, EPS)) {
@@ -1513,8 +1522,8 @@ void CircleMarkersNode::rebuild()
     };
 
     for (const auto& s : m_points) {
-
         addJoint(s.line, s.fill ? Qt::white : s.color, s.fill, s.shape);
+        if (s.selected) selHalos.push_back({ s.line });
     }
 
     auto segs = 64;
@@ -1528,6 +1537,14 @@ void CircleMarkersNode::rebuild()
     // always render as filled quads (4 verts, 6 indices).
     int totalVerts = 0;
     int totalIdxs = 0;
+
+    // Selection halo: a ring drawn first behind each selected marker.
+    const int haloVerts = 2 * (segs + 1);
+    const int haloIdxs  = segs * 6;
+    for (int i = 0; i < selHalos.size(); ++i) {
+        totalVerts += haloVerts;
+        totalIdxs  += haloIdxs;
+    }
 
     for (const auto& m : markers) {
 
@@ -1552,6 +1569,39 @@ void CircleMarkersNode::rebuild()
     int iOfs = 0;
     float r = 4.0;
     float stroke = 1.f;
+
+    // Selection halo: bright yellow ring (radius ~7px, stroke ~2px) drawn
+    // before regular markers so the kf shape sits on top.
+    {
+        const QColor haloCol(0xFF, 0xE0, 0x66, 0xFF);
+        const float ho = 7.5f;
+        const float hi = 5.5f;
+        for (const auto& h : selHalos) {
+            const float cx = pixelSnap ? float(std::round(h.p.x()) + 0.5) : float(h.p.x());
+            const float cy = pixelSnap ? float(std::round(h.p.y()) + 0.5) : float(h.p.y());
+            for (int i = 0; i <= segs; ++i) {
+                const float t = float(i) / segs * float(M_PI) * 2.f;
+                const float ct = std::cos(t), st = std::sin(t);
+                writeColored(v[vOfs + i], cx + ho * ct, cy + ho * st, haloCol);
+                writeColored(v[vOfs + (segs + 1) + i], cx + hi * ct, cy + hi * st, haloCol);
+            }
+            for (int i = 0; i < segs; ++i) {
+                const quint16 o0 = quint16(vOfs + i);
+                const quint16 o1 = quint16(vOfs + i + 1);
+                const quint16 i0 = quint16(vOfs + (segs + 1) + i);
+                const quint16 i1 = quint16(vOfs + (segs + 1) + i + 1);
+                idx[iOfs + 6 * i + 0] = o0;
+                idx[iOfs + 6 * i + 1] = i0;
+                idx[iOfs + 6 * i + 2] = o1;
+                idx[iOfs + 6 * i + 3] = o1;
+                idx[iOfs + 6 * i + 4] = i0;
+                idx[iOfs + 6 * i + 5] = i1;
+            }
+            vOfs += haloVerts;
+            iOfs += haloIdxs;
+        }
+    }
+
     for (const auto& m : markers) {
 
         const QColor col = m.color;

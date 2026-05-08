@@ -864,6 +864,10 @@ signals:
     void sigInterpChanged(int trackIndex, qint64 time, int interp);
     // Right-click on a kf in the lane: show context menu at global screen position.
     void sigKFContextMenu(int trackIndex, qint64 time, int globalX, int globalY);
+    // Selection sync: emitted when the user left-clicks a kf in the lane OR
+    // clicks a kf marker in the 2D/3D viewport. Updates lane halo + 3D/2D
+    // tangent handles.
+    void sigKFSelected(int trackIndex, qint64 time);
     void sigZoomLevelChanged();
     void sigClipDurationChanged();
     void sigStartTimeChanged();

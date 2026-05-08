@@ -636,6 +636,7 @@ public:
 
         _points.remove(quint64(time));
         _interpByTime.remove(time);
+        if (_selectedKfTime == time) _selectedKfTime = -1;
         Q_EMIT sigUpdate();
     }
 
@@ -703,6 +704,9 @@ public:
                 const int v = _interpByTime.take(oldT);
                 _interpByTime.insert(newT, v);
             }
+            // Move selection so the halo follows the dragged kf.
+            if (_selectedKfTime == oldT)
+                _selectedKfTime = newT;
         }
         // For added kfs that have no _points entry yet (e.g., new kf added by
         // the user clicking empty lane area), seed Linear so the dot has a
@@ -720,10 +724,16 @@ public:
         }
     }
 
-    // Right-click on an existing keyframe in the lane cycles its interpolation
-    // type Bezier(0) → Linear(1) → Hold(2) → Bezier. The change is propagated to
-    // ObjectCreator's per-track ObjectPosAutomation via AreaInfo::sigInterpChanged
-    // so the 3D path reshapes (linear ↔ curved ↔ stepped) immediately.
+    // Selected kf in the lane (drives the orange halo highlight + drives the
+    // 3D/2D viewport tangent display). -1 = no selection.
+    qint64 selectedKfTime() const { return _selectedKfTime; }
+    void   setSelectedKfTime(qint64 t)
+    {
+        if (_selectedKfTime == t) return;
+        _selectedKfTime = t;
+        Q_EMIT sigUpdate();
+    }
+
     int mousePressEvent(QMouseEvent* event)
     {
         if (event->button() == Qt::RightButton) {
@@ -731,6 +741,26 @@ public:
             _rightPressY = event->pos().y();
             _rightPressed = true;
             return AutomationItem::AutomationItemEvent_InnerSelect;
+        }
+        // Left-click: hit-test against the lane's fixed Y. If the click landed
+        // on an existing kf dot, mark it as selected (visual halo) and notify
+        // the rest of the app via _areaInfo->sigKFSelected so the 3D/2D scene
+        // can show tangent handles for Bezier kfs. Selection state survives a
+        // subsequent drag because reconcileTimesAfterDrag updates the maps;
+        // we update _selectedKfTime there as well.
+        if (event->button() == Qt::LeftButton) {
+            const double clickX = event->pos().x();
+            const double pxThr = double(ScreenInterface::scaleSize2(20, _areaInfo->zoomFactor()));
+            const double laneY = _automation->getYPixel(_automation->defaultNormalized());
+            auto hit = _automation->hitTestLines(clickX, laneY, pxThr, pxThr * 2.0);
+            if (hit.state == Automation::OnPoint) {
+                CPoint* cp = (hit.endpoint == 0) ? hit.index.p1() : hit.index.p2();
+                if (cp) {
+                    const qint64 t = qint64(cp->time());
+                    setSelectedKfTime(t);
+                    Q_EMIT _areaInfo->sigKFSelected(_trackIndex, t);
+                }
+            }
         }
         return AutomationItem::mousePressEvent(event);
     }
@@ -789,6 +819,7 @@ private:
     double m_objectPositionZ = 0;
     QMap<quint64, KeyFramesPoint> _points;
     QMap<qint64, int> _interpByTime;   // local cache of cycled interp type per kf time
+    qint64 _selectedKfTime = -1;       // -1 = nothing selected
     bool   _rightPressed = false;
     int    _rightPressX  = 0;
     int    _rightPressY  = 0;

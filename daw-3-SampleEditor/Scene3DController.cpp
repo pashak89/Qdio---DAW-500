@@ -76,6 +76,15 @@ void Scene3DController::entityClicked(int trackIndex)
     setSelected(trackIndex);
 }
 
+void Scene3DController::keyframeClickedInScene(int trackIndex, const QString& kfId)
+{
+    auto it = m_automations.constFind(trackIndex);
+    if (it == m_automations.constEnd() || !it.value()) return;
+    const qint64 t = it.value()->timeForId(kfId);
+    if (t < 0) return;
+    emit kfClickedInScene(trackIndex, t);
+}
+
 void Scene3DController::log(const QString& msg) const
 {
     qDebug().noquote() << "SCENE-LOG:" << msg;
