@@ -678,6 +678,7 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
     });
     scene3D.keyframeRemoved.connect((trackIndex, kfId) => {
         removeKfMarker(trackIndex, kfId);
+        if (kfId === tangentHandles.kfId) clearTangentHandles();
     });
     scene3D.pathSampled.connect((trackIndex, flat) => setPathFor(trackIndex, flat));
 
