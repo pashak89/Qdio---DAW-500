@@ -4738,7 +4738,11 @@ AutomationLaneModel::~AutomationLaneModel()
 void AutomationLaneModel::insert(QString menu, QString subMenu, int index, int rowCount)
 {
 
-    m_automationLanes.insert(index, AutomationLane { m_automationLanes.size(), menu, subMenu, 3 });
+    // Keyframe lane is fixedVertical (only time matters, not Y), so a single
+    // row is enough — the orange dots and path-line don't need vertical room.
+    // All other parameters keep the 3-row default for value-shape editing.
+    const int defaultRows = (subMenu == QLatin1String("KeyFrames")) ? 1 : 3;
+    m_automationLanes.insert(index, AutomationLane { m_automationLanes.size(), menu, subMenu, defaultRows });
 
     setIndex(menu, subMenu, index);
 
@@ -4784,7 +4788,8 @@ void AutomationLaneModel::insert(QString menu, QString subMenu, int index, int r
 void AutomationLaneModel::append(QString menu, QString subMenu, int rowCount)
 {
 
-    m_automationLanes.append(AutomationLane { m_automationLanes.size(), menu, subMenu, 3 });
+    const int defaultRows = (subMenu == QLatin1String("KeyFrames")) ? 1 : 3;
+    m_automationLanes.append(AutomationLane { m_automationLanes.size(), menu, subMenu, defaultRows });
 
     setIndex(menu, subMenu, m_automationLanes.size() - 1);
 

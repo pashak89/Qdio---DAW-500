@@ -539,11 +539,11 @@ public:
         // automation->setPointShape(Automation::PointShape_Dimond);
         automation->setDiscreted(false);
         automation->setFixedVertical(true);
-        automation->setDefaultNormalized(0.75);
-        automation->setNormalized(0.75);
-        automation->setAutomatedNormalized(0.75);
-        automation->setMinValue(0.75);
-        automation->setMaxValue(0.75);
+        automation->setDefaultNormalized(0.5);
+        automation->setNormalized(0.5);
+        automation->setAutomatedNormalized(0.5);
+        automation->setMinValue(0.5);
+        automation->setMaxValue(0.5);
     }
 
     void saveInUndoItems()
@@ -651,8 +651,6 @@ public:
     // so the 3D path reshapes (linear ↔ curved ↔ stepped) immediately.
     int mousePressEvent(QMouseEvent* event)
     {
-        qDebug() << "[KFLane] PRESS button=" << int(event->button())
-                 << " track=" << _trackIndex << " pos=" << event->pos();
         if (event->button() == Qt::RightButton) {
             _rightPressX = event->pos().x();
             _rightPressY = event->pos().y();
@@ -664,9 +662,6 @@ public:
 
     int mouseReleaseEvent(QMouseEvent* event)
     {
-        qDebug() << "[KFLane] RELEASE button=" << int(event->button())
-                 << " track=" << _trackIndex << " pos=" << event->pos()
-                 << " wasPressed=" << _rightPressed;
         if (event->button() == Qt::RightButton) {
             const bool wasPressed = _rightPressed;
             _rightPressed = false;
@@ -684,16 +679,9 @@ public:
                 if (cp) hitTime = qint64(cp->time());
             }
             if (hitTime >= 0) {
-                int curType = _interpByTime.value(hitTime, 1 /*Linear*/);
-                const int nextType = (curType + 1) % 3;
-                _interpByTime.insert(hitTime, nextType);
-                if (_points.contains(quint64(hitTime)))
-                    _points[quint64(hitTime)].type = nextType;
-                // KeyFramesType (0=Bezier, 1=Linear, 2=Hold) → KeyInterp (0=Hold, 1=Linear, 2=Bezier)
-                const int interpInt = (nextType == 0) ? 2
-                                    : (nextType == 2) ? 0 : 1;
-                Q_EMIT _areaInfo->sigInterpChanged(_trackIndex, hitTime, interpInt);
-                Q_EMIT sigUpdate();
+                // Emit context menu signal; QML handles showing the menu.
+                Q_EMIT _areaInfo->sigKFContextMenu(_trackIndex, hitTime,
+                    event->globalPos().x(), event->globalPos().y());
             }
             return AutomationItem::AutomationItemEvent_InnerSelect;
         }

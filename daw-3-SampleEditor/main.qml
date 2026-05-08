@@ -1212,6 +1212,48 @@ Item {
                 }   // close right-content ColumnLayout
             }   // close outer horizontal RowLayout (sidebar + right-content)
         }
+
+        // ── Keyframe lane context menu ──────────────────────────────────────
+        // Opened by right-clicking an orange kf dot in the timeline lane.
+        // Populated by sigKFContextMenu(trackIndex, time, globalX, globalY).
+        Menu {
+            id: kfContextMenu
+            property int kfTrackIndex: -1
+            property var kfTime: 0   // qint64 stored as JS number
+
+            MenuItem {
+                text: "Delete"
+                onTriggered: _areaInfo.kfDelete(kfContextMenu.kfTrackIndex,
+                                                kfContextMenu.kfTime)
+            }
+            MenuSeparator {}
+            MenuItem {
+                text: "Bezier"
+                onTriggered: _areaInfo.kfSetInterp(kfContextMenu.kfTrackIndex,
+                                                   kfContextMenu.kfTime, 2)
+            }
+            MenuItem {
+                text: "Linear"
+                onTriggered: _areaInfo.kfSetInterp(kfContextMenu.kfTrackIndex,
+                                                   kfContextMenu.kfTime, 1)
+            }
+            MenuItem {
+                text: "Hold"
+                onTriggered: _areaInfo.kfSetInterp(kfContextMenu.kfTrackIndex,
+                                                   kfContextMenu.kfTime, 0)
+            }
+        }
+
+        Connections {
+            target: _areaInfo
+            function onSigKFContextMenu(trackIndex, time, globalX, globalY) {
+                kfContextMenu.kfTrackIndex = trackIndex
+                kfContextMenu.kfTime = time
+                kfContextMenu.x = globalX - mainWindow.x
+                kfContextMenu.y = globalY - mainWindow.y
+                kfContextMenu.open()
+            }
+        }
     }
 
 }

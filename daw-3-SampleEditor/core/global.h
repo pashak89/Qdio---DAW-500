@@ -729,6 +729,16 @@ public:
     Q_INVOKABLE void changeArrangementStartTimeBeat(bool increase);
     Q_INVOKABLE void changeArrangementStartTimeSixteenth(bool increase);
 
+    // Called by the QML kf context menu after the user picks an interp option.
+    // interp: 0=Hold, 1=Linear, 2=Bezier (matches KeyInterp enum).
+    Q_INVOKABLE void kfSetInterp(int trackIndex, qint64 time, int interp) {
+        Q_EMIT sigInterpChanged(trackIndex, time, interp);
+    }
+    // Called by the QML kf context menu when the user picks Delete.
+    Q_INVOKABLE void kfDelete(int trackIndex, qint64 time) {
+        Q_EMIT sigRemoveKeyFrame(trackIndex, quint64(time));
+    }
+
     bool playheadMarkerVisible() const;
     void setPlayheadMarkerVisible(bool newPlayheadMarkerVisible);
 
@@ -852,6 +862,8 @@ signals:
     // Right-click cycle on a keyframe in the timeline lane changed its interp.
     // interp values match KeyInterp enum: 0=Hold, 1=Linear, 2=Bezier.
     void sigInterpChanged(int trackIndex, qint64 time, int interp);
+    // Right-click on a kf in the lane: show context menu at global screen position.
+    void sigKFContextMenu(int trackIndex, qint64 time, int globalX, int globalY);
     void sigZoomLevelChanged();
     void sigClipDurationChanged();
     void sigStartTimeChanged();
