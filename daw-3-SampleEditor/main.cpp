@@ -260,6 +260,16 @@ int main(int argc, char* argv[])
                     QObject::connect(_areaInfo, &AreaInfo::sigRemoveKeyFrame, objectCreator,
                         &ObjectCreator::removeKeyFrame, Qt::DirectConnection);
 
+                    // Mirror kf removal into the visible lane (orange dot in
+                    // KeyFramesAutomationItem._points + _cLines). Without this,
+                    // the right-click Delete updates the engine + 3D scene but
+                    // the lane marker stays.
+                    QObject::connect(_areaInfo, &AreaInfo::sigRemoveKeyFrame,
+                        [_clipArea](int trackIndex, quint64 time) {
+                            if (auto* tm = _clipArea->tracksModel())
+                                tm->removeKeyFrame(trackIndex, qint64(time));
+                        });
+
                     QObject::connect(_areaInfo, &AreaInfo::sigCurrentSelectedTime, objectCreator,
                         &ObjectCreator::setCurrentTime, Qt::DirectConnection);
 
@@ -304,10 +314,19 @@ int main(int argc, char* argv[])
                     QObject::connect(objectCreator, &ObjectCreator::sigAutomationCreated,
                         scene3D, &Scene3DController::attachAutomation, Qt::DirectConnection);
 
-                    // Right-click cycle → interp change + tangent handle display for Bezier kfs
+                    // Right-click context menu (Bezier/Linear/Hold) → interp change
+                    // + tangent handle display for Bezier + lane marker shape update.
                     QObject::connect(_areaInfo, &AreaInfo::sigInterpChanged,
-                        [objectCreator, scene3D](int trackIndex, qint64 time, int interp) {
+                        [objectCreator, scene3D, _clipArea](int trackIndex, qint64 time, int interp) {
                             objectCreator->setKeyFrameInterp(trackIndex, time, interp);
+                            // Update the lane's per-kf shape cache so the orange
+                            // marker reflects the new interp (circle/diamond/square).
+                            if (auto* tm = _clipArea->tracksModel()) {
+                                if (auto trackItem = tm->trackItem(trackIndex)) {
+                                    if (auto kfLane = trackItem->keyFramesAutomationItem())
+                                        kfLane->setInterpForTime(time, interp);
+                                }
+                            }
                             if (interp == 2) // Bezier: push seeded tangents to viewports
                                 scene3D->setSelectedKeyframe(trackIndex, time);
                             else

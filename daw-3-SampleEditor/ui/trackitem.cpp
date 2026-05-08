@@ -101,6 +101,10 @@ TrackItem::TrackItem(int trackIndex, Track* track, AreaInfo* areaInfo)
             std::fflush(f);
             std::fclose(f);
         }
+        // Rekey the lane's time-keyed maps (_points, _interpByTime) so the kf
+        // marker shape (Bezier/Linear/Hold) survives a time-drag.
+        if (_keyFramesAutomationItem)
+            _keyFramesAutomationItem->reconcileTimesAfterDrag(times);
         Q_EMIT _areaInfo->sigKeyFrameLinesChanged(_trackIndex, times);
     });
 

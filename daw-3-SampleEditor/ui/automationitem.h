@@ -139,6 +139,11 @@ protected:
     bool _mousePressAndHold = false;
 
     bool _curveChangingEnabled = false;
+    // When false, a stationary left-click on a kf point will NOT delete it.
+    // Used by KeyFramesAutomationItem so left-click only selects (delete is in
+    // the right-click context menu). Default true preserves existing behavior
+    // for all other automation lanes.
+    bool _clickDeleteEnabled = true;
     bool _mouseDoubleClick = false;
     int _mouseDoubleClickCounter = 0;
 

@@ -1660,8 +1660,13 @@ int AutomationItem::mouseReleaseEvent(QMouseEvent* event)
         auto hit2 = _automation->hitTestLines(_currentMouseX, _currentMouseY, onThreshold, nearThreshold);
 
         if (hit2.state == Automation::OnPoint) {
-            saveInUndoItems();
-            _automation->delete_point(hit2.index.p2());
+            // For lanes where left-click delete is disabled (KeyFrames), a
+            // stationary click on a point should select it, not delete it.
+            // Delete is reachable via the right-click context menu.
+            if (_clickDeleteEnabled) {
+                saveInUndoItems();
+                _automation->delete_point(hit2.index.p2());
+            }
         }
         if (hit2.state == Automation::OnLine) {
             saveInUndoItems();

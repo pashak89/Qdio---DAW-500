@@ -509,9 +509,23 @@ public:
         Automation::add_point(double(time), defaultNormalized());
         return 0;
     }
+    // Remove the kf control point at the given absolute time from _cLines so
+    // the orange marker actually disappears from the lane. The previous no-op
+    // implementation left the visual dot in place even though the engine and
+    // lane's _points map were cleaned up.
+    bool removeByTime(qint64 time)
+    {
+        for (CPoint* p = _cLines.head(); p; p = p->next()) {
+            if (std::isinf(p->time())) continue;
+            if (qint64(p->time()) == time) {
+                Automation::delete_point(p);
+                return true;
+            }
+        }
+        return false;
+    }
     bool removeLine2(int index)
     {
-
         return true;
     }
 
@@ -544,6 +558,9 @@ public:
         automation->setAutomatedNormalized(0.5);
         automation->setMinValue(0.5);
         automation->setMaxValue(0.5);
+        // Left-click on a kf only selects (or starts a drag); delete moved to
+        // the right-click context menu (Delete / Bezier / Linear / Hold).
+        _clickDeleteEnabled = false;
     }
 
     void saveInUndoItems()
@@ -611,16 +628,15 @@ public:
     }
     void removeKeyFrame(qint64 time)
     {
-        int index = automation()->find_line(time);
-        if (index >= 0) {
-            QSharedPointer<KeyFramesAutomation> derivedPtr = qSharedPointerCast<KeyFramesAutomation>(automation());
-            derivedPtr->removeLine2(index);
-            // Q_EMIT _areaInfo->sigRemoveKeyFrame(_trackIndex, time);
-            Q_EMIT sigUpdate();
-        }
+        QSharedPointer<KeyFramesAutomation> derivedPtr = qSharedPointerCast<KeyFramesAutomation>(automation());
+        // Actually remove the CPoint from the lane's _cLines so the orange
+        // marker disappears. delete_point also fires sigLinesChanged, which
+        // updates the visual.
+        derivedPtr->removeByTime(time);
 
-        if (_points.contains(time))
-            _points.remove(time);
+        _points.remove(quint64(time));
+        _interpByTime.remove(time);
+        Q_EMIT sigUpdate();
     }
 
     int getKeyFrameType(qint64 time)
@@ -643,6 +659,65 @@ public:
         auto pit = _points.constFind(quint64(time));
         if (pit != _points.constEnd()) return pit.value().type;
         return 1; // Linear default
+    }
+
+    // Update the lane's per-kf interp cache when the user picks an interp from
+    // the right-click menu. interp arg uses KeyInterp enum (0=Hold,1=Linear,
+    // 2=Bezier). We translate to KeyFramesType (0=Bezier,1=Linear,2=Hold) used
+    // for the lane marker shape.
+    void setInterpForTime(qint64 time, int keyInterp)
+    {
+        const int kfType = (keyInterp == 0) ? 2  // Hold
+                         : (keyInterp == 2) ? 0  // Bezier
+                         :                    1; // Linear
+        _interpByTime.insert(time, kfType);
+        if (_points.contains(quint64(time)))
+            _points[quint64(time)].type = kfType;
+        Q_EMIT sigUpdate();
+    }
+
+    // Called after a kf drag changes its time. The maps below are keyed by
+    // time, so a drag from t_old to t_new leaves stale keys at t_old. We
+    // detect the single-time shift via set-diff (single removed + single
+    // added) and rekey both maps so the marker shape (Bezier/Linear/Hold)
+    // is preserved across the drag.
+    void reconcileTimesAfterDrag(const QList<qint64>& currentTimes)
+    {
+        QSet<qint64> wantSet(currentTimes.begin(), currentTimes.end());
+        QSet<qint64> haveSet;
+        for (auto it = _points.constBegin(); it != _points.constEnd(); ++it)
+            haveSet.insert(qint64(it.key()));
+        QSet<qint64> removed = haveSet - wantSet;
+        QSet<qint64> added   = wantSet - haveSet;
+        if (removed.size() == 1 && added.size() == 1) {
+            const qint64 oldT = *removed.begin();
+            const qint64 newT = *added.begin();
+            // Move _points entry
+            if (_points.contains(quint64(oldT))) {
+                KeyFramesPoint kp = _points.take(quint64(oldT));
+                kp.time = quint64(newT);
+                _points.insert(quint64(newT), kp);
+            }
+            // Move _interpByTime entry
+            if (_interpByTime.contains(oldT)) {
+                const int v = _interpByTime.take(oldT);
+                _interpByTime.insert(newT, v);
+            }
+        }
+        // For added kfs that have no _points entry yet (e.g., new kf added by
+        // the user clicking empty lane area), seed Linear so the dot has a
+        // valid shape source. Existing entries are left alone.
+        for (qint64 t : added) {
+            if (!_points.contains(quint64(t)))
+                _points.insert(quint64(t), KeyFramesPoint { quint64(t), 1, 0.0, 0.0, 0.0 });
+        }
+        // Drop entries for kfs that were removed entirely (not part of a move).
+        if (removed.size() != 1 || added.size() != 1) {
+            for (qint64 t : removed) {
+                _points.remove(quint64(t));
+                _interpByTime.remove(t);
+            }
+        }
     }
 
     // Right-click on an existing keyframe in the lane cycles its interpolation
