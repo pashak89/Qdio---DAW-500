@@ -34,5 +34,12 @@ build2019/**/runtime*.log
 Logs/
 *.dmp
 
+# Large 3rdparty libraries (needed locally but too large for remote)
+daw-3-SampleEditor/3rdparty/
+Rpos/DAW-400/daw-3-SampleEditor/3rdparty/
+
+# Build artifacts and output directories
+build2019/
+
 # Claude harness internals
 .claude/scheduled_tasks.lock
