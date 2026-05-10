@@ -1,3 +1,0 @@
-QML debugging is enabled. Only use this in a safe environment.
-[4060:33948:0501/084845.058:WARNING:file_util_win.cc(567)] Failed to get temporary file name in C:\Users\AmirPasha\AppData\Local\SampleEditor\QtWebEngine\Default: The system cannot find the path specified. (0x3)
-[4060:33948:0501/084845.061:WARNING:important_file_writer.cc(81)] temp file failure: C:\Users\AmirPasha\AppData\Local\SampleEditor\QtWebEngine\Default\user_prefs.json : could not create temporary file: The system cannot find the path specified. (0x3)
