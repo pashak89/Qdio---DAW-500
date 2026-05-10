@@ -606,17 +606,11 @@ void ObjectCreator::setCurrentTime(qint64 time)
     m_currentTime = time;
     m_animationManager->setCurrentTime(time);
 
-    // Evaluate all per-track ObjectPosAutomations and push positions to scene3D
-    for (auto it = m_objectAutomations.constBegin(); it != m_objectAutomations.constEnd(); ++it) {
-        ObjectPosAutomation* oa = it.value();
-        if (oa && !oa->isEmpty()) {
-            QVector3D p = oa->evaluate(time);
-            kfLog(QString("eval track=%1 t=%2 keys=%3 pos=(%4,%5,%6)")
-                .arg(it.key()).arg(time).arg(oa->count())
-                .arg(p.x()).arg(p.y()).arg(p.z()));
-            emit sigObjectMoved(it.key(), double(p.x()), double(p.y()), double(p.z()));
-        }
-    }
+    // perf-3d-playback: positions are now evaluated on the JS side from the
+    // pre-sampled path + playhead time, so we no longer fan out one
+    // sigObjectMoved per track per playback tick (was 50·N QWebChannel
+    // messages/sec). The JS rAF loop walks the polyline using `playheadMoved`
+    // and `playbackStateChanged` for smoothness.
 }
 
 void ObjectCreator::syncObjectKeyframes(int trackIndex, QList<qint64> times)

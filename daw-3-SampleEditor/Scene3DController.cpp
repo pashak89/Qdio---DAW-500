@@ -133,6 +133,14 @@ void Scene3DController::setSelected(int trackIndex)
     emit trackSelected(trackIndex);
 }
 
+void Scene3DController::setPlaybackState(bool playing)
+{
+    if (m_playing == playing) return;
+    m_playing = playing;
+    scnLog(QString("[Scene3D] setPlaybackState playing=%1").arg(playing ? "true" : "false"));
+    emit playbackStateChanged(playing);
+}
+
 void Scene3DController::resetScene()
 {
     m_positions.clear();
@@ -301,7 +309,7 @@ void Scene3DController::pushPathFor(int trackIndex)
     auto* oa = m_automations.value(trackIndex, nullptr);
     if (!oa || oa->isEmpty()) {
         scnLog(QString("[Scene3D→JS] pathSampled track=%1 EMPTY").arg(trackIndex));
-        emit pathSampled(trackIndex, QVariantList{});
+        emit pathSampled(trackIndex, 0.0, 0.0, QVariantList{});
         return;
     }
     const QList<qint64> times = oa->keyTimes();
@@ -313,7 +321,7 @@ void Scene3DController::pushPathFor(int trackIndex)
         flat << double(p.x()) << double(p.y()) << double(p.z());
         scnLog(QString("[Scene3D→JS] pathSampled track=%1 single t=%2 pos=(%3,%4,%5)")
             .arg(trackIndex).arg(t0).arg(p.x()).arg(p.y()).arg(p.z()));
-        emit pathSampled(trackIndex, flat);
+        emit pathSampled(trackIndex, double(t0), double(t0), flat);
         return;
     }
     constexpr int N = 128;
@@ -330,5 +338,5 @@ void Scene3DController::pushPathFor(int trackIndex)
         .arg(trackIndex).arg(N).arg(t0).arg(t1)
         .arg(pStart.x()).arg(pStart.y()).arg(pStart.z())
         .arg(pEnd.x()).arg(pEnd.y()).arg(pEnd.z()));
-    emit pathSampled(trackIndex, flat);
+    emit pathSampled(trackIndex, double(t0), double(t1), flat);
 }

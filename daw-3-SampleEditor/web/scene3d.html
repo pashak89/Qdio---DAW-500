@@ -57,7 +57,9 @@ camera.position.set(4, 5, 9);
 camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setPixelRatio(window.devicePixelRatio);
+// perf-3d-playback: cap DPR so high-DPI displays don't quadruple fragment work
+// during camera rotation with many objects.
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -125,8 +127,20 @@ const entities = new Map();   // trackIndex -> { mesh, baseColor }
 // ── Keyframes & paths (Phase 1) ─────────────────────────────────────────────
 // kfMarkers: Map<trackIndex, Map<kfId, { mesh, interp }>>
 const kfMarkers = new Map();
+// kfMarkerMaterials: Map<trackIndex, MeshPhongMaterial> — one shared marker
+// material per track so N keyframes don't allocate N materials.
+const kfMarkerMaterials = new Map();
 // pathLines: Map<trackIndex, THREE.Line>
 const pathLines = new Map();
+// perf-3d-playback: precomputed path samples per track, plus their time range.
+// During playback the rAF loop walks this polyline by playhead time.
+//   trackIndex -> { t0Ms, t1Ms, samples: Float32Array (xyz triples), n: int }
+const paths = new Map();
+
+// Playback state mirror — updated from QWebChannel signals.
+let isPlaying = false;
+let currentPlayheadMs = 0;
+let playheadRecvAtPerfMs = 0;
 
 const KF_INTERP_HOLD = 0;
 const KF_INTERP_LINEAR = 1;
@@ -149,10 +163,31 @@ function clearKeyframesForTrack(trackIndex) {
         for (const { mesh } of m.values()) {
             scene.remove(mesh);
             mesh.geometry.dispose();
-            mesh.material.dispose();
+            // material is shared via kfMarkerMaterials — do not dispose here
         }
         m.clear();
     }
+    const sharedMat = kfMarkerMaterials.get(trackIndex);
+    if (sharedMat) { sharedMat.dispose(); kfMarkerMaterials.delete(trackIndex); }
+}
+
+// Lazily build (or refresh on color change) the single material reused by all
+// keyframe markers of a given track.
+function ensureKfMarkerMaterial(trackIndex) {
+    let mat = kfMarkerMaterials.get(trackIndex);
+    const baseColor = trackBaseColor(trackIndex);
+    if (!mat) {
+        mat = new THREE.MeshPhongMaterial({
+            color: baseColor.clone(),
+            emissive: baseColor.clone().multiplyScalar(0.6),
+            shininess: 60,
+        });
+        kfMarkerMaterials.set(trackIndex, mat);
+    } else {
+        mat.color.copy(baseColor);
+        mat.emissive.copy(baseColor).multiplyScalar(0.6);
+    }
+    return mat;
 }
 
 function addKfMarker(trackIndex, kfId, x, y, z, interp) {
@@ -163,14 +198,9 @@ function addKfMarker(trackIndex, kfId, x, y, z, interp) {
     if (existing) {
         scene.remove(existing.mesh);
         existing.mesh.geometry.dispose();
-        existing.mesh.material.dispose();
+        // material is shared per-track, do not dispose
     }
-    const baseColor = trackBaseColor(trackIndex);
-    const mat = new THREE.MeshPhongMaterial({
-        color: baseColor,
-        emissive: baseColor.clone().multiplyScalar(0.6),
-        shininess: 60,
-    });
+    const mat = ensureKfMarkerMaterial(trackIndex);
     const mesh = new THREE.Mesh(makeKfGeometry(interp), mat);
     mesh.position.set(x, y, z);
     mesh.userData = { type: 'keyframe', trackIndex, kfId, interp };
@@ -200,11 +230,11 @@ function removeKfMarker(trackIndex, kfId) {
     if (!entry) return;
     scene.remove(entry.mesh);
     entry.mesh.geometry.dispose();
-    entry.mesh.material.dispose();
+    // shared per-track material — keep until clearKeyframesForTrack
     map.delete(kfId);
 }
 
-function setPathFor(trackIndex, flat) {
+function setPathFor(trackIndex, t0, t1, flat) {
     const haveData = !!flat && flat.length >= 6;
     let line = pathLines.get(trackIndex);
 
@@ -213,7 +243,24 @@ function setPathFor(trackIndex, flat) {
             scene.remove(line); line.geometry.dispose(); line.material.dispose();
             pathLines.delete(trackIndex);
         }
+        paths.delete(trackIndex);
         return;
+    }
+
+    // perf-3d-playback: cache the polyline + its time range so the rAF loop
+    // can resolve playback positions without crossing the bridge.
+    {
+        const n = (flat.length / 3) | 0;
+        let entry = paths.get(trackIndex);
+        if (!entry || entry.samples.length !== flat.length) {
+            entry = { t0Ms: t0, t1Ms: t1, samples: new Float32Array(flat.length), n };
+            paths.set(trackIndex, entry);
+        } else {
+            entry.t0Ms = t0;
+            entry.t1Ms = t1;
+            entry.n = n;
+        }
+        for (let i = 0; i < flat.length; ++i) entry.samples[i] = flat[i];
     }
 
     // R6: reuse the existing line + geometry when the sample count matches.
@@ -238,6 +285,62 @@ function setPathFor(trackIndex, flat) {
     }));
     scene.add(line);
     pathLines.set(trackIndex, line);
+}
+
+// ── perf-3d-playback: rAF-side polyline evaluation ──────────────────────────
+// Walks the precomputed 128-sample path by time, with linear interp between
+// adjacent samples. Bezier curvature is already baked into the samples Qt
+// pushed via pathSampled, so this matches what ObjectPosAutomation::evaluate
+// would have computed on the C++ side.
+const _evalOut = [0, 0, 0];
+function evaluatePathAt(p, tMs) {
+    if (!p || p.n < 1) return null;
+    if (p.n < 2 || p.t1Ms <= p.t0Ms) {
+        _evalOut[0] = p.samples[0];
+        _evalOut[1] = p.samples[1];
+        _evalOut[2] = p.samples[2];
+        return _evalOut;
+    }
+    let u = (tMs - p.t0Ms) / (p.t1Ms - p.t0Ms);
+    if (u <= 0) {
+        _evalOut[0] = p.samples[0];
+        _evalOut[1] = p.samples[1];
+        _evalOut[2] = p.samples[2];
+        return _evalOut;
+    }
+    if (u >= 1) {
+        const k = (p.n - 1) * 3;
+        _evalOut[0] = p.samples[k];
+        _evalOut[1] = p.samples[k + 1];
+        _evalOut[2] = p.samples[k + 2];
+        return _evalOut;
+    }
+    const idxF = u * (p.n - 1);
+    const i0 = idxF | 0;
+    const i1 = (i0 + 1 < p.n) ? i0 + 1 : i0;
+    const f = idxF - i0;
+    const a0 = i0 * 3, a1 = i1 * 3;
+    _evalOut[0] = p.samples[a0]     * (1 - f) + p.samples[a1]     * f;
+    _evalOut[1] = p.samples[a0 + 1] * (1 - f) + p.samples[a1 + 1] * f;
+    _evalOut[2] = p.samples[a0 + 2] * (1 - f) + p.samples[a1 + 2] * f;
+    return _evalOut;
+}
+
+function updatePlaybackPositions() {
+    if (paths.size === 0) return;
+    let tEff = currentPlayheadMs;
+    if (isPlaying) {
+        // Extrapolate forward from the last playhead arrival at 1× rate so
+        // motion stays smooth between Qt's 50 Hz ticks.
+        tEff += (performance.now() - playheadRecvAtPerfMs);
+    }
+    for (const [trackIndex, p] of paths) {
+        if (trackIndex === _draggingTrackIndex) continue;
+        const e = entities.get(trackIndex);
+        if (!e || !e.mesh.visible) continue;
+        const xyz = evaluatePathAt(p, tEff);
+        if (xyz) e.mesh.position.set(xyz[0], xyz[1], xyz[2]);
+    }
 }
 
 // ── Phase 2: Bezier tangent handle visualisation ────────────────────────────
@@ -348,6 +451,14 @@ function applyEntityColor(trackIndex, hex) {
     e.mesh.material.color.copy(e.baseColor);
     const sel = (trackIndex === selectedTrackIndex);
     e.mesh.material.emissive.copy(e.baseColor).multiplyScalar(sel ? 0.85 : 0.30);
+    // Refresh the shared kf-marker material so existing markers re-tint.
+    const mkMat = kfMarkerMaterials.get(trackIndex);
+    if (mkMat) {
+        mkMat.color.copy(e.baseColor);
+        mkMat.emissive.copy(e.baseColor).multiplyScalar(0.6);
+    }
+    const line = pathLines.get(trackIndex);
+    if (line) line.material.color.copy(e.baseColor);
 }
 
 function applyEntityVisibility(trackIndex, visible) {
@@ -392,8 +503,18 @@ scene.add(transformCtl);
 // commitObjectLocation in C++ gates by Auto Key Mode — when ON it writes a kf,
 // when OFF the position update is purely visual.
 let _xformLastTrack = -1;
+// perf-3d-playback: while the user drags a sphere via the XYZ gizmo the rAF
+// loop must NOT overwrite that mesh from the path samples — track which
+// trackIndex is being dragged and skip it in updatePlaybackPositions.
+let _draggingTrackIndex = -1;
 transformCtl.addEventListener('dragging-changed', (ev) => {
     controls.enabled = !ev.value;
+    if (ev.value) {
+        const obj = transformCtl.object;
+        _draggingTrackIndex = (obj && obj.userData) ? (obj.userData.trackIndex ?? -1) : -1;
+    } else {
+        _draggingTrackIndex = -1;
+    }
     if (!ev.value && _xformLastTrack >= 0 && transformCtl.object && window.scene3D) {
         const obj = transformCtl.object;
         window.scene3D.entityCommittedInScene(_xformLastTrack,
@@ -550,6 +671,9 @@ window.addEventListener('resize', () => {
 document.fonts.ready.then(() => {
     (function animate() {
         requestAnimationFrame(animate);
+        // perf-3d-playback: resolve every track's automated position from the
+        // cached polyline + extrapolated playhead before we render this frame.
+        updatePlaybackPositions();
         controls.update();
         renderer.render(scene, camera);
         syncGizmo();
@@ -577,14 +701,27 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
 
     scene3D.entityAdded.connect((trackIndex, x, y, z) => {
         const e = ensureEntity(trackIndex);
-        e.mesh.position.set(x, y, z);
+        // Snap once on add. If a path is later attached, the rAF loop takes over.
+        if (!paths.has(trackIndex)) e.mesh.position.set(x, y, z);
         scene3D.entityColor(trackIndex, (hex) => applyEntityColor(trackIndex, hex));
         scene3D.entityVisible(trackIndex, (vis) => { applyEntityVisibility(trackIndex, vis); updateStatus(); });
         updateStatus();
     });
     scene3D.entityPositionChanged.connect((trackIndex, x, y, z) => {
         const e = ensureEntity(trackIndex);
+        // perf-3d-playback: when a track has automation (path), the rAF loop
+        // owns its position. Snapping here would fight the smooth eval.
+        if (paths.has(trackIndex)) return;
         e.mesh.position.set(x, y, z);
+    });
+    scene3D.playheadMoved.connect((tMs) => {
+        currentPlayheadMs = tMs;
+        playheadRecvAtPerfMs = performance.now();
+    });
+    scene3D.playbackStateChanged.connect((playing) => {
+        isPlaying = !!playing;
+        // Re-base the extrapolation clock so we don't fast-forward on resume.
+        playheadRecvAtPerfMs = performance.now();
     });
     scene3D.entityColorChanged.connect((trackIndex, hex) => applyEntityColor(trackIndex, hex));
     scene3D.entityVisibilityChanged.connect((trackIndex, vis) => { applyEntityVisibility(trackIndex, vis); updateStatus(); });
@@ -596,6 +733,7 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
             scene.remove(line); line.geometry.dispose(); line.material.dispose();
         }
         pathLines.clear();
+        paths.clear();
         clearAllEntities();
         updateStatus();
     });
@@ -623,9 +761,11 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
         removeKfMarker(trackIndex, kfId);
         if (kfId === tangentHandles.kfId) clearTangentHandles();
     });
-    scene3D.pathSampled.connect((trackIndex, flat) => {
-        scene3D.log('[JS-3D] pathSampled track=' + trackIndex + ' len=' + (flat ? flat.length : 0));
-        setPathFor(trackIndex, flat);
+    scene3D.pathSampled.connect((trackIndex, t0, t1, flat) => {
+        scene3D.log('[JS-3D] pathSampled track=' + trackIndex
+                  + ' t0=' + t0 + ' t1=' + t1
+                  + ' len=' + (flat ? flat.length : 0));
+        setPathFor(trackIndex, t0, t1, flat);
     });
 
     // Phase 2: Bezier tangent handles

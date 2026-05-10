@@ -63,6 +63,9 @@ public slots:
     void setEntityVisible(int trackIndex, bool visible);
     void setSelected(int trackIndex);
     void resetScene();
+    // Tells JS whether the transport is currently playing. JS extrapolates the
+    // playhead between Qt ticks during playback and snaps when stopped.
+    void setPlaybackState(bool playing);
 
     // Phase 1: per-track keyframe / path push to JS
     void attachAutomation(int trackIndex, ObjectPosAutomation* automation);
@@ -101,7 +104,11 @@ signals:
     void keyframeAdded(int trackIndex, QString kfId, double x, double y, double z, int interp);
     void keyframeUpdated(int trackIndex, QString kfId, double x, double y, double z, int interp);
     void keyframeRemoved(int trackIndex, QString kfId);
-    void pathSampled(int trackIndex, QVariantList xyzFlat);
+    // Path samples are evenly spaced in time across [t0Ms, t1Ms]. JS uses
+    // these bounds to walk the polyline by playhead time at rAF cadence.
+    void pathSampled(int trackIndex, double t0Ms, double t1Ms, QVariantList xyzFlat);
+    // Mirrors AudioManager::getSong()->isPause() inverse — true while playing.
+    void playbackStateChanged(bool playing);
 
     // Phase 2: Bezier tangent handle signals
     void tangentsForSelected(QString kfId,
@@ -129,4 +136,5 @@ private:
     QHash<int, QHash<QString, PublishedKey>> m_publishedKeys;
     qint64 m_playhead { 0 };
     int    m_selectedTrack { -1 };
+    bool   m_playing { false };
 };

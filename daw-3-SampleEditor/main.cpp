@@ -290,6 +290,14 @@ int main(int argc, char* argv[])
                         }
                     });
 
+                    // perf-3d-playback: forward play/stop transitions to JS so
+                    // the rAF loop knows whether to extrapolate the playhead
+                    // between Qt ticks (smooth motion) or snap to it (scrub).
+                    QObject::connect(_areaInfo, &AreaInfo::playbackStateChanged, [scene3D]() {
+                        if (auto* song = AudioManager::getSong())
+                            scene3D->setPlaybackState(song->isPlaying());
+                    });
+
                     // Forward every playhead change to ObjectCreator. During playback the
                     // sigPlayBackUpdateTimeout path also updates time at 60Hz; outside of
                     // playback (stopped or initial state) we still need m_currentTime to
