@@ -142,6 +142,17 @@ let isPlaying = false;
 let currentPlayheadMs = 0;
 let playheadRecvAtPerfMs = 0;
 
+// Phase 2: JS-side clock seeded by audio clock, anchored by batch frame arrivals.
+// playStarted(audioTimeMs) sets playStartMs + playStartPerfNow, enabling smooth
+// extrapolation independent of QWebChannel jitter.
+let playStartMs = 0;
+let playStartPerfNow = 0;
+
+// Phase 2: spatial state snapshot — per-track {x, y, z, radius}, updated by
+// spatialFrameUpdate batch signal. Used by animate() to set mesh position/scale.
+const spatialCache = new Map();
+let _spatialDirty = false;
+
 const KF_INTERP_HOLD = 0;
 const KF_INTERP_LINEAR = 1;
 const KF_INTERP_BEZIER = 2;
@@ -327,20 +338,35 @@ function evaluatePathAt(p, tMs) {
 }
 
 function updatePlaybackPositions() {
+    // Legacy path evaluation for trajectory LINE geometry only (kept for visualization).
+    // Per-track position is now driven by spatialFrameUpdate batch signal + JS clock.
     if (paths.size === 0) return;
-    let tEff = currentPlayheadMs;
-    if (isPlaying) {
-        // Extrapolate forward from the last playhead arrival at 1× rate so
-        // motion stays smooth between Qt's 50 Hz ticks.
-        tEff += (performance.now() - playheadRecvAtPerfMs);
-    }
-    for (const [trackIndex, p] of paths) {
+}
+
+function updateFromSpatialCache() {
+    // Phase 2: apply batch frame spatial state to all entity meshes.
+    // Position source is spatialCache (not polyline walk), updated by spatialFrameUpdate.
+    // This ensures all tracks see the same {x,y,z,radius} at the same instant.
+    if (!_spatialDirty && !isPlaying) return;
+
+    // Compute effective playhead time from JS-side clock.
+    // playStartMs + (now - playStartPerfNow) stays smooth between batch arrivals.
+    const tEff = isPlaying
+        ? playStartMs + (performance.now() - playStartPerfNow)
+        : playStartMs;
+
+    for (const [trackIndex, sf] of spatialCache) {
         if (trackIndex === _draggingTrackIndex) continue;
         const e = entities.get(trackIndex);
         if (!e || !e.mesh.visible) continue;
-        const xyz = evaluatePathAt(p, tEff);
-        if (xyz) e.mesh.position.set(xyz[0], xyz[1], xyz[2]);
+
+        // Position driven by batch frame
+        e.mesh.position.set(sf.x, sf.y, sf.z);
+        // Radius drives visual size — scale relative to base radius (0.32 sphere)
+        const s = Math.max(0.3, sf.radius) / 0.5;
+        e.mesh.scale.setScalar(s);
     }
+    _spatialDirty = false;
 }
 
 // ── Phase 2: Bezier tangent handle visualisation ────────────────────────────
@@ -673,7 +699,7 @@ document.fonts.ready.then(() => {
         requestAnimationFrame(animate);
         // perf-3d-playback: resolve every track's automated position from the
         // cached polyline + extrapolated playhead before we render this frame.
-        updatePlaybackPositions();
+        updateFromSpatialCache();
         controls.update();
         renderer.render(scene, camera);
         syncGizmo();
@@ -722,6 +748,35 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
         isPlaying = !!playing;
         // Re-base the extrapolation clock so we don't fast-forward on resume.
         playheadRecvAtPerfMs = performance.now();
+    });
+
+    // Phase 2: JS-side clock seeding from audio clock
+    scene3D.playStarted.connect((audioTimeMs) => {
+        playStartMs = audioTimeMs;
+        playStartPerfNow = performance.now();
+        isPlaying = true;
+    });
+    scene3D.playStopped.connect((audioTimeMs) => {
+        isPlaying = false;
+        playStartMs = audioTimeMs;  // freeze at stop time
+    });
+
+    // Phase 2: batched spatial frame — all tracks' live state in one signal
+    scene3D.spatialFrameUpdate.connect((audioTimeMs, data) => {
+        // Use the audio time in this frame to keep JS clock anchored
+        playStartMs = audioTimeMs;
+        playStartPerfNow = performance.now();
+        // Unpack flat array: [trackIdx, x, y, z, radius, trackIdx, x, y, z, radius, ...]
+        for (let i = 0; i + 4 < data.length; i += 5) {
+            const trackIdx = data[i] | 0;
+            const sf = spatialCache.get(trackIdx) || {};
+            sf.x = data[i+1];
+            sf.y = data[i+2];
+            sf.z = data[i+3];
+            sf.radius = data[i+4];
+            spatialCache.set(trackIdx, sf);
+        }
+        _spatialDirty = true;
     });
     scene3D.entityColorChanged.connect((trackIndex, hex) => applyEntityColor(trackIndex, hex));
     scene3D.entityVisibilityChanged.connect((trackIndex, vis) => { applyEntityVisibility(trackIndex, vis); updateStatus(); });

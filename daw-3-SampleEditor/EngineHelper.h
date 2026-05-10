@@ -50,6 +50,13 @@
 using namespace DGE::QtWrapper;
 using namespace DGE::Scene;
 
+struct SpatialFrame {
+    float x = 0;
+    float y = 0;
+    float z = 0;
+    float radius = 0.5f;
+};
+
 class ObjectCreator : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool autoKeyMode READ autoKeyMode WRITE setAutoKeyMode NOTIFY autoKeyModeChanged)
@@ -83,6 +90,7 @@ public slots:
 
     Q_INVOKABLE void setKeyFrames(int trackIndex, QMap<qint64, int> keyFrames);
     Q_INVOKABLE void setCurrentTime(qint64 time);
+    Q_INVOKABLE QVariantList getSpatialFrames() const;
 
     // Live transform — sphere moves visually while user drags. Never writes
     // a keyframe. Call this on every pointer-move during a drag.
@@ -164,6 +172,9 @@ protected:
     QSet<int>                    m_keyframeLaneActive;   // legacy — to be removed
     qint64                       m_currentTime = 0;
     bool                         m_autoKeyMode = true;
+
+    // Per-track spatial state snapshot — written by UI thread at 60Hz, read by JS bridge
+    QHash<int, SpatialFrame> m_spatialFrames;
 
     QList<qint64> removing_list;
     bool _is_undoing = false;

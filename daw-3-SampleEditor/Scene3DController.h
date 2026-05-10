@@ -65,7 +65,7 @@ public slots:
     void resetScene();
     // Tells JS whether the transport is currently playing. JS extrapolates the
     // playhead between Qt ticks during playback and snaps when stopped.
-    void setPlaybackState(bool playing);
+    void setPlaybackState(bool playing, double audioTimeMs = 0.0);
 
     // Phase 1: per-track keyframe / path push to JS
     void attachAutomation(int trackIndex, ObjectPosAutomation* automation);
@@ -109,6 +109,12 @@ signals:
     void pathSampled(int trackIndex, double t0Ms, double t1Ms, QVariantList xyzFlat);
     // Mirrors AudioManager::getSong()->isPause() inverse — true while playing.
     void playbackStateChanged(bool playing);
+
+    // Phase 2: batched spatial frame updates — single signal per frame with all tracks
+    void playStarted(double audioTimeMs);
+    void playStopped(double audioTimeMs);
+    // Format: [trackIdx, x, y, z, radius,  trackIdx, x, y, z, radius, ...]
+    void spatialFrameUpdate(double audioTimeMs, QVariantList data);
 
     // Phase 2: Bezier tangent handle signals
     void tangentsForSelected(QString kfId,

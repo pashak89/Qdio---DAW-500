@@ -18,7 +18,7 @@ AreaInfo::AreaInfo(KeyEventFilter* filter, AreaType areaType, QObject* parent)
     _lastSelectedArea = new SelectedArea(this);
     _trackMasterSelectionArea = new SelectedArea(this);
 
-    _playbackUpdateTimer.setInterval(20);
+    _playbackUpdateTimer.setInterval(16);  // ~60 Hz (was 20ms = 50 Hz)
     connect(&_playbackUpdateTimer, &QTimer::timeout, this, &AreaInfo::sigPlayBackUpdateTimeout);
     _playbackUpdateTimer.start();
 

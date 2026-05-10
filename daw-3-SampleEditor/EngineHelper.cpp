@@ -606,11 +606,34 @@ void ObjectCreator::setCurrentTime(qint64 time)
     m_currentTime = time;
     m_animationManager->setCurrentTime(time);
 
-    // perf-3d-playback: positions are now evaluated on the JS side from the
-    // pre-sampled path + playhead time, so we no longer fan out one
-    // sigObjectMoved per track per playback tick (was 50·N QWebChannel
-    // messages/sec). The JS rAF loop walks the polyline using `playheadMoved`
-    // and `playbackStateChanged` for smoothness.
+    // Re-evaluate all per-track automations and snapshot into m_spatialFrames.
+    // The snapshot is read by getSpatialFrames() at the end of the playback tick
+    // and emitted as a single batched QWebChannel signal to both 2D and 3D views.
+    for (auto it = m_objectAutomations.constBegin(); it != m_objectAutomations.constEnd(); ++it) {
+        ObjectPosAutomation* oa = it.value();
+        if (oa && !oa->isEmpty()) {
+            QVector3D p = oa->evaluate(time);
+            SpatialFrame& sf = m_spatialFrames[it.key()];
+            sf.x = p.x();
+            sf.y = p.y();
+            sf.z = p.z();
+            // radius: constant 0.5 until radius automation is added
+        }
+    }
+}
+
+QVariantList ObjectCreator::getSpatialFrames() const
+{
+    QVariantList out;
+    out.reserve(m_spatialFrames.size() * 5);
+    for (auto it = m_spatialFrames.constBegin(); it != m_spatialFrames.constEnd(); ++it) {
+        out << it.key()
+            << double(it.value().x)
+            << double(it.value().y)
+            << double(it.value().z)
+            << double(it.value().radius);
+    }
+    return out;
 }
 
 void ObjectCreator::syncObjectKeyframes(int trackIndex, QList<qint64> times)

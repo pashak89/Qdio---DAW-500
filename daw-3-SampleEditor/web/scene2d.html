@@ -182,6 +182,14 @@ const KF_INTERP_HOLD = 0;
 const KF_INTERP_LINEAR = 1;
 const KF_INTERP_BEZIER = 2;
 
+// Phase 2: JS-side clock seeded by audio clock, anchored by batch frame arrivals
+let playStartMs = 0;
+let playStartPerfNow = 0;
+let isPlaying = false;
+
+// Phase 2: spatial state snapshot — per-track {x, y, z, radius}
+const spatialCache = new Map();
+
 function makeKfGeometry(interp) {
     if (interp === KF_INTERP_LINEAR) return new THREE.OctahedronGeometry(0.13, 0);
     if (interp === KF_INTERP_HOLD)   return new THREE.BoxGeometry(0.18, 0.18, 0.18);
@@ -684,6 +692,42 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
     scene3D.entityColorChanged.connect((trackIndex, hex) => applyEntityColor(trackIndex, hex));
     scene3D.entityVisibilityChanged.connect((trackIndex, vis) => applyEntityVisibility(trackIndex, vis));
     scene3D.trackSelected.connect((trackIndex) => setSelectedTrack(trackIndex));
+
+    // Phase 2: JS-side clock seeding from audio clock
+    scene3D.playStarted.connect((audioTimeMs) => {
+        playStartMs = audioTimeMs;
+        playStartPerfNow = performance.now();
+        isPlaying = true;
+    });
+    scene3D.playStopped.connect((audioTimeMs) => {
+        isPlaying = false;
+        playStartMs = audioTimeMs;
+    });
+
+    // Phase 2: batched spatial frame — all tracks' live state in one signal
+    scene3D.spatialFrameUpdate.connect((audioTimeMs, data) => {
+        // Anchor JS clock from audio clock
+        playStartMs = audioTimeMs;
+        playStartPerfNow = performance.now();
+        // Unpack and cache spatial state [trackIdx, x, y, z, radius, ...]
+        for (let i = 0; i + 4 < data.length; i += 5) {
+            const trackIdx = data[i] | 0;
+            const sf = spatialCache.get(trackIdx) || {};
+            sf.x = data[i+1];
+            sf.y = data[i+2];
+            sf.z = data[i+3];
+            sf.radius = data[i+4];
+            spatialCache.set(trackIdx, sf);
+            // Apply to 2D scene: project (x, z) to top-down, scale by radius
+            const e = entities.get(trackIdx);
+            if (e && e.mesh.visible) {
+                e.mesh.position.set(sf.x, sf.z, 0);  // Top-down: X+Z plane
+                const s = Math.max(0.3, sf.radius) / 0.5;
+                e.mesh.scale.setScalar(s);
+            }
+        }
+    });
+
     scene3D.sceneReset.connect(() => {
         for (const tIdx of kfMarkers.keys()) clearKeyframesForTrack(tIdx);
         kfMarkers.clear();

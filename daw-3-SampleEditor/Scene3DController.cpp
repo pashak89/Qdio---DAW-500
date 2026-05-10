@@ -133,11 +133,15 @@ void Scene3DController::setSelected(int trackIndex)
     emit trackSelected(trackIndex);
 }
 
-void Scene3DController::setPlaybackState(bool playing)
+void Scene3DController::setPlaybackState(bool playing, double audioTimeMs)
 {
     if (m_playing == playing) return;
     m_playing = playing;
     scnLog(QString("[Scene3D] setPlaybackState playing=%1").arg(playing ? "true" : "false"));
+    if (playing)
+        emit playStarted(audioTimeMs);
+    else
+        emit playStopped(audioTimeMs);
     emit playbackStateChanged(playing);
 }
 

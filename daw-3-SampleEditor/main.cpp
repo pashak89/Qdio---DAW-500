@@ -287,16 +287,22 @@ int main(int argc, char* argv[])
                             const qint64 t = _areaInfo->playheadMarker();
                             objectCreator->setCurrentTime(t);
                             scene3D->setPlayhead(t);
+                            // Emit one batched spatial frame with all tracks' live state
+                            const double audioTimeMs = t / 1000.0;  // t is in milliseconds
+                            emit scene3D->spatialFrameUpdate(audioTimeMs, objectCreator->getSpatialFrames());
                         }
                     });
 
                     // perf-3d-playback: forward play/stop transitions to JS so
                     // the rAF loop knows whether to extrapolate the playhead
                     // between Qt ticks (smooth motion) or snap to it (scrub).
-                    QObject::connect(_areaInfo, &AreaInfo::playbackStateChanged, [scene3D]() {
-                        if (auto* song = AudioManager::getSong())
-                            scene3D->setPlaybackState(song->isPlaying());
-                    });
+                    // Connect directly to Song's signal — AreaInfo::playbackStateChanged is a private slot.
+                    if (auto* song = AudioManager::getSong()) {
+                        QObject::connect(song, &Song::playbackStateChanged, [scene3D, _areaInfo, song]() {
+                            const double audioTimeMs = _areaInfo->playheadMarker() / 1000.0;
+                            scene3D->setPlaybackState(song->isPlaying(), audioTimeMs);
+                        });
+                    }
 
                     // Forward every playhead change to ObjectCreator. During playback the
                     // sigPlayBackUpdateTimeout path also updates time at 60Hz; outside of
