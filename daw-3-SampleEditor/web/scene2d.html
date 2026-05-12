@@ -178,6 +178,7 @@ const entities = new Map();
 // ── Keyframes & paths (Phase 1) ────────────────────────────────────────────
 const kfMarkers = new Map();   // trackIndex -> Map<kfId, { mesh, interp }>
 const pathLines = new Map();   // trackIndex -> THREE.Line
+const paths     = new Map();   // trackIndex -> { t0Ms, t1Ms, samples: Float32Array, n }
 const KF_INTERP_HOLD = 0;
 const KF_INTERP_LINEAR = 1;
 const KF_INTERP_BEZIER = 2;
@@ -186,6 +187,7 @@ const KF_INTERP_BEZIER = 2;
 let playStartMs = 0;
 let playStartPerfNow = 0;
 let isPlaying = false;
+let currentPlayheadMs = 0;   // last known playhead position (ms); updated by playheadMoved
 
 // Phase 2: spatial state snapshot — per-track {x, y, z, radius}
 const spatialCache = new Map();
@@ -250,12 +252,34 @@ function removeKfMarker(trackIndex, kfId) {
     entry.mesh.material.dispose();
     map.delete(kfId);
 }
-function setPathFor(trackIndex, flat) {
+function setPathFor(trackIndex, t0, t1, flat) {
     const haveData = !!flat && flat.length >= 6;
     let line = pathLines.get(trackIndex);
     if (!haveData) {
         if (line) { scene.remove(line); line.geometry.dispose(); line.material.dispose(); pathLines.delete(trackIndex); }
+        paths.delete(trackIndex);
         return;
+    }
+    // Cache path data so playheadMoved can evaluate position without the C++ bridge.
+    {
+        const n = (flat.length / 3) | 0;
+        let entry = paths.get(trackIndex);
+        if (!entry || entry.samples.length !== flat.length) {
+            entry = { t0Ms: t0, t1Ms: t1, samples: new Float32Array(flat.length), n };
+            paths.set(trackIndex, entry);
+        } else {
+            entry.t0Ms = t0; entry.t1Ms = t1; entry.n = n;
+        }
+        for (let i = 0; i < flat.length; ++i) entry.samples[i] = flat[i];
+    }
+    // Path just changed (e.g. keyframe dragged) — re-evaluate position at the
+    // current playhead so the entity moves in real time without needing a scrub.
+    if (!isPlaying) {
+        const pos = evaluatePathAt(paths.get(trackIndex), currentPlayheadMs);
+        if (pos) {
+            const e = entities.get(trackIndex);
+            if (e && e.mesh.visible) e.mesh.position.set(pos[0], pos[1], pos[2]);
+        }
     }
     if (line && line.geometry.attributes.position
         && line.geometry.attributes.position.array.length === flat.length) {
@@ -275,8 +299,38 @@ function setPathFor(trackIndex, flat) {
     scene.add(line);
     pathLines.set(trackIndex, line);
 }
+
+// Linear interp along the 128-sample polyline by playhead time.
+// Bezier curvature is already baked into the samples by Scene3DController::pushPathFor.
+const _evalOut = [0, 0, 0];
+function evaluatePathAt(p, tMs) {
+    if (!p || p.n < 1) return null;
+    if (p.n < 2 || p.t1Ms <= p.t0Ms) {
+        _evalOut[0] = p.samples[0]; _evalOut[1] = p.samples[1]; _evalOut[2] = p.samples[2];
+        return _evalOut;
+    }
+    let u = (tMs - p.t0Ms) / (p.t1Ms - p.t0Ms);
+    if (u <= 0) {
+        _evalOut[0] = p.samples[0]; _evalOut[1] = p.samples[1]; _evalOut[2] = p.samples[2];
+        return _evalOut;
+    }
+    if (u >= 1) {
+        const k = (p.n - 1) * 3;
+        _evalOut[0] = p.samples[k]; _evalOut[1] = p.samples[k+1]; _evalOut[2] = p.samples[k+2];
+        return _evalOut;
+    }
+    const idxF = u * (p.n - 1);
+    const i0 = idxF | 0;
+    const i1 = (i0 + 1 < p.n) ? i0 + 1 : i0;
+    const f = idxF - i0;
+    const a0 = i0 * 3, a1 = i1 * 3;
+    _evalOut[0] = p.samples[a0]   * (1-f) + p.samples[a1]   * f;
+    _evalOut[1] = p.samples[a0+1] * (1-f) + p.samples[a1+1] * f;
+    _evalOut[2] = p.samples[a0+2] * (1-f) + p.samples[a1+2] * f;
+    return _evalOut;
+}
 // ── Phase 2: Bezier tangent handle visualisation ────────────────────────────
-const tangentHandles = { inMesh: null, outMesh: null, inLine: null, outLine: null, kfId: null };
+const tangentHandles = { inMesh: null, outMesh: null, inLine: null, outLine: null, kfId: null, trackIndex: -1 };
 
 function clearTangentHandles() {
     for (const k of ['inMesh', 'outMesh', 'inLine', 'outLine']) {
@@ -288,9 +342,18 @@ function clearTangentHandles() {
         }
     }
     tangentHandles.kfId = null;
+    tangentHandles.trackIndex = -1;
+}
+
+function findTrackForKf(kfId) {
+    for (const [trackIndex, map] of kfMarkers) {
+        if (map.has(kfId)) return trackIndex;
+    }
+    return -1;
 }
 
 function showTangentHandles(kfId, kx, ky, kz, inX, inY, inZ, outX, outY, outZ) {
+    tangentHandles.trackIndex = findTrackForKf(kfId);
     const kfPos  = new THREE.Vector3(kx, ky, kz);
     const inPos  = new THREE.Vector3(kx + inX,  ky + inY,  kz + inZ);
     const outPos = new THREE.Vector3(kx + outX, ky + outY, kz + outZ);
@@ -385,6 +448,14 @@ function applyEntityVisibility(trackIndex, visible) {
     if (!e) return;
     e.mesh.visible = visible;
     if (!visible && transformCtl && transformCtl.object === e.mesh) transformCtl.detach();
+    const line = pathLines.get(trackIndex);
+    if (line) line.visible = visible;
+    const kfMap = kfMarkers.get(trackIndex);
+    if (kfMap) {
+        for (const entry of kfMap.values()) entry.mesh.visible = visible;
+    }
+    if (!visible && tangentHandles.trackIndex === trackIndex)
+        clearTangentHandles();
 }
 function setSelectedTrack(trackIndex) {
     selectedTrackIndex = trackIndex;
@@ -721,7 +792,7 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
             // Apply to 2D scene: project (x, z) to top-down, scale by radius
             const e = entities.get(trackIdx);
             if (e && e.mesh.visible) {
-                e.mesh.position.set(sf.x, sf.z, 0);  // Top-down: X+Z plane
+                e.mesh.position.set(sf.x, sf.y, sf.z);
                 const s = Math.max(0.3, sf.radius) / 0.5;
                 e.mesh.scale.setScalar(s);
             }
@@ -753,7 +824,20 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
         removeKfMarker(trackIndex, kfId);
         if (kfId === tangentHandles.kfId) clearTangentHandles();
     });
-    scene3D.pathSampled.connect((trackIndex, flat) => setPathFor(trackIndex, flat));
+    scene3D.pathSampled.connect((trackIndex, t0, t1, flat) => setPathFor(trackIndex, t0, t1, flat));
+
+    // Scrub: when playhead moves outside of playback, evaluate each path at the
+    // new time and reposition the entity sphere directly.
+    scene3D.playheadMoved.connect((tMs) => {
+        currentPlayheadMs = tMs;
+        if (isPlaying) return;
+        for (const [trackIndex, p] of paths) {
+            const pos = evaluatePathAt(p, tMs);
+            if (!pos) continue;
+            const e = entities.get(trackIndex);
+            if (e && e.mesh.visible) e.mesh.position.set(pos[0], pos[1], pos[2]);
+        }
+    });
 
     // Phase 2: Bezier tangent handles
     scene3D.tangentsForSelected.connect((kfId, kx, ky, kz, inX, inY, inZ, outX, outY, outZ) => {

@@ -272,6 +272,11 @@ int main(int argc, char* argv[])
 
                     QObject::connect(_areaInfo, &AreaInfo::sigCurrentSelectedTime, objectCreator,
                         &ObjectCreator::setCurrentTime, Qt::DirectConnection);
+                    QObject::connect(_areaInfo, &AreaInfo::sigCurrentSelectedTime,
+                        [objectCreator, scene3D](qint64 t) {
+                            scene3D->setPlayhead(t);
+                            emit scene3D->spatialFrameUpdate(t / 1000.0, objectCreator->getSpatialFrames());
+                        });
 
                     QObject::connect(_areaInfo, &AreaInfo::sigKeyFrameClear, objectCreator,
                         &ObjectCreator::keyFrameClear, Qt::DirectConnection);
@@ -314,6 +319,7 @@ int main(int argc, char* argv[])
                             const qint64 t = _areaInfo->playheadMarker();
                             objectCreator->setCurrentTime(t);
                             scene3D->setPlayhead(t);
+                            emit scene3D->spatialFrameUpdate(t / 1000.0, objectCreator->getSpatialFrames());
                         });
 
                     QObject::connect(_areaInfo, &AreaInfo::sigObjectPosition, objectCreator,

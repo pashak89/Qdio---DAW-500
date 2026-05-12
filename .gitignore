@@ -1,36 +1,9 @@
-# ── Qt build artifacts ─────────────────────────────────────────────────────
-build2019/Makefile
-build2019/Makefile.*
-build2019/.qmake.stash
-build2019/.qtc_clangd/
-build2019/mocinclude.opt
-build2019/release.7z
-
-# Build logs and scratch files
-build2019/*.log
-build2019/*.txt
-build2019/*.bat
-build2019/*.ps1
-build2019/*.err.log
-
-# Intermediate compiled files
-build2019/**/*.obj
-build2019/**/*.pdb
-build2019/**/*.exp
-build2019/**/*.ilk
-build2019/**/*.lib
-
-# MOC / RCC generated sources
-build2019/**/moc_*.cpp
-build2019/**/moc_*.h
-build2019/**/moc_predefs.h
-build2019/**/qrc_*.cpp
-build2019/**/ui_*.h
+# ── Entire build output and 3rdparty (keep locally, don't push) ─────────────
+build2019/
+daw-3-SampleEditor/3rdparty/
+daw-3-SampleEditor/juce/
 
 # Runtime logs / crash dumps
-build2019/**/Logs/
-build2019/**/*.dmp
-build2019/**/runtime*.log
 Logs/
 *.dmp
 

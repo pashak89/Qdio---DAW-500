@@ -173,6 +173,9 @@ win32 {
     } else: contains(QT_MINOR_VERSION, 15) {
         message("Configuring for Visual Studio 2019")
         INCLUDEPATH += $$PWD/juce/include
+        # Explicitly add Qt libraries with full paths to avoid linker issues
+        CONFIG(release, debug|release): LIBS += "C:/Qt/5.15.2/msvc2019_64/lib/libEGL.lib" "C:/Qt/5.15.2/msvc2019_64/lib/libGLESv2.lib"
+        else:CONFIG(debug, debug|release): LIBS += "C:/Qt/5.15.2/msvc2019_64/lib/libEGLd.lib" "C:/Qt/5.15.2/msvc2019_64/lib/libGLESv2d.lib"
         win32:CONFIG(release, debug|release): LIBS += -L$$PWD/juce/release-2019/release -ljuce_library
         else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/juce/debug-2019/debug -ljuce_library
 
@@ -190,11 +193,11 @@ win32 {
         win32:CONFIG(debug, debug|release) {
             LIBS += -L$$PWD/3rdparty/DGE-QD-SDK/x64/lib/Debug/ -L$$(QTDIR)/lib
             LIBS += -lCoreModule -lGFXModule -lSceneModule -lQtModule -lUIModule -lEngineModule -lScriptModule -lQDLib -lSDL3-static -lgtest -lgmock -lFreeImage
-            LIBS += -lquickfluxd -llibglew32d -lopengl32 -lglu32 -llibGLESv2 -llibEGL
+            LIBS += -lquickfluxd -llibglew32d -lopengl32 -lglu32
         } else:win32:CONFIG(release, debug|release) {
             LIBS += -L$$PWD/3rdparty/DGE-QD-SDK/x64/lib/RelWithDebInfo/ -L$$(QTDIR)/lib
             LIBS += -lCoreModule -lGFXModule -lSceneModule -lQtModule -lUIModule -lEngineModule -lScriptModule -lQDLib -lSDL3-static -lgtest -lgmock -lFreeImage
-            LIBS += -lquickflux -llibglew32 -lopengl32 -lglu32 -llibGLESv2 -llibEGL
+            LIBS += -lquickflux -llibglew32 -lopengl32 -lglu32
         }
 
 
@@ -418,8 +421,13 @@ win32{
     LIBS += -lversion
     LIBS += -lwinmm
     LIBS += -limm32
-    LIBS += -llibEGLd
-    LIBS += -llibGLESv2d
+    CONFIG(release, debug|release) {
+        LIBS += -llibEGL
+        LIBS += -llibGLESv2
+    } else {
+        LIBS += -llibEGLd
+        LIBS += -llibGLESv2d
+    }
     LIBS += -lLibJXR
     LIBS += -lLibOpenJPEG
     LIBS += -lLibJpeg
