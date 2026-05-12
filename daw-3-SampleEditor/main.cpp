@@ -275,7 +275,8 @@ int main(int argc, char* argv[])
                     QObject::connect(_areaInfo, &AreaInfo::sigCurrentSelectedTime,
                         [objectCreator, scene3D](qint64 t) {
                             scene3D->setPlayhead(t);
-                            emit scene3D->spatialFrameUpdate(t / 1000.0, objectCreator->getSpatialFrames());
+                            // t is in milliseconds; JS expects ms (matches path t0Ms/t1Ms units).
+                            emit scene3D->spatialFrameUpdate(double(t), objectCreator->getSpatialFrames());
                         });
 
                     QObject::connect(_areaInfo, &AreaInfo::sigKeyFrameClear, objectCreator,
@@ -292,9 +293,16 @@ int main(int argc, char* argv[])
                             const qint64 t = _areaInfo->playheadMarker();
                             objectCreator->setCurrentTime(t);
                             scene3D->setPlayhead(t);
-                            // Emit one batched spatial frame with all tracks' live state
-                            const double audioTimeMs = t / 1000.0;  // t is in milliseconds
-                            emit scene3D->spatialFrameUpdate(audioTimeMs, objectCreator->getSpatialFrames());
+                            // Throttle WebChannel emission: JS now drives object position from the
+                            // local Bezier-sampled curve at rAF rate; C++ only needs to anchor the
+                            // JS clock and push radius/fallback periodically. 60Hz / 3 = 20Hz.
+                            static int s_spatialTickCounter = 0;
+                            if ((++s_spatialTickCounter % 3) == 0) {
+                                // playheadMarker returns ms (see cliparea.cpp: _playbackMarker = seconds*1000).
+                                // JS path t0Ms/t1Ms are also ms — must NOT divide by 1000 here.
+                                const double audioTimeMs = double(t);
+                                emit scene3D->spatialFrameUpdate(audioTimeMs, objectCreator->getSpatialFrames());
+                            }
                         }
                     });
 
@@ -304,7 +312,8 @@ int main(int argc, char* argv[])
                     // Connect directly to Song's signal — AreaInfo::playbackStateChanged is a private slot.
                     if (auto* song = AudioManager::getSong()) {
                         QObject::connect(song, &Song::playbackStateChanged, [scene3D, _areaInfo, song]() {
-                            const double audioTimeMs = _areaInfo->playheadMarker() / 1000.0;
+                            // playheadMarker is in ms; JS treats playStartMs as ms.
+                            const double audioTimeMs = _areaInfo->playheadMarker();
                             scene3D->setPlaybackState(song->isPlaying(), audioTimeMs);
                         });
                     }
@@ -319,7 +328,8 @@ int main(int argc, char* argv[])
                             const qint64 t = _areaInfo->playheadMarker();
                             objectCreator->setCurrentTime(t);
                             scene3D->setPlayhead(t);
-                            emit scene3D->spatialFrameUpdate(t / 1000.0, objectCreator->getSpatialFrames());
+                            // t is in ms; JS expects ms.
+                            emit scene3D->spatialFrameUpdate(double(t), objectCreator->getSpatialFrames());
                         });
 
                     QObject::connect(_areaInfo, &AreaInfo::sigObjectPosition, objectCreator,

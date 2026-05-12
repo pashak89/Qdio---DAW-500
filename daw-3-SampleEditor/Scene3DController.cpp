@@ -328,7 +328,12 @@ void Scene3DController::pushPathFor(int trackIndex)
         emit pathSampled(trackIndex, double(t0), double(t0), flat);
         return;
     }
-    constexpr int N = 128;
+    // Adaptive sample density: ~1 sample per 25ms of path duration (40Hz baseline).
+    // Floor at 64 for very short paths, cap at 1024 to keep WebChannel payload sane.
+    // Prior code used a fixed 128 regardless of duration — long paths got ~234ms-per-sample
+    // chunks that produced visible kinks in linear interpolation on the JS side.
+    const qint64 duration = qMax<qint64>(1, t1 - t0);
+    const int N = qBound(64, int(duration / 25) + 1, 1024);
     flat.reserve(N * 3);
     for (int i = 0; i < N; ++i) {
         const double u = double(i) / double(N - 1);

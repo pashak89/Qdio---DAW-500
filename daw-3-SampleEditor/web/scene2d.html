@@ -729,9 +729,25 @@ function drawGizmoLabels() {
 
 // ── Animate ────────────────────────────────────────────────────────────────
 applyProjection('top');
+
+// Per-frame path-eval during playback: produces smooth motion at rAF rate
+// regardless of WebChannel delivery cadence. Mirrors scene3d.html behavior.
+function updatePlayingPositions() {
+    if (!isPlaying) return;
+    const tEff = playStartMs + (performance.now() - playStartPerfNow);
+    for (const [trackIndex, p] of paths) {
+        if (!p || p.n < 2) continue;
+        const e = entities.get(trackIndex);
+        if (!e || !e.mesh.visible) continue;
+        const pos = evaluatePathAt(p, tEff);
+        if (pos) e.mesh.position.set(pos[0], pos[1], pos[2]);
+    }
+}
+
 document.fonts.ready.then(() => {
     (function animate() {
         requestAnimationFrame(animate);
+        updatePlayingPositions();
         renderer.render(scene, camera);
         gRenderer.render(gScene, gCamera);
         drawGizmoLabels();
@@ -777,10 +793,25 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
 
     // Phase 2: batched spatial frame — all tracks' live state in one signal
     scene3D.spatialFrameUpdate.connect((audioTimeMs, data) => {
-        // Anchor JS clock from audio clock
-        playStartMs = audioTimeMs;
-        playStartPerfNow = performance.now();
-        // Unpack and cache spatial state [trackIdx, x, y, z, radius, ...]
+        // Drift-corrected clock anchoring (matches scene3d.html). Hard-snap on
+        // large jumps (seek/glitch), soft-pull otherwise so tEff stays monotonic.
+        if (isPlaying) {
+            const expected = playStartMs + (performance.now() - playStartPerfNow);
+            const drift = audioTimeMs - expected;
+            if (Math.abs(drift) > 30 /* DRIFT_SNAP_MS */) {
+                playStartMs = audioTimeMs;
+                playStartPerfNow = performance.now();
+            } else {
+                playStartMs += drift * 0.05 /* DRIFT_PULL */;
+            }
+        } else {
+            playStartMs = audioTimeMs;
+            playStartPerfNow = performance.now();
+        }
+        // Unpack and cache spatial state [trackIdx, x, y, z, radius, ...].
+        // During playback, the rAF loop drives position from path-eval; we still
+        // apply the radius/fallback here for the not-playing case and as a safety
+        // net when no path exists for a track.
         for (let i = 0; i + 4 < data.length; i += 5) {
             const trackIdx = data[i] | 0;
             const sf = spatialCache.get(trackIdx) || {};
@@ -789,10 +820,11 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
             sf.z = data[i+3];
             sf.radius = data[i+4];
             spatialCache.set(trackIdx, sf);
-            // Apply to 2D scene: project (x, z) to top-down, scale by radius
             const e = entities.get(trackIdx);
             if (e && e.mesh.visible) {
-                e.mesh.position.set(sf.x, sf.y, sf.z);
+                if (!isPlaying || !paths.has(trackIdx)) {
+                    e.mesh.position.set(sf.x, sf.y, sf.z);
+                }
                 const s = Math.max(0.3, sf.radius) / 0.5;
                 e.mesh.scale.setScalar(s);
             }

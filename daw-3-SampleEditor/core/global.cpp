@@ -18,6 +18,11 @@ AreaInfo::AreaInfo(KeyEventFilter* filter, AreaType areaType, QObject* parent)
     _lastSelectedArea = new SelectedArea(this);
     _trackMasterSelectionArea = new SelectedArea(this);
 
+    // PreciseTimer uses the Windows multimedia timer (~1ms resolution) instead of
+    // the default CoarseTimer (15ms granularity on Windows). Without this, a 16ms
+    // interval is delivered at ~15/31/46ms with up to 15ms jitter per tick, which
+    // shows up as visible stutter in the 3D scene's playback motion.
+    _playbackUpdateTimer.setTimerType(Qt::PreciseTimer);
     _playbackUpdateTimer.setInterval(16);  // ~60 Hz (was 20ms = 50 Hz)
     connect(&_playbackUpdateTimer, &QTimer::timeout, this, &AreaInfo::sigPlayBackUpdateTimeout);
     _playbackUpdateTimer.start();

@@ -828,8 +828,22 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
     // Directly apply positions on receipt (mirrors scene2d.html) so 3D scene
     // updates every playback tick regardless of rAF timing or path cache state.
     scene3D.spatialFrameUpdate.connect((audioTimeMs, data) => {
-        playStartMs = audioTimeMs;
-        playStartPerfNow = performance.now();
+        // Drift-corrected clock: hard-snap on big jumps (seek/glitch), soft-pull
+        // otherwise so tEff stays monotonic and WebChannel jitter doesn't bleed
+        // into visible motion stutter via the path-eval in the rAF loop.
+        if (isPlaying) {
+            const expected = playStartMs + (performance.now() - playStartPerfNow);
+            const drift = audioTimeMs - expected;
+            if (Math.abs(drift) > 30 /* DRIFT_SNAP_MS */) {
+                playStartMs = audioTimeMs;
+                playStartPerfNow = performance.now();
+            } else {
+                playStartMs += drift * 0.05 /* DRIFT_PULL */;
+            }
+        } else {
+            playStartMs = audioTimeMs;
+            playStartPerfNow = performance.now();
+        }
         for (let i = 0; i + 4 < data.length; i += 5) {
             const trackIdx = data[i] | 0;
             const sf = spatialCache.get(trackIdx) || {};
