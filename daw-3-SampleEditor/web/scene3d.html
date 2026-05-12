@@ -121,6 +121,10 @@ controls.minDistance = 0.5;
 controls.maxDistance = 100;
 controls.target.set(0, 0, 0);
 
+// Skip the gizmo render + label pass when camera is idle and not playing.
+let _gizmoDirty = true;
+controls.addEventListener('change', () => { _gizmoDirty = true; });
+
 // ── Track entities ──────────────────────────────────────────────────────────
 const entities = new Map();   // trackIndex -> { mesh, baseColor }
 
@@ -274,6 +278,21 @@ function setPathFor(trackIndex, t0, t1, flat) {
         for (let i = 0; i < flat.length; ++i) entry.samples[i] = flat[i];
     }
 
+    // Path just changed — re-evaluate entity position at the current playhead
+    // so keyframe drag is reflected in real time (must be before early return).
+    if (!isPlaying) {
+        const pos = evaluatePathAt(paths.get(trackIndex), currentPlayheadMs);
+        if (pos) {
+            const e = entities.get(trackIndex);
+            if (e && e.mesh.visible) {
+                e.mesh.position.set(pos[0], pos[1], pos[2]);
+                const sf = spatialCache.get(trackIndex) || {};
+                sf.x = pos[0]; sf.y = pos[1]; sf.z = pos[2];
+                spatialCache.set(trackIndex, sf);
+            }
+        }
+    }
+
     // R6: reuse the existing line + geometry when the sample count matches.
     // This is the path that fires 60Hz during tangent drag — disposing and
     // recreating BufferGeometry every frame causes visible pauses; updating
@@ -344,13 +363,11 @@ function updatePlaybackPositions() {
 }
 
 function updateFromSpatialCache() {
-    // Phase 2: apply batch frame spatial state to all entity meshes.
-    // Position source is spatialCache (not polyline walk), updated by spatialFrameUpdate.
-    // This ensures all tracks see the same {x,y,z,radius} at the same instant.
+    // During playback: run every rAF frame so the curve is evaluated at the smooth
+    // JS clock time (tEff), not just when a new WebChannel message arrives.
     if (!_spatialDirty && !isPlaying) return;
 
-    // Compute effective playhead time from JS-side clock.
-    // playStartMs + (now - playStartPerfNow) stays smooth between batch arrivals.
+    // Smooth JS-side clock seeded by audio engine via playStarted / spatialFrameUpdate.
     const tEff = isPlaying
         ? playStartMs + (performance.now() - playStartPerfNow)
         : playStartMs;
@@ -360,13 +377,25 @@ function updateFromSpatialCache() {
         const e = entities.get(trackIndex);
         if (!e || !e.mesh.visible) continue;
 
-        // Position driven by batch frame
-        e.mesh.position.set(sf.x, sf.y, sf.z);
-        // Radius drives visual size — scale relative to base radius (0.32 sphere)
+        // During playback, evaluate the pre-sampled Bezier curve at the extrapolated
+        // clock time so position updates at rAF rate (60+ fps) rather than at the
+        // WebChannel delivery rate (~60Hz with jitter → discrete jumps).
+        // Falls back to the last C++ snapshot when no path exists (no keyframes yet).
+        const p = paths.get(trackIndex);
+        if (isPlaying && p && p.n > 1) {
+            const pos = evaluatePathAt(p, tEff);
+            if (pos) e.mesh.position.set(pos[0], pos[1], pos[2]);
+        } else {
+            e.mesh.position.set(sf.x, sf.y, sf.z);
+        }
+
+        // Radius still comes from the C++ snapshot (not on the path).
         const s = Math.max(0.3, sf.radius) / 0.5;
         e.mesh.scale.setScalar(s);
     }
-    _spatialDirty = false;
+
+    // Keep dirty during playback so every rAF frame re-evaluates the curve.
+    if (!isPlaying) _spatialDirty = false;
 }
 
 // ── Phase 2: Bezier tangent handle visualisation ────────────────────────────
@@ -382,9 +411,18 @@ function clearTangentHandles() {
         }
     }
     tangentHandles.kfId = null;
+    tangentHandles.trackIndex = -1;
+}
+
+function findTrackForKf(kfId) {
+    for (const [trackIndex, map] of kfMarkers) {
+        if (map.has(kfId)) return trackIndex;
+    }
+    return -1;
 }
 
 function showTangentHandles(kfId, kx, ky, kz, inX, inY, inZ, outX, outY, outZ) {
+    tangentHandles.trackIndex = findTrackForKf(kfId);
     const kfPos  = new THREE.Vector3(kx, ky, kz);
     const inPos  = new THREE.Vector3(kx + inX,  ky + inY,  kz + inZ);
     const outPos = new THREE.Vector3(kx + outX, ky + outY, kz + outZ);
@@ -493,6 +531,14 @@ function applyEntityVisibility(trackIndex, visible) {
     e.mesh.visible = visible;
     if (!visible && transformCtl && transformCtl.object === e.mesh)
         transformCtl.detach();
+    const line = pathLines.get(trackIndex);
+    if (line) line.visible = visible;
+    const kfMap = kfMarkers.get(trackIndex);
+    if (kfMap) {
+        for (const entry of kfMap.values()) entry.mesh.visible = visible;
+    }
+    if (!visible && tangentHandles.trackIndex === trackIndex)
+        clearTangentHandles();
 }
 
 function setSelectedTrack(trackIndex) {
@@ -692,19 +738,23 @@ window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    _gizmoDirty = true;
 });
 
 document.fonts.ready.then(() => {
     (function animate() {
         requestAnimationFrame(animate);
-        // perf-3d-playback: resolve every track's automated position from the
-        // cached polyline + extrapolated playhead before we render this frame.
         updateFromSpatialCache();
         controls.update();
         renderer.render(scene, camera);
-        syncGizmo();
-        gRenderer.render(gScene, gCamera);
-        drawGizmoLabels();
+        // Only re-render the corner gizmo and labels when camera moved or playing.
+        // Avoids a redundant WebGL flush + Canvas2D redraw every idle frame.
+        if (_gizmoDirty || isPlaying) {
+            syncGizmo();
+            gRenderer.render(gScene, gCamera);
+            drawGizmoLabels();
+            _gizmoDirty = false;
+        }
     })();
 });
 
@@ -735,14 +785,27 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
     });
     scene3D.entityPositionChanged.connect((trackIndex, x, y, z) => {
         const e = ensureEntity(trackIndex);
-        // perf-3d-playback: when a track has automation (path), the rAF loop
-        // owns its position. Snapping here would fight the smooth eval.
-        if (paths.has(trackIndex)) return;
         e.mesh.position.set(x, y, z);
+        // Keep spatialCache in sync so the rAF loop doesn't snap back on the
+        // next dirty frame (e.g. during 2D-view drag or gizmo drag).
+        const sf = spatialCache.get(trackIndex) || {};
+        sf.x = x; sf.y = y; sf.z = z;
+        spatialCache.set(trackIndex, sf);
     });
     scene3D.playheadMoved.connect((tMs) => {
         currentPlayheadMs = tMs;
         playheadRecvAtPerfMs = performance.now();
+        if (isPlaying) return;
+        for (const [trackIndex, p] of paths) {
+            const pos = evaluatePathAt(p, tMs);
+            if (!pos) continue;
+            const e = entities.get(trackIndex);
+            if (!e || !e.mesh.visible) continue;
+            e.mesh.position.set(pos[0], pos[1], pos[2]);
+            const sf = spatialCache.get(trackIndex) || {};
+            sf.x = pos[0]; sf.y = pos[1]; sf.z = pos[2];
+            spatialCache.set(trackIndex, sf);
+        }
     });
     scene3D.playbackStateChanged.connect((playing) => {
         isPlaying = !!playing;
@@ -761,20 +824,24 @@ new QWebChannel(qt.webChannelTransport, (channel) => {
         playStartMs = audioTimeMs;  // freeze at stop time
     });
 
-    // Phase 2: batched spatial frame — all tracks' live state in one signal
+    // Phase 2: batched spatial frame — all tracks' live state in one signal.
+    // Directly apply positions on receipt (mirrors scene2d.html) so 3D scene
+    // updates every playback tick regardless of rAF timing or path cache state.
     scene3D.spatialFrameUpdate.connect((audioTimeMs, data) => {
-        // Use the audio time in this frame to keep JS clock anchored
         playStartMs = audioTimeMs;
         playStartPerfNow = performance.now();
-        // Unpack flat array: [trackIdx, x, y, z, radius, trackIdx, x, y, z, radius, ...]
         for (let i = 0; i + 4 < data.length; i += 5) {
             const trackIdx = data[i] | 0;
             const sf = spatialCache.get(trackIdx) || {};
-            sf.x = data[i+1];
-            sf.y = data[i+2];
-            sf.z = data[i+3];
-            sf.radius = data[i+4];
+            sf.x = data[i+1]; sf.y = data[i+2]; sf.z = data[i+3]; sf.radius = data[i+4];
             spatialCache.set(trackIdx, sf);
+            if (trackIdx !== _draggingTrackIndex) {
+                const e = entities.get(trackIdx);
+                if (e && e.mesh.visible) {
+                    e.mesh.position.set(sf.x, sf.y, sf.z);
+                    e.mesh.scale.setScalar(Math.max(0.3, sf.radius) / 0.5);
+                }
+            }
         }
         _spatialDirty = true;
     });
